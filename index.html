@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ML & Data Science Job Tracker | Live Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --navy: #0f172a;
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --green: #10b981;
+      --green-bg: #ecfdf5;
+      --amber: #f59e0b;
+      --amber-bg: #fffbeb;
+      --rose: #ef4444;
+      --rose-bg: #fef2f2;
+      --purple: #8b5cf6;
+      --purple-bg: #f5f3ff;
+      --blue-bg: #eff6ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #fff;
+      padding: 24px 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header p {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .refresh-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 32px;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .kpi-card .lbl {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .kpi-card .val {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 6px;
+    }
+    .kpi-card.highlight {
+      border-left: 4px solid var(--primary-light);
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 1024px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+    .chart-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .chart-box h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+    .chart-container {
+      position: relative;
+      height: 240px;
+    }
+    .table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .filter-bar {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      background: #fafafa;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      background: #fff;
+    }
+    .search-input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+    }
+    select {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      background: #fff;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .btn-reset {
+      padding: 9px 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s;
+    }
+    .btn-reset:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+    .counter-tag {
+      margin-left: auto;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .table-container {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+      min-width: 1200px;
+    }
+    th {
+      background: #f8fafc;
+      padding: 12px 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover {
+      background: #f1f5f9;
+    }
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:hover td {
+      background: #f8fafc;
+    }
+    .job-title {
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .company-cell {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-confirmed { background: var(--green-bg); color: #065f46; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-plausible { background: var(--amber-bg); color: #92400e; border: 1px solid rgba(245,158,11,0.2); }
+    .badge-na { background: var(--blue-bg); color: #1e40af; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-unknown { background: #f1f5f9; color: #475569; }
+    .badge-strong { background: var(--green-bg); color: #065f46; }
+    .badge-good { background: var(--blue-bg); color: #1e40af; }
+    .badge-stretch { background: var(--amber-bg); color: #92400e; }
+    .badge-new { background: #dbeafe; color: #1d4ed8; font-size: 10px; margin-left: 6px; }
+    .btn-apply {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-apply:hover {
+      background: #1e3a8a;
+    }
+    .sub-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div>
+        <h1>🎯 Machine Learning & Data Science Job Tracker</h1>
+        <p>Curated verified-open roles (Senior, Lead, Applied Scientist) across India, UK & Australia</p>
+      </div>
+      <div class="refresh-badge">
+        <span class="pulse"></span> Last Updated: 2026-10-21 23:30 IST
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="kpi-grid">
+      <div class="kpi-card highlight">
+        <div class="lbl">Total Active Roles</div>
+        <div class="val" id="kpiTotal">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">India Roles</div>
+        <div class="val" id="kpiIndia">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">UK & Australia Roles</div>
+        <div class="val" id="kpiIntl">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Visa Confirmed / Plausible</div>
+        <div class="val" id="kpiVisa">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Target Companies</div>
+        <div class="val" id="kpiCompanies">0</div>
+      </div>
+    </section>
+
+    <section class="charts-grid">
+      <div class="chart-box">
+        <h3>Top Hiring Companies</h3>
+        <div class="chart-container"><canvas id="chartCompany"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3>Roles by Location</h3>
+        <div class="chart-container"><canvas id="chartLocation"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3>Visa Sponsorship Status</h3>
+        <div class="chart-container"><canvas id="chartVisa"></canvas></div>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <div class="filter-bar">
+        <input type="search" id="searchQ" class="search-input" placeholder="🔍 Search company, role title, skills, location…">
+        <select id="selCountry"><option value="">All Countries</option></select>
+        <select id="selCity"><option value="">All Locations</option></select>
+        <select id="selCompany"><option value="">All Companies</option></select>
+        <select id="selVisa"><option value="">All Sponsorship</option></select>
+        <select id="selExp"><option value="">All Experience Fit</option></select>
+        <button class="btn-reset" id="btnReset">Reset</button>
+        <span class="counter-tag" id="rowCounter">0 roles</span>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="sortTable('id')">ID</th>
+              <th onclick="sortTable('company')">Company</th>
+              <th onclick="sortTable('title')">Job Title</th>
+              <th onclick="sortTable('city')">Location</th>
+              <th onclick="sortTable('expCat')">Fit</th>
+              <th>Technical Match</th>
+              <th onclick="sortTable('visaCat')">Visa Sponsorship</th>
+              <th>Application</th>
+            </tr>
+          </thead>
+          <tbody id="jobsTbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Curated automatically via ATS feeds (Greenhouse, Lever, Ashby, Workday, Microsoft Careers) &middot; Amazon subsidiaries strictly excluded</p>
+  </footer>
+
+  <script id="jobs-data" type="application/json">[{"id": "J001", "company": "Microsoft", "title": "Senior Applied Scientist - Ads Ranking & Retrieval", "location": "India, Karnataka, Bangalore", "city": "Bangalore", "country": "India", "posted": "Posted 2026-09-24", "exp": "Strong fit", "expCat": "Strong", "tech": "Ads ranking & retrieval: core recsys/ranking/two-tower/CTR match", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://apply.careers.microsoft.com/careers/job/1970393557001423", "source": "Microsoft Careers API (apply.careers.microsoft.com) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Ads ranking & retrieval: core recsys/ranking/two-tower/CTR match", "isNew": true}, {"id": "J002", "company": "Warner Bros. Discovery", "title": "Senior Machine Learning Engineer(Growth & ML), Hyderabad", "location": "Hyderabad - Phoenix Equinox Tower 2", "city": "Hyderabad", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Strong fit", "expCat": "Strong", "tech": "Growth & ML for HBO Max: personalization/user modeling, production ML", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Hyderabad---Phoenix-Equinox-Tower-2/Senior-Machine-Learning-Engineer-Growth---ML---Hyderabad_R000106146", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Growth & ML for HBO Max: personalization/user modeling, production ML", "isNew": true}, {"id": "J003", "company": "Deliveroo", "title": "Senior Machine Learning Engineer - Recommendations", "location": "London, England, United Kingdom", "city": "London", "country": "UK", "posted": "Posted 2026-10-15 (LinkedIn; may be repost)", "exp": "Good fit", "expCat": "Good", "tech": "Recommendations: direct recsys match", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Roofoods Ltd t/a Deliveroo. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://uk.linkedin.com/jobs/view/senior-machine-learning-engineer-recommendations-at-deliveroo-4479173587", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Recommendations: direct recsys match", "isNew": true}, {"id": "J004", "company": "Spotify", "title": "Senior Applied Research Scientist - Personalization", "location": "London / Stockholm", "city": "London", "country": "UK", "posted": "Posted 2026-09-21", "exp": "Good fit", "expCat": "Good", "tech": "Personalization applied research: direct recsys match", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Spotify Limited. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://jobs.lever.co/spotify/a4c49acb-a095-4452-ad9e-69e4b778c256", "source": "Lever API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Personalization applied research: direct recsys match", "isNew": true}, {"id": "J005", "company": "Warner Bros. Discovery", "title": "Senior Machine Learning Engineer, Hyderabad", "location": "Hyderabad - Phoenix Equinox Tower 2", "city": "Hyderabad", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Strong fit", "expCat": "Strong", "tech": "Consumer-team MLE: personalization/production ML", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Hyderabad---Phoenix-Equinox-Tower-2/Senior-Machine-Learning-Engineer--Consumer-Team---Hyderabad_R000106155", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Consumer-team MLE: personalization/production ML", "isNew": true}, {"id": "J006", "company": "Warner Bros. Discovery", "title": "Senior Data Scientist - Hyderabad", "location": "Hyderabad - Phoenix Equinox Tower 2", "city": "Hyderabad", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Strong fit", "expCat": "Strong", "tech": "Senior DS, streaming: modeling/experimentation", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Hyderabad---Phoenix-Equinox-Tower-2/Senior-Data-Scientist---Hyderabad_R000106157", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "DS / Experimentation / Optimization — Senior DS, streaming: modeling/experimentation", "isNew": true}, {"id": "J007", "company": "Grab", "title": "Senior AI Engineer", "location": "Bengaluru East, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-19 (LinkedIn; may be repost)", "exp": "Strong fit", "expCat": "Strong", "tech": "Senior AI Engineer: GenAI/LLM apps", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/senior-ai-engineer-at-grab-4479983513", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Senior AI Engineer: GenAI/LLM apps", "isNew": true}, {"id": "J008", "company": "Expedia Group", "title": "Machine Learning Engineer III", "location": "India - Gurgaon", "city": "Delhi NCR", "country": "India", "posted": "Posted 7 Days Ago (as of 2026-10-21); start date 2026-10-14", "exp": "Good fit", "expCat": "Good", "tech": "Production MLE in travel marketplace, Gurgaon", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://expedia.wd108.myworkdayjobs.com/search/job/India---Gurgaon/Machine-Learning-Engineer-III_R-110219", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Production MLE in travel marketplace, Gurgaon", "isNew": true}, {"id": "J009", "company": "Perplexity", "title": "Member of Technical Staff (Machine Learning Engineer, Ranking Quality - Search)", "location": "Belgrade London", "city": "London", "country": "UK", "posted": "Posted 2026-08-12", "exp": "Good fit", "expCat": "Good", "tech": "Search ranking quality: retrieval/reranking/LLMs", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Perplexity AI Ltd. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://jobs.ashbyhq.com/perplexity/19d8bcfd-e493-4b3a-b8fd-11a2a6502da2", "source": "Ashby API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Search ranking quality: retrieval/reranking/LLMs", "isNew": true}, {"id": "J010", "company": "Thomson Reuters", "title": "Senior Data Scientist", "location": "India, Bengaluru, Karnataka / India, Hyderabad, Telangana", "city": "Bangalore", "country": "India", "posted": "Posted 8 Days Ago (as of 2026-10-21); start date 2026-10-13", "exp": "Strong fit", "expCat": "Strong", "tech": "Senior DS (NLP/GenAI org)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/India-Bengaluru-Karnataka/Senior-Data-Scientist_JREQ200302", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Senior DS (NLP/GenAI org)", "isNew": true}, {"id": "J011", "company": "Deliveroo", "title": "Senior Machine Learning Engineer - Growth & Personalisation", "location": "London, England, United Kingdom", "city": "London", "country": "UK", "posted": "Posted 2026-10-15 (LinkedIn; may be repost)", "exp": "Strong fit", "expCat": "Strong", "tech": "Growth & personalisation", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Roofoods Ltd t/a Deliveroo. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://uk.linkedin.com/jobs/view/senior-machine-learning-engineer-growth-personalisation-at-deliveroo-4479160982", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Growth & personalisation", "isNew": true}, {"id": "J012", "company": "Expedia Group", "title": "Senior Machine Learning Scientist", "location": "UK - London", "city": "London", "country": "UK", "posted": "Posted 14 Days Ago (as of 2026-10-21); start date 2026-10-07", "exp": "Good fit", "expCat": "Good", "tech": "Senior ML Scientist, London", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Expedia.com Ltd. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://expedia.wd108.myworkdayjobs.com/search/job/UK---London/Senior-Machine-Learning-Scientist_R-110171-2", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Senior ML Scientist, London", "isNew": true}, {"id": "J013", "company": "Coinbase", "title": "Senior Machine Learning Engineer", "location": "Remote - India", "city": "Remote - India", "country": "India", "posted": "Posted 2026-06-10", "exp": "Strong fit", "expCat": "Strong", "tech": "Senior MLE, remote India", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://www.coinbase.com/careers/positions/7739592?gh_jid=7739592", "source": "Greenhouse API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Senior MLE, remote India", "isNew": true}, {"id": "J014", "company": "MongoDB", "title": "Senior Software Engineer, AI Framework Integrations", "location": "Gurugram", "city": "Delhi NCR", "country": "India", "posted": "Posted 2026-08-06", "exp": "Strong fit", "expCat": "Strong", "tech": "AI framework integrations (RAG/vector search ecosystems), Gurugram", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://www.mongodb.com/careers/job/?gh_jid=8107301", "source": "Greenhouse API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — AI framework integrations (RAG/vector search ecosystems), Gurugram", "isNew": true}, {"id": "J015", "company": "JPMorganChase", "title": "Applied AI/ML Lead", "location": "Bengaluru, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-18 (LinkedIn; may be repost)", "exp": "Strong fit", "expCat": "Strong", "tech": "Applied AI/ML lead", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/applied-ai-ml-lead-at-jpmorganchase-4210699150", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Applied AI/ML lead", "isNew": true}, {"id": "J016", "company": "Adobe", "title": "Research Scientist (Applied) - IV", "location": "Noida", "city": "Delhi NCR", "country": "India", "posted": "Posted 30+ Days Ago (as of 2026-10-21); start date 2026-09-18", "exp": "Strong fit", "expCat": "Strong", "tech": "Applied research scientist, Noida (NCR)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Noida/Applied-Scientist-4_R171067", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Applied research scientist, Noida (NCR)", "isNew": true}, {"id": "J017", "company": "eBay", "title": "Sr MTS Machine Learning Engineer", "location": "Bengaluru, India", "city": "Bangalore", "country": "India", "posted": "Posted 30+ Days Ago (as of 2026-10-21); start date 2026-09-08", "exp": "Good fit", "expCat": "Good", "tech": "Senior MLE at eBay (search/recs domain)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://ebay.wd5.myworkdayjobs.com/apply/job/Bengaluru-India/Sr-MTS-Machine-Learning-Engineer_R0076249", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Senior MLE at eBay (search/recs domain)", "isNew": true}, {"id": "J018", "company": "Anthropic", "title": "Applied AI Engineer, Enterprise", "location": "London, UK", "city": "London", "country": "UK", "posted": "Posted 2026-09-28", "exp": "Strong fit", "expCat": "Strong", "tech": "Applied AI (customer-facing LLM engineering)", "visa": "Confirmed (Confirmed: posting says \"Visa sponsorship: We do sponsor visas! However, we aren't able to successfully sponsor visas for every role and every candidate\". Also on UK sponsor register (Anthropic Limited).)", "visaCat": "Confirmed", "reloc": "Not stated", "link": "https://job-boards.greenhouse.io/anthropic/jobs/5354765008", "source": "Greenhouse API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Applied AI (customer-facing LLM engineering)", "isNew": true}, {"id": "J019", "company": "OpenAI", "title": "Applied AI Engineer, Codex", "location": "Sydney, Australia", "city": "Sydney", "country": "Australia", "posted": "Posted 2026-09-30", "exp": "Strong fit", "expCat": "Strong", "tech": "Applied AI (Codex) customer-facing", "visa": "Unknown (Unknown: posting does not mention visa sponsorship. (OpenAI posting mentions relocation assistance.))", "visaCat": "Unknown", "reloc": "Confirmed: \"Relocation assistance is available to new employees\"", "link": "https://jobs.ashbyhq.com/openai/e1d8b590-8a91-42bb-ba2e-64b99c87e4ac", "source": "Ashby API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Applied AI (Codex) customer-facing", "isNew": true}, {"id": "J020", "company": "LinkedIn", "title": "Staff Software Engineer, Machine Learning", "location": "Bengaluru, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-17 (LinkedIn; may be repost)", "exp": "Stretch fit", "expCat": "Stretch", "tech": "ML SWE at LinkedIn: ranking/recsys infra likely (Staff = stretch)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/staff-software-engineer-machine-learning-at-linkedin-4453661653", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — ML SWE at LinkedIn: ranking/recsys infra likely (Staff = stretch)", "isNew": true}, {"id": "J021", "company": "Warner Bros. Discovery", "title": "Staff Machine Learning Engineer - (Growth & ML Team), Hyderabad", "location": "Hyderabad - Phoenix Equinox Tower 2", "city": "Hyderabad", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Staff MLE, audience/data platform: user modeling, ML infra (stretch level)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Hyderabad---Phoenix-Equinox-Tower-2/Staff-Machine-Learning-Engineer--Data---Audience-Platform-Team---Hyderabad_R000106138", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — Staff MLE, audience/data platform: user modeling, ML infra (stretch level)", "isNew": true}, {"id": "J022", "company": "Warner Bros. Discovery", "title": "Staff Data Scientist", "location": "Bangalore - Embassy Tech Village", "city": "Bangalore", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Staff DS (stretch level)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Bangalore---Embassy-Tech-Village/Staff-Data-Scientist_R000106182", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "DS / Experimentation / Optimization — Staff DS (stretch level)", "isNew": true}, {"id": "J023", "company": "Microsoft", "title": "Senior Researcher - Self-Evolving Agentic Systems", "location": "India, Karnataka, Bangalore", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-19", "exp": "Good fit", "expCat": "Good", "tech": "Agentic systems research (LLMs/agents); research-leaning", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://apply.careers.microsoft.com/careers/job/1970393557043281", "source": "Microsoft Careers API (apply.careers.microsoft.com) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Agentic systems research (LLMs/agents); research-leaning", "isNew": true}, {"id": "J024", "company": "Microsoft", "title": "Senior Applied AI Engineer", "location": "India, Telangana, Hyderabad", "city": "Hyderabad", "country": "India", "posted": "Posted 2026-10-20", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Applied AI engineering: LLMs/agents in production", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://apply.careers.microsoft.com/careers/job/1970393557041531", "source": "Microsoft Careers API (apply.careers.microsoft.com) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — Applied AI engineering: LLMs/agents in production", "isNew": true}, {"id": "J025", "company": "Twilio", "title": "Staff Machine Learning Engineer (L4)", "location": "Remote - India", "city": "Remote - India", "country": "India", "posted": "Posted 2026-10-08", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Staff MLE, remote India", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://job-boards.greenhouse.io/twilio/jobs/8258593", "source": "Greenhouse API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Staff MLE, remote India", "isNew": true}, {"id": "J026", "company": "Intuit", "title": "Staff Software Engineer - ML Engineering", "location": "Bengaluru, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-15 (LinkedIn; may be repost)", "exp": "Stretch fit", "expCat": "Stretch", "tech": "ML engineering/platform (Staff = stretch)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/staff-software-engineer-ml-engineering-at-intuit-4451687998", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — ML engineering/platform (Staff = stretch)", "isNew": true}, {"id": "J027", "company": "Expedia Group", "title": "Machine Learning Scientist III", "location": "UK - London", "city": "London", "country": "UK", "posted": "Posted 20 Days Ago (as of 2026-10-21); start date 2026-10-01", "exp": "Good fit", "expCat": "Good", "tech": "ML Scientist III, London", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Expedia.com Ltd. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://expedia.wd108.myworkdayjobs.com/search/job/UK---London/Machine-Learning-Scientist-III_R-109301", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — ML Scientist III, London", "isNew": true}, {"id": "J028", "company": "Thomson Reuters", "title": "Lead Applied Scientist, Search - NLP/GenAI", "location": "Switzerland, Zug, Zug / United Kingdom, London", "city": "London", "country": "UK", "posted": "Posted 6 Days Ago (as of 2026-10-21); start date 2026-10-15", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Search + NLP/GenAI applied science", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Thomson Reuters (Professional) UK Limited. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/Switzerland-Zug-Zug/Lead-Applied-Scientist--Search---NLP-GenAI_JREQ201521-1", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Search + NLP/GenAI applied science", "isNew": true}, {"id": "J029", "company": "Microsoft", "title": "Senior Researcher: Machine Learning for Intelligent Systems", "location": "United Kingdom, Cambridgeshire, Cambridge", "city": "United Kingdom, Cambridgeshire, Cambridge", "country": "UK", "posted": "Posted 2026-10-15", "exp": "Good fit", "expCat": "Good", "tech": "ML for intelligent systems research, Cambridge UK", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Microsoft Limited, Microsoft Research Limited. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://apply.careers.microsoft.com/careers/job/1970393557027129", "source": "Microsoft Careers API (apply.careers.microsoft.com) — verified live 2026-10-21", "why_fits": "General Applied ML / Research — ML for intelligent systems research, Cambridge UK", "isNew": true}, {"id": "J030", "company": "Reddit", "title": "Staff Machine Learning Engineer, Ads Foundational Representations", "location": "Remote - United Kingdom", "city": "Remote - United Kingdom", "country": "UK", "posted": "Posted 2026-06-19", "exp": "Stretch fit", "expCat": "Stretch", "tech": "Ads representation learning (Staff = stretch)", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Reddit UK Ltd. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://job-boards.greenhouse.io/reddit/jobs/8018513", "source": "Greenhouse API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — Ads representation learning (Staff = stretch)", "isNew": true}, {"id": "J031", "company": "Target", "title": "Sr Data Scientist- MarTech", "location": "Bangalore,India", "city": "Bangalore", "country": "India", "posted": "Posted 6 Days Ago (as of 2026-10-21); start date 2026-10-15", "exp": "Good fit", "expCat": "Good", "tech": "Promo optimisation: optimization/causal/forecasting", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://target.wd5.myworkdayjobs.com/targetcareers/job/BangaloreIndia/Sr-Data-Scientist--Promo-Optimisation_R0000442385", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "DS / Experimentation / Optimization — Promo optimisation: optimization/causal/forecasting", "isNew": true}, {"id": "J032", "company": "Target", "title": "Sr. AI Engineer-MarTech", "location": "Bangalore,India", "city": "Bangalore", "country": "India", "posted": "Posted 6 Days Ago (as of 2026-10-21); start date 2026-10-15", "exp": "Good fit", "expCat": "Good", "tech": "AI engineer, MarTech/promo optimisation", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://target.wd5.myworkdayjobs.com/targetcareers/job/BangaloreIndia/Sr-AI-Engineer-Promo-Optimisation_R0000442383-1", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — AI engineer, MarTech/promo optimisation", "isNew": true}, {"id": "J033", "company": "Visa", "title": "Sr. ML Engineer", "location": "IN - Bengaluru, India", "city": "Bangalore", "country": "India", "posted": "Posted 26 Days Ago (as of 2026-10-21); start date 2026-09-25", "exp": "Good fit", "expCat": "Good", "tech": "Senior MLE, production ML", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://visa.wd5.myworkdayjobs.com/Visa/job/IN---Bengaluru-India/Sr-ML-Engineer_REF088732W", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Senior MLE, production ML", "isNew": true}, {"id": "J034", "company": "Visa", "title": "Senior Data Scientist", "location": "IN - Bengaluru, India", "city": "Bangalore", "country": "India", "posted": "Posted 9 Days Ago (as of 2026-10-21); start date 2026-10-12", "exp": "Good fit", "expCat": "Good", "tech": "Senior DS", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://visa.wd5.myworkdayjobs.com/Visa/job/IN---Bengaluru-India/Senior-Data-Scientist_REF087979W", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "DS / Experimentation / Optimization — Senior DS", "isNew": true}, {"id": "J035", "company": "Thomson Reuters", "title": "Senior AI Platform Engineer", "location": "India, Bengaluru, Karnataka / India, Hyderabad, Telangana", "city": "Bangalore", "country": "India", "posted": "Posted 8 Days Ago (as of 2026-10-21); start date 2026-10-13", "exp": "Good fit", "expCat": "Good", "tech": "AI platform/MLOps", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/India-Bengaluru-Karnataka/Senior-AI-Platform-Engineer_JREQ202440", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — AI platform/MLOps", "isNew": true}, {"id": "J036", "company": "Intel", "title": "AI Model Optimization Engineer", "location": "India, Bangalore", "city": "Bangalore", "country": "India", "posted": "Posted Today (as of 2026-10-21); start date 2026-10-21", "exp": "Good fit", "expCat": "Good", "tech": "Inference/model optimization", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://intel.wd1.myworkdayjobs.com/External/job/India-Bangalore/AI-Model-Optimization-Engineer_JR0288104-1", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — Inference/model optimization", "isNew": true}, {"id": "J037", "company": "Intel", "title": "LLM & Agentic AI Performance Engineer", "location": "India, Bangalore", "city": "Bangalore", "country": "India", "posted": "Posted 5 Days Ago (as of 2026-10-21); start date 2026-10-16", "exp": "Stretch fit", "expCat": "Stretch", "tech": "LLM/agentic inference performance", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://intel.wd1.myworkdayjobs.com/External/job/India-Bangalore/LLM---Agentic-AI-Performance-Engineer_JR0287957", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — LLM/agentic inference performance", "isNew": true}, {"id": "J038", "company": "Adobe", "title": "Machine Learning Engineer 3", "location": "Noida / Bangalore", "city": "Bangalore", "country": "India", "posted": "Posted 30+ Days Ago (as of 2026-10-21); start date 2026-09-18", "exp": "Good fit", "expCat": "Good", "tech": "MLE (Noida/Bangalore; Noida is NCR)", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Noida/Machine-Learning-Engineer-3_R171487-1", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "General Applied ML / Research — MLE (Noida/Bangalore; Noida is NCR)", "isNew": true}, {"id": "J039", "company": "Atlassian", "title": "Senior Machine Learning Systems Engineer - Search", "location": "Greater Kolkata Area", "city": "Greater Kolkata Area", "country": "Global / Other", "posted": "Posted 2026-10-19 (LinkedIn; may be repost)", "exp": "Stretch fit", "expCat": "Stretch", "tech": "ML systems for search: retrieval/ranking", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/senior-machine-learning-systems-engineer-search-at-atlassian-4480948882", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "Recsys / Ranking / Search — ML systems for search: retrieval/ranking", "isNew": true}, {"id": "J040", "company": "NVIDIA", "title": "Senior MLOps Engineer - DSX Enablement", "location": "Hyderabad, Telangana, India", "city": "Hyderabad", "country": "India", "posted": "Posted 2026-10-15 (LinkedIn; may be repost)", "exp": "Stretch fit", "expCat": "Stretch", "tech": "MLOps / ML infra", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://in.linkedin.com/jobs/view/senior-mlops-engineer-dsx-enablement-at-nvidia-4461345928", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — MLOps / ML infra", "isNew": true}, {"id": "J041", "company": "eBay", "title": "MTS 2, AI Platform", "location": "Bengaluru, India", "city": "Bangalore", "country": "India", "posted": "Posted 9 Days Ago (as of 2026-10-21); start date 2026-10-12", "exp": "Good fit", "expCat": "Good", "tech": "AI platform / MLOps / serving", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://ebay.wd5.myworkdayjobs.com/apply/job/Bengaluru-India/MTS-2--AI-Platform_R0076807", "source": "Workday careers API — verified live 2026-10-21", "why_fits": "ML Infra / MLOps / Inference — AI platform / MLOps / serving", "isNew": true}, {"id": "J042", "company": "Sarvam AI", "title": "ML Engineer (Training Infra), Foundational Models", "location": "Bengaluru", "city": "Bangalore", "country": "India", "posted": "Posted 2026-10-07", "exp": "Good fit", "expCat": "Good", "tech": "LLM training infra", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://jobs.ashbyhq.com/sarvam/e9fb1269-fc4b-4879-aa35-0b75a8c83611", "source": "Ashby API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — LLM training infra", "isNew": true}, {"id": "J043", "company": "Xero", "title": "Senior ML/AI Systems Engineer (AI Products)", "location": "Sydney, New South Wales, Australia", "city": "Sydney", "country": "Australia", "posted": "Posted 2026-10-19 (LinkedIn; may be repost)", "exp": "Good fit", "expCat": "Good", "tech": "ML/AI systems for AI products, Sydney", "visa": "Unknown (Unknown: posting does not mention visa sponsorship. Xero is an Australian/NZ tech employer; no sponsorship evidence found this run.)", "visaCat": "Unknown", "reloc": "Not stated", "link": "https://au.linkedin.com/jobs/view/senior-ml-ai-systems-engineer-ai-products-at-xero-4417053716", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "LLM / GenAI / Agents — ML/AI systems for AI products, Sydney", "isNew": true}, {"id": "J044", "company": "Trainline", "title": "Senior Machine Learning Engineer", "location": "London, England, United Kingdom", "city": "London", "country": "UK", "posted": "Posted 2026-10-14 (LinkedIn; may be repost)", "exp": "Good fit", "expCat": "Good", "tech": "Senior MLE, London", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Trainline.com Ltd. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://uk.linkedin.com/jobs/view/senior-machine-learning-engineer-at-trainline-4452441332", "source": "LinkedIn public job search (guest) — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Senior MLE, London", "isNew": true}, {"id": "J045", "company": "Cloudflare", "title": "Senior Machine Learning Engineer", "location": "Hybrid | Austin, TX London, United Kingdom", "city": "London", "country": "UK", "posted": "Posted 2026-07-09", "exp": "Good fit", "expCat": "Good", "tech": "Senior MLE, London", "visa": "Plausible but unverified (Plausible but unverified: employer is a licensed Skilled Worker sponsor on gov.uk register (20 Oct 2026): Cloudflare Limited. Posting itself does not state sponsorship.)", "visaCat": "Plausible but unverified", "reloc": "Not stated", "link": "https://boards.greenhouse.io/cloudflare/jobs/8043974?gh_jid=8043974", "source": "Greenhouse API (live listing 2026-10-21) — verified live 2026-10-21", "why_fits": "General Applied ML / Research — Senior MLE, London", "isNew": true}, {"id": "J046", "company": "Meesho", "title": "Data Scientist III", "location": "Bangalore, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Live on Lever", "exp": "Strong fit (asks 4–7 yrs; exact match for 6 yrs)", "expCat": "Strong", "tech": "Core ML & neural networks, product personalization, reseller preferences, experimentation, Python, SQL", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://jobs.lever.co/meesho/489fe662-5d28-4305-953e-91ee21e8538c", "source": "Meesho Lever ATS (jobs.lever.co/meesho) — verified live 2026-10-21", "why_fits": "4-7 years DS experience in B2C is exact match for your ~6 years profile; focuses on personalization and recommendation for resellers.", "isNew": true}, {"id": "J047", "company": "Meesho", "title": "Data Scientist III (Team- Valmo)", "location": "Bangalore, Karnataka, India", "city": "Bangalore", "country": "India", "posted": "Live on Lever", "exp": "Strong fit (asks 4–7 yrs; exact match for 6 yrs)", "expCat": "Strong", "tech": "Logistics & supply chain DS (Valmo logistics network), demand forecasting, routing, ETA prediction, Python, SQL", "visa": "N/A (India role)", "visaCat": "N/A (India role)", "reloc": "Not stated", "link": "https://jobs.lever.co/meesho/9c642a77-5b07-40a2-a7f0-0c396b2b97c5", "source": "Meesho Lever ATS (jobs.lever.co/meesho) — verified live 2026-10-21", "why_fits": "Senior DS role on Meesho's flagship Valmo logistics network; matches experimentation and high-scale modeling background.", "isNew": true}]</script>
+
+  <script>
+    const JOBS = JSON.parse(document.getElementById('jobs-data').textContent);
+
+    let state = {
+      search: '',
+      country: '',
+      city: '',
+      company: '',
+      visa: '',
+      exp: '',
+      sortKey: 'id',
+      sortAsc: true
+    };
+
+    // Initialize KPI metrics
+    document.getElementById('kpiTotal').textContent = JOBS.length;
+    document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
+    document.getElementById('kpiIntl').textContent = JOBS.filter(j => j.country === 'UK' || j.country === 'Australia').length;
+    document.getElementById('kpiVisa').textContent = JOBS.filter(j => j.visaCat === 'Confirmed' || j.visaCat.includes('Plausible')).length;
+    document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
+
+    // Populate dropdowns
+    function populateFilter(id, items) {
+      const el = document.getElementById(id);
+      const unique = [...new Set(items.filter(Boolean))].sort();
+      unique.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item;
+        opt.textContent = item;
+        el.appendChild(opt);
+      });
+    }
+
+    populateFilter('selCountry', JOBS.map(j => j.country));
+    populateFilter('selCity', JOBS.map(j => j.city));
+    populateFilter('selCompany', JOBS.map(j => j.company));
+    populateFilter('selVisa', JOBS.map(j => j.visaCat));
+    populateFilter('selExp', JOBS.map(j => j.expCat));
+
+    // Render Table
+    function renderTable() {
+      const tbody = document.getElementById('jobsTbody');
+      const filtered = JOBS.filter(j => {
+        const q = state.search.toLowerCase();
+        const matchesQ = !q || (j.company + ' ' + j.title + ' ' + j.location + ' ' + j.tech + ' ' + j.id).toLowerCase().includes(q);
+        const matchesCountry = !state.country || j.country === state.country;
+        const matchesCity = !state.city || j.city === state.city;
+        const matchesCompany = !state.company || j.company === state.company;
+        const matchesVisa = !state.visa || j.visaCat === state.visa;
+        const matchesExp = !state.exp || j.expCat === state.exp;
+        return matchesQ && matchesCountry && matchesCity && matchesCompany && matchesVisa && matchesExp;
+      });
+
+      filtered.sort((a, b) => {
+        let vA = a[state.sortKey] || '';
+        let vB = b[state.sortKey] || '';
+        if (typeof vA === 'string') vA = vA.toLowerCase();
+        if (typeof vB === 'string') vB = vB.toLowerCase();
+        return (vA < vB ? -1 : vA > vB ? 1 : 0) * (state.sortAsc ? 1 : -1);
+      });
+
+      document.getElementById('rowCounter').textContent = `${filtered.length} of ${JOBS.length} roles`;
+
+      tbody.innerHTML = filtered.map(j => {
+        const vClass = j.visaCat === 'Confirmed' ? 'badge-confirmed' :
+                       j.visaCat.includes('Plausible') ? 'badge-plausible' :
+                       j.visaCat.includes('N/A') ? 'badge-na' : 'badge-unknown';
+
+        const eClass = j.expCat === 'Strong' ? 'badge-strong' :
+                       j.expCat === 'Stretch' ? 'badge-stretch' : 'badge-good';
+
+        const applyBtn = j.link && j.link.startsWith('http')
+          ? `<a href="${j.link}" target="_blank" class="btn-apply">Direct Apply ↗</a>`
+          : `<span class="sub-text">Unverified</span>`;
+
+        return `
+          <tr>
+            <td><code>${j.id}</code></td>
+            <td class="company-cell">${j.company}</td>
+            <td>
+              <span class="job-title">${j.title}</span>
+              <div class="sub-text">📅 ${j.posted}</div>
+            </td>
+            <td>
+              <div>${j.city}</div>
+              <div class="sub-text">${j.country}</div>
+            </td>
+            <td><span class="badge ${eClass}">${j.expCat}</span></td>
+            <td>
+              <div>${j.tech}</div>
+            </td>
+            <td><span class="badge ${vClass}">${j.visaCat}</span></td>
+            <td>${applyBtn}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function sortTable(key) {
+      if (state.sortKey === key) {
+        state.sortAsc = !state.sortAsc;
+      } else {
+        state.sortKey = key;
+        state.sortAsc = true;
+      }
+      renderTable();
+    }
+
+    // Event listeners
+    document.getElementById('searchQ').addEventListener('input', e => {
+      state.search = e.target.value;
+      renderTable();
+    });
+    document.getElementById('selCountry').addEventListener('change', e => {
+      state.country = e.target.value;
+      renderTable();
+    });
+    document.getElementById('selCity').addEventListener('change', e => {
+      state.city = e.target.value;
+      renderTable();
+    });
+    document.getElementById('selCompany').addEventListener('change', e => {
+      state.company = e.target.value;
+      renderTable();
+    });
+    document.getElementById('selVisa').addEventListener('change', e => {
+      state.visa = e.target.value;
+      renderTable();
+    });
+    document.getElementById('selExp').addEventListener('change', e => {
+      state.exp = e.target.value;
+      renderTable();
+    });
+    document.getElementById('btnReset').addEventListener('click', () => {
+      state = { search: '', country: '', city: '', company: '', visa: '', exp: '', sortKey: 'id', sortAsc: true };
+      document.getElementById('searchQ').value = '';
+      document.getElementById('selCountry').value = '';
+      document.getElementById('selCity').value = '';
+      document.getElementById('selCompany').value = '';
+      document.getElementById('selVisa').value = '';
+      document.getElementById('selExp').value = '';
+      renderTable();
+    });
+
+    renderTable();
+
+    // Render Charts
+    // 1. Companies
+    const compCounts = {};
+    JOBS.forEach(j => compCounts[j.company] = (compCounts[j.company] || 0) + 1);
+    const topComps = Object.entries(compCounts).sort((a,b) => b[1] - a[1]).slice(0, 10);
+
+    new Chart(document.getElementById('chartCompany'), {
+      type: 'bar',
+      data: {
+        labels: topComps.map(c => c[0]),
+        datasets: [{
+          data: topComps.map(c => c[1]),
+          backgroundColor: '#3b82f6',
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { ticks: { stepSize: 1 } } }
+      }
+    });
+
+    // 2. Locations
+    const locCounts = { 'India': 0, 'UK': 0, 'Australia': 0 };
+    JOBS.forEach(j => { if (locCounts[j.country] !== undefined) locCounts[j.country]++; });
+
+    new Chart(document.getElementById('chartLocation'), {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(locCounts),
+        datasets: [{
+          data: Object.values(locCounts),
+          backgroundColor: ['#10b981', '#3b82f6', '#f59e0b'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    // 3. Visa
+    const visaCounts = {};
+    JOBS.forEach(j => visaCounts[j.visaCat] = (visaCounts[j.visaCat] || 0) + 1);
+
+    new Chart(document.getElementById('chartVisa'), {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(visaCounts),
+        datasets: [{
+          data: Object.values(visaCounts),
+          backgroundColor: ['#10b981', '#f59e0b', '#3b82f6', '#94a3b8'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  </script>
+</body>
+</html>

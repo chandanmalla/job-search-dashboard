@@ -1,0 +1,6 @@
+# Credentials and local state
+config.json
+*.pyc
+__pycache__/
+.DS_Store
+*.log
