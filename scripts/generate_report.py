@@ -524,16 +524,26 @@ def format_job_digest_entry(job: dict) -> str:
     title = esc_html(job.get("job_title", ""))
     loc = esc_html(job.get("location", ""))
     exp = esc_html(job.get("experience_fit", ""))
+    why = job.get("why_fits", "") or job.get("technical_fit", "")
+    focus_snippet = why[:75] + ("..." if len(why) > 75 else "")
 
     if link.startswith("http"):
         apply_html = f'<a href="{link}">Apply Direct ↗</a>'
     else:
         apply_html = '<i>No direct link</i>'
 
+    ref_note = (
+        f"Hi [Name], I saw the {job.get('job_title', '')} role at {job.get('company', '')} ({link}). "
+        f"With ~6 yrs in DS/ML (Python, PyTorch, RecSys/Ranking, LLMs, MLOps), my experience in {focus_snippet} is a strong fit. "
+        f"Would you be open to referring me or connecting? Thanks!"
+    )
+
     return (
         f"• <b>{jid}</b> {visa_icon} <b>{comp}</b> — {title}\n"
         f"  📍 {loc} | 🎯 {exp}\n"
-        f"  🔗 {apply_html} | <code>/applied {jid}</code> | <code>/skip {jid}</code>\n\n"
+        f"  🔗 {apply_html} | <code>/applied {jid}</code> | <code>/skip {jid}</code>\n"
+        f"  💬 <i>LinkedIn Referral Note (tap to copy):</i>\n"
+        f"  <code>{esc_html(ref_note)}</code>\n\n"
     )
 
 

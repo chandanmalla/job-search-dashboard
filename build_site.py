@@ -375,9 +375,29 @@ def build_dashboard():
       text-decoration: none;
       transition: background 0.15s;
       white-space: nowrap;
+      text-align: center;
     }}
     .btn-apply:hover {{
       background: #1e3a8a;
+    }}
+    .btn-referral {{
+      display: inline-block;
+      padding: 5px 8px;
+      background: #f8fafc;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      text-align: center;
+    }}
+    .btn-referral:hover {{
+      background: #e2e8f0;
+      color: #1e40af;
+      border-color: #93c5fd;
     }}
     .btn-track {{
       padding: 5px 10px;
@@ -669,7 +689,12 @@ def build_dashboard():
               <div>${{j.tech}}</div>
             </td>
             <td><span class="badge ${{vClass}}">${{j.visaCat}}</span></td>
-            <td>${{applyBtn}}</td>
+            <td>
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                ${{applyBtn}}
+                <button class="btn-referral" onclick="copyReferral('${{j.id}}')" title="Copy personalized LinkedIn referral message">💬 Referral Note</button>
+              </div>
+            </td>
           </tr>
         `;
       }}).join('');
@@ -701,6 +726,21 @@ def build_dashboard():
       localStorage.setItem('skipped_jobs', JSON.stringify([...skippedJobs]));
       updateStats();
       renderTable();
+    }};
+
+    // Copy personalized LinkedIn referral message
+    window.copyReferral = function(id) {{
+      const j = JOBS.find(item => item.id === id);
+      if (!j) return;
+      const link = j.link && j.link.startsWith('http') ? j.link : '';
+      const focus = j.tech ? (j.tech.length > 70 ? j.tech.slice(0, 70) + '...' : j.tech) : 'recommender systems, LLMs & MLOps';
+      const note = `Hi [Name], I noticed the open ${{j.title}} role at ${{j.company}} (${{link}}). With ~6 years in Data Science & ML (Python, PyTorch, RecSys/Ranking, LLMs, MLOps), my experience in ${{focus}} is a strong match. Would you be open to connecting or referring me? Thanks!`;
+
+      navigator.clipboard.writeText(note).then(() => {{
+        alert(`📋 LinkedIn Referral Note copied to clipboard for ${{j.company}}!\\n\\n"${{note}}"\\n\\nReady to paste directly into your LinkedIn message or connection invite.`);
+      }}).catch(() => {{
+        prompt("Copy your LinkedIn Referral Note:", note);
+      }});
     }};
 
     function sortTable(key) {{
