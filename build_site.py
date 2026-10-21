@@ -22,15 +22,15 @@ TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\tracked_jo
 if not TRACKED_PATH.exists():
     TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\found_jobs_latest.json")
 
-def load_jobs():
+def load_jobs_data():
     with open(TRACKED_PATH, encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, dict):
-        return data.get("all_jobs", [])
-    return data
+        return data.get("all_jobs", []), data.get("applied", []), data.get("skipped", [])
+    return data, [], []
 
 def build_dashboard():
-    raw_jobs = load_jobs()
+    raw_jobs, db_applied, db_skipped = load_jobs_data()
     now_ist = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M IST")
 
     jobs = []
@@ -501,7 +501,8 @@ def build_dashboard():
         <select id="selCompany"><option value="">All Companies</option></select>
         <select id="selVisa"><option value="">All Sponsorship</option></select>
         <select id="selExp"><option value="">All Experience Fit</option></select>
-        <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy Applied IDs</button>
+        <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
+        <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
       </div>
@@ -535,10 +536,12 @@ def build_dashboard():
 
   <script>
     const JOBS = JSON.parse(document.getElementById('jobs-data').textContent);
+    const DB_APPLIED = {json.dumps(db_applied)};
+    const DB_SKIPPED = {json.dumps(db_skipped)};
 
-    // Persistent storage for Applied & Skipped jobs
-    let appliedJobs = new Set(JSON.parse(localStorage.getItem('applied_jobs') || '[]'));
-    let skippedJobs = new Set(JSON.parse(localStorage.getItem('skipped_jobs') || '[]'));
+    // Persistent storage for Applied & Skipped jobs, merging DB state + browser localStorage
+    let appliedJobs = new Set([...DB_APPLIED, ...JSON.parse(localStorage.getItem('applied_jobs') || '[]')]);
+    let skippedJobs = new Set([...DB_SKIPPED, ...JSON.parse(localStorage.getItem('skipped_jobs') || '[]')]);
 
     let state = {{
       search: '',
@@ -761,6 +764,16 @@ def build_dashboard():
       navigator.clipboard.writeText(list).then(() => {{
         alert(`Copied ${{appliedJobs.size}} applied job IDs to clipboard:\\n${{list}}`);
       }});
+    }});
+
+    document.getElementById('btnSyncTelegram').addEventListener('click', () => {{
+      if (appliedJobs.size === 0) {{
+        alert('No jobs marked as applied yet! Click "Mark Applied" on any row first.');
+        return;
+      }}
+      const idList = [...appliedJobs].join(' ');
+      const tgUrl = `https://t.me/jobsearch_chan23_bot?text=${{encodeURIComponent('/applied ' + idList)}}`;
+      window.open(tgUrl, '_blank');
     }});
 
     renderTable();

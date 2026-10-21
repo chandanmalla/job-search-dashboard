@@ -350,7 +350,7 @@
         <p>Curated verified-open roles (Senior, Lead, Applied Scientist) across India, UK & Australia</p>
       </div>
       <div class="refresh-badge">
-        <span class="pulse"></span> Last Updated: 2026-10-21 23:57 IST
+        <span class="pulse"></span> Last Updated: 2026-10-22 00:02 IST
       </div>
     </div>
   </header>
@@ -412,7 +412,8 @@
         <select id="selCompany"><option value="">All Companies</option></select>
         <select id="selVisa"><option value="">All Sponsorship</option></select>
         <select id="selExp"><option value="">All Experience Fit</option></select>
-        <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy Applied IDs</button>
+        <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
+        <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
       </div>
@@ -446,10 +447,12 @@
 
   <script>
     const JOBS = JSON.parse(document.getElementById('jobs-data').textContent);
+    const DB_APPLIED = [];
+    const DB_SKIPPED = [];
 
-    // Persistent storage for Applied & Skipped jobs
-    let appliedJobs = new Set(JSON.parse(localStorage.getItem('applied_jobs') || '[]'));
-    let skippedJobs = new Set(JSON.parse(localStorage.getItem('skipped_jobs') || '[]'));
+    // Persistent storage for Applied & Skipped jobs, merging DB state + browser localStorage
+    let appliedJobs = new Set([...DB_APPLIED, ...JSON.parse(localStorage.getItem('applied_jobs') || '[]')]);
+    let skippedJobs = new Set([...DB_SKIPPED, ...JSON.parse(localStorage.getItem('skipped_jobs') || '[]')]);
 
     let state = {
       search: '',
@@ -672,6 +675,16 @@
       navigator.clipboard.writeText(list).then(() => {
         alert(`Copied ${appliedJobs.size} applied job IDs to clipboard:\n${list}`);
       });
+    });
+
+    document.getElementById('btnSyncTelegram').addEventListener('click', () => {
+      if (appliedJobs.size === 0) {
+        alert('No jobs marked as applied yet! Click "Mark Applied" on any row first.');
+        return;
+      }
+      const idList = [...appliedJobs].join(' ');
+      const tgUrl = `https://t.me/jobsearch_chan23_bot?text=${encodeURIComponent('/applied ' + idList)}`;
+      window.open(tgUrl, '_blank');
     });
 
     renderTable();
