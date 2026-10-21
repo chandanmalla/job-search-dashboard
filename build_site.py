@@ -3,7 +3,8 @@ Build Site Generator
 ====================
 Reads tracked_jobs.json (or found_jobs_latest.json) and compiles:
 1. data/jobs.json
-2. index.html (self-contained, responsive dashboard with embedded dataset & Chart.js)
+2. index.html (self-contained, responsive dashboard with embedded dataset, Chart.js,
+   and interactive local application tracking via localStorage)
 
 Run with:
     python build_site.py
@@ -176,7 +177,7 @@ def build_dashboard():
     }}
     .kpi-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
       margin-bottom: 24px;
     }}
@@ -205,6 +206,10 @@ def build_dashboard():
     }}
     .kpi-card.highlight {{
       border-left: 4px solid var(--primary-light);
+    }}
+    .kpi-card.applied-kpi {{
+      border-left: 4px solid var(--green);
+      background: #f0fdf4;
     }}
     .charts-grid {{
       display: grid;
@@ -250,7 +255,7 @@ def build_dashboard():
     }}
     .search-input {{
       flex: 1;
-      min-width: 240px;
+      min-width: 220px;
       padding: 9px 14px;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -271,8 +276,13 @@ def build_dashboard():
       color: var(--text-main);
       cursor: pointer;
     }}
-    .btn-reset {{
-      padding: 9px 16px;
+    .status-select {{
+      font-weight: 600;
+      border-color: #cbd5e1;
+      background: #f8fafc;
+    }}
+    .btn-action {{
+      padding: 9px 14px;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -282,7 +292,7 @@ def build_dashboard():
       color: var(--text-muted);
       transition: all 0.15s;
     }}
-    .btn-reset:hover {{
+    .btn-action:hover {{
       background: #f1f5f9;
       color: var(--text-main);
     }}
@@ -300,7 +310,7 @@ def build_dashboard():
       border-collapse: collapse;
       text-align: left;
       font-size: 13px;
-      min-width: 1200px;
+      min-width: 1250px;
     }}
     th {{
       background: #f8fafc;
@@ -322,6 +332,12 @@ def build_dashboard():
     }}
     tr:hover td {{
       background: #f8fafc;
+    }}
+    tr.is-applied td {{
+      background: #f0fdf4 !important;
+    }}
+    tr.is-skipped td {{
+      opacity: 0.45;
     }}
     .job-title {{
       font-weight: 600;
@@ -348,7 +364,6 @@ def build_dashboard():
     .badge-strong {{ background: var(--green-bg); color: #065f46; }}
     .badge-good {{ background: var(--blue-bg); color: #1e40af; }}
     .badge-stretch {{ background: var(--amber-bg); color: #92400e; }}
-    .badge-new {{ background: #dbeafe; color: #1d4ed8; font-size: 10px; margin-left: 6px; }}
     .btn-apply {{
       display: inline-block;
       padding: 6px 12px;
@@ -363,6 +378,45 @@ def build_dashboard():
     }}
     .btn-apply:hover {{
       background: #1e3a8a;
+    }}
+    .btn-track {{
+      padding: 5px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      color: var(--text-muted);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }}
+    .btn-track:hover {{
+      background: #f1f5f9;
+      color: var(--text-main);
+    }}
+    .btn-track.applied {{
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }}
+    .btn-icon {{
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 14px;
+      color: #94a3b8;
+      padding: 4px;
+      border-radius: 4px;
+    }}
+    .btn-icon:hover {{
+      color: #ef4444;
+      background: #fee2e2;
+    }}
+    .action-group {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }}
     .sub-text {{
       font-size: 11px;
@@ -396,16 +450,20 @@ def build_dashboard():
         <div class="lbl">Total Active Roles</div>
         <div class="val" id="kpiTotal">0</div>
       </div>
+      <div class="kpi-card applied-kpi">
+        <div class="lbl">Applied by You</div>
+        <div class="val" id="kpiApplied">0</div>
+      </div>
       <div class="kpi-card">
         <div class="lbl">India Roles</div>
         <div class="val" id="kpiIndia">0</div>
       </div>
       <div class="kpi-card">
-        <div class="lbl">UK & Australia Roles</div>
+        <div class="lbl">UK & Australia</div>
         <div class="val" id="kpiIntl">0</div>
       </div>
       <div class="kpi-card">
-        <div class="lbl">Visa Confirmed / Plausible</div>
+        <div class="lbl">Visa Confirmed</div>
         <div class="val" id="kpiVisa">0</div>
       </div>
       <div class="kpi-card">
@@ -431,13 +489,20 @@ def build_dashboard():
 
     <section class="table-card">
       <div class="filter-bar">
-        <input type="search" id="searchQ" class="search-input" placeholder="🔍 Search company, role title, skills, location…">
+        <input type="search" id="searchQ" class="search-input" placeholder="🔍 Search company, role title, skills, ID…">
+        <select id="selStatus" class="status-select">
+          <option value="all">All Roles</option>
+          <option value="unapplied" selected>Unapplied Only (Active)</option>
+          <option value="applied">Applied Only (Tracker)</option>
+          <option value="skipped">Skipped / Hidden</option>
+        </select>
         <select id="selCountry"><option value="">All Countries</option></select>
         <select id="selCity"><option value="">All Locations</option></select>
         <select id="selCompany"><option value="">All Companies</option></select>
         <select id="selVisa"><option value="">All Sponsorship</option></select>
         <select id="selExp"><option value="">All Experience Fit</option></select>
-        <button class="btn-reset" id="btnReset">Reset</button>
+        <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy Applied IDs</button>
+        <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
       </div>
 
@@ -446,6 +511,7 @@ def build_dashboard():
           <thead>
             <tr>
               <th onclick="sortTable('id')">ID</th>
+              <th>My Status</th>
               <th onclick="sortTable('company')">Company</th>
               <th onclick="sortTable('title')">Job Title</th>
               <th onclick="sortTable('city')">Location</th>
@@ -470,8 +536,13 @@ def build_dashboard():
   <script>
     const JOBS = JSON.parse(document.getElementById('jobs-data').textContent);
 
+    // Persistent storage for Applied & Skipped jobs
+    let appliedJobs = new Set(JSON.parse(localStorage.getItem('applied_jobs') || '[]'));
+    let skippedJobs = new Set(JSON.parse(localStorage.getItem('skipped_jobs') || '[]'));
+
     let state = {{
       search: '',
+      status: 'unapplied',
       country: '',
       city: '',
       company: '',
@@ -481,12 +552,16 @@ def build_dashboard():
       sortAsc: true
     }};
 
-    // Initialize KPI metrics
-    document.getElementById('kpiTotal').textContent = JOBS.length;
-    document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
-    document.getElementById('kpiIntl').textContent = JOBS.filter(j => j.country === 'UK' || j.country === 'Australia').length;
-    document.getElementById('kpiVisa').textContent = JOBS.filter(j => j.visaCat === 'Confirmed' || j.visaCat.includes('Plausible')).length;
-    document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
+    function updateStats() {{
+      document.getElementById('kpiTotal').textContent = JOBS.length;
+      document.getElementById('kpiApplied').textContent = appliedJobs.size;
+      document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
+      document.getElementById('kpiIntl').textContent = JOBS.filter(j => j.country === 'UK' || j.country === 'Australia').length;
+      document.getElementById('kpiVisa').textContent = JOBS.filter(j => j.visaCat === 'Confirmed' || j.visaCat.includes('Plausible')).length;
+      document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
+    }}
+
+    updateStats();
 
     // Populate dropdowns
     function populateFilter(id, items) {{
@@ -517,7 +592,20 @@ def build_dashboard():
         const matchesCompany = !state.company || j.company === state.company;
         const matchesVisa = !state.visa || j.visaCat === state.visa;
         const matchesExp = !state.exp || j.expCat === state.exp;
-        return matchesQ && matchesCountry && matchesCity && matchesCompany && matchesVisa && matchesExp;
+
+        const isApplied = appliedJobs.has(j.id);
+        const isSkipped = skippedJobs.has(j.id);
+
+        let matchesStatus = true;
+        if (state.status === 'unapplied') {{
+          matchesStatus = !isApplied && !isSkipped;
+        }} else if (state.status === 'applied') {{
+          matchesStatus = isApplied;
+        }} else if (state.status === 'skipped') {{
+          matchesStatus = isSkipped;
+        }}
+
+        return matchesQ && matchesCountry && matchesCity && matchesCompany && matchesVisa && matchesExp && matchesStatus;
       }});
 
       filtered.sort((a, b) => {{
@@ -531,6 +619,9 @@ def build_dashboard():
       document.getElementById('rowCounter').textContent = `${{filtered.length}} of ${{JOBS.length}} roles`;
 
       tbody.innerHTML = filtered.map(j => {{
+        const isApplied = appliedJobs.has(j.id);
+        const isSkipped = skippedJobs.has(j.id);
+
         const vClass = j.visaCat === 'Confirmed' ? 'badge-confirmed' :
                        j.visaCat.includes('Plausible') ? 'badge-plausible' :
                        j.visaCat.includes('N/A') ? 'badge-na' : 'badge-unknown';
@@ -542,9 +633,25 @@ def build_dashboard():
           ? `<a href="${{j.link}}" target="_blank" class="btn-apply">Direct Apply ↗</a>`
           : `<span class="sub-text">Unverified</span>`;
 
+        const trackBtn = isApplied
+          ? `<button class="btn-track applied" onclick="toggleApplied('${{j.id}}')">Applied ✅</button>`
+          : `<button class="btn-track" onclick="toggleApplied('${{j.id}}')">Mark Applied</button>`;
+
+        const skipBtn = isSkipped
+          ? `<button class="btn-icon" title="Restore role" onclick="toggleSkipped('${{j.id}}')">↩️</button>`
+          : `<button class="btn-icon" title="Not interested / Hide" onclick="toggleSkipped('${{j.id}}')">✕</button>`;
+
+        const rowClass = isApplied ? 'is-applied' : isSkipped ? 'is-skipped' : '';
+
         return `
-          <tr>
+          <tr class="${{rowClass}}">
             <td><code>${{j.id}}</code></td>
+            <td>
+              <div class="action-group">
+                ${{trackBtn}}
+                ${{skipBtn}}
+              </div>
+            </td>
             <td class="company-cell">${{j.company}}</td>
             <td>
               <span class="job-title">${{j.title}}</span>
@@ -565,6 +672,34 @@ def build_dashboard():
       }}).join('');
     }}
 
+    // Toggle Applied state (persists in localStorage)
+    window.toggleApplied = function(id) {{
+      if (appliedJobs.has(id)) {{
+        appliedJobs.delete(id);
+      }} else {{
+        appliedJobs.add(id);
+        skippedJobs.delete(id);
+      }}
+      localStorage.setItem('applied_jobs', JSON.stringify([...appliedJobs]));
+      localStorage.setItem('skipped_jobs', JSON.stringify([...skippedJobs]));
+      updateStats();
+      renderTable();
+    }};
+
+    // Toggle Skipped state (persists in localStorage)
+    window.toggleSkipped = function(id) {{
+      if (skippedJobs.has(id)) {{
+        skippedJobs.delete(id);
+      }} else {{
+        skippedJobs.add(id);
+        appliedJobs.delete(id);
+      }}
+      localStorage.setItem('applied_jobs', JSON.stringify([...appliedJobs]));
+      localStorage.setItem('skipped_jobs', JSON.stringify([...skippedJobs]));
+      updateStats();
+      renderTable();
+    }};
+
     function sortTable(key) {{
       if (state.sortKey === key) {{
         state.sortAsc = !state.sortAsc;
@@ -578,6 +713,10 @@ def build_dashboard():
     // Event listeners
     document.getElementById('searchQ').addEventListener('input', e => {{
       state.search = e.target.value;
+      renderTable();
+    }});
+    document.getElementById('selStatus').addEventListener('change', e => {{
+      state.status = e.target.value;
       renderTable();
     }});
     document.getElementById('selCountry').addEventListener('change', e => {{
@@ -600,9 +739,11 @@ def build_dashboard():
       state.exp = e.target.value;
       renderTable();
     }});
+
     document.getElementById('btnReset').addEventListener('click', () => {{
-      state = {{ search: '', country: '', city: '', company: '', visa: '', exp: '', sortKey: 'id', sortAsc: true }};
+      state = {{ search: '', status: 'all', country: '', city: '', company: '', visa: '', exp: '', sortKey: 'id', sortAsc: true }};
       document.getElementById('searchQ').value = '';
+      document.getElementById('selStatus').value = 'all';
       document.getElementById('selCountry').value = '';
       document.getElementById('selCity').value = '';
       document.getElementById('selCompany').value = '';
@@ -611,10 +752,20 @@ def build_dashboard():
       renderTable();
     }});
 
+    document.getElementById('btnCopyApplied').addEventListener('click', () => {{
+      const list = [...appliedJobs].join(', ');
+      if (!list) {{
+        alert('No jobs marked as applied yet! Click "Mark Applied" on any row.');
+        return;
+      }}
+      navigator.clipboard.writeText(list).then(() => {{
+        alert(`Copied ${{appliedJobs.size}} applied job IDs to clipboard:\\n${{list}}`);
+      }});
+    }});
+
     renderTable();
 
     // Render Charts
-    // 1. Companies
     const compCounts = {{}};
     JOBS.forEach(j => compCounts[j.company] = (compCounts[j.company] || 0) + 1);
     const topComps = Object.entries(compCounts).sort((a,b) => b[1] - a[1]).slice(0, 10);
@@ -638,7 +789,6 @@ def build_dashboard():
       }}
     }});
 
-    // 2. Locations
     const locCounts = {{ 'India': 0, 'UK': 0, 'Australia': 0 }};
     JOBS.forEach(j => {{ if (locCounts[j.country] !== undefined) locCounts[j.country]++; }});
 
@@ -659,7 +809,6 @@ def build_dashboard():
       }}
     }});
 
-    // 3. Visa
     const visaCounts = {{}};
     JOBS.forEach(j => visaCounts[j.visaCat] = (visaCounts[j.visaCat] || 0) + 1);
 
@@ -686,7 +835,7 @@ def build_dashboard():
     out_html = PROJECT_DIR / "index.html"
     with open(out_html, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"Generated standalone web dashboard at {out_html}")
+    print(f"Generated standalone web dashboard with interactive application tracking at {out_html}")
 
 if __name__ == "__main__":
     build_dashboard()
