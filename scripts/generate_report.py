@@ -515,7 +515,7 @@ def esc_html(text: str) -> str:
     return str(text or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def format_job_digest_entry(job: dict) -> str:
+def format_job_digest_entry(job: dict, uprofile: dict = None) -> str:
     visa = job.get("visa_sponsorship", "Unknown")
     visa_icon = "✅" if "Confirmed" in visa else "🟡" if "Plausible" in visa else "🇮🇳" if "N/A" in visa else "❓"
     link = job.get("link", "")
@@ -525,7 +525,11 @@ def format_job_digest_entry(job: dict) -> str:
     loc = esc_html(job.get("location", ""))
     exp = esc_html(job.get("experience_fit", ""))
     why = job.get("why_fits", "") or job.get("technical_fit", "")
-    focus_snippet = why[:75] + ("..." if len(why) > 75 else "")
+    focus_snippet = why[:85] + ("..." if len(why) > 85 else "")
+
+    user_name = uprofile.get("name", "Chandan Malla") if uprofile else "Chandan Malla"
+    user_email = uprofile.get("email", "chandanmalla@gmail.com") if uprofile else "chandanmalla@gmail.com"
+    user_phone = uprofile.get("phone", "[Phone Number]") if uprofile else "[Phone Number]"
 
     if link.startswith("http"):
         apply_html = f'<a href="{link}">Apply Direct ↗</a>'
@@ -533,16 +537,21 @@ def format_job_digest_entry(job: dict) -> str:
         apply_html = '<i>No direct link</i>'
 
     ref_note = (
-        f"Hi [Name], I saw the {job.get('job_title', '')} role at {job.get('company', '')} ({link}). "
-        f"With ~6 yrs in DS/ML (Python, PyTorch, RecSys/Ranking, LLMs, MLOps), my experience in {focus_snippet} is a strong fit. "
-        f"Would you be open to referring me or connecting? Thanks!"
+        f"Hi [Name],\n\n"
+        f"I noticed the open {job.get('job_title', '')} role at {job.get('company', '')}:\n"
+        f"{link}\n\n"
+        f"With ~6 years in Data Science & ML (specializing in Python, PyTorch, RecSys/two-tower ranking, LLMs & MLOps), my experience in {focus_snippet} is a strong match.\n\n"
+        f"Would you be open to referring me or connecting?\n\n"
+        f"Best regards,\n"
+        f"{user_name}\n"
+        f"📱 {user_phone} | ✉️ {user_email}"
     )
 
     return (
         f"• <b>{jid}</b> {visa_icon} <b>{comp}</b> — {title}\n"
         f"  📍 {loc} | 🎯 {exp}\n"
         f"  🔗 {apply_html} | <code>/applied {jid}</code> | <code>/skip {jid}</code>\n"
-        f"  💬 <i>LinkedIn Referral Note (tap to copy):</i>\n"
+        f"  💬 <b>LinkedIn Referral Message (tap to copy):</b>\n"
         f"  <code>{esc_html(ref_note)}</code>\n\n"
     )
 
@@ -558,6 +567,7 @@ def send_telegram(token: str, chat_targets, new_jobs: list, excel_path: str, htm
 
     n = len(new_jobs)
     import time as _time
+    uprofile = load_config().get("user_profile", {})
 
     for chat_id in chat_ids:
         if n == 0:
@@ -583,7 +593,7 @@ def send_telegram(token: str, chat_targets, new_jobs: list, excel_path: str, htm
         messages = []
         current_msg = header
         for j in new_jobs:
-            entry = format_job_digest_entry(j)
+            entry = format_job_digest_entry(j, uprofile)
             if len(current_msg) + len(entry) + len(footer) > 3800:
                 messages.append(current_msg + footer)
                 current_msg = "🎯 <b>Job Search Digest (cont.)</b>\n\n" + entry

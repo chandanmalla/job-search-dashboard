@@ -22,6 +22,15 @@ TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\tracked_jo
 if not TRACKED_PATH.exists():
     TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\found_jobs_latest.json")
 
+CONFIG_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\config.json")
+
+def load_user_profile():
+    if CONFIG_PATH.exists():
+        with open(CONFIG_PATH, encoding="utf-8") as f:
+            cfg = json.load(f)
+            return cfg.get("user_profile", {})
+    return {}
+
 def load_jobs_data():
     with open(TRACKED_PATH, encoding="utf-8") as f:
         data = json.load(f)
@@ -31,6 +40,10 @@ def load_jobs_data():
 
 def build_dashboard():
     raw_jobs, db_applied, db_skipped = load_jobs_data()
+    uprofile = load_user_profile()
+    user_name = uprofile.get("name", "Chandan Malla")
+    user_email = uprofile.get("email", "chandanmalla@gmail.com")
+    user_phone = uprofile.get("phone", "[Phone Number]")
     now_ist = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M IST")
 
     jobs = []
@@ -523,6 +536,7 @@ def build_dashboard():
         <select id="selExp"><option value="">All Experience Fit</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
+        <button class="btn-action" id="btnEditContact" title="Update your name, phone number, and email for referral messages">⚙️ My Contact Info</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
       </div>
@@ -728,16 +742,35 @@ def build_dashboard():
       renderTable();
     }};
 
-    // Copy personalized LinkedIn referral message
+    // Copy personalized, professionally formatted LinkedIn referral message
     window.copyReferral = function(id) {{
       const j = JOBS.find(item => item.id === id);
       if (!j) return;
       const link = j.link && j.link.startsWith('http') ? j.link : '';
-      const focus = j.tech ? (j.tech.length > 70 ? j.tech.slice(0, 70) + '...' : j.tech) : 'recommender systems, LLMs & MLOps';
-      const note = `Hi [Name], I noticed the open ${{j.title}} role at ${{j.company}} (${{link}}). With ~6 years in Data Science & ML (Python, PyTorch, RecSys/Ranking, LLMs, MLOps), my experience in ${{focus}} is a strong match. Would you be open to connecting or referring me? Thanks!`;
+      const focus = j.tech ? (j.tech.length > 85 ? j.tech.slice(0, 85) + '...' : j.tech) : 'recommender systems, LLMs & MLOps';
+
+      const savedName = localStorage.getItem('user_name') || '{user_name}';
+      const savedPhone = localStorage.getItem('user_phone') || '{user_phone}';
+      const savedEmail = localStorage.getItem('user_email') || '{user_email}';
+
+      const note = `Hi [Name],
+
+I hope you're having a great week!
+
+I noticed an open ${{j.title}} role at ${{j.company}}:
+${{link}}
+
+With ~6 years of experience in Machine Learning & Data Science (specializing in Python, PyTorch, Recommender Systems, LLMs/GenAI, and MLOps), my background in ${{focus}} aligns closely with the role requirements.
+
+Would you be open to connecting or referring me for this position? I would really appreciate it!
+
+Best regards,
+${{savedName}}
+📱 Phone: ${{savedPhone}}
+✉️ Email: ${{savedEmail}}`;
 
       navigator.clipboard.writeText(note).then(() => {{
-        alert(`📋 LinkedIn Referral Note copied to clipboard for ${{j.company}}!\\n\\n"${{note}}"\\n\\nReady to paste directly into your LinkedIn message or connection invite.`);
+        alert(`📋 Formatted LinkedIn Referral Message copied to clipboard for ${{j.company}}!\\n\\n${{note}}\\n\\nReady to paste directly into LinkedIn.`);
       }}).catch(() => {{
         prompt("Copy your LinkedIn Referral Note:", note);
       }});
@@ -814,6 +847,23 @@ def build_dashboard():
       const idList = [...appliedJobs].join(' ');
       const tgUrl = `https://t.me/jobsearch_chan23_bot?text=${{encodeURIComponent('/applied ' + idList)}}`;
       window.open(tgUrl, '_blank');
+    }});
+
+    document.getElementById('btnEditContact').addEventListener('click', () => {{
+      const curName = localStorage.getItem('user_name') || '{user_name}';
+      const curPhone = localStorage.getItem('user_phone') || '{user_phone}';
+      const curEmail = localStorage.getItem('user_email') || '{user_email}';
+
+      const n = prompt('Enter your Full Name for referral messages:', curName);
+      if (n !== null && n.trim()) localStorage.setItem('user_name', n.trim());
+
+      const p = prompt('Enter your Phone Number for referral messages:', curPhone);
+      if (p !== null && p.trim()) localStorage.setItem('user_phone', p.trim());
+
+      const e = prompt('Enter your Email Address for referral messages:', curEmail);
+      if (e !== null && e.trim()) localStorage.setItem('user_email', e.trim());
+
+      alert('✅ Contact details saved! Every "Referral Note" will now include your updated name, phone, and email.');
     }});
 
     renderTable();
