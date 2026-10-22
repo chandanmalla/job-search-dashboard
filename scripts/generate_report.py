@@ -105,6 +105,12 @@ def find_new_jobs(found: list, db: dict) -> list:
     skipped = set(db.get("skipped", []))
     new = []
     for j in found:
+        # Strict exclusion of Amazon and Principal/Staff roles
+        if "amazon" in j.get("company", "").lower() or "aws" in j.get("company", "").lower():
+            continue
+        if any(w in j.get("job_title", "").lower() for w in ["principal", "staff"]):
+            continue
+
         k = job_key(j)
         if k not in seen:
             new.append(j)
@@ -112,6 +118,7 @@ def find_new_jobs(found: list, db: dict) -> list:
     new = [j for j in new if j.get("job_id", "") not in applied
                            and j.get("job_id", "") not in skipped]
     return new
+
 
 # ---------------------------------------------------------------------------
 # Excel workbook builder

@@ -50,16 +50,17 @@ def load_db():
     return {"all_jobs": [], "seen_keys": [], "applied": [], "skipped": []}
 
 def is_experience_fit_5yr(title: str) -> bool:
-    """Return True if title indicates a ~5yr Senior/Staff/Lead role and not Junior/Intern."""
+    """Return True if title indicates a ~5yr Senior/Lead role and not Junior/Intern/Staff/Principal."""
     tl = title.lower()
-    # Exclude interns, graduates, entry-level, VP/Director
-    if any(w in tl for w in ["intern", "graduate", "junior", "entry", "associate", "vice president", "director"]):
+    # Exclude interns, graduates, entry-level, VP/Director, Principal, Staff
+    if any(w in tl for w in ["intern", "graduate", "junior", "entry", "associate", "vice president", "director", "principal", "staff"]):
         return False
     # Check for senior indicators
     return any(w in tl for w in [
-        "senior", "sr", "lead", "staff", "mts", "member of technical staff",
-        "principal", "ii", "iii", "data scientist", "machine learning", "ai engineer"
+        "senior", "sr", "lead", "mts", "member of technical staff",
+        "ii", "iii", "data scientist", "machine learning", "ai engineer"
     ])
+
 
 def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
     url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs"
@@ -307,8 +308,10 @@ def run_crawler():
     batch_seen_links = set()
 
     for job in discovered:
-        # Strict exclusion of Amazon
+        # Strict exclusion of Amazon and Principal/Staff roles
         if "amazon" in job["company"].lower() or "aws" in job["company"].lower():
+            continue
+        if any(w in job["job_title"].lower() for w in ["principal", "staff"]):
             continue
 
         link = job.get("link", "")

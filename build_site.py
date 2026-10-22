@@ -48,6 +48,11 @@ def build_dashboard():
 
     jobs = []
     for idx, j in enumerate(raw_jobs, start=1):
+        title = j.get("job_title", "")
+        # Strictly exclude Principal and Staff level roles per user request
+        if any(w in title.lower() for w in ["principal", "staff"]):
+            continue
+
         loc = j.get("location", "")
         country = "India" if any(w in loc.lower() for w in ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "mumbai", "chennai"]) \
             else "UK" if any(w in loc.lower() for w in ["uk", "london", "united kingdom", "cambridge"]) \
