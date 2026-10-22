@@ -75,11 +75,13 @@ def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
                 if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer"]):
                     if is_experience_fit_5yr(title):
                         if any(l in ll for l in target_locs):
+                            updated = j.get("updated_at")
+                            date_str = f"Updated {updated[:10]}" if updated else "Recently posted"
                             jobs.append({
                                 "company": company_name,
                                 "job_title": title,
                                 "location": loc,
-                                "date_posted": "Live on Greenhouse",
+                                "date_posted": date_str,
                                 "experience_fit": "Strong fit (Senior ~5 yrs experience)",
                                 "technical_fit": "Production ML, Python, PyTorch, model optimization, ranking & inference",
                                 "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
@@ -107,11 +109,13 @@ def fetch_lever_board(slug: str, company_name: str, target_locs):
                 if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer"]):
                     if is_experience_fit_5yr(title):
                         if any(l in ll for l in target_locs):
+                            ca = j.get("createdAt")
+                            date_str = f"Posted {datetime.fromtimestamp(ca / 1000, tz=timezone.utc).strftime('%Y-%m-%d')}" if ca else "Recently posted"
                             jobs.append({
                                 "company": company_name,
                                 "job_title": title,
                                 "location": loc,
-                                "date_posted": "Live on Lever",
+                                "date_posted": date_str,
                                 "experience_fit": "Strong fit (Senior ~5 yrs experience)",
                                 "technical_fit": "Production ML, Python, PyTorch, feature engineering, low-latency serving",
                                 "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
@@ -139,11 +143,13 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
                 if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer", "research engineer"]):
                     if is_experience_fit_5yr(title):
                         if any(l in ll for l in target_locs):
+                            pa = j.get("publishedAt") or j.get("openedAt")
+                            date_str = f"Posted {pa[:10]}" if pa else "Recently posted"
                             jobs.append({
                                 "company": company_name,
                                 "job_title": title,
                                 "location": loc,
-                                "date_posted": "Live on Ashby",
+                                "date_posted": date_str,
                                 "experience_fit": "Strong fit (Senior ~5 yrs experience)",
                                 "technical_fit": "LLM fine-tuning, RAG, agentic workflows, PyTorch, distributed training",
                                 "visa_sponsorship": "Plausible: top tier AI lab sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
@@ -158,7 +164,8 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
     return jobs
 
 def fetch_linkedin_guest(query: str, location: str, target_locs):
-    url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={urllib.parse.quote(query)}&location={urllib.parse.quote(location)}&start=0"
+    # f_TPR=r604800 (past 7 days) and sortBy=DD (newest first)
+    url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={urllib.parse.quote(query)}&location={urllib.parse.quote(location)}&f_TPR=r604800&sortBy=DD&start=0"
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
@@ -168,8 +175,9 @@ def fetch_linkedin_guest(query: str, location: str, target_locs):
             companies = re.findall(r'<h4 class="base-search-card__subtitle">\s*(?:<a[^>]*>)?([^<]+?)(?:</a>)?\s*</h4>', html)
             locations = re.findall(r'<span class="job-search-card__location">([^<]+)</span>', html)
             links = re.findall(r'<a class="base-card__full-link[^"]*" href="([^"?]+)', html)
+            dates = re.findall(r'<time class="job-search-card__listdate[^"]*" datetime="([^"]+)">([^<]+)</time>', html)
 
-            for t, c, loc, l in zip(titles, companies, locations, links):
+            for idx, (t, c, loc, l) in enumerate(zip(titles, companies, locations, links)):
                 t_clean = t.strip()
                 c_clean = c.strip()
                 loc_clean = loc.strip()
@@ -182,11 +190,16 @@ def fetch_linkedin_guest(query: str, location: str, target_locs):
                 if is_experience_fit_5yr(t_clean):
                     ll = loc_clean.lower()
                     if any(w in ll for w in target_locs):
+                        date_str = "Recently posted"
+                        if idx < len(dates):
+                            iso_d, rel_d = dates[idx]
+                            date_str = f"Posted {rel_d.strip()} ({iso_d})"
+
                         jobs.append({
                             "company": c_clean,
                             "job_title": t_clean,
                             "location": loc_clean,
-                            "date_posted": "Verified Open (Oct 2026)",
+                            "date_posted": date_str,
                             "experience_fit": "Strong fit (Senior ~5 yrs experience)",
                             "technical_fit": "Production ML systems, Python, PyTorch, ranking/recommendation & inference",
                             "visa_sponsorship": "Plausible / UK or AU Skilled Worker sponsor" if any(w in ll for w in ["london", "uk", "sydney", "australia"]) else "N/A (India role)",
@@ -199,6 +212,7 @@ def fetch_linkedin_guest(query: str, location: str, target_locs):
     except Exception:
         pass
     return jobs
+
 
 def run_crawler():
     state = load_state()

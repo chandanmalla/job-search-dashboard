@@ -519,12 +519,15 @@ def format_job_digest_entry(job: dict) -> str:
     jid = job.get("job_id", "?")
     comp = esc_html(job.get("company", ""))
     title = esc_html(job.get("job_title", ""))
+    posted = esc_html(job.get("date_posted", ""))
     link = job.get("link", "")
     apply_html = f'<a href="{link}">Apply Direct ↗</a>' if link.startswith("http") else '<i>No link</i>'
+    posted_tag = f"  ⏱ <i>{posted}</i>\n" if posted and "unverified" not in posted.lower() else ""
 
     return (
         f"• <b>{jid}</b> | <b>{comp}</b>\n"
         f"  📌 {title}\n"
+        f"{posted_tag}"
         f"  🔗 {apply_html}  •  <code>/applied {jid}</code>\n\n"
     )
 
