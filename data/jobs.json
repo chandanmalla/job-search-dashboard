@@ -2126,5 +2126,43 @@
     "source": "Commonwealth Bank Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Commonwealth Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J305",
+    "company": "LSEG",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 5 hours ago (2026-10-22)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-lseg-4443288035",
+    "source": "LSEG Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at LSEG. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J306",
+    "company": "SAP",
+    "title": "Data and Applied Scientist Specialist/Expert",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 days ago (2026-10-20)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-and-applied-scientist-specialist-expert-at-sap-4414078043",
+    "source": "SAP Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at SAP. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
