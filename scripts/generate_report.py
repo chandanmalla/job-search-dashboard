@@ -99,16 +99,25 @@ def assign_job_id(job: dict, db: dict) -> str:
     return jid
 
 
+def is_pure_science_role(title: str) -> bool:
+    tl = title.lower()
+    if any(w in tl for w in ["principal", "staff", "intern", "graduate", "junior", "entry", "vice president", "director"]):
+        return False
+    if any(w in tl for w in ["software", "engineer", "engineering", "developer", "devops", "mlops", "platform", "infrastructure", "architect"]):
+        return False
+    return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
+
+
 def find_new_jobs(found: list, db: dict) -> list:
     seen    = set(db.get("seen_keys", []))
     applied = set(db.get("applied", []))
     skipped = set(db.get("skipped", []))
     new = []
     for j in found:
-        # Strict exclusion of Amazon and Principal/Staff roles
+        # Strict exclusion of Amazon and non-science/software/engineering roles
         if "amazon" in j.get("company", "").lower() or "aws" in j.get("company", "").lower():
             continue
-        if any(w in j.get("job_title", "").lower() for w in ["principal", "staff"]):
+        if not is_pure_science_role(j.get("job_title", "")):
             continue
 
         k = job_key(j)
@@ -118,6 +127,7 @@ def find_new_jobs(found: list, db: dict) -> list:
     new = [j for j in new if j.get("job_id", "") not in applied
                            and j.get("job_id", "") not in skipped]
     return new
+
 
 
 # ---------------------------------------------------------------------------

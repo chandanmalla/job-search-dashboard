@@ -38,6 +38,14 @@ def load_jobs_data():
         return data.get("all_jobs", []), data.get("applied", []), data.get("skipped", [])
     return data, [], []
 
+def is_pure_science_role(title: str) -> bool:
+    tl = title.lower()
+    if any(w in tl for w in ["principal", "staff", "intern", "graduate", "junior", "entry", "vice president", "director"]):
+        return False
+    if any(w in tl for w in ["software", "engineer", "engineering", "developer", "devops", "mlops", "platform", "infrastructure", "architect"]):
+        return False
+    return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
+
 def build_dashboard():
     raw_jobs, db_applied, db_skipped = load_jobs_data()
     uprofile = load_user_profile()
@@ -49,8 +57,8 @@ def build_dashboard():
     jobs = []
     for idx, j in enumerate(raw_jobs, start=1):
         title = j.get("job_title", "")
-        # Strictly exclude Principal and Staff level roles per user request
-        if any(w in title.lower() for w in ["principal", "staff"]):
+        # Strictly require Data Science / Applied Science (no engineering, no software, no principal/staff)
+        if not is_pure_science_role(title):
             continue
 
         loc = j.get("location", "")

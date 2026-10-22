@@ -49,17 +49,24 @@ def load_db():
             return json.load(f)
     return {"all_jobs": [], "seen_keys": [], "applied": [], "skipped": []}
 
-def is_experience_fit_5yr(title: str) -> bool:
-    """Return True if title indicates a ~5yr Senior/Lead role and not Junior/Intern/Staff/Principal."""
+def is_target_science_role(title: str) -> bool:
+    """Return True if title is strictly a Data Science or Applied Science role, and NOT software/engineering/principal/staff."""
     tl = title.lower()
-    # Exclude interns, graduates, entry-level, VP/Director, Principal, Staff
-    if any(w in tl for w in ["intern", "graduate", "junior", "entry", "associate", "vice president", "director", "principal", "staff"]):
+    # 1. Strictly exclude senior executive / student / entry levels
+    if any(w in tl for w in ["intern", "graduate", "junior", "entry", "associate", "vice president", "vp", "director", "manager", "head"]):
         return False
-    # Check for senior indicators
+    # 2. Strictly exclude Principal and Staff levels
+    if any(w in tl for w in ["principal", "staff"]):
+        return False
+    # 3. Strictly exclude software, engineering, devops, mlops, platform, infrastructure, developer
+    if any(w in tl for w in ["software", "engineer", "engineering", "developer", "devops", "mlops", "platform", "infrastructure", "architect"]):
+        return False
+    # 4. Strictly require a Data Scientist or Applied / Research / Decision / ML Scientist title
     return any(w in tl for w in [
-        "senior", "sr", "lead", "mts", "member of technical staff",
-        "ii", "iii", "data scientist", "machine learning", "ai engineer"
+        "data scientist", "applied scientist", "research scientist",
+        "decision scientist", "machine learning scientist", "ml scientist", "data science"
     ])
+
 
 
 def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
@@ -73,25 +80,24 @@ def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
                 title = j.get("title", "")
                 loc = j.get("location", {}).get("name", "")
                 tl, ll = title.lower(), loc.lower()
-                if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer"]):
-                    if is_experience_fit_5yr(title):
-                        if any(l in ll for l in target_locs):
-                            updated = j.get("updated_at")
-                            date_str = f"Updated {updated[:10]}" if updated else "Recently posted"
-                            jobs.append({
-                                "company": company_name,
-                                "job_title": title,
-                                "location": loc,
-                                "date_posted": date_str,
-                                "experience_fit": "Strong fit (Senior ~5 yrs experience)",
-                                "technical_fit": "Production ML, Python, PyTorch, model optimization, ranking & inference",
-                                "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
-                                "relocation": "Not stated",
-                                "link": j.get("absolute_url"),
-                                "source": f"{company_name} Careers (Greenhouse)",
-                                "why_fits": f"{company_name} AI/ML team. Strong match for 5+ yrs ML engineering and production deployment.",
-                                "stretch": "staff" in tl or "principal" in tl
-                            })
+                if is_target_science_role(title):
+                    if any(l in ll for l in target_locs):
+                        updated = j.get("updated_at")
+                        date_str = f"Updated {updated[:10]}" if updated else "Recently posted"
+                        jobs.append({
+                            "company": company_name,
+                            "job_title": title,
+                            "location": loc,
+                            "date_posted": date_str,
+                            "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                            "technical_fit": "Statistical modeling, experimentation, causal inference, deep learning, PyTorch, SQL",
+                            "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
+                            "relocation": "Not stated",
+                            "link": j.get("absolute_url"),
+                            "source": f"{company_name} Careers (Greenhouse)",
+                            "why_fits": f"Core Data Science / Applied Science role at {company_name}. Strong match for statistical modeling and ML science.",
+                            "stretch": False
+                        })
     except Exception:
         pass
     return jobs
@@ -107,25 +113,24 @@ def fetch_lever_board(slug: str, company_name: str, target_locs):
                 title = j.get("text", "")
                 loc = j.get("categories", {}).get("location", "")
                 tl, ll = title.lower(), loc.lower()
-                if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer"]):
-                    if is_experience_fit_5yr(title):
-                        if any(l in ll for l in target_locs):
-                            ca = j.get("createdAt")
-                            date_str = f"Posted {datetime.fromtimestamp(ca / 1000, tz=timezone.utc).strftime('%Y-%m-%d')}" if ca else "Recently posted"
-                            jobs.append({
-                                "company": company_name,
-                                "job_title": title,
-                                "location": loc,
-                                "date_posted": date_str,
-                                "experience_fit": "Strong fit (Senior ~5 yrs experience)",
-                                "technical_fit": "Production ML, Python, PyTorch, feature engineering, low-latency serving",
-                                "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
-                                "relocation": "Not stated",
-                                "link": j.get("hostedUrl"),
-                                "source": f"{company_name} Careers (Lever)",
-                                "why_fits": f"{company_name} machine learning and data science initiatives. High impact for ~5 yrs experience.",
-                                "stretch": "staff" in tl or "principal" in tl
-                            })
+                if is_target_science_role(title):
+                    if any(l in ll for l in target_locs):
+                        ca = j.get("createdAt")
+                        date_str = f"Posted {datetime.fromtimestamp(ca / 1000, tz=timezone.utc).strftime('%Y-%m-%d')}" if ca else "Recently posted"
+                        jobs.append({
+                            "company": company_name,
+                            "job_title": title,
+                            "location": loc,
+                            "date_posted": date_str,
+                            "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                            "technical_fit": "Predictive modeling, experimentation, causal inference, Python, SQL, PyTorch",
+                            "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
+                            "relocation": "Not stated",
+                            "link": j.get("hostedUrl"),
+                            "source": f"{company_name} Careers (Lever)",
+                            "why_fits": f"Core Data Science / Applied Science role at {company_name}. Focuses on algorithmic modeling and decision science.",
+                            "stretch": False
+                        })
     except Exception:
         pass
     return jobs
@@ -141,25 +146,24 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
                 title = j.get("title", "")
                 loc = j.get("locationName", "")
                 tl, ll = title.lower(), loc.lower()
-                if any(k in tl for k in ["data scientist", "machine learning", "applied scientist", "ai engineer", "research engineer"]):
-                    if is_experience_fit_5yr(title):
-                        if any(l in ll for l in target_locs):
-                            pa = j.get("publishedAt") or j.get("openedAt")
-                            date_str = f"Posted {pa[:10]}" if pa else "Recently posted"
-                            jobs.append({
-                                "company": company_name,
-                                "job_title": title,
-                                "location": loc,
-                                "date_posted": date_str,
-                                "experience_fit": "Strong fit (Senior ~5 yrs experience)",
-                                "technical_fit": "LLM fine-tuning, RAG, agentic workflows, PyTorch, distributed training",
-                                "visa_sponsorship": "Plausible: top tier AI lab sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
-                                "relocation": "Relocation supported where applicable",
-                                "link": j.get("jobUrl"),
-                                "source": f"{company_name} AI Careers (Ashby)",
-                                "why_fits": f"Frontier AI/ML engineering role at {company_name}. Strong match for ~5 yrs experience in LLMs and deep learning.",
-                                "stretch": "staff" in tl or "principal" in tl
-                            })
+                if is_target_science_role(title):
+                    if any(l in ll for l in target_locs):
+                        pa = j.get("publishedAt") or j.get("openedAt")
+                        date_str = f"Posted {pa[:10]}" if pa else "Recently posted"
+                        jobs.append({
+                            "company": company_name,
+                            "job_title": title,
+                            "location": loc,
+                            "date_posted": date_str,
+                            "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                            "technical_fit": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+                            "visa_sponsorship": "Plausible: top tier AI lab sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "australia"]) else "N/A (India role)",
+                            "relocation": "Relocation supported where applicable",
+                            "link": j.get("jobUrl"),
+                            "source": f"{company_name} AI Careers (Ashby)",
+                            "why_fits": f"Frontier applied science position at {company_name}. Research and empirical modeling.",
+                            "stretch": False
+                        })
     except Exception as e:
         pass
     return jobs
@@ -188,7 +192,7 @@ def fetch_linkedin_guest(query: str, location: str, target_locs):
                 if "amazon" in c_clean.lower() or "aws" in c_clean.lower():
                     continue
 
-                if is_experience_fit_5yr(t_clean):
+                if is_target_science_role(t_clean):
                     ll = loc_clean.lower()
                     if any(w in ll for w in target_locs):
                         date_str = "Recently posted"
@@ -201,15 +205,16 @@ def fetch_linkedin_guest(query: str, location: str, target_locs):
                             "job_title": t_clean,
                             "location": loc_clean,
                             "date_posted": date_str,
-                            "experience_fit": "Strong fit (Senior ~5 yrs experience)",
-                            "technical_fit": "Production ML systems, Python, PyTorch, ranking/recommendation & inference",
+                            "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                            "technical_fit": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
                             "visa_sponsorship": "Plausible / UK or AU Skilled Worker sponsor" if any(w in ll for w in ["london", "uk", "sydney", "australia"]) else "N/A (India role)",
                             "relocation": "Not stated",
                             "link": l_clean,
                             "source": f"{c_clean} Careers (LinkedIn Verified)",
-                            "why_fits": f"Direct ~5-year senior role at {c_clean}. Aligns with your PyTorch, RecSys/Ranking, and MLOps background.",
-                            "stretch": "staff" in t_clean.lower() or "principal" in t_clean.lower()
+                            "why_fits": f"Core Data Science / Applied Science role at {c_clean}. Focused on statistical modeling, causal inference, and ML algorithms.",
+                            "stretch": False
                         })
+
     except Exception:
         pass
     return jobs
@@ -258,12 +263,12 @@ def run_crawler():
                 discovered.extend(fetch_ashby_board(slug, name, target_locs))
 
         # Also search for fresh postings from Big Tech (Apple, Meta, Google, Microsoft, Databricks, Flipkart)
-        for comp in ["Databricks", "Flipkart", "Apple", "Meta", "Microsoft", "Intel"]:
+        for comp in ["Databricks", "Flipkart", "Apple", "Meta", "Microsoft", "Google", "Intel"]:
             discovered.extend(fetch_linkedin_guest(f"Senior Data Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
-            discovered.extend(fetch_linkedin_guest(f"Senior Machine Learning Engineer {comp}", "Bengaluru, Karnataka, India", target_locs))
+            discovered.extend(fetch_linkedin_guest(f"Senior Applied Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
 
     else:
-        print("[sweep_crawler] Probing NEW companies & emerging unicorns for ~5yr roles...", flush=True)
+        print("[sweep_crawler] Probing NEW companies & emerging unicorns for ~5yr Data Science / Applied Science roles...", flush=True)
         new_targets = [
             # High-growth tech, fintech, enterprise hubs
             ("greenhouse", "affirm", "Affirm"),
@@ -294,13 +299,15 @@ def run_crawler():
             elif c_type == "ashby":
                 discovered.extend(fetch_ashby_board(slug, name, target_locs))
 
-        # Also query guest endpoints for 5yr roles across broader companies
-        discovered.extend(fetch_linkedin_guest("Senior Machine Learning Engineer", "Bengaluru, Karnataka, India", target_locs))
+        # Query guest endpoints strictly for Data Science and Applied Science roles
+        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Bengaluru, Karnataka, India", target_locs))
         discovered.extend(fetch_linkedin_guest("Lead Data Scientist", "Bengaluru, Karnataka, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Machine Learning Engineer", "Hyderabad, Telangana, India", target_locs))
+        discovered.extend(fetch_linkedin_guest("Senior Applied Scientist", "Bengaluru, Karnataka, India", target_locs))
+        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Hyderabad, Telangana, India", target_locs))
         discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Gurgaon, Haryana, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Machine Learning Engineer", "London, England, United Kingdom", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Machine Learning Engineer", "Sydney, New South Wales, Australia", target_locs))
+        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "London, England, United Kingdom", target_locs))
+        discovered.extend(fetch_linkedin_guest("Senior Applied Scientist", "London, England, United Kingdom", target_locs))
+        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Sydney, New South Wales, Australia", target_locs))
 
     # Deduplicate against DB and within batch
     to_add = []
@@ -308,10 +315,10 @@ def run_crawler():
     batch_seen_links = set()
 
     for job in discovered:
-        # Strict exclusion of Amazon and Principal/Staff roles
+        # Strict exclusion of Amazon and non-science/software/engineering roles
         if "amazon" in job["company"].lower() or "aws" in job["company"].lower():
             continue
-        if any(w in job["job_title"].lower() for w in ["principal", "staff"]):
+        if not is_target_science_role(job["job_title"]):
             continue
 
         link = job.get("link", "")
