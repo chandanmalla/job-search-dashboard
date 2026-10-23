@@ -99,6 +99,32 @@ def assign_job_id(job: dict, db: dict) -> str:
     return jid
 
 
+NON_PRODUCT_EXCLUSIONS_LOWER = {
+    'accenture', 'antal', 'datatech', 'delta technology', 'epam', 'fractal', 'grid dynamics',
+    'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
+    'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
+    'tata consultancy', 'tcs', 'ust', 'vgreen', 'wipro', 'hcl', 'cognizant', 'ltimindtree',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'pwc', 'ey', 'kpmg',
+    'mckinsey', 'bcg', 'bain', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
+    'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
+    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
+    'tracksuit', 'mopid', 'humara', 'mvf', 'allura partners', 'amazon', 'aws', 'bd',
+    'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
+    'lmg', 'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
+}
+
+
+def is_top_product_company(company: str) -> bool:
+    """Return True if company is a verified top tech product company, and NOT IT services/consulting/staffing."""
+    cl = company.lower().strip()
+    if not cl:
+        return False
+    if any(ex in cl for ex in NON_PRODUCT_EXCLUSIONS_LOWER):
+        return False
+    return True
+
+
 def is_pure_science_role(title: str) -> bool:
     tl = title.lower()
     if any(w in tl for w in ["principal", "staff", "intern", "graduate", "junior", "entry", "vice president", "director"]):
@@ -114,8 +140,8 @@ def find_new_jobs(found: list, db: dict) -> list:
     skipped = set(db.get("skipped", []))
     new = []
     for j in found:
-        # Strict exclusion of Amazon and non-science/software/engineering roles
-        if "amazon" in j.get("company", "").lower() or "aws" in j.get("company", "").lower():
+        # Strict exclusion of Amazon and non-product/consultancy companies
+        if not is_top_product_company(j.get("company", "")):
             continue
         if not is_pure_science_role(j.get("job_title", "")):
             continue

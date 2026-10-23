@@ -49,6 +49,30 @@ def load_db():
             return json.load(f)
     return {"all_jobs": [], "seen_keys": [], "applied": [], "skipped": []}
 
+NON_PRODUCT_EXCLUSIONS_LOWER = {
+    'accenture', 'antal', 'datatech', 'delta technology', 'epam', 'fractal', 'grid dynamics',
+    'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
+    'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
+    'tata consultancy', 'tcs', 'ust', 'vgreen', 'wipro', 'hcl', 'cognizant', 'ltimindtree',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'pwc', 'ey', 'kpmg',
+    'mckinsey', 'bcg', 'bain', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
+    'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
+    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
+    'tracksuit', 'mopid', 'humara', 'mvf', 'allura partners', 'amazon', 'aws', 'bd',
+    'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
+    'lmg', 'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
+}
+
+def is_top_product_company(company: str) -> bool:
+    """Return True if company is a verified top tech product company, and NOT IT services/consulting/staffing."""
+    cl = company.lower().strip()
+    if not cl:
+        return False
+    if any(ex in cl for ex in NON_PRODUCT_EXCLUSIONS_LOWER):
+        return False
+    return True
+
 def is_target_science_role(title: str) -> bool:
     """Return True if title is strictly a Data Science or Applied Science role, and NOT software/engineering/principal/staff."""
     tl = title.lower()
@@ -66,6 +90,7 @@ def is_target_science_role(title: str) -> bool:
         "data scientist", "applied scientist", "research scientist",
         "decision scientist", "machine learning scientist", "ml scientist", "data science"
     ])
+
 
 
 
@@ -315,10 +340,12 @@ def run_crawler():
     batch_seen_links = set()
 
     for job in discovered:
-        # Strict exclusion of Amazon and non-science/software/engineering roles
+        # Strict exclusion of Amazon, non-product companies, and non-science roles
         if "amazon" in job["company"].lower() or "aws" in job["company"].lower():
             continue
-        if not is_target_science_role(job["job_title"]):
+        if not is_top_product_company(job.get("company", "")):
+            continue
+        if not is_target_science_role(job.get("job_title", "")):
             continue
 
         link = job.get("link", "")

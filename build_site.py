@@ -38,6 +38,29 @@ def load_jobs_data():
         return data.get("all_jobs", []), data.get("applied", []), data.get("skipped", [])
     return data, [], []
 
+NON_PRODUCT_EXCLUSIONS_LOWER = {
+    'accenture', 'antal', 'datatech', 'delta technology', 'epam', 'fractal', 'grid dynamics',
+    'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
+    'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
+    'tata consultancy', 'tcs', 'ust', 'vgreen', 'wipro', 'hcl', 'cognizant', 'ltimindtree',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'pwc', 'ey', 'kpmg',
+    'mckinsey', 'bcg', 'bain', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
+    'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
+    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
+    'tracksuit', 'mopid', 'humara', 'mvf', 'allura partners', 'amazon', 'aws', 'bd',
+    'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
+    'lmg', 'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
+}
+
+def is_top_product_company(company: str) -> bool:
+    cl = company.lower().strip()
+    if not cl:
+        return False
+    if any(ex in cl for ex in NON_PRODUCT_EXCLUSIONS_LOWER):
+        return False
+    return True
+
 def is_pure_science_role(title: str) -> bool:
     tl = title.lower()
     if any(w in tl for w in ["principal", "staff", "intern", "graduate", "junior", "entry", "vice president", "director"]):
@@ -56,8 +79,11 @@ def build_dashboard():
 
     jobs = []
     for idx, j in enumerate(raw_jobs, start=1):
+        company = j.get("company", "")
         title = j.get("job_title", "")
-        # Strictly require Data Science / Applied Science (no engineering, no software, no principal/staff)
+        # Strictly require Top Product Companies and Data Science / Applied Science
+        if not is_top_product_company(company):
+            continue
         if not is_pure_science_role(title):
             continue
 
@@ -576,8 +602,9 @@ def build_dashboard():
   </main>
 
   <footer>
-    <p>Curated automatically via ATS feeds (Greenhouse, Lever, Ashby, Workday, Microsoft Careers) &middot; Amazon subsidiaries strictly excluded</p>
+    <p>Curated automatically every 2 hours &middot; Top Product Companies in India & Globally &middot; Core Data Science & Applied Science roles &middot; Consultancies, Services & Amazon strictly excluded</p>
   </footer>
+
 
   <script id="jobs-data" type="application/json">{json.dumps(jobs, ensure_ascii=False)}</script>
 

@@ -1,13 +1,13 @@
 """
-Master 3-Hourly Cron Orchestrator (Alternating Strategy)
-=======================================================
-Runs completely unattended every 3 hours:
+Master 2-Hourly Cron Orchestrator (Top Product Companies Only)
+==============================================================
+Runs completely unattended every 2 hours:
 1. Ingests any /applied or /skip messages sent to Telegram while you were away.
 2. Runs the intelligent Sweep Crawler which alternates every run:
-   - Run A: Deep-scrapes fresh openings from EXISTING tracked companies (Apple, Meta, Google, Microsoft, Databricks, Flipkart, Spotify, etc.)
-   - Run B: Probes NEW companies, startups, and emerging AI unicorns across Greenhouse, Lever, Ashby, and guest APIs.
-   - Strictly targets ~5-year / senior-level experience roles (Senior MLE, Senior DS, Lead DS).
-   - Strictly EXCLUDES Amazon and any Amazon subsidiaries.
+   - Run A: Deep-scrapes fresh openings from EXISTING top product companies (Apple, Meta, Google, Microsoft, Databricks, Flipkart, Spotify, etc.)
+   - Run B: Probes NEW top product companies, unicorns, and AI labs across Greenhouse, Lever, Ashby, and verified postings.
+   - Strictly targets core Data Science & Applied Science roles (~5-yr experience).
+   - Strictly EXCLUDES IT services, consultancies, staffing agencies, SWE/engineering, and Amazon subsidiaries.
 3. Updates the local database and generates Excel + HTML reports.
 4. Sends the consolidated Telegram digest to both subscribed chat IDs.
 5. Rebuilds the web dashboard (index.html + data/jobs.json).
@@ -36,15 +36,15 @@ def run_step(desc, cmd, cwd=None):
 
 def main():
     now_str = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M IST")
-    print(f"[cron] Starting alternating 3-hourly job sweep at {now_str}...", flush=True)
+    print(f"[cron] Starting alternating 2-hourly job sweep (Top Product Companies) at {now_str}...", flush=True)
 
     # 1. Sync applied/skipped commands sent to Telegram
     run_step("1. Syncing Applied Jobs from Telegram", [
         str(PY_EXE), str(SCRIPTS_DIR / "sync_applied_from_telegram.py")
     ])
 
-    # 2. Run alternating sweep crawler (existing vs new companies, ~5yr experience)
-    run_step("2. Running Alternating Sweep Crawler", [
+    # 2. Run alternating sweep crawler (Data Science & Applied Science at top product companies)
+    run_step("2. Running Alternating Sweep Crawler (Top Product Companies)", [
         str(PY_EXE), str(SCRIPTS_DIR / "sweep_crawler.py")
     ])
 
@@ -63,11 +63,12 @@ def main():
 
     # 5. Push updates to GitHub Pages
     run_step("5. Git Add", [str(GIT_EXE), "add", "."])
-    commit_msg = f"Automated 3-hourly sweep update ({now_str})"
+    commit_msg = f"Automated 2-hourly sweep update ({now_str})"
     run_step("6. Git Commit", [str(GIT_EXE), "commit", "-m", commit_msg])
     run_step("7. Git Push to GitHub Pages", [str(GIT_EXE), "push", "origin", "main"])
 
-    print(f"\n[cron] 3-hourly alternating run finished successfully at {now_str}.", flush=True)
+    print(f"\n[cron] 2-hourly alternating run finished successfully at {now_str}.", flush=True)
+
 
 if __name__ == "__main__":
     main()
