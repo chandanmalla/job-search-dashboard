@@ -1290,5 +1290,24 @@
     "source": "Faculty Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Faculty. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J323",
+    "company": "Skan AI",
+    "title": "Sr. Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-skan-ai-4481905337",
+    "source": "Skan AI Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Skan AI. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
