@@ -1309,5 +1309,43 @@
     "source": "Skan AI Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Skan AI. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J324",
+    "company": "Ocado Logistics",
+    "title": "Senior Data Scientist",
+    "location": "Hatfield, England, United Kingdom",
+    "city": "Hatfield, England, United Kingdom",
+    "country": "UK",
+    "posted": "Posted 2 hours ago (2026-10-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-at-ocado-logistics-4480673347",
+    "source": "Ocado Logistics Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Ocado Logistics. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J325",
+    "company": "Archer",
+    "title": "Senior Specialist, Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 5 hours ago (2026-10-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-specialist-data-scientist-at-archer-4481684727",
+    "source": "Archer Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Archer. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
