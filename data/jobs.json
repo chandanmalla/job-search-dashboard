@@ -1119,5 +1119,24 @@
     "source": "LSEG Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at LSEG. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J314",
+    "company": "Walmart Global Tech",
+    "title": "SENIOR, DATA SCIENTIST (Computer Vision)",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-10-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-computer-vision-at-walmart-global-tech-4481642892",
+    "source": "Walmart Global Tech Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Walmart Global Tech. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
