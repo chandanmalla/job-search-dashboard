@@ -1423,5 +1423,24 @@
     "source": "IDFC FIRST Bank Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at IDFC FIRST Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J330",
+    "company": "EXL",
+    "title": "Data Scientist",
+    "location": "Noida, Uttar Pradesh, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-10-24)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-exl-4446725488",
+    "source": "EXL Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at EXL. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
