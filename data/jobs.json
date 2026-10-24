@@ -1404,5 +1404,24 @@
     "source": "Tesco Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Tesco. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J329",
+    "company": "IDFC FIRST Bank",
+    "title": "Senior Data Scientist-Retail Assets",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 14 hours ago (2026-10-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-retail-assets-at-idfc-first-bank-4481902028",
+    "source": "IDFC FIRST Bank Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at IDFC FIRST Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
