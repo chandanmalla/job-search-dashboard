@@ -1442,5 +1442,43 @@
     "source": "EXL Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at EXL. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J331",
+    "company": "hims &amp; hers",
+    "title": "Sr. Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 17 hours ago (2026-10-24)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/sr-data-scientist-at-hims-hers-4466424304",
+    "source": "hims &amp; hers Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at hims &amp; hers. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J332",
+    "company": "AtkinsRéalis",
+    "title": "Senior Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 18 hours ago (2026-10-24)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-at-atkinsr%C3%A9alis-4483335184",
+    "source": "AtkinsRéalis Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at AtkinsRéalis. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
