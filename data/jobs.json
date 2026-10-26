@@ -1499,5 +1499,24 @@
     "source": "MetAntz Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at MetAntz. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J334",
+    "company": "NetAmbit",
+    "title": "Senior Data Scientist",
+    "location": "Noida, Uttar Pradesh, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-netambit-4482920806",
+    "source": "NetAmbit Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at NetAmbit. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
