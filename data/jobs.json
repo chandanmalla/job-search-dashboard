@@ -1518,5 +1518,43 @@
     "source": "NetAmbit Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at NetAmbit. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J335",
+    "company": "VAYUZ Technologies",
+    "title": "Lead Data Scientist",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-vayuz-technologies-4481428565",
+    "source": "VAYUZ Technologies Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at VAYUZ Technologies. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J336",
+    "company": "Fin",
+    "title": "Senior Data Scientist - Product Analytics",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 26 minutes ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-product-analytics-at-fin-4391121309",
+    "source": "Fin Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Fin. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
