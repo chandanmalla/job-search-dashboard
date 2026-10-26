@@ -1613,5 +1613,43 @@
     "source": "Google Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Google. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J340",
+    "company": "Sigmoid",
+    "title": "Lead Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-sigmoid-4483550311",
+    "source": "Sigmoid Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Sigmoid. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J341",
+    "company": "Opella",
+    "title": "Senior Data Scientist Marketing Mix Modeling",
+    "location": "Hyderabad, Telangana, India",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-marketing-mix-modeling-at-opella-4475399784",
+    "source": "Opella Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Opella. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
