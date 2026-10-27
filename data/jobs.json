@@ -1860,5 +1860,24 @@
     "source": "BNY Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at BNY. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J353",
+    "company": "Flagship Pioneering",
+    "title": "Senior Machine Learning Scientist",
+    "location": "Cambridge, England, United Kingdom",
+    "city": "Cambridge, England, United Kingdom",
+    "country": "UK",
+    "posted": "Posted 28 minutes ago (2026-10-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-machine-learning-scientist-at-flagship-pioneering-4473694663",
+    "source": "Flagship Pioneering Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Flagship Pioneering. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
