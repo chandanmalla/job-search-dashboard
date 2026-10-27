@@ -1765,5 +1765,24 @@
     "source": "Microsoft Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Microsoft. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J348",
+    "company": "Agilent Technologies",
+    "title": "IBP Supply Planning Data Scientist",
+    "location": "Bengaluru East, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 6 hours ago (2026-10-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/ibp-supply-planning-data-scientist-at-agilent-technologies-4483763037",
+    "source": "Agilent Technologies Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Agilent Technologies. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
