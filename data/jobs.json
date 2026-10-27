@@ -1651,5 +1651,43 @@
     "source": "Opella Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Opella. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J342",
+    "company": "Arrive",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 14 hours ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-arrive-4483568996",
+    "source": "Arrive Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Arrive. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J343",
+    "company": "Linde",
+    "title": "Senior Data Scientist Industrial AI &amp; Optimization - AI Hub",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 15 hours ago (2026-10-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-industrial-ai-optimization-ai-hub-at-linde-4467098651",
+    "source": "Linde Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Linde. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
