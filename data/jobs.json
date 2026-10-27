@@ -1841,5 +1841,24 @@
     "source": "Mastercard Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Mastercard. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J352",
+    "company": "BNY",
+    "title": "Senior Specialist, Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 hour ago (2026-10-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-specialist-data-scientist-at-bny-4439069555",
+    "source": "BNY Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at BNY. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
