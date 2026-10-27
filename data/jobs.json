@@ -1803,5 +1803,43 @@
     "source": "Walmart Global Tech India Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Walmart Global Tech India. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J350",
+    "company": "4flow",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 3 hours ago (2026-10-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-4flow-4484040700",
+    "source": "4flow Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at 4flow. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J351",
+    "company": "Mastercard",
+    "title": "Senior Data Scientist",
+    "location": "Gurugram, Haryana, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-10-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-mastercard-4481883357",
+    "source": "Mastercard Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Mastercard. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
