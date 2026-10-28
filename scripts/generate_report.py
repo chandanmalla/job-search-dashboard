@@ -19,6 +19,7 @@ import urllib.parse
 import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
+import re
 
 # ---------------------------------------------------------------------------
 # Bootstrap pip + third-party packages in the embedded Python environment
@@ -99,20 +100,22 @@ def assign_job_id(job: dict, db: dict) -> str:
     return jid
 
 
-NON_PRODUCT_EXCLUSIONS_LOWER = {
+PHRASE_EXCLUSIONS_LOWER = {
     'accenture', 'antal', 'datatech', 'delta technology', 'epam', 'fractal', 'grid dynamics',
     'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
     'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
-    'tata consultancy', 'tcs', 'ust', 'vgreen', 'wipro', 'hcl', 'cognizant', 'ltimindtree',
-    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'pwc', 'ey', 'kpmg',
-    'mckinsey', 'bcg', 'bain', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'tata consultancy', 'vgreen', 'wipro', 'cognizant', 'ltimindtree',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'ernst & young', 'ernst and young',
+    'kpmg', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
     'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
     'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
     'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
-    'tracksuit', 'mopid', 'humara', 'mvf', 'allura partners', 'amazon', 'aws', 'bd',
+    'tracksuit', 'mopid', 'humara', 'allura partners', 'amazon', 'aws',
     'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
-    'lmg', 'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
+    'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
 }
+
+SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
 
 
 def is_top_product_company(company: str) -> bool:
@@ -120,7 +123,10 @@ def is_top_product_company(company: str) -> bool:
     cl = company.lower().strip()
     if not cl:
         return False
-    if any(ex in cl for ex in NON_PRODUCT_EXCLUSIONS_LOWER):
+    if any(ex in cl for ex in PHRASE_EXCLUSIONS_LOWER):
+        return False
+    words = set(re.findall(r'\b[a-z0-9]+\b', cl))
+    if any(short in words for short in SHORT_EXCLUSIONS):
         return False
     return True
 
