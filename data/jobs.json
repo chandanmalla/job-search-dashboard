@@ -1898,5 +1898,24 @@
     "source": "Linde@India Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at Linde@India. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J355",
+    "company": "Linktree",
+    "title": "Senior Data Scientist",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 11 minutes ago (2026-10-28)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/senior-data-scientist-at-linktree-4483829060",
+    "source": "Linktree Careers (LinkedIn Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Linktree. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
