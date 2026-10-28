@@ -3817,5 +3817,24 @@
     "source": "Muzz Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Muzz. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J455",
+    "company": "OpenAI",
+    "title": "Data Scientist, Cloud Distribution & Growth",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-28",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/openai/b82699a2-5819-4276-a402-fd88f56f9246",
+    "source": "OpenAI AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at OpenAI. Research, evaluations, and empirical modeling.",
+    "isNew": true
   }
 ]
