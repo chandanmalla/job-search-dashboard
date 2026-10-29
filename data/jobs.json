@@ -4083,5 +4083,24 @@
     "source": "IMI Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at IMI. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J469",
+    "company": "Roche",
+    "title": "Senior Data Scientist",
+    "location": "Hyderabad, Telangana, India",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 59 minutes ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-roche-4484954063",
+    "source": "Roche Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Roche. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
