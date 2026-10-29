@@ -4026,5 +4026,24 @@
     "source": "General Mills Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at General Mills. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J466",
+    "company": "Live Connections",
+    "title": "Data Science+AI+Anomaly Detection",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 4 hours ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-science%2Bai%2Banomaly-detection-at-live-connections-4484907638",
+    "source": "Live Connections Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Live Connections. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
