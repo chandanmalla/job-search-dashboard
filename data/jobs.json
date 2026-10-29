@@ -3836,5 +3836,43 @@
     "source": "OpenAI AI Careers (Ashby)",
     "why_fits": "Frontier applied science position at OpenAI. Research, evaluations, and empirical modeling.",
     "isNew": true
+  },
+  {
+    "id": "J456",
+    "company": "Arrive",
+    "title": "Arrive - Senior Data Scientist - AI &amp;amp; Analytics",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 6 minutes ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/arrive-senior-data-scientist-ai-amp-analytics-at-arrive-4484768487",
+    "source": "Arrive Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Arrive. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J457",
+    "company": "Optum India",
+    "title": "Lead Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-28)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-optum-india-4484763326",
+    "source": "Optum India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Optum India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
