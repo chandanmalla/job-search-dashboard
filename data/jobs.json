@@ -4045,5 +4045,43 @@
     "source": "Live Connections Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Live Connections. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J467",
+    "company": "Target",
+    "title": "Sr Data Scientist- Space Presentation",
+    "location": "Bengaluru East, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-space-presentation-at-target-4484945225",
+    "source": "Target Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Target. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J468",
+    "company": "IMI",
+    "title": "Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-imi-4468243106",
+    "source": "IMI Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at IMI. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
