@@ -4653,5 +4653,43 @@
     "source": "JioHotstar Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at JioHotstar. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J499",
+    "company": "VRINDA INTERNATIONAL",
+    "title": "DATA SCIENTIST (ARTIFICIAL INTELLIGENCE)",
+    "location": "Gurugram, Haryana, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 12 hours ago (2026-10-29)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-artificial-intelligence-at-vrinda-international-4484815827",
+    "source": "VRINDA INTERNATIONAL Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at VRINDA INTERNATIONAL. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J500",
+    "company": "Commonwealth Bank",
+    "title": "Senior Data Scientist - Stress Testing Models",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 1 minute ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/senior-data-scientist-stress-testing-models-at-commonwealth-bank-4485303710",
+    "source": "Commonwealth Bank Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Commonwealth Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
