@@ -99,7 +99,7 @@ def build_dashboard():
         title = j.get("job_title", "")
         # Strictly require Top Product Companies and Data Science / Applied Science
         JF.ensure_fields(j)  # adds exp_years / referral / dashboard_visible if missing (in-memory only)
-        if j.get("dashboard_visible") is False and (j.get("hide_reason") or "").startswith("location outside") and (j.get("status") or "").lower() != "skipped":
+        if j.get("dashboard_visible") is False and (j.get("hide_reason") or "").startswith(("location outside", "company not in top-tier list")) and (j.get("status") or "").lower() != "skipped":
             j["dashboard_visible"], j["hide_reason"] = JF.visibility(j)  # re-check location-hidden jobs (Thailand/UAE added), in-memory only
         if not j.get("dashboard_visible", True) and (j.get("status") or "").lower() != "applied":
             continue
@@ -108,6 +108,8 @@ def build_dashboard():
         country = "India" if any(w in loc.lower() for w in ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "mumbai", "chennai", "pune"]) \
             else "UK" if any(w in loc.lower() for w in ["uk", "london", "united kingdom", "england", "cambridge"]) \
             else "Australia" if any(w in loc.lower() for w in ["australia", "sydney", "melbourne"]) \
+            else "Thailand" if any(w in loc.lower() for w in ["thailand", "bangkok"]) or re.search(r"\bth\b", loc.lower()) \
+            else "UAE" if any(w in loc.lower() for w in ["dubai", "united arab emirates", "uae", "abu dhabi"]) or re.search(r"\bae\b", loc.lower()) \
             else "Global / Other"
 
         city = "Bangalore" if "bangalore" in loc.lower() or "bengaluru" in loc.lower() \
@@ -551,7 +553,7 @@ def build_dashboard():
     <div class="header-content">
       <div>
         <h1>🎯 Machine Learning & Data Science Job Tracker</h1>
-        <p>Curated verified-open roles (Senior, Lead, Applied Scientist) across India, UK & Australia</p>
+        <p>Curated verified-open roles (Senior, Lead, Applied Scientist) across India, UK, Australia, Thailand & UAE</p>
       </div>
       <div class="refresh-badge">
         <span class="pulse"></span> Last Updated: {now_ist}
@@ -584,6 +586,14 @@ def build_dashboard():
       <div class="kpi-card">
         <div class="lbl">Australia Roles</div>
         <div class="val" id="kpiAU">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Thailand Roles</div>
+        <div class="val" id="kpiTH">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">UAE Roles</div>
+        <div class="val" id="kpiAE">0</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Referred</div>
@@ -709,6 +719,8 @@ def build_dashboard():
       document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
       document.getElementById('kpiUK').textContent = JOBS.filter(j => j.country === 'UK').length;
       document.getElementById('kpiAU').textContent = JOBS.filter(j => j.country === 'Australia').length;
+      document.getElementById('kpiTH').textContent = JOBS.filter(j => j.country === 'Thailand').length;
+      document.getElementById('kpiAE').textContent = JOBS.filter(j => j.country === 'UAE').length;
       document.getElementById('kpiBacklog').textContent = JOBS.filter(j => !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
       document.getElementById('kpiReferred').textContent = JOBS.filter(j => refStatus(j) === 'referred').length;
       document.getElementById('kpiDirect').textContent = JOBS.filter(j => ['apply_direct','no_response'].includes(refStatus(j)) && !appliedJobs.has(j.id)).length;
@@ -1045,7 +1057,7 @@ ${{savedName}}
       }}
     }});
 
-    const locCounts = {{ 'India': 0, 'UK': 0, 'Australia': 0 }};
+    const locCounts = {{ 'India': 0, 'UK': 0, 'Australia': 0, 'Thailand': 0, 'UAE': 0 }};
     JOBS.forEach(j => {{ if (locCounts[j.country] !== undefined) locCounts[j.country]++; }});
 
     window.Chart && new Chart(document.getElementById('chartLocation'), {{
