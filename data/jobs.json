@@ -3735,7 +3735,26 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Nicholas O.",
+          "profile_url": "https://www.linkedin.com/in/nicholasodlum/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Eoin Gilligan Martyn",
+          "profile_url": "https://www.linkedin.com/in/eoin-gilligan-martyn-98920684/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -3960,7 +3979,53 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Anna Matlin",
+          "profile_url": "https://www.linkedin.com/in/annamatlin/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Guoxian Zhang",
+          "profile_url": "https://www.linkedin.com/in/guoxian-zhang-08b21016/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Tatiana Xifara",
+          "profile_url": "https://www.linkedin.com/in/tatiana-xifara/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Rodolfo Carboni",
+          "profile_url": "https://www.linkedin.com/in/rodolfocarboni/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Michele Alessandro",
+          "profile_url": "https://www.linkedin.com/in/michele-alessandro/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -4571,7 +4636,35 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Andre Nguyen",
+          "profile_url": "https://www.linkedin.com/in/andrevnguyen/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Chengyu Chen",
+          "profile_url": "https://www.linkedin.com/in/chengyu-chen-a7b89b134/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Ethan Liang",
+          "profile_url": "https://www.linkedin.com/in/ethan-liang-301401248/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -4710,7 +4803,56 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Piyush Prakash",
+          "profile_url": "https://www.linkedin.com/in/piyush-prakash-437a791a5/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Bhavuk Garg",
+          "profile_url": "https://www.linkedin.com/in/gargbhavuk2000/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Atharva Mangrulkar",
+          "profile_url": "https://www.linkedin.com/in/atharva-mangrulkar/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Christopher G.",
+          "profile_url": "https://www.linkedin.com/in/christophergaspar/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Dishu Jamnal",
+          "profile_url": "https://www.linkedin.com/in/dishu-jamnal-36362111a/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "withdrawn/mistaken, do not message (works at PubScale, not PayPal); request sent 2026-10-30 in error",
+          "status": "withdrawn",
+          "do_not_message": true,
+          "counts_as_connection": false
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5035,7 +5177,35 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Jessica Zhang",
+          "profile_url": "https://www.linkedin.com/in/jessica-zhang-1000286/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Poonam Sahoo",
+          "profile_url": "https://www.linkedin.com/in/poonam-sahoo/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Winston Gao",
+          "profile_url": "https://www.linkedin.com/in/winstonygao/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending; employer uncertain, headline Ex-Twitch, Notion"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5060,7 +5230,26 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Ganesh Patil",
+          "profile_url": "https://www.linkedin.com/in/pganesh2020/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Ayush Kumar",
+          "profile_url": "https://www.linkedin.com/in/ayush-kumar-61758a65/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5185,7 +5374,53 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Rajat Patel",
+          "profile_url": "https://www.linkedin.com/in/rgp5232/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Hardik Meisheri",
+          "profile_url": "https://www.linkedin.com/in/hardikmeisheri/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Yugant Chandrakar",
+          "profile_url": "https://www.linkedin.com/in/yugant-chandrakar-79a90536/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Pankaj Kumar Sharma",
+          "profile_url": "https://www.linkedin.com/in/pankajkusharma/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Rahul Ragesh",
+          "profile_url": "https://www.linkedin.com/in/rahulragesh/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5322,7 +5557,26 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Felipe de Souza",
+          "profile_url": "https://www.linkedin.com/in/felipe-de-souza-b08b642b/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Mayank Verma",
+          "profile_url": "https://www.linkedin.com/in/mayank-verma06/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5635,6 +5889,33 @@
           "reminders_sent": 0,
           "cv_attached": true,
           "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Raman Goyal",
+          "profile_url": "https://www.linkedin.com/in/raman-goyal/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Shriram Premkumar",
+          "profile_url": "https://www.linkedin.com/in/shrirampremkumar/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Sumit Chaudhary",
+          "profile_url": "https://www.linkedin.com/in/sumit-chaudhary-a2ab58104/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
         }
       ],
       "updated_at": "2026-10-30T23:05:00+05:30"
@@ -5767,6 +6048,33 @@
           "reminders_sent": 0,
           "cv_attached": true,
           "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Raman Goyal",
+          "profile_url": "https://www.linkedin.com/in/raman-goyal/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Shriram Premkumar",
+          "profile_url": "https://www.linkedin.com/in/shrirampremkumar/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Sumit Chaudhary",
+          "profile_url": "https://www.linkedin.com/in/sumit-chaudhary-a2ab58104/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
         }
       ],
       "updated_at": "2026-10-30T23:05:00+05:30"
@@ -5793,7 +6101,26 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Biwei Jiang",
+          "profile_url": "https://www.linkedin.com/in/biwei-jiang-97064b2b0/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Wahid Khan Abzal",
+          "profile_url": "https://www.linkedin.com/in/wahidkhanabzal/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -5818,7 +6145,44 @@
     "expYears": "4-7 yrs",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Jayanta Pal",
+          "profile_url": "https://www.linkedin.com/in/jayanta-pal-1090915/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Maxim Sviridenko",
+          "profile_url": "https://www.linkedin.com/in/maxim-sviridenko-44822991/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Raja Subramaniam",
+          "profile_url": "https://www.linkedin.com/in/raja-subramaniam/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Kesavaraj V",
+          "profile_url": "https://www.linkedin.com/in/kesavarajv/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -6221,7 +6585,26 @@
     "expYears": "not stated",
     "referral": {
       "status": "none",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Nikhil Reddy Pottanigari",
+          "profile_url": "https://www.linkedin.com/in/pottanigari-nikhil-reddy/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Oleksiy Ostapenko",
+          "profile_url": "https://www.linkedin.com/in/oleksiy-ostapenko/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30, pending"
+        }
+      ],
       "updated_at": null
     }
   },
@@ -6392,6 +6775,31 @@
     "link": "https://th.linkedin.com/jobs/view/senior-lead-data-scientist-credit-risk-at-line-man-wongnai-4462967069",
     "source": "LINE MAN Wongnai Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at LINE MAN Wongnai. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J551",
+    "company": "Mastercard",
+    "title": "Data Scientist I",
+    "location": "Pune Division, Maharashtra, India",
+    "city": "Pune",
+    "country": "India",
+    "posted": "Posted 44 minutes ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-i-at-mastercard-4475244316",
+    "source": "Mastercard Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Mastercard. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
