@@ -133,9 +133,7 @@ def reloc_tracked(kind, name, fn, *args):
 _LOC_HUBS = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai",
              "mumbai", "pune", "london", "england", "united kingdom", "great britain", "sydney", "melbourne", "australia"]
 # Relocation hubs: only accepted for RELOC sources (companies that relocate hires from India)
-_RELOC_HUBS = ["bangkok", "thailand", "kuala lumpur", "petaling jaya", "malaysia", "jakarta",
-               "indonesia", "amsterdam", "netherlands", "berlin", "germany", "dusseldorf", "d\u00fcsseldorf",
-               "dublin", "ireland", "tokyo", "japan", "dubai", "united arab emirates"]
+_RELOC_HUBS = ["bangkok", "thailand", "dubai", "united arab emirates", "uae"]  # Chandan: only Thailand/UAE beyond India/UK/AU
 RELOC_ON = [False]
 def loc_ok(ll: str) -> bool:
     """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote.
@@ -143,7 +141,7 @@ def loc_ok(ll: str) -> bool:
     ll = (ll or "").lower()
     if "singapore" in ll or re.search(r"\bsg\b", ll):  # Chandan: no Singapore jobs from any source
         return False
-    if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(th|my|id|nl|de|ie|jp|ae)\b", ll)):
+    if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(th|ae)\b", ll)):
         return True
     if any(h in ll for h in _LOC_HUBS) or re.search(r"\b(uk|gb|nsw|vic)\b", ll):
         return True
