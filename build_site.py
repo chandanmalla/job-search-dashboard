@@ -94,8 +94,8 @@ def build_dashboard():
             continue
 
         loc = j.get("location", "")
-        country = "India" if any(w in loc.lower() for w in ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "mumbai", "chennai"]) \
-            else "UK" if any(w in loc.lower() for w in ["uk", "london", "united kingdom", "cambridge"]) \
+        country = "India" if any(w in loc.lower() for w in ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "mumbai", "chennai", "pune"]) \
+            else "UK" if any(w in loc.lower() for w in ["uk", "london", "united kingdom", "england", "cambridge"]) \
             else "Australia" if any(w in loc.lower() for w in ["australia", "sydney", "melbourne"]) \
             else "Global / Other"
 
@@ -103,6 +103,9 @@ def build_dashboard():
             else "Hyderabad" if "hyderabad" in loc.lower() \
             else "Delhi NCR" if any(w in loc.lower() for w in ["delhi", "gurgaon", "gurugram", "noida"]) \
             else "Mumbai" if "mumbai" in loc.lower() \
+            else "Pune" if "pune" in loc.lower() \
+            else "Chennai" if "chennai" in loc.lower() \
+            else "Melbourne" if "melbourne" in loc.lower() \
             else "London" if "london" in loc.lower() \
             else "Sydney" if "sydney" in loc.lower() \
             else loc
@@ -507,7 +510,27 @@ def build_dashboard():
       color: var(--text-muted);
       font-size: 13px;
     }}
+    /* ===== Dark-mode-first theme (toggle to light; choice saved in localStorage) ===== */
+    html:not(.light) {{ --bg:#0b1120; --card-bg:#111827; --border:#1f2937; --text-main:#e5e7eb; --text-muted:#94a3b8;
+      --green-bg:#052e1f; --amber-bg:#2b1d05; --rose-bg:#2a0f12; --purple-bg:#1e1636; --blue-bg:#0c1a33; color-scheme: dark; }}
+    html:not(.light) body {{ background:var(--bg); color:var(--text-main); }}
+    html:not(.light) .kpi-card, html:not(.light) .chart-box, html:not(.light) .table-card, html:not(.light) table,
+    html:not(.light) thead th, html:not(.light) td, html:not(.light) .filter-bar, html:not(.light) select,
+    html:not(.light) input, html:not(.light) .btn-action, html:not(.light) .btn-referral, html:not(.light) .btn-icon,
+    html:not(.light) .btn-track, html:not(.light) .modal, html:not(.light) .modal-content, html:not(.light) .badge-unknown
+      {{ background:var(--card-bg) !important; color:var(--text-main) !important; border-color:var(--border) !important; }}
+    html:not(.light) tr:hover td {{ background:#162033 !important; }}
+    html:not(.light) tr.is-applied td {{ background:#06281b !important; }}
+    html:not(.light) .job-title, html:not(.light) .company-cell, html:not(.light) .val {{ color:#f8fafc !important; }}
+    html:not(.light) .btn-track.applied {{ background:#065f46 !important; color:#d1fae5 !important; }}
+    tr.is-skipped td {{ opacity:.45; }}
+    .snip-row {{ display:flex; gap:4px; flex-wrap:wrap; }}
+    .btn-snip {{ font-size:11px; padding:3px 7px; border-radius:6px; border:1px solid var(--border); background:var(--card-bg); color:var(--text-main); cursor:pointer; }}
+    .btn-snip:hover {{ border-color:var(--primary-light); }}
+    #btnTheme {{ position:fixed; right:14px; bottom:14px; z-index:50; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:var(--card-bg); color:var(--text-main); cursor:pointer; }}
+    @media (max-width: 760px) {{ .table-container {{ overflow-x:auto; }} .kpi-grid {{ grid-template-columns: repeat(2, 1fr) !important; }} }}
   </style>
+  <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');</script>
 </head>
 <body>
   <header>
@@ -533,16 +556,20 @@ def build_dashboard():
         <div class="val" id="kpiApplied">0</div>
       </div>
       <div class="kpi-card">
+        <div class="lbl">Backlog / Pending</div>
+        <div class="val" id="kpiBacklog">0</div>
+      </div>
+      <div class="kpi-card">
         <div class="lbl">India Roles</div>
         <div class="val" id="kpiIndia">0</div>
       </div>
       <div class="kpi-card">
-        <div class="lbl">UK & Australia</div>
-        <div class="val" id="kpiIntl">0</div>
+        <div class="lbl">UK Roles</div>
+        <div class="val" id="kpiUK">0</div>
       </div>
       <div class="kpi-card">
-        <div class="lbl">Visa Confirmed</div>
-        <div class="val" id="kpiVisa">0</div>
+        <div class="lbl">Australia Roles</div>
+        <div class="val" id="kpiAU">0</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Target Companies</div>
@@ -570,7 +597,7 @@ def build_dashboard():
         <input type="search" id="searchQ" class="search-input" placeholder="🔍 Search company, role title, skills, ID…">
         <select id="selStatus" class="status-select">
           <option value="all">All Roles</option>
-          <option value="unapplied" selected>Unapplied Only (Active)</option>
+          <option value="unapplied" selected>Unapplied (Active)</option>
           <option value="applied">Applied Only (Tracker)</option>
           <option value="skipped">Skipped / Hidden</option>
         </select>
@@ -639,8 +666,9 @@ def build_dashboard():
       document.getElementById('kpiTotal').textContent = JOBS.length;
       document.getElementById('kpiApplied').textContent = appliedJobs.size;
       document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
-      document.getElementById('kpiIntl').textContent = JOBS.filter(j => j.country === 'UK' || j.country === 'Australia').length;
-      document.getElementById('kpiVisa').textContent = JOBS.filter(j => j.visaCat === 'Confirmed' || j.visaCat.includes('Plausible')).length;
+      document.getElementById('kpiUK').textContent = JOBS.filter(j => j.country === 'UK').length;
+      document.getElementById('kpiAU').textContent = JOBS.filter(j => j.country === 'Australia').length;
+      document.getElementById('kpiBacklog').textContent = JOBS.filter(j => !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
       document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
     }}
 
@@ -713,7 +741,7 @@ def build_dashboard():
                        j.expCat === 'Stretch' ? 'badge-stretch' : 'badge-good';
 
         const applyBtn = j.link && j.link.startsWith('http')
-          ? `<a href="${{j.link}}" target="_blank" class="btn-apply">Direct Apply ↗</a>`
+          ? `<a href="${{j.link}}" target="_blank" rel="noopener" class="btn-apply">Direct Apply ↗</a>`
           : `<span class="sub-text">Unverified</span>`;
 
         const trackBtn = isApplied
@@ -752,6 +780,11 @@ def build_dashboard():
             <td>
               <div style="display:flex;flex-direction:column;gap:5px;">
                 ${{applyBtn}}
+                <div class="snip-row">
+                  <button class="btn-snip" onclick="copySnippet('${{j.id}}','summary')" title="Copy tailored summary">📋 Summary</button>
+                  <button class="btn-snip" onclick="copySnippet('${{j.id}}','fit')" title="Copy why I fit">📋 Why I fit</button>
+                  <button class="btn-snip" onclick="copySnippet('${{j.id}}','pitch')" title="Copy quick pitch">📋 Pitch</button>
+                </div>
                 <button class="btn-referral" onclick="copyReferral('${{j.id}}')" title="Copy personalized LinkedIn referral message">💬 Referral Note</button>
               </div>
             </td>
@@ -787,6 +820,29 @@ def build_dashboard():
       updateStats();
       renderTable();
     }};
+
+    // One-click tailored application snippets
+    function buildSnippet(j, kind) {{
+      const tech = j.tech || 'statistical modeling, experimentation, causal inference and ML';
+      if (kind === 'summary') return `Senior Data / Applied Scientist with ~5 years building production ML and statistical models end to end (Python, SQL, PyTorch). Experienced in ${{tech}}, translating ambiguous business problems into measurable model and product impact. Excited by the ${{j.title}} role at ${{j.company}} (${{j.location}}).`;
+      if (kind === 'fit') return `Why I fit ${{j.company}} - ${{j.title}}:\n- ~5 years of hands-on data science / applied science, matching the role's seniority\n- Depth in ${{tech}}\n- Track record of shipping models to production and measuring impact with A/B tests\n- ${{j.why_fits || 'Strong alignment with the core science scope of this team'}}`;
+      return `Hi! I'm a Senior Data Scientist (~5 yrs; ${{tech.split(',').slice(0,3).join(', ')}}) and I'd love to be considered for ${{j.title}} at ${{j.company}}. I've shipped ML that moved core product metrics and would bring that to your team. Happy to share details. ${{j.link || ''}}`;
+    }}
+    window.copySnippet = function(id, kind) {{
+      const j = JOBS.find(x => x.id === id); if (!j) return;
+      const text = buildSnippet(j, kind);
+      const done = () => {{ const t = document.getElementById('toast'); if (t) {{ t.textContent = 'Copied ' + kind + ' for ' + j.company; t.style.opacity = 1; setTimeout(() => t.style.opacity = 0, 1600); }} }};
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done);
+      else {{ const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); done(); }}
+    }};
+    document.addEventListener('DOMContentLoaded', () => {{
+      const b = document.createElement('button'); b.id = 'btnTheme';
+      const label = () => b.textContent = document.documentElement.classList.contains('light') ? '🌙 Dark' : '☀️ Light';
+      label(); b.onclick = () => {{ document.documentElement.classList.toggle('light'); localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark'); label(); }};
+      document.body.appendChild(b);
+      const t = document.createElement('div'); t.id = 'toast'; t.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#10b981;color:#fff;padding:8px 14px;border-radius:8px;opacity:0;transition:opacity .3s;z-index:60;font-size:13px';
+      document.body.appendChild(t);
+    }});
 
     // Copy personalized, professionally formatted LinkedIn referral message
     window.copyReferral = function(id) {{
@@ -919,7 +975,7 @@ ${{savedName}}
     JOBS.forEach(j => compCounts[j.company] = (compCounts[j.company] || 0) + 1);
     const topComps = Object.entries(compCounts).sort((a,b) => b[1] - a[1]).slice(0, 10);
 
-    new Chart(document.getElementById('chartCompany'), {{
+    window.Chart && new Chart(document.getElementById('chartCompany'), {{
       type: 'bar',
       data: {{
         labels: topComps.map(c => c[0]),
@@ -941,7 +997,7 @@ ${{savedName}}
     const locCounts = {{ 'India': 0, 'UK': 0, 'Australia': 0 }};
     JOBS.forEach(j => {{ if (locCounts[j.country] !== undefined) locCounts[j.country]++; }});
 
-    new Chart(document.getElementById('chartLocation'), {{
+    window.Chart && new Chart(document.getElementById('chartLocation'), {{
       type: 'doughnut',
       data: {{
         labels: Object.keys(locCounts),
@@ -961,7 +1017,7 @@ ${{savedName}}
     const visaCounts = {{}};
     JOBS.forEach(j => visaCounts[j.visaCat] = (visaCounts[j.visaCat] || 0) + 1);
 
-    new Chart(document.getElementById('chartVisa'), {{
+    window.Chart && new Chart(document.getElementById('chartVisa'), {{
       type: 'doughnut',
       data: {{
         labels: Object.keys(visaCounts),

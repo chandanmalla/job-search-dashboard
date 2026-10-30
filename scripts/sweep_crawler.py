@@ -62,14 +62,14 @@ PHRASE_EXCLUSIONS_LOWER = {
     'kpmg', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
     'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
     'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
-    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
+    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'prolific',
     'tracksuit', 'mopid', 'humara', 'allura partners', 'amazon', 'aws',
-    'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
+    'cohere health', 'neurogent', 'fedex', 'twitch', 'audible', 'zoox', 'whole foods', 'imdb', 'zappos', 'annapurna labs', 'pricewaterhouse', 'tata consultancy services', 'bain and company', 'boston consulting', 'fedex gcs', 'applied materials',
     'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
 }
 
 # Short acronyms matched with word boundaries to avoid false positives (e.g. 'Harvey AI' or 'Quadeye' containing 'ey')
-SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
+SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf', 'ets', 'sei', 'bain', 'aws', 'ltts', 'lti', 'mphasis'}
 
 def is_top_product_company(company: str) -> bool:
     """Return True if company is a verified top tech product company, and NOT IT services/consulting/staffing."""
@@ -84,37 +84,56 @@ def is_top_product_company(company: str) -> bool:
     return True
 
 def is_target_science_role(title: str) -> bool:
-    """Return True if title is strictly a Data Science or Applied Science role, and NOT software/engineering/principal/staff."""
+    """Strict include/exclude for core Data Science / Applied Science roles (~5 yrs)."""
     tl = title.lower()
-    # 1. Strictly exclude senior executive / student / entry levels
-    if any(w in tl for w in ["intern", "graduate", "junior", "entry", "associate", "vice president", "vp", "director", "manager", "head"]):
+    EXCL = [r"\bintern", r"\bgraduate", r"\bjunior", r"\bentry", r"\bassociate", r"\bvice president", r"\bvp\b",
+            r"\bdirector", r"\bmanager", r"\bhead\b", r"\bprincipal", r"\bstaff\b", r"\bsoftware", r"\bswe\b",
+            r"engineer", r"\bdeveloper", r"devops", r"mlops", r"\bplatform", r"infrastructure", r"architect",
+            r"full[- ]?stack", r"front[- ]?end", r"back[- ]?end", r"data engineer", r"\bfellow", r"\bphd\b"]
+    if any(re.search(p, tl) for p in EXCL):
         return False
-    # 2. Strictly exclude Principal and Staff levels
-    if any(w in tl for w in ["principal", "staff"]):
-        return False
-    # 3. Strictly exclude software, engineering, devops, mlops, platform, infrastructure, developer
-    if any(w in tl for w in ["software", "engineer", "engineering", "developer", "devops", "mlops", "platform", "infrastructure", "architect"]):
-        return False
-    # 4. Strictly require a Data Scientist or Applied / Research / Decision / ML Scientist title
     return any(w in tl for w in [
         "data scientist", "applied scientist", "research scientist",
         "decision scientist", "machine learning scientist", "ml scientist", "data science"
     ])
 
+# Per-source crawl stats (printed + saved each run so silent failures are visible)
+STATS = []
+LAST_ERR = []
+
+def tracked(kind, name, fn, *args):
+    LAST_ERR.clear()
+    res = fn(*args)
+    STATS.append({"type": kind, "source": name, "kept": len(res), "error": LAST_ERR[0] if LAST_ERR else ""})
+    return res
+
+
+
+_LOC_HUBS = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai",
+             "mumbai", "pune", "london", "england", "united kingdom", "great britain", "sydney", "melbourne", "australia"]
+def loc_ok(ll: str) -> bool:
+    """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote."""
+    ll = (ll or "").lower()
+    if any(h in ll for h in _LOC_HUBS) or re.search(r"\b(uk|gb|nsw|vic)\b", ll):
+        return True
+    if "remote" in ll:
+        rest = re.sub(r"remote|global|worldwide|anywhere|apac|emea|[^a-z]", "", ll)
+        return rest == ""
+    return False
 
 def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
     url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs"
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode())
             for j in data.get("jobs", []):
                 title = j.get("title", "")
                 loc = j.get("location", {}).get("name", "")
                 tl, ll = title.lower(), loc.lower()
                 if is_target_science_role(title):
-                    if any(l in ll for l in target_locs) or not loc:
+                    if loc_ok(ll) or not loc:
                         updated = j.get("updated_at")
                         date_str = f"Updated {updated[:10]}" if updated else "Recently posted"
                         jobs.append({
@@ -131,8 +150,8 @@ def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
                             "why_fits": f"Core Data Science / Applied Science role at {company_name}. Strong match for statistical modeling and ML science.",
                             "stretch": False
                         })
-    except Exception:
-        pass
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
 def fetch_lever_board(slug: str, company_name: str, target_locs):
@@ -140,14 +159,14 @@ def fetch_lever_board(slug: str, company_name: str, target_locs):
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode())
-            for j in data.get("jobs", data if isinstance(data, list) else []):
+            for j in (data if isinstance(data, list) else data.get("jobs", [])):
                 title = j.get("text", "")
                 loc = j.get("categories", {}).get("location", "")
                 tl, ll = title.lower(), loc.lower()
                 if is_target_science_role(title):
-                    if any(l in ll for l in target_locs) or not loc:
+                    if loc_ok(ll) or not loc:
                         ca = j.get("createdAt")
                         date_str = f"Posted {datetime.fromtimestamp(ca / 1000, tz=timezone.utc).strftime('%Y-%m-%d')}" if ca else "Recently posted"
                         jobs.append({
@@ -164,8 +183,8 @@ def fetch_lever_board(slug: str, company_name: str, target_locs):
                             "why_fits": f"Core Data Science / Applied Science role at {company_name}. Focuses on algorithmic modeling and decision science.",
                             "stretch": False
                         })
-    except Exception:
-        pass
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
 def fetch_ashby_board(slug: str, company_name: str, target_locs):
@@ -173,7 +192,7 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode())
             for j in data.get("jobs", []):
                 title = j.get("title", "")
@@ -181,7 +200,7 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
                 tl, ll = title.lower(), loc.lower()
                 if is_target_science_role(title):
                     # For Frontier AI labs, null/empty location denotes global AI research hubs
-                    if any(l in ll for l in target_locs) or not loc or j.get("isRemote"):
+                    if loc_ok(ll) or not loc:
                         pa = j.get("publishedAt") or j.get("openedAt")
                         date_str = f"Posted {pa[:10]}" if pa else "Recently posted"
                         jobs.append({
@@ -198,27 +217,34 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
                             "why_fits": f"Frontier applied science position at {company_name}. Research, evaluations, and empirical modeling.",
                             "stretch": False
                         })
-    except Exception:
-        pass
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
 def fetch_workday_board(cxs_url: str, web_base: str, company_name: str, target_locs):
     jobs = []
     try:
-        payload = json.dumps({"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": "Scientist"}).encode("utf-8")
-        req = urllib.request.Request(cxs_url, data=payload, headers={
-            "User-Agent": HEADERS["User-Agent"],
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        }, method="POST")
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode())
-            for p in data.get("jobPostings", []):
+        postings = []
+        for off in range(0, 200, 20):
+            payload = json.dumps({"appliedFacets": {}, "limit": 20, "offset": off, "searchText": "Scientist"}).encode("utf-8")
+            req = urllib.request.Request(cxs_url, data=payload, headers={
+                "User-Agent": HEADERS["User-Agent"],
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }, method="POST")
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read().decode())
+            page = data.get("jobPostings", [])
+            postings.extend(page)
+            if len(page) < 20 or off + 20 >= (data.get("total") or 0):
+                break
+        if True:
+            for p in postings:
                 title = p.get("title", "")
                 loc = p.get("locationsText", "")
                 tl, ll = title.lower(), loc.lower()
                 if is_target_science_role(title):
-                    if any(l in ll for l in target_locs) or not loc:
+                    if loc_ok(ll) or not loc:
                         ext_path = p.get("externalPath", "")
                         job_link = f"{web_base}{ext_path}" if ext_path else web_base
                         pa = p.get("postedOn")
@@ -237,8 +263,44 @@ def fetch_workday_board(cxs_url: str, web_base: str, company_name: str, target_l
                             "why_fits": f"Core Data Science / Applied Science role at {company_name}. Strong match for statistical modeling and ML science.",
                             "stretch": False
                         })
-    except Exception:
-        pass
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
+    return jobs
+
+def fetch_smartrecruiters_board(slug: str, company_name: str, target_locs):
+    jobs = []
+    try:
+        for off in range(0, 1000, 100):
+            url = f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?limit=100&offset={off}"
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read().decode())
+            content = data.get("content", [])
+            for j in content:
+                title = j.get("name", "")
+                L = j.get("location", {}) or {}
+                loc = ", ".join(x for x in [L.get("city"), L.get("country", "").upper()] if x)
+                if L.get("remote"):
+                    loc += " (Remote)"
+                ll = loc.lower().replace(", in", ", india").replace(", gb", ", uk").replace(", au", ", australia")
+                if is_target_science_role(title) and (loc_ok(ll) or not loc):
+                    rd = j.get("releasedDate")
+                    jobs.append({
+                        "company": company_name, "job_title": title, "location": loc or "Multiple Hubs",
+                        "date_posted": f"Posted {rd[:10]}" if rd else "Recently posted",
+                        "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                        "technical_fit": "Statistical modeling, experimentation, ML, Python, SQL",
+                        "visa_sponsorship": "Plausible / standard corporate sponsorship" if any(c in ll for c in ["uk", "london", "sydney", "melbourne", "australia"]) else "N/A (India role)",
+                        "relocation": "Not stated",
+                        "link": f"https://jobs.smartrecruiters.com/{slug}/{j.get('id')}",
+                        "source": f"{company_name} Careers (SmartRecruiters)",
+                        "why_fits": f"Core Data Science / Applied Science role at {company_name}.",
+                        "stretch": False
+                    })
+            if off + 100 >= data.get("totalFound", 0):
+                break
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
 def fetch_linkedin_guest(query: str, location: str, target_locs, f_tpr: str = "r172800"):
@@ -251,7 +313,7 @@ def fetch_linkedin_guest(query: str, location: str, target_locs, f_tpr: str = "r
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             html = resp.read().decode("utf-8")
             titles = re.findall(r'<h3 class="base-search-card__title">([^<]+)</h3>', html)
             companies = re.findall(r'<h4 class="base-search-card__subtitle">\s*(?:<a[^>]*>)?([^<]+?)(?:</a>)?\s*</h4>', html)
@@ -273,7 +335,7 @@ def fetch_linkedin_guest(query: str, location: str, target_locs, f_tpr: str = "r
 
                 if is_target_science_role(t_clean):
                     ll = loc_clean.lower()
-                    if any(w in ll for w in target_locs):
+                    if loc_ok(ll):
                         date_str = "Recently posted"
                         if idx < len(dates):
                             iso_d, rel_d = dates[idx]
@@ -294,12 +356,12 @@ def fetch_linkedin_guest(query: str, location: str, target_locs, f_tpr: str = "r
                             "stretch": False
                         })
 
-    except Exception:
-        pass
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
 
-def run_crawler():
+def run_crawler(force_mode=None, dry_run=False):
     state = load_state()
     db = load_db()
 
@@ -307,12 +369,12 @@ def run_crawler():
     existing_keys = {(j.get("company", "").lower(), j.get("job_title", "").lower()) for j in db["all_jobs"]}
 
     last_mode = state.get("last_mode", "new_companies")
-    current_mode = "new_companies" if last_mode == "existing" else "existing"
+    current_mode = force_mode or ("new_companies" if last_mode == "existing" else "existing")
     run_count = state.get("run_count", 0) + 1
 
     print(f"[sweep_crawler] === Run #{run_count} | Mode: '{current_mode.upper()}' ===", flush=True)
 
-    target_locs = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai", "mumbai", "london", "uk", "united kingdom", "sydney", "australia", "remote"]
+    target_locs = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai", "mumbai", "pune", "london", "england", "melbourne", "uk", "united kingdom", "sydney", "australia", "remote"]
 
     discovered = []
 
@@ -331,21 +393,16 @@ def run_crawler():
             ("airbnb", "Airbnb"),
             ("stripe", "Stripe"),
             ("databricks", "Databricks"),
-            ("canva", "Canva"),
             ("figma", "Figma"),
+            ("inmobi", "InMobi"),  # moved from Lever (404) to Greenhouse
             ("deliveroo", "Deliveroo"),
             ("monzo", "Monzo"),
             ("tripadvisor", "TripAdvisor"),
             ("affirm", "Affirm"),
-            ("wayve", "Wayve"),
-            ("revolut", "Revolut"),
             ("wise", "Wise"),
-            ("synthesia", "Synthesia"),
-            ("servicenow", "ServiceNow"),
-            ("postman", "Postman"),
         ]
         for slug, name in greenhouse_targets:
-            discovered.extend(fetch_greenhouse_board(slug, name, target_locs))
+            discovered.extend(tracked("greenhouse", name, fetch_greenhouse_board, slug, name, target_locs))
 
         # 2. Frontier AI Ashby Feeds
         ashby_targets = [
@@ -356,21 +413,20 @@ def run_crawler():
             ("runway", "Runway"),
             ("harvey", "Harvey AI"),
             ("sarvam", "Sarvam AI"),
+            ("wayve", "Wayve"),  # moved from Greenhouse (404) to Ashby
+            ("synthesia", "Synthesia"),  # moved from Greenhouse (404) to Ashby
         ]
         for slug, name in ashby_targets:
-            discovered.extend(fetch_ashby_board(slug, name, target_locs))
+            discovered.extend(tracked("ashby", name, fetch_ashby_board, slug, name, target_locs))
 
         # 3. Established Product Lever Feeds
         lever_targets = [
             ("spotify", "Spotify"),
-            ("inmobi", "InMobi"),
             ("meesho", "Meesho"),
-            ("swiggy", "Swiggy"),
-            ("zomato", "Zomato"),
-            ("phonepe", "PhonePe"),
+            ("eternal", "Zomato (Eternal)"),  # Zomato parent Eternal Ltd on Lever
         ]
         for slug, name in lever_targets:
-            discovered.extend(fetch_lever_board(slug, name, target_locs))
+            discovered.extend(tracked("lever", name, fetch_lever_board, slug, name, target_locs))
 
         # 4. Big Tech Workday Feeds
         workday_targets = [
@@ -382,12 +438,17 @@ def run_crawler():
             ("https://visa.wd5.myworkdayjobs.com/wday/cxs/visa/Visa/jobs", "https://visa.wd5.myworkdayjobs.com/en-US/Visa", "Visa"),
         ]
         for api, base, name in workday_targets:
-            discovered.extend(fetch_workday_board(api, base, name, target_locs))
+            discovered.extend(tracked("workday", name, fetch_workday_board, api, base, name, target_locs))
+
+        # 4b. SmartRecruiters public API (boards moved off Greenhouse/Lever)
+        for slug, name in [("Canva", "Canva"), ("ServiceNow", "ServiceNow"), ("Swiggy", "Swiggy")]:
+            discovered.extend(tracked("smartrecruiters", name, fetch_smartrecruiters_board, slug, name, target_locs))
 
         # 5. Targeted fresh queries for Big Tech & Quant Hubs (past 48 hours)
-        for comp in ["Google", "DeepMind", "Microsoft", "Meta", "Apple", "Netflix", "Uber", "Snowflake", "Atlassian", "Flipkart", "Goldman Sachs", "Tower Research Capital"]:
-            discovered.extend(fetch_linkedin_guest(f"Senior Data Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
-            discovered.extend(fetch_linkedin_guest(f"Senior Applied Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
+        for comp in ["Google", "DeepMind", "Microsoft", "Meta", "Apple", "Netflix", "Uber", "Snowflake", "Atlassian", "Flipkart", "Goldman Sachs", "Tower Research Capital",
+                     "Revolut", "Postman", "PhonePe"]:  # last 3: no public ATS API
+            discovered.extend(tracked("search48h", f"Senior Data Scientist {comp}", fetch_linkedin_guest, f"Senior Data Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
+            discovered.extend(tracked("search48h", f"Senior Applied Scientist {comp}", fetch_linkedin_guest, f"Senior Applied Scientist {comp}", "Bengaluru, Karnataka, India", target_locs))
 
     # -------------------------------------------------------------------------
     # RUN B: "NEW_COMPANIES" MODE
@@ -413,12 +474,11 @@ def run_crawler():
             ("rubrik", "Rubrik"),
             ("razorpaysoftwareprivatelimited", "Razorpay"),
             ("groww", "Groww"),
-            ("browserstack", "BrowserStack"),
             ("brex", "Brex"),
             ("ramp", "Ramp"),
         ]
         for slug, name in greenhouse_targets:
-            discovered.extend(fetch_greenhouse_board(slug, name, target_locs))
+            discovered.extend(tracked("greenhouse", name, fetch_greenhouse_board, slug, name, target_locs))
 
         # 2. Productivity & AI Lab Ashby Feeds
         ashby_targets = [
@@ -426,11 +486,9 @@ def run_crawler():
             ("modal", "Modal"),
             ("anyscale", "Anyscale"),
             ("baseten", "Baseten"),
-            ("openai", "OpenAI"),
-            ("cohere", "Cohere"),
         ]
         for slug, name in ashby_targets:
-            discovered.extend(fetch_ashby_board(slug, name, target_locs))
+            discovered.extend(tracked("ashby", name, fetch_ashby_board, slug, name, target_locs))
 
         # 3. High-Growth Fintech & Indian Tech Lever Feeds
         lever_targets = [
@@ -440,7 +498,7 @@ def run_crawler():
             ("zeta", "Zeta"),
         ]
         for slug, name in lever_targets:
-            discovered.extend(fetch_lever_board(slug, name, target_locs))
+            discovered.extend(tracked("lever", name, fetch_lever_board, slug, name, target_locs))
 
         # 4. Entertainment & Media Workday Feeds
         workday_targets = [
@@ -449,25 +507,26 @@ def run_crawler():
             ("https://snapchat.wd1.myworkdayjobs.com/wday/cxs/snapchat/snap/jobs", "https://snapchat.wd1.myworkdayjobs.com/en-US/snap", "Snap"),
         ]
         for api, base, name in workday_targets:
-            discovered.extend(fetch_workday_board(api, base, name, target_locs))
+            discovered.extend(tracked("workday", name, fetch_workday_board, api, base, name, target_locs))
 
         # 5. Targeted fresh queries for Indian Unicorns & Quant Leaders (past 48 hours)
         for comp in [
             "Zepto", "Myntra", "Dream11", "MakeMyTrip", "ShareChat", "Freshworks", "Zoho",
             "Sprinklr", "Urban Company", "Lenskart", "Nykaa", "Delhivery", "Rapido",
-            "AlphaGrep", "Graviton", "Quadeye", "Mistral AI", "Hugging Face", "Krutrim"
+            "AlphaGrep", "Graviton", "Quadeye", "Mistral AI", "Hugging Face", "Krutrim",
+            "BrowserStack"  # no public ATS API
         ]:
-            discovered.extend(fetch_linkedin_guest(f"Data Scientist {comp}", "India", target_locs))
+            discovered.extend(tracked("search48h", f"Data Scientist {comp}", fetch_linkedin_guest, f"Data Scientist {comp}", "India", target_locs))
 
         # 6. Ultra-fresh regional scans across hubs (past 48 hours)
-        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Bengaluru, Karnataka, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Applied Scientist", "Bengaluru, Karnataka, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Lead Data Scientist", "Bengaluru, Karnataka, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Hyderabad, Telangana, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Gurgaon, Haryana, India", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "London, England, United Kingdom", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Applied Scientist", "London, England, United Kingdom", target_locs))
-        discovered.extend(fetch_linkedin_guest("Senior Data Scientist", "Sydney, New South Wales, Australia", target_locs))
+        discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "Bengaluru, Karnataka, India", target_locs))
+        discovered.extend(tracked("search48h", "Senior Applied Scientist", fetch_linkedin_guest, "Senior Applied Scientist", "Bengaluru, Karnataka, India", target_locs))
+        discovered.extend(tracked("search48h", "Lead Data Scientist", fetch_linkedin_guest, "Lead Data Scientist", "Bengaluru, Karnataka, India", target_locs))
+        discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "Hyderabad, Telangana, India", target_locs))
+        discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "Gurgaon, Haryana, India", target_locs))
+        discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "London, England, United Kingdom", target_locs))
+        discovered.extend(tracked("search48h", "Senior Applied Scientist", fetch_linkedin_guest, "Senior Applied Scientist", "London, England, United Kingdom", target_locs))
+        discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "Sydney, New South Wales, Australia", target_locs))
 
     # Deduplicate against DB and within batch
     to_add = []
@@ -504,6 +563,17 @@ def run_crawler():
     for j in to_add[:10]:
         print(f"  + [{j['company']}] {j['job_title']} ({j['location']})", flush=True)
 
+    print("[sweep_crawler] Per-source results (kept = role+location matches before DB dedupe):", flush=True)
+    for st in STATS:
+        print(f"  {st['type']:<15} {st['source'][:45]:<45} kept={st['kept']:<3} {('ERROR ' + st['error']) if st['error'] else 'ok'}", flush=True)
+    errs = [st for st in STATS if st["error"]]
+    print(f"[sweep_crawler] Sources: {len(STATS)} | errors: {len(errs)}", flush=True)
+    with open(ROOT_DIR / "job-tracker" / "crawl_stats_latest.json", "w", encoding="utf-8") as f:
+        json.dump({"mode": current_mode, "time": datetime.now().strftime("%Y-%m-%d %H:%M IST"), "sources": STATS}, f, indent=2)
+    if dry_run:
+        print("[sweep_crawler] DRY RUN: not writing found_jobs_latest.json / state.", flush=True)
+        return len(to_add)
+
     # Save to found_jobs_latest.json
     with open(FOUND_PATH, "w", encoding="utf-8") as f:
         json.dump(to_add, f, indent=2, ensure_ascii=False)
@@ -518,4 +588,9 @@ def run_crawler():
     return len(to_add)
 
 if __name__ == "__main__":
-    run_crawler()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--mode", choices=["existing", "new_companies"], help="Force Run A (existing) or Run B (new_companies)")
+    ap.add_argument("--dry-run", action="store_true", help="Do not write found_jobs_latest.json or cron_state.json")
+    a = ap.parse_args()
+    run_crawler(a.mode, a.dry_run)

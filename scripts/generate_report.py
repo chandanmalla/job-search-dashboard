@@ -109,13 +109,13 @@ PHRASE_EXCLUSIONS_LOWER = {
     'kpmg', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
     'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
     'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
-    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
+    'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'prolific',
     'tracksuit', 'mopid', 'humara', 'allura partners', 'amazon', 'aws',
-    'cohere health', 'neurogent', 'ets', 'fedex', 'fedex gcs', 'applied materials',
+    'cohere health', 'neurogent', 'fedex', 'twitch', 'audible', 'zoox', 'whole foods', 'imdb', 'zappos', 'pricewaterhouse', 'boston consulting', 'bain and company', 'fedex gcs', 'applied materials',
     'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
 }
 
-SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
+SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf', 'ets', 'sei', 'bain', 'aws', 'ltts', 'lti', 'mphasis'}
 
 
 def is_top_product_company(company: str) -> bool:
@@ -133,9 +133,11 @@ def is_top_product_company(company: str) -> bool:
 
 def is_pure_science_role(title: str) -> bool:
     tl = title.lower()
-    if any(w in tl for w in ["principal", "staff", "intern", "graduate", "junior", "entry", "vice president", "director"]):
-        return False
-    if any(w in tl for w in ["software", "engineer", "engineering", "developer", "devops", "mlops", "platform", "infrastructure", "architect"]):
+    EXCL = [r"\bintern", r"\bgraduate", r"\bjunior", r"\bentry", r"\bassociate", r"\bvice president", r"\bvp\b",
+            r"\bdirector", r"\bmanager", r"\bhead\b", r"\bprincipal", r"\bstaff\b", r"\bsoftware", r"\bswe\b",
+            r"engineer", r"\bdeveloper", r"devops", r"mlops", r"\bplatform", r"infrastructure", r"architect",
+            r"full[- ]?stack", r"front[- ]?end", r"back[- ]?end", r"data engineer", r"\bfellow", r"\bphd\b"]
+    if any(re.search(p, tl) for p in EXCL):
         return False
     return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
 
@@ -571,13 +573,14 @@ def format_job_digest_entry(job: dict) -> str:
     posted = esc_html(job.get("date_posted", ""))
     link = job.get("link", "")
     apply_html = f'<a href="{link}">Apply Direct ↗</a>' if link.startswith("http") else '<i>No link</i>'
-    posted_tag = f"  ⏱ <i>{posted}</i>\n" if posted and "unverified" not in posted.lower() else ""
+    loc = esc_html(job.get("location", ""))
+    posted_tag = f"  📍 {loc}" + (f"  •  ⏱ <i>{posted}</i>" if posted and "unverified" not in posted.lower() else "") + "\n"
 
     return (
         f"• <b>{jid}</b> | <b>{comp}</b>\n"
         f"  📌 {title}\n"
         f"{posted_tag}"
-        f"  🔗 {apply_html}  •  <code>/applied {jid}</code>\n\n"
+        f"  🔗 {apply_html}  •  <code>/applied {jid}</code>  •  <code>/skip {jid}</code>\n\n"
     )
 
 
@@ -601,7 +604,7 @@ def send_telegram(token: str, chat_targets, new_jobs: list, excel_path: str, htm
                 "text": (
                     f"🔍 <b>Job Search Update</b> ({esc_html(run_ts)})\n\n"
                     "No new roles found this run. Total tracked stays the same.\n"
-                    "Next check in ~4 hours."
+                    "Next check in ~2 hours."
                 ),
                 "parse_mode": "HTML",
             })

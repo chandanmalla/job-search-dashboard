@@ -1,7 +1,7 @@
-"""
+﻿"""
 Sync Applied Jobs From Telegram
 ===============================
-Called at the beginning of each 3-hour cron run (or on-demand).
+Called at the beginning of each 2-hour cron run (or on-demand).
 Pulls all pending /applied and /skip messages sent to the Telegram bot,
 updates tracked_jobs.json, and acknowledges the messages.
 
@@ -105,7 +105,7 @@ def sync_from_telegram():
                 if jid in jobs_map:
                     jobs_map[jid]["status"] = "Applied"
                 newly_actioned.append((jid, "Applied"))
-            tg_send(token, chat_id, f"✅ Marked as *Applied*: `{', '.join(ids)}`\n_Excluded from future sweeps and updated on dashboard._")
+            tg_send(token, chat_id, f"âœ… Marked as *Applied*: `{', '.join(ids)}`\n_Excluded from future sweeps and updated on dashboard._")
 
         elif cmd == "skip":
             for jid in ids:
@@ -114,7 +114,7 @@ def sync_from_telegram():
                 if jid in jobs_map:
                     jobs_map[jid]["status"] = "Skipped"
                 newly_actioned.append((jid, "Skipped"))
-            tg_send(token, chat_id, f"🚫 Marked as *Skipped*: `{', '.join(ids)}`\n_Hidden from future sweeps._")
+            tg_send(token, chat_id, f"ðŸš« Marked as *Skipped*: `{', '.join(ids)}`\n_Hidden from future sweeps._")
 
     db["applied"] = sorted(list(applied_set))
     db["skipped"] = sorted(list(skipped_set))

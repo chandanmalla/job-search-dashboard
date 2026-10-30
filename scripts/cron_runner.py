@@ -24,19 +24,43 @@ SCRIPTS_DIR = Path(__file__).parent
 PROJECT_DIR = SCRIPTS_DIR.parent
 PY_EXE = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\python-embed\python.exe")
 GIT_EXE = Path(r"C:\Users\chand\Downloads\Job Search\git-portable\cmd\git.exe")
+LOG_DIR = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\logs")
+import os
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+CHILD_ENV = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUTF8="1", GIT_TERMINAL_PROMPT="0")
+_LOG = None
+
+def log(msg):
+    print(msg, flush=True)
+    if _LOG:
+        _LOG.write(msg + "\n"); _LOG.flush()
 
 def run_step(desc, cmd, cwd=None):
-    print(f"\n[cron] === {desc} ===", flush=True)
-    res = subprocess.run(cmd, cwd=cwd or str(PROJECT_DIR), capture_output=True, text=True, encoding="utf-8", errors="replace")
+    log(f"\n[cron] === {desc} ===")
+    try:
+        res = subprocess.run(cmd, cwd=cwd or str(PROJECT_DIR), capture_output=True, text=True, encoding="utf-8",
+                             errors="replace", env=CHILD_ENV, timeout=1800)
+    except Exception as e:
+        log(f"[cron] FAILED {desc}: {e}")
+        return False
     if res.stdout:
-        print(res.stdout.strip(), flush=True)
+        log(res.stdout.strip())
     if res.stderr and res.returncode != 0:
-        print(f"[cron] Warning in {desc}: {res.stderr.strip()}", flush=True)
+        log(f"[cron] Warning in {desc} (exit {res.returncode}): {res.stderr.strip()}")
+    elif res.stderr and "git" in desc.lower():
+        log(res.stderr.strip())
     return res.returncode == 0
 
 def main():
+    global _LOG
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    _LOG = open(LOG_DIR / f"cron_{datetime.now().strftime('%Y%m%d')}.log", "a", encoding="utf-8")
     now_str = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M IST")
-    print(f"[cron] Starting alternating 2-hourly job sweep (Top Product Companies) at {now_str}...", flush=True)
+    log(f"[cron] Starting alternating 2-hourly job sweep (Top Product Companies) at {now_str}...", flush=True)
 
     # 1. Sync applied/skipped commands sent to Telegram
     run_step("1. Syncing Applied Jobs from Telegram", [
@@ -65,9 +89,10 @@ def main():
     run_step("5. Git Add", [str(GIT_EXE), "add", "."])
     commit_msg = f"Automated 2-hourly sweep update ({now_str})"
     run_step("6. Git Commit", [str(GIT_EXE), "commit", "-m", commit_msg])
-    run_step("7. Git Push to GitHub Pages", [str(GIT_EXE), "push", "origin", "main"])
+    ok = run_step("7. Git Push to GitHub Pages", [str(GIT_EXE), "push", "origin", "main"])
+    log(f"[cron] Git push {'succeeded' if ok else 'FAILED'}.")
 
-    print(f"\n[cron] 2-hourly alternating run finished successfully at {now_str}.", flush=True)
+    log(f"\n[cron] 2-hourly alternating run finished successfully at {now_str}.", flush=True)
 
 
 if __name__ == "__main__":
