@@ -4767,5 +4767,24 @@
     "source": "Anko GCC Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Anko GCC. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J505",
+    "company": "NXP Semiconductors",
+    "title": "sr Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 8 minutes ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-nxp-semiconductors-4485307955",
+    "source": "NXP Semiconductors Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at NXP Semiconductors. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
