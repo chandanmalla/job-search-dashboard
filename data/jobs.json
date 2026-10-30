@@ -4748,5 +4748,24 @@
     "source": "Ganit Inc. Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Ganit Inc.. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J504",
+    "company": "Anko GCC",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 8 minutes ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-anko-gcc-4484837446",
+    "source": "Anko GCC Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Anko GCC. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
