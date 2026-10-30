@@ -80,6 +80,12 @@ _sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
 import job_filters as JF
 
 def build_dashboard():
+    try:
+        import merge_referral_updates as _MRU
+        _MRU.main()
+    except Exception as _e:
+        print(f"[build_site] referral merge skipped: {_e}")
+
     raw_jobs, db_applied, db_skipped = load_jobs_data()
     uprofile = load_user_profile()
     user_name = uprofile.get("name", "Chandan Malla")

@@ -72,6 +72,11 @@ def main():
         str(PY_EXE), str(SCRIPTS_DIR / "sweep_crawler.py")
     ])
 
+    # 2b. Merge referral updates from the LinkedIn outreach side channel
+    run_step("2b. Merging Referral Updates", [
+        str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\merge_referral_updates.py"
+    ])
+
     # 3. Run report generator if found_jobs_latest.json exists
     found_json = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\found_jobs_latest.json")
     if found_json.exists():
@@ -83,6 +88,11 @@ def main():
     # 4. Rebuild web dashboard (pre-seeds applied state into index.html)
     run_step("4. Rebuilding Web Dashboard (index.html + data/jobs.json)", [
         str(PY_EXE), str(PROJECT_DIR / "build_site.py")
+    ])
+
+    # 4b. Refresh outreach queue
+    run_step("4b. Refreshing Outreach Queue", [
+        str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\outreach_queue.py"
     ])
 
     # 5. Push updates to GitHub Pages
