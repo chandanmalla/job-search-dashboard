@@ -133,7 +133,7 @@ def reloc_tracked(kind, name, fn, *args):
 _LOC_HUBS = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai",
              "mumbai", "pune", "london", "england", "united kingdom", "great britain", "sydney", "melbourne", "australia"]
 # Relocation hubs: only accepted for RELOC sources (companies that relocate hires from India)
-_RELOC_HUBS = ["bangkok", "thailand", "singapore", "kuala lumpur", "petaling jaya", "malaysia", "jakarta",
+_RELOC_HUBS = ["bangkok", "thailand", "kuala lumpur", "petaling jaya", "malaysia", "jakarta",
                "indonesia", "amsterdam", "netherlands", "berlin", "germany", "dusseldorf", "d\u00fcsseldorf",
                "dublin", "ireland", "tokyo", "japan", "dubai", "united arab emirates"]
 RELOC_ON = [False]
@@ -141,7 +141,9 @@ def loc_ok(ll: str) -> bool:
     """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote.
     For relocation sources, also Bangkok/Singapore/KL/Jakarta/Amsterdam/Berlin/Dublin/Tokyo/Dubai."""
     ll = (ll or "").lower()
-    if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(sg|th|my|id|nl|de|ie|jp|ae)\b", ll)):
+    if "singapore" in ll or re.search(r"\bsg\b", ll):  # Chandan: no Singapore jobs from any source
+        return False
+    if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(th|my|id|nl|de|ie|jp|ae)\b", ll)):
         return True
     if any(h in ll for h in _LOC_HUBS) or re.search(r"\b(uk|gb|nsw|vic)\b", ll):
         return True
@@ -602,6 +604,8 @@ def run_crawler(force_mode=None, dry_run=False):
             continue
         if JF.company_excluded(job.get("company", "")):
             continue
+        if "singapore" in job.get("location", "").lower() or re.search(r"\bsg\b", job.get("location", "").lower()):
+            continue  # no Singapore jobs from any source
         lo, hi = JF.parse_exp_years(job.pop("_desc", ""))
         if not JF.exp_ok(lo, hi):
             print(f"  - exp filter drop [{job['company']}] {job['job_title']} ({JF.exp_label(lo, hi)})", flush=True)

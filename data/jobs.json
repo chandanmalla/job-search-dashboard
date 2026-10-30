@@ -4490,9 +4490,64 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Sam Bedell",
+          "profile_url": "https://www.linkedin.com/in/sambedell3/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Oscar Gibbon",
+          "profile_url": "https://www.linkedin.com/in/oscar-gibbon/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Oskar Nordin-Ryan",
+          "profile_url": "https://www.linkedin.com/in/oskarnordinryan/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Klaudia D.",
+          "profile_url": "https://www.linkedin.com/in/klaudia-d-a45498194/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Tanguy Matta",
+          "profile_url": "https://www.linkedin.com/in/tanguy-matta/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Melisa Hubenova",
+          "profile_url": "https://www.linkedin.com/in/melisa-hubenova/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        }
+      ],
+      "updated_at": "2026-10-30T22:55:00+05:30"
     }
   },
   {
@@ -4540,9 +4595,73 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Aarthi Balaraman",
+          "profile_url": "https://www.linkedin.com/in/aarthibalaraman/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Abhay Naik",
+          "profile_url": "https://www.linkedin.com/in/iamabhaynaik/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Ganesh S.",
+          "profile_url": "https://www.linkedin.com/in/mrganis/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Madhur Zadgaonkar",
+          "profile_url": "https://www.linkedin.com/in/madhurz/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Ashutosh Sharma",
+          "profile_url": "https://www.linkedin.com/in/ashutosh-sharma08/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Himansu Didwania",
+          "profile_url": "https://www.linkedin.com/in/himansu-didwania/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Harsh Maheshwari",
+          "profile_url": "https://www.linkedin.com/in/harshm121/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending; top card showed Georgia Tech, headline says Sarvam; employer unverified"
+        }
+      ],
+      "updated_at": "2026-10-30T22:55:00+05:30"
     }
   },
   {
@@ -5115,9 +5234,46 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Krishna Chaitanya Reddy Katta",
+          "profile_url": "https://www.linkedin.com/in/kcreddy/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Nishigandha Lad",
+          "profile_url": "https://www.linkedin.com/in/nishigandhalad/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Sumit Kumar",
+          "profile_url": "https://www.linkedin.com/in/sumitkumar0905/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Aashi Gupta",
+          "profile_url": "https://www.linkedin.com/in/aashi-gupta-871392202/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        }
+      ],
+      "updated_at": "2026-10-30T22:55:00+05:30"
     }
   },
   {
@@ -5397,9 +5553,55 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Saumya Agarwal",
+          "profile_url": "https://www.linkedin.com/in/saumya02/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Naveen Gundaraju",
+          "profile_url": "https://www.linkedin.com/in/naveen-gundaraju-hr/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Sarath Nair",
+          "profile_url": "https://www.linkedin.com/in/sarathnair-lin/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Abhishek Mamidi",
+          "profile_url": "https://www.linkedin.com/in/abhishekmamidi/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Akash Sheoran",
+          "profile_url": "https://www.linkedin.com/in/akashsheoran6494/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        }
+      ],
+      "updated_at": "2026-10-30T22:55:00+05:30"
     }
   },
   {
