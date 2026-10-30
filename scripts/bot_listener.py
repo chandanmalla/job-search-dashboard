@@ -88,6 +88,10 @@ def find_job(db: dict, job_id: str) -> dict | None:
             return j
     return None
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+import updates_lib as U
+
 def handle_applied(token, chat_id, db, db_path, args):
     if not args:
         send_message(token, chat_id,
@@ -105,9 +109,7 @@ def handle_applied(token, chat_id, db, db_path, args):
             f"ℹ️ `{jid}` — *{job.get('job_title','')}* at *{job.get('company','')}* "
             f"was already marked as applied.")
         return
-    applied.append(jid)
-    job["status"] = "Applied"
-    save_db(db_path, db)
+    U.append_updates(applied=[(jid, None)])  # merged into tracked_jobs.json by the next crawl
     ts = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z")
     send_message(token, chat_id,
         f"✅ Marked as *Applied* at {ts}\n\n"
@@ -131,9 +133,7 @@ def handle_skip(token, chat_id, db, db_path, args):
         send_message(token, chat_id,
             f"ℹ️ `{jid}` was already marked as skipped.")
         return
-    skipped.append(jid)
-    job["status"] = "Skipped"
-    save_db(db_path, db)
+    U.append_updates(skipped=[(jid, None)])  # merged into tracked_jobs.json by the next crawl
     send_message(token, chat_id,
         f"🚫 Marked as *Not Interested*\n\n"
         f"*{jid}* — {job.get('job_title','')} @ {job.get('company','')}\n\n"

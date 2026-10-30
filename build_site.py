@@ -629,6 +629,7 @@ def build_dashboard():
         <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
+        <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Sync Mark Applied / Skip / Mark Referred straight to the dashboard via GitHub">Connect GitHub</button>
         <button class="btn-action" id="btnEditContact" title="Update your name, phone number, and email for referral messages">⚙️ My Contact Info</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
@@ -682,7 +683,7 @@ def build_dashboard():
       return `<span class="badge" title="${{tip}}" style="background:${{REF_COLORS[s]||'#64748b'}};color:#fff;">🤝 ${{REF_LABELS[s]||s}}${{n ? ' · ' + n : ''}}</span>`;
     }}
     window.toggleReferred = function(id) {{
-      if (referredLocal.has(id)) referredLocal.delete(id); else referredLocal.add(id);
+      if (referredLocal.has(id)) referredLocal.delete(id); else {{ referredLocal.add(id); window.ghPush && ghPush(id, 'referred'); }}
       localStorage.setItem('referred_jobs', JSON.stringify([...referredLocal]));
       updateStats(); renderTable();
     }};
@@ -845,6 +846,7 @@ def build_dashboard():
       }} else {{
         appliedJobs.add(id);
         skippedJobs.delete(id);
+        window.ghPush && ghPush(id, 'applied');
       }}
       localStorage.setItem('applied_jobs', JSON.stringify([...appliedJobs]));
       localStorage.setItem('skipped_jobs', JSON.stringify([...skippedJobs]));
@@ -859,6 +861,7 @@ def build_dashboard():
       }} else {{
         skippedJobs.add(id);
         appliedJobs.delete(id);
+        window.ghPush && ghPush(id, 'skipped');
       }}
       localStorage.setItem('applied_jobs', JSON.stringify([...appliedJobs]));
       localStorage.setItem('skipped_jobs', JSON.stringify([...skippedJobs]));
@@ -1079,6 +1082,90 @@ ${{savedName}}
         plugins: {{ legend: {{ position: 'bottom' }} }}
       }}
     }});
+    // ===== Direct GitHub sync: marks go to data/applied_inbox.json (token stays in this browser only) =====
+    const GH_REPO = 'chandanmalla/job-search-dashboard', GH_BRANCH = 'main', GH_PATH = 'data/applied_inbox.json';
+    const GH_API = `https://api.github.com/repos/${{GH_REPO}}/contents/${{GH_PATH}}`;
+    function ghToken() {{ return localStorage.getItem('gh_token') || ''; }}
+    function ghToast(msg, ok) {{
+      const t = document.getElementById('toast'); if (!t) {{ if (!ok) alert(msg); return; }}
+      t.textContent = msg; t.style.background = ok ? '#10b981' : '#dc2626'; t.style.opacity = 1;
+      clearTimeout(window._ghT); window._ghT = setTimeout(() => {{ t.style.opacity = 0; t.style.background = '#10b981'; }}, ok ? 2500 : 7000);
+    }}
+    function ghB64Decode(s) {{ const b = atob(s.replace(/\\n/g, '')); return new TextDecoder().decode(Uint8Array.from(b, c => c.charCodeAt(0))); }}
+    function ghB64Encode(s) {{ const u = new TextEncoder().encode(s); let b = ''; u.forEach(x => b += String.fromCharCode(x)); return btoa(b); }}
+    let ghQueue = JSON.parse(localStorage.getItem('gh_pending') || '[]');
+    let ghBusy = false;
+    function ghSavePending() {{ localStorage.setItem('gh_pending', JSON.stringify(ghQueue)); ghRenderStatus(); }}
+    window.ghPush = function(id, action) {{
+      ghQueue.push({{ job_id: id, action: action, ts: new Date().toISOString() }});
+      ghSavePending();
+      if (!ghToken()) {{ ghToast('Saved on this device only. Click "Connect GitHub" to sync marks to the dashboard.', false); return; }}
+      ghFlush();
+    }};
+    async function ghFlush() {{
+      if (ghBusy || !ghQueue.length || !ghToken()) return;
+      ghBusy = true;
+      const batch = ghQueue.slice();
+      try {{
+        for (let attempt = 1; attempt <= 4; attempt++) {{
+          const h = {{ 'Authorization': 'Bearer ' + ghToken(), 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }};
+          let sha, cur = [];
+          const g = await fetch(GH_API + '?ref=' + GH_BRANCH + '&t=' + Date.now(), {{ headers: h, cache: 'no-store' }});
+          if (g.status === 200) {{ const d = await g.json(); sha = d.sha; try {{ cur = JSON.parse(ghB64Decode(d.content) || '[]'); }} catch (e) {{ cur = []; }} }}
+          else if (g.status === 401) throw new Error('GitHub token invalid or expired (401). Reconnect GitHub.');
+          else if (g.status === 403) throw new Error('GitHub token lacks access (403). It needs Contents: Read and write on ' + GH_REPO + '.');
+          else if (g.status !== 404) throw new Error('GitHub read failed (' + g.status + ').');
+          const next = cur.concat(batch);
+          const body = {{ message: 'Dashboard marks: ' + batch.map(b => b.action + ' ' + b.job_id).join(', '), content: ghB64Encode(JSON.stringify(next, null, 2) + '\\n'), branch: GH_BRANCH }};
+          if (sha) body.sha = sha;
+          const p = await fetch(GH_API, {{ method: 'PUT', headers: h, body: JSON.stringify(body) }});
+          if (p.status === 200 || p.status === 201) {{
+            ghQueue = ghQueue.slice(batch.length); ghSavePending();
+            ghToast('Synced to GitHub: ' + batch.map(b => b.job_id).join(', ') + ' (dashboard updates in ~1-2 min)', true);
+            ghBusy = false; if (ghQueue.length) ghFlush(); return;
+          }}
+          if (p.status === 409 || p.status === 422) {{ await new Promise(r => setTimeout(r, 400 * attempt)); continue; }}
+          if (p.status === 401) throw new Error('GitHub token invalid or expired (401). Reconnect GitHub.');
+          if (p.status === 403) throw new Error('GitHub token lacks write access (403). It needs Contents: Read and write.');
+          throw new Error('GitHub write failed (' + p.status + ').');
+        }}
+        throw new Error('GitHub kept reporting a conflict; will retry on next mark or reload.');
+      }} catch (e) {{
+        ghToast('Sync failed: ' + (e.message || e) + ' Marks are kept on this device and will retry.', false);
+      }}
+      ghBusy = false;
+    }}
+    function ghRenderStatus() {{
+      const b = document.getElementById('btnGithub'); if (!b) return;
+      const n = ghQueue.length;
+      b.textContent = ghToken() ? ('GitHub: connected' + (n ? ' (' + n + ' pending)' : '')) : ('Connect GitHub' + (n ? ' (' + n + ' pending)' : ''));
+      b.style.background = ghToken() ? '#16a34a' : '#475569';
+    }}
+    document.getElementById('btnGithub').addEventListener('click', () => {{
+      if (ghToken()) {{
+        if (confirm('GitHub is connected. Disconnect and remove the token from this browser?')) {{ localStorage.removeItem('gh_token'); ghRenderStatus(); ghToast('GitHub token removed from this browser.', true); }}
+        return;
+      }}
+      const t = prompt('Paste a fine-grained GitHub token with access only to ' + GH_REPO + ' (Contents: Read and write). It is stored only in this browser.');
+      if (!t || !t.trim()) return;
+      localStorage.setItem('gh_token', t.trim()); ghRenderStatus();
+      fetch('https://api.github.com/repos/' + GH_REPO, {{ headers: {{ 'Authorization': 'Bearer ' + t.trim(), 'Accept': 'application/vnd.github+json' }} }})
+        .then(r => {{ if (r.ok) {{ ghToast('GitHub connected.', true); ghFlush(); }} else ghToast('Token check failed (' + r.status + '). Check the token and its repo access.', false); }})
+        .catch(() => ghToast('Could not reach GitHub to check the token.', false));
+    }});
+    ghRenderStatus();
+    // Apply marks already in the inbox (not yet merged by the crawl) so every device sees them
+    fetch('data/applied_inbox.json?t=' + Date.now(), {{ cache: 'no-store' }}).then(r => r.ok ? r.json() : []).then(list => {{
+      const all = (list || []).concat(ghQueue);
+      if (!all.length) return;
+      all.forEach(e => {{
+        if (e.action === 'applied') {{ appliedJobs.add(e.job_id); skippedJobs.delete(e.job_id); }}
+        else if (e.action === 'skipped') {{ if (!appliedJobs.has(e.job_id)) skippedJobs.add(e.job_id); }}
+        else if (e.action === 'referred') referredLocal.add(e.job_id);
+      }});
+      updateStats(); renderTable();
+    }}).catch(() => {{}});
+    if (ghQueue.length) ghFlush();
   </script>
 </body>
 </html>

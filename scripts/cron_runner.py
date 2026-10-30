@@ -62,7 +62,13 @@ def main():
     now_str = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M IST")
     log(f"[cron] Starting alternating 2-hourly job sweep (Top Product Companies) at {now_str}...", flush=True)
 
-    # 1. Sync applied/skipped commands sent to Telegram
+    # 0. Pull website marks (data/applied_inbox.json) committed from the dashboard
+    run_step("0. Git Pull (rebase, autostash)", [str(GIT_EXE), "pull", "--rebase", "--autostash", "origin", "main"])
+
+    # 0b. Move website marks into job-tracker/*_updates.json and clear the inbox
+    run_step("0b. Processing Website Marks Inbox", [str(PY_EXE), str(SCRIPTS_DIR / "process_inbox.py")])
+
+    # 1. Sync applied/skipped commands sent to Telegram (fallback; writes *_updates.json only)
     run_step("1. Syncing Applied Jobs from Telegram", [
         str(PY_EXE), str(SCRIPTS_DIR / "sync_applied_from_telegram.py")
     ])
@@ -72,7 +78,7 @@ def main():
         str(PY_EXE), str(SCRIPTS_DIR / "sweep_crawler.py")
     ])
 
-    # 2b. Merge referral updates from the LinkedIn outreach side channel
+    # 2b. Merge applied/skipped/referral updates (website, Telegram, outreach) into tracked_jobs.json
     run_step("2b. Merging Referral Updates", [
         str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\merge_referral_updates.py"
     ])
@@ -99,6 +105,9 @@ def main():
     run_step("5. Git Add", [str(GIT_EXE), "add", "."])
     commit_msg = f"Automated 2-hourly sweep update ({now_str})"
     run_step("6. Git Commit", [str(GIT_EXE), "commit", "-m", commit_msg])
+    # 6b. Re-sync with any marks pushed from the website during this run; on conflict keep remote inbox
+    #     (already-processed entries are deduped next run)
+    run_step("6b. Git Pull before push", [str(GIT_EXE), "pull", "--rebase", "--autostash", "-X", "ours", "origin", "main"])
     ok = run_step("7. Git Push to GitHub Pages", [str(GIT_EXE), "push", "origin", "main"])
     log(f"[cron] Git push {'succeeded' if ok else 'FAILED'}.")
 

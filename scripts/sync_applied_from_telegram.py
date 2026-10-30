@@ -3,7 +3,8 @@ Sync Applied Jobs From Telegram
 ===============================
 Called at the beginning of each 2-hour cron run (or on-demand).
 Pulls all pending /applied and /skip messages sent to the Telegram bot,
-updates tracked_jobs.json, and acknowledges the messages.
+appends them to job-tracker/*_updates.json (merged by merge_referral_updates.py),
+and acknowledges the messages. Never writes tracked_jobs.json; the Telegram offset lives in tg_offset.json.
 
 Supports single or multiple IDs in one command:
     /applied J001
@@ -55,6 +56,18 @@ def tg_send(token, chat_id, text):
 import sys as _sys
 _sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
 import job_filters as JF
+_sys.path.insert(0, str(Path(__file__).parent))
+import updates_lib as U
+OFFSET_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\tg_offset.json")
+
+def load_offset(db):
+    try:
+        return int(json.loads(OFFSET_PATH.read_text(encoding='utf-8')).get('last_tg_offset', 0))
+    except Exception:
+        return int(db.get('last_tg_offset', 0) or 0)
+
+def save_offset(off):
+    OFFSET_PATH.write_text(json.dumps({'last_tg_offset': off}), encoding='utf-8')
 
 def sync_from_telegram():
     cfg = load_config()
@@ -64,7 +77,7 @@ def sync_from_telegram():
     db_path = cfg["tracked_jobs_db"]
 
     db = load_db(db_path)
-    offset = db.get("last_tg_offset", 0)
+    offset = load_offset(db)
 
     url = f"https://api.telegram.org/bot{token}/getUpdates?offset={offset}&timeout=2"
     try:
@@ -85,6 +98,7 @@ def sync_from_telegram():
     jobs_map = {j.get("job_id", "").upper(): j for j in db.get("all_jobs", [])}
 
     newly_actioned = []
+    upd_applied, upd_skipped, upd_referred, upd_direct = [], [], [], []
 
     for upd in updates:
         offset = upd["update_id"] + 1
@@ -104,36 +118,35 @@ def sync_from_telegram():
 
         if cmd == "applied":
             for jid in ids:
-                applied_set.add(jid)
-                skipped_set.discard(jid)
-                if jid in jobs_map:
-                    jobs_map[jid]["status"] = "Applied"
+                upd_applied.append((jid, None))
                 newly_actioned.append((jid, "Applied"))
             tg_send(token, chat_id, f"âœ… Marked as *Applied*: `{', '.join(ids)}`\n_Excluded from future sweeps and updated on dashboard._")
 
         elif cmd == "skip":
             for jid in ids:
-                skipped_set.add(jid)
-                applied_set.discard(jid)
-                if jid in jobs_map:
-                    jobs_map[jid]["status"] = "Skipped"
+                upd_skipped.append((jid, None))
                 newly_actioned.append((jid, "Skipped"))
             tg_send(token, chat_id, f"ðŸš« Marked as *Skipped*: `{', '.join(ids)}`\n_Hidden from future sweeps._")
 
         elif cmd in ("referred", "direct"):
             new_status = "referred" if cmd == "referred" else "apply_direct"
             for jid in ids:
-                if jid in jobs_map:
-                    JF.ensure_fields(jobs_map[jid])
-                    jobs_map[jid]["referral"]["status"] = new_status
-                    jobs_map[jid]["referral"]["updated_at"] = JF.now_ist()
-                    newly_actioned.append((jid, new_status))
+                if new_status == "referred":
+                    upd_referred.append((jid, None))
+                else:
+                    upd_direct.append(jid)
+                newly_actioned.append((jid, new_status))
             tg_send(token, chat_id, f"Referral status set to *{new_status}*: `{', '.join(ids)}`")
 
-    db["applied"] = sorted(list(applied_set))
-    db["skipped"] = sorted(list(skipped_set))
-    db["last_tg_offset"] = offset
-    save_db(db_path, db)
+    res = U.append_updates(applied=upd_applied, skipped=upd_skipped, referred=upd_referred)
+    if upd_direct:
+        import json as _j
+        p = U.JT / "referral_updates.json"; data = _j.loads(p.read_text(encoding="utf-8") or "[]") if p.exists() else []
+        for jid in upd_direct:
+            data.append({"job_id": jid, "status": "apply_direct", "contacts": [], "updated_at": U.now_ist()})
+        U._save(p, data)
+    save_offset(offset)
+    print(f"[sync_tg] queued update records: {res}, apply_direct={len(upd_direct)}")
 
     print(f"[sync_tg] Processed {len(newly_actioned)} actions from Telegram. New offset: {offset}")
     return newly_actioned
