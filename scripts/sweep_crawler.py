@@ -111,13 +111,38 @@ def tracked(kind, name, fn, *args):
     STATS.append({"type": kind, "source": name, "kept": len(res), "error": LAST_ERR[0] if LAST_ERR else ""})
     return res
 
+def reloc_tracked(kind, name, fn, *args):
+    """Like tracked(), but accepts relocation hubs and tags the relocation field from the posting text."""
+    RELOC_ON[0] = True
+    try:
+        res = tracked(kind, "[reloc] " + name, fn, *args)
+    finally:
+        RELOC_ON[0] = False
+    for j in res:
+        txt = (j.get("job_title", "") + " " + j.get("_desc", "")).lower()
+        if "relocat" in txt:
+            j["relocation"] = "Relocation mentioned in posting"
+        elif not any(h in j.get("location", "").lower() for h in _LOC_HUBS):
+            j["relocation"] = "Relocation-friendly employer (not stated in posting)"
+        if not any(h in j.get("location", "").lower() for h in _LOC_HUBS):
+            j["visa_sponsorship"] = "Employer-sponsored work visa typical (check posting)"
+    return res
+
 
 
 _LOC_HUBS = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai",
              "mumbai", "pune", "london", "england", "united kingdom", "great britain", "sydney", "melbourne", "australia"]
+# Relocation hubs: only accepted for RELOC sources (companies that relocate hires from India)
+_RELOC_HUBS = ["bangkok", "thailand", "singapore", "kuala lumpur", "petaling jaya", "malaysia", "jakarta",
+               "indonesia", "amsterdam", "netherlands", "berlin", "germany", "dusseldorf", "d\u00fcsseldorf",
+               "dublin", "ireland", "tokyo", "japan", "dubai", "united arab emirates"]
+RELOC_ON = [False]
 def loc_ok(ll: str) -> bool:
-    """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote."""
+    """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote.
+    For relocation sources, also Bangkok/Singapore/KL/Jakarta/Amsterdam/Berlin/Dublin/Tokyo/Dubai."""
     ll = (ll or "").lower()
+    if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(sg|th|my|id|nl|de|ie|jp|ae)\b", ll)):
+        return True
     if any(h in ll for h in _LOC_HUBS) or re.search(r"\b(uk|gb|nsw|vic)\b", ll):
         return True
     if "remote" in ll:
@@ -202,7 +227,7 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
             data = json.loads(resp.read().decode())
             for j in data.get("jobs", []):
                 title = j.get("title", "")
-                loc = j.get("locationName") or ""
+                loc = j.get("locationName") or (j.get("location") if RELOC_ON[0] else "") or ""
                 tl, ll = title.lower(), loc.lower()
                 if is_target_science_role(title):
                     # For Frontier AI labs, null/empty location denotes global AI research hubs
@@ -466,7 +491,6 @@ def run_crawler(force_mode=None, dry_run=False):
 
         # 1. Emerging SaaS & Consumer Greenhouse Feeds
         greenhouse_targets = [
-            ("agoda", "Agoda"),
             ("doordashusa", "DoorDash"),
             ("instacart", "Instacart"),
             ("lyft", "Lyft"),
@@ -534,6 +558,34 @@ def run_crawler(force_mode=None, dry_run=False):
         discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "London, England, United Kingdom", target_locs))
         discovered.extend(tracked("search48h", "Senior Applied Scientist", fetch_linkedin_guest, "Senior Applied Scientist", "London, England, United Kingdom", target_locs))
         discovered.extend(tracked("search48h", "Senior Data Scientist", fetch_linkedin_guest, "Senior Data Scientist", "Sydney, New South Wales, Australia", target_locs))
+
+    # -------------------------------------------------------------------------
+    # RELOCATION SOURCES (every run): international employers that relocate DS hires from India.
+    # Location filter widened to SE Asia / EU / Japan / UAE hubs for these sources only.
+    # -------------------------------------------------------------------------
+    print("[sweep_crawler] Checking relocation-friendly international employers...", flush=True)
+    for slug, name in [("agoda", "Agoda"), ("getyourguide", "GetYourGuide"), ("hellofresh", "HelloFresh"),
+                       ("adyen", "Adyen"), ("trivago", "trivago"), ("sumup", "SumUp")]:
+        discovered.extend(reloc_tracked("greenhouse", name, fetch_greenhouse_board, slug, name, target_locs))
+    discovered.extend(reloc_tracked("ashby", "Airwallex", fetch_ashby_board, "airwallex", "Airwallex", target_locs))
+    for slug, name in [("Grab", "Grab"), ("DeliveryHero", "Delivery Hero")]:
+        res = reloc_tracked("smartrecruiters", name, fetch_smartrecruiters_board, slug, name, target_locs)
+        if slug == "Grab":  # Chandan: Grab only Bangkok (Thailand) and India roles
+            india = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai", "mumbai", "pune", ", in"]
+            res = [j for j in res if any(h in j.get("location", "").lower() for h in ["bangkok", "thailand", ", th"] + india)]
+            STATS[-1]["kept"] = len(res)
+        discovered.extend(res)
+    # No public ATS API: fresh (48h) LinkedIn guest search at their main hub
+    for q, loc, must in [("Data Scientist Booking.com", "Amsterdam, North Holland, Netherlands", "booking"),
+                         ("Data Scientist Shopee", "Singapore", "shopee"),
+                         ("Data Scientist Zalando", "Berlin, Germany", "zalando"),
+                         ("Data Scientist Rakuten", "Tokyo, Japan", "rakuten"),
+                         ("Data Scientist Agoda", "Bangkok, Thailand", "agoda"),
+                         ("Data Scientist LINE MAN Wongnai", "Bangkok, Thailand", "line man")]:
+        res = reloc_tracked("search48h", f"{q} @ {loc.split(',')[0]}", fetch_linkedin_guest, q, loc, target_locs, "r604800")  # past 7 days
+        res = [j for j in res if must in j.get("company", "").lower()]  # keep only the named employer
+        STATS[-1]["kept"] = len(res)
+        discovered.extend(res)
 
     # Deduplicate against DB and within batch
     to_add = []
