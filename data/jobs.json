@@ -5599,9 +5599,45 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Pranay Bhardwaj",
+          "profile_url": "https://www.linkedin.com/in/bhardwajpranay/",
+          "title": "Director of Product Management, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T23:01:00+05:30",
+          "last_message_at": "2026-10-30T23:01:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Vasanth Murukuri",
+          "profile_url": "https://www.linkedin.com/in/vasanth-murukuri-748384221/",
+          "title": "Data Scientist 2, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T23:01:00+05:30",
+          "last_message_at": "2026-10-30T23:01:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Chetan Sobti",
+          "profile_url": "https://www.linkedin.com/in/chetan2020/",
+          "title": "Senior Software Engineer, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T10:24:00+05:30",
+          "last_message_at": "2026-10-30T10:24:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
         }
       ],
-      "updated_at": "2026-10-30T22:55:00+05:30"
+      "updated_at": "2026-10-30T23:05:00+05:30"
     }
   },
   {
@@ -5649,9 +5685,91 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Saumya Agarwal",
+          "profile_url": "https://www.linkedin.com/in/saumya02/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Naveen Gundaraju",
+          "profile_url": "https://www.linkedin.com/in/naveen-gundaraju-hr/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Sarath Nair",
+          "profile_url": "https://www.linkedin.com/in/sarathnair-lin/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Abhishek Mamidi",
+          "profile_url": "https://www.linkedin.com/in/abhishekmamidi/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Akash Sheoran",
+          "profile_url": "https://www.linkedin.com/in/akashsheoran6494/",
+          "messages_sent": 0,
+          "first_message_at": null,
+          "replied": false,
+          "reminders_sent": 0,
+          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+        },
+        {
+          "name": "Pranay Bhardwaj",
+          "profile_url": "https://www.linkedin.com/in/bhardwajpranay/",
+          "title": "Director of Product Management, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T23:01:00+05:30",
+          "last_message_at": "2026-10-30T23:01:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Vasanth Murukuri",
+          "profile_url": "https://www.linkedin.com/in/vasanth-murukuri-748384221/",
+          "title": "Data Scientist 2, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T23:01:00+05:30",
+          "last_message_at": "2026-10-30T23:01:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
+        },
+        {
+          "name": "Chetan Sobti",
+          "profile_url": "https://www.linkedin.com/in/chetan2020/",
+          "title": "Senior Software Engineer, JioHotstar",
+          "messages_sent": 1,
+          "first_message_at": "2026-10-30T10:24:00+05:30",
+          "last_message_at": "2026-10-30T10:24:00+05:30",
+          "replied": false,
+          "reminders_sent": 0,
+          "cv_attached": true,
+          "notes": "1st-degree connection; FIRST referral message with CV sent"
+        }
+      ],
+      "updated_at": "2026-10-30T23:05:00+05:30"
     }
   },
   {
@@ -6133,6 +6251,31 @@
     }
   },
   {
+    "id": "J532",
+    "company": "Agoda",
+    "title": "Data Scientist/Senior Analyst (Supply Analytics, Bangkok-based, Relocation provided)",
+    "location": "Bangkok",
+    "city": "Bangkok",
+    "country": "Global / Other",
+    "posted": "Updated 2026-10-16",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, causal inference, deep learning, PyTorch, SQL",
+    "visa": "Employer-sponsored work visa typical (check posting)",
+    "visaCat": "Unknown",
+    "reloc": "Relocation mentioned in posting",
+    "link": "https://job-boards.greenhouse.io/agoda/jobs/8119068",
+    "source": "Agoda Careers (Greenhouse)",
+    "why_fits": "Core Data Science / Applied Science role at Agoda. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "2-5 yrs",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
     "id": "J544",
     "company": "Grab",
     "title": "Senior Data Scientist",
@@ -6147,6 +6290,31 @@
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
     "link": "https://jobs.smartrecruiters.com/Grab/744000152120089",
+    "source": "Grab Careers (SmartRecruiters)",
+    "why_fits": "Core Data Science / Applied Science role at Grab.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J545",
+    "company": "Grab",
+    "title": "Senior Data Scientist (Country and Marketing Analytics)",
+    "location": "Bangkok, TH",
+    "city": "Bangkok, TH",
+    "country": "Global / Other",
+    "posted": "Posted 2026-08-25",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "Employer-sponsored work visa typical (check posting)",
+    "visaCat": "Unknown",
+    "reloc": "Relocation-friendly employer (not stated in posting)",
+    "link": "https://jobs.smartrecruiters.com/Grab/744000145412609",
     "source": "Grab Careers (SmartRecruiters)",
     "why_fits": "Core Data Science / Applied Science role at Grab.",
     "isNew": true,
