@@ -4786,5 +4786,43 @@
     "source": "NXP Semiconductors Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at NXP Semiconductors. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true
+  },
+  {
+    "id": "J506",
+    "company": "Birlasoft",
+    "title": "Data Scientist- Databricks Genie",
+    "location": "Greater Bengaluru Area",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 23 minutes ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-databricks-genie-at-birlasoft-4485344053",
+    "source": "Birlasoft Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Birlasoft. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
+  },
+  {
+    "id": "J507",
+    "company": "eBay",
+    "title": "Data Science, Selling Experiences",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-science-selling-experiences-at-ebay-4483432727",
+    "source": "eBay Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at eBay. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true
   }
 ]
