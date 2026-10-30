@@ -52,6 +52,10 @@ def tg_send(token, chat_id, text):
         print(f"[sync_tg] send error: {e}")
         return {"ok": False}
 
+import sys as _sys
+_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
+import job_filters as JF
+
 def sync_from_telegram():
     cfg = load_config()
     token = cfg["telegram"]["bot_token"]
@@ -115,6 +119,16 @@ def sync_from_telegram():
                     jobs_map[jid]["status"] = "Skipped"
                 newly_actioned.append((jid, "Skipped"))
             tg_send(token, chat_id, f"ðŸš« Marked as *Skipped*: `{', '.join(ids)}`\n_Hidden from future sweeps._")
+
+        elif cmd in ("referred", "direct"):
+            new_status = "referred" if cmd == "referred" else "apply_direct"
+            for jid in ids:
+                if jid in jobs_map:
+                    JF.ensure_fields(jobs_map[jid])
+                    jobs_map[jid]["referral"]["status"] = new_status
+                    jobs_map[jid]["referral"]["updated_at"] = JF.now_ist()
+                    newly_actioned.append((jid, new_status))
+            tg_send(token, chat_id, f"Referral status set to *{new_status}*: `{', '.join(ids)}`")
 
     db["applied"] = sorted(list(applied_set))
     db["skipped"] = sorted(list(skipped_set))

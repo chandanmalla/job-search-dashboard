@@ -33,6 +33,10 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9"
 }
 
+import sys as _sys
+_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
+import job_filters as JF
+
 def load_state():
     if STATE_PATH.exists():
         try:
@@ -122,7 +126,7 @@ def loc_ok(ll: str) -> bool:
     return False
 
 def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
-    url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs"
+    url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true"
     jobs = []
     try:
         req = urllib.request.Request(url, headers=HEADERS)
@@ -147,6 +151,7 @@ def fetch_greenhouse_board(slug: str, company_name: str, target_locs):
                             "relocation": "Not stated",
                             "link": j.get("absolute_url"),
                             "source": f"{company_name} Careers (Greenhouse)",
+                            "_desc": __import__("html").unescape(j.get("content") or ""),
                             "why_fits": f"Core Data Science / Applied Science role at {company_name}. Strong match for statistical modeling and ML science.",
                             "stretch": False
                         })
@@ -180,6 +185,7 @@ def fetch_lever_board(slug: str, company_name: str, target_locs):
                             "relocation": "Not stated",
                             "link": j.get("hostedUrl"),
                             "source": f"{company_name} Careers (Lever)",
+                            "_desc": (j.get("descriptionPlain") or "") + " " + " ".join((l.get("content") or "") for l in (j.get("lists") or [])) + " " + (j.get("additionalPlain") or ""),
                             "why_fits": f"Core Data Science / Applied Science role at {company_name}. Focuses on algorithmic modeling and decision science.",
                             "stretch": False
                         })
@@ -214,6 +220,7 @@ def fetch_ashby_board(slug: str, company_name: str, target_locs):
                             "relocation": "Relocation supported where applicable",
                             "link": j.get("jobUrl"),
                             "source": f"{company_name} AI Careers (Ashby)",
+                            "_desc": j.get("descriptionPlain") or j.get("descriptionHtml") or "",
                             "why_fits": f"Frontier applied science position at {company_name}. Research, evaluations, and empirical modeling.",
                             "stretch": False
                         })
@@ -539,8 +546,16 @@ def run_crawler(force_mode=None, dry_run=False):
             continue
         if not is_top_product_company(job.get("company", "")):
             continue
-        if not is_target_science_role(job.get("job_title", "")):
+        if not is_target_science_role(job.get("job_title", "")) or not JF.title_ok(job.get("job_title", "")):
             continue
+        if JF.company_excluded(job.get("company", "")):
+            continue
+        lo, hi = JF.parse_exp_years(job.pop("_desc", ""))
+        if not JF.exp_ok(lo, hi):
+            print(f"  - exp filter drop [{job['company']}] {job['job_title']} ({JF.exp_label(lo, hi)})", flush=True)
+            continue
+        job["_exp_min"], job["_exp_max"] = lo, hi
+        job["exp_years"] = JF.exp_label(lo, hi)
 
         link = job.get("link", "")
         key = (job["company"].lower(), job["job_title"].lower())

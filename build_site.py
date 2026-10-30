@@ -75,6 +75,10 @@ def is_pure_science_role(title: str) -> bool:
         return False
     return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
 
+import sys as _sys
+_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
+import job_filters as JF
+
 def build_dashboard():
     raw_jobs, db_applied, db_skipped = load_jobs_data()
     uprofile = load_user_profile()
@@ -88,9 +92,8 @@ def build_dashboard():
         company = j.get("company", "")
         title = j.get("job_title", "")
         # Strictly require Top Product Companies and Data Science / Applied Science
-        if not is_top_product_company(company):
-            continue
-        if not is_pure_science_role(title):
+        JF.ensure_fields(j)  # adds exp_years / referral / dashboard_visible if missing (in-memory only)
+        if not j.get("dashboard_visible", True) and (j.get("status") or "").lower() != "applied":
             continue
 
         loc = j.get("location", "")
@@ -138,7 +141,9 @@ def build_dashboard():
             "link": j.get("link", ""),
             "source": j.get("source", ""),
             "why_fits": j.get("why_fits", ""),
-            "isNew": True
+            "isNew": True,
+            "expYears": j.get("exp_years", "not stated"),
+            "referral": j.get("referral") or JF.default_referral()
         })
 
     # Save to data/jobs.json
@@ -147,6 +152,7 @@ def build_dashboard():
         json.dump(jobs, f, indent=2, ensure_ascii=False)
     print(f"Saved {len(jobs)} jobs to {out_json}")
 
+    jobs_embed = json.dumps(jobs, ensure_ascii=False).replace("</", "<\\/")
     # Build HTML Dashboard
     html = f"""<!doctype html>
 <html lang="en">
@@ -572,6 +578,14 @@ def build_dashboard():
         <div class="val" id="kpiAU">0</div>
       </div>
       <div class="kpi-card">
+        <div class="lbl">Referred</div>
+        <div class="val" id="kpiReferred">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Needs Direct Apply</div>
+        <div class="val" id="kpiDirect">0</div>
+      </div>
+      <div class="kpi-card">
         <div class="lbl">Target Companies</div>
         <div class="val" id="kpiCompanies">0</div>
       </div>
@@ -606,6 +620,7 @@ def build_dashboard():
         <select id="selCompany"><option value="">All Companies</option></select>
         <select id="selVisa"><option value="">All Sponsorship</option></select>
         <select id="selExp"><option value="">All Experience Fit</option></select>
+        <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
         <button class="btn-action" id="btnEditContact" title="Update your name, phone number, and email for referral messages">⚙️ My Contact Info</button>
@@ -639,7 +654,7 @@ def build_dashboard():
   </footer>
 
 
-  <script id="jobs-data" type="application/json">{json.dumps(jobs, ensure_ascii=False)}</script>
+  <script id="jobs-data" type="application/json">{jobs_embed}</script>
 
   <script>
     const JOBS = JSON.parse(document.getElementById('jobs-data').textContent);
@@ -649,6 +664,23 @@ def build_dashboard():
     // Persistent storage for Applied & Skipped jobs, merging DB state + browser localStorage
     let appliedJobs = new Set([...DB_APPLIED, ...JSON.parse(localStorage.getItem('applied_jobs') || '[]')]);
     let skippedJobs = new Set([...DB_SKIPPED, ...JSON.parse(localStorage.getItem('skipped_jobs') || '[]')]);
+
+    // Referral status: DB value, overridden by manual "Mark Referred" saved in localStorage
+    let referredLocal = new Set(JSON.parse(localStorage.getItem('referred_jobs') || '[]'));
+    const REF_COLORS = {{none:'#64748b', requested:'#0284c7', reminded:'#7c3aed', referred:'#16a34a', no_response:'#d97706', apply_direct:'#dc2626'}};
+    const REF_LABELS = {{none:'No referral', requested:'Referral requested', reminded:'Reminded', referred:'Referred', no_response:'No response', apply_direct:'Apply direct'}};
+    function refStatus(j) {{ return referredLocal.has(j.id) ? 'referred' : ((j.referral && j.referral.status) || 'none'); }}
+    function refBadge(j) {{
+      const s = refStatus(j); const n = (j.referral && j.referral.contacts || []).length;
+      const tip = (j.referral && j.referral.contacts || []).map(c => c.name + (c.first_message_at ? ' (msg ' + c.first_message_at.slice(0,16).replace('T',' ') + ')' : '')).join(', ');
+      return `<span class="badge" title="${{tip}}" style="background:${{REF_COLORS[s]||'#64748b'}};color:#fff;">🤝 ${{REF_LABELS[s]||s}}${{n ? ' · ' + n : ''}}</span>`;
+    }}
+    window.toggleReferred = function(id) {{
+      if (referredLocal.has(id)) referredLocal.delete(id); else referredLocal.add(id);
+      localStorage.setItem('referred_jobs', JSON.stringify([...referredLocal]));
+      updateStats(); renderTable();
+    }};
+    let refFilter = '';
 
     let state = {{
       search: '',
@@ -669,6 +701,8 @@ def build_dashboard():
       document.getElementById('kpiUK').textContent = JOBS.filter(j => j.country === 'UK').length;
       document.getElementById('kpiAU').textContent = JOBS.filter(j => j.country === 'Australia').length;
       document.getElementById('kpiBacklog').textContent = JOBS.filter(j => !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
+      document.getElementById('kpiReferred').textContent = JOBS.filter(j => refStatus(j) === 'referred').length;
+      document.getElementById('kpiDirect').textContent = JOBS.filter(j => ['apply_direct','no_response'].includes(refStatus(j)) && !appliedJobs.has(j.id)).length;
       document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
     }}
 
@@ -716,6 +750,9 @@ def build_dashboard():
           matchesStatus = isSkipped;
         }}
 
+        const rs = refStatus(j);
+        const matchesRef = !refFilter || (refFilter === 'pending' ? (rs === 'requested' || rs === 'reminded') : refFilter === 'apply_direct' ? (rs === 'apply_direct' || rs === 'no_response') : rs === refFilter);
+        if (!matchesRef) return false;
         return matchesQ && matchesCountry && matchesCity && matchesCompany && matchesVisa && matchesExp && matchesStatus;
       }});
 
@@ -761,12 +798,14 @@ def build_dashboard():
               <div class="action-group">
                 ${{trackBtn}}
                 ${{skipBtn}}
+                <button class="btn-track" style="${{refStatus(j)==='referred' ? 'background:#16a34a;color:#fff;' : ''}}" onclick="toggleReferred('${{j.id}}')" title="Manually mark that someone referred you">${{refStatus(j)==='referred' ? 'Referred 🤝' : 'Mark Referred'}}</button>
               </div>
+              <div style="margin-top:4px">${{refBadge(j)}}</div>
             </td>
             <td class="company-cell">${{j.company}}</td>
             <td>
               <span class="job-title">${{j.title}}</span>
-              <div class="sub-text">📅 ${{j.posted}}</div>
+              <div class="sub-text">📅 ${{j.posted}} · 🎓 Exp: ${{j.expYears || 'not stated'}}</div>
             </td>
             <td>
               <div>${{j.city}}</div>
@@ -893,6 +932,7 @@ ${{savedName}}
       state.search = e.target.value;
       renderTable();
     }});
+    document.getElementById('selReferral').addEventListener('change', e => {{ refFilter = e.target.value; renderTable(); }});
     document.getElementById('selStatus').addEventListener('change', e => {{
       state.status = e.target.value;
       renderTable();

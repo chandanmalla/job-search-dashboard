@@ -142,6 +142,11 @@ def is_pure_science_role(title: str) -> bool:
     return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
 
 
+import sys as _sys
+_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
+import job_filters as JF
+
+
 def find_new_jobs(found: list, db: dict) -> list:
     seen    = set(db.get("seen_keys", []))
     applied = set(db.get("applied", []))
@@ -151,8 +156,13 @@ def find_new_jobs(found: list, db: dict) -> list:
         # Strict exclusion of Amazon and non-product/consultancy companies
         if not is_top_product_company(j.get("company", "")):
             continue
-        if not is_pure_science_role(j.get("job_title", "")):
+        if not is_pure_science_role(j.get("job_title", "")) or not JF.title_ok(j.get("job_title", "")):
             continue
+        if JF.company_excluded(j.get("company", "")):
+            continue
+        if not JF.exp_ok(j.get("_exp_min"), j.get("_exp_max")):
+            continue
+        j.setdefault("exp_years", JF.exp_label(j.get("_exp_min"), j.get("_exp_max")))
 
         k = job_key(j)
         if k not in seen:
@@ -574,7 +584,8 @@ def format_job_digest_entry(job: dict) -> str:
     link = job.get("link", "")
     apply_html = f'<a href="{link}">Apply Direct ↗</a>' if link.startswith("http") else '<i>No link</i>'
     loc = esc_html(job.get("location", ""))
-    posted_tag = f"  📍 {loc}" + (f"  •  ⏱ <i>{posted}</i>" if posted and "unverified" not in posted.lower() else "") + "\n"
+    exp_y = esc_html(job.get("exp_years", "not stated"))
+    posted_tag = f"  🎓 Exp: {exp_y}\n  📍 {loc}" + (f"  •  ⏱ <i>{posted}</i>" if posted and "unverified" not in posted.lower() else "") + "\n"
 
     return (
         f"• <b>{jid}</b> | <b>{comp}</b>\n"
@@ -616,7 +627,7 @@ def send_telegram(token: str, chat_targets, new_jobs: list, excel_path: str, htm
             f"🕐 {esc_html(run_ts)}\n"
             f"📗 Excel: <code>{esc_html(excel_path)}</code>\n\n"
         )
-        footer = "<i>Mark with <code>/applied &lt;ID&gt;</code> or <code>/skip &lt;ID&gt;</code></i>"
+        footer = "<i>Mark with <code>/applied &lt;ID&gt;</code>, <code>/skip &lt;ID&gt;</code>, <code>/referred &lt;ID&gt;</code> or <code>/direct &lt;ID&gt;</code></i>"
 
         messages = []
         current_msg = header
@@ -678,6 +689,10 @@ def main():
     # Assign stable job IDs before saving
     for j in new_jobs:
         assign_job_id(j, db)
+        j["_recheck"] = True
+        JF.ensure_fields(j)  # exp_years, referral, dashboard_visible/hide_reason
+    for j in db.get("all_jobs", []):
+        JF.ensure_fields(j)  # backfill new fields on old records; never drops fields
 
     # Update DB
     for j in new_jobs:
