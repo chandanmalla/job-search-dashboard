@@ -1,4 +1,4 @@
-"""
+﻿"""
 Master 2-Hourly Cron Orchestrator (Top Product Companies Only)
 ==============================================================
 Runs completely unattended every 2 hours:
@@ -34,7 +34,7 @@ except Exception:
 CHILD_ENV = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUTF8="1", GIT_TERMINAL_PROMPT="0")
 _LOG = None
 
-def log(msg):
+def log(msg, **_kw):
     print(msg, flush=True)
     if _LOG:
         _LOG.write(msg + "\n"); _LOG.flush()

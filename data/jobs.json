@@ -94,9 +94,74 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Sudarshan Kothari",
+          "profile_url": "https://www.linkedin.com/in/sudarshankothari/",
+          "first_message_at": "2026-10-30T20:40+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "first message with CV sent"
+        },
+        {
+          "name": "Sahibjot Singh Bedi",
+          "profile_url": "https://www.linkedin.com/in/sahibjot-singh-bedi-431408138/",
+          "first_message_at": "2026-10-24T12:00+05:30",
+          "reminder_at": "2026-10-30T20:40+05:30",
+          "replied": false,
+          "notes": "first message date approximate; reminder sent"
+        },
+        {
+          "name": "Srikanth Bathi",
+          "profile_url": "https://www.linkedin.com/in/srikanth-b-bba0302a/",
+          "first_message_at": "2026-10-24T12:00+05:30",
+          "reminder_at": "2026-10-30T20:40+05:30",
+          "replied": false,
+          "notes": "first message date approximate; reminder sent"
+        },
+        {
+          "name": "Drithi Davuluri",
+          "profile_url": "https://www.linkedin.com/in/drithi-davuluri/",
+          "first_message_at": null,
+          "reminder_at": null,
+          "replied": true,
+          "notes": "Replied 'Sure, will refer by evening today' on 2026-10-30; awaiting confirmation of referral"
+        },
+        {
+          "name": "Meet Soni",
+          "profile_url": "https://www.linkedin.com/in/meet-soni-b823b1115/",
+          "first_message_at": null,
+          "reminder_at": "2026-10-27",
+          "replied": true,
+          "notes": "Asked to be reminded Monday Nov 2"
+        },
+        {
+          "name": "Balaji PitchaiKannu",
+          "profile_url": "https://www.linkedin.com/in/balaji-pitchaikannu-phd-25b65815/",
+          "first_message_at": null,
+          "reminder_at": null,
+          "replied": false,
+          "notes": "connection request pending (sent 2026-10-30, no note)"
+        },
+        {
+          "name": "Tanmay Bhatnagar",
+          "profile_url": "https://www.linkedin.com/in/tanmay-bhatnagar/",
+          "first_message_at": null,
+          "reminder_at": null,
+          "replied": false,
+          "notes": "connection request pending (sent 2026-10-30, no note)"
+        },
+        {
+          "name": "Aravinda R. Mandli",
+          "profile_url": "https://www.linkedin.com/in/aravinda-mandli/",
+          "first_message_at": null,
+          "reminder_at": null,
+          "replied": false,
+          "notes": "connection request pending (sent 2026-10-30, no note)"
+        }
+      ],
+      "updated_at": "2026-10-30T20:45+05:30"
     }
   },
   {
@@ -244,9 +309,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:02+05:30"
     }
   },
   {
@@ -641,31 +706,6 @@
     "link": "https://target.wd5.myworkdayjobs.com/targetcareers/job/BangaloreIndia/Sr-AI-Engineer-Promo-Optimisation_R0000442383-1",
     "source": "Workday careers API — verified live 2026-10-21",
     "why_fits": "LLM / GenAI / Agents — AI engineer, MarTech/promo optimisation",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
-    "id": "J034",
-    "company": "Visa",
-    "title": "Senior Data Scientist",
-    "location": "IN - Bengaluru, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 9 Days Ago (as of 2026-10-21); start date 2026-10-12",
-    "exp": "Good fit",
-    "expCat": "Good",
-    "tech": "Senior DS",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://visa.wd5.myworkdayjobs.com/Visa/job/IN---Bengaluru-India/Senior-Data-Scientist_REF087979W",
-    "source": "Workday careers API — verified live 2026-10-21",
-    "why_fits": "DS / Experimentation / Optimization — Senior DS",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
@@ -3019,9 +3059,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:30+05:30"
     }
   },
   {
@@ -3069,9 +3109,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:34+05:30"
     }
   },
   {
@@ -3119,9 +3159,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T20:55+05:30"
     }
   },
   {
@@ -3800,81 +3840,6 @@
     }
   },
   {
-    "id": "J377",
-    "company": "Cohere",
-    "title": "Senior Research Scientist, Model Evaluation",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2025-10-22",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/cohere/830c613b-d4bf-4673-ab33-46ccc12cc415",
-    "source": "Cohere AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Cohere. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
-    "id": "J378",
-    "company": "Cohere",
-    "title": "Lead Data Scientist",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-03-30",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/cohere/39cab400-c976-41d9-9002-880ac6985b64",
-    "source": "Cohere AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Cohere. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
-    "id": "J379",
-    "company": "Cohere",
-    "title": "Data Annotation Specialist, Data Science",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-07-03",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/cohere/9845c80d-95ba-4769-94a7-62408d73d603",
-    "source": "Cohere AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Cohere. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
     "id": "J380",
     "company": "ElevenLabs",
     "title": "Finance Data Scientist",
@@ -4044,9 +4009,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:20+05:30"
     }
   },
   {
@@ -4069,9 +4034,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:12+05:30"
     }
   },
   {
@@ -4275,56 +4240,6 @@
     }
   },
   {
-    "id": "J410",
-    "company": "Baseten",
-    "title": "Base Labs Research Scientist",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-03-17",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/baseten/7c9d2bb0-ac03-4a3c-86c3-cf720cd314e8",
-    "source": "Baseten AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Baseten. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
-    "id": "J411",
-    "company": "Baseten",
-    "title": "Data Scientist ",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-09-02",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/baseten/f160637f-b6bf-4f69-a8bd-862a3a3a8b0d",
-    "source": "Baseten AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Baseten. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
     "id": "J412",
     "company": "PhonePe",
     "title": "Data Scientist (3 to 5 Years)",
@@ -4444,9 +4359,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "apply_direct",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-10-30T21:42+05:30"
     }
   },
   {
@@ -4591,31 +4506,6 @@
     "link": "https://jobs.ashbyhq.com/openai/b82699a2-5819-4276-a402-fd88f56f9246",
     "source": "OpenAI AI Careers (Ashby)",
     "why_fits": "Frontier applied science position at OpenAI. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
-    "id": "J467",
-    "company": "Target",
-    "title": "Sr Data Scientist- Space Presentation",
-    "location": "Bengaluru East, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-10-29)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-space-presentation-at-target-4484945225",
-    "source": "Target Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Target. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
@@ -4775,31 +4665,6 @@
     }
   },
   {
-    "id": "J495",
-    "company": "PlaySimple Games",
-    "title": "Lead Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-10-30)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-playsimple-games-4484823008",
-    "source": "PlaySimple Games Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at PlaySimple Games. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    }
-  },
-  {
     "id": "J498",
     "company": "JioHotstar",
     "title": "Senior Data Scientist - GenAI",
@@ -4866,6 +4731,331 @@
     "link": "https://in.linkedin.com/jobs/view/data-science-selling-experiences-at-ebay-4483432727",
     "source": "eBay Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at eBay. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J517",
+    "company": "InMobi",
+    "title": "Applied Scientist III",
+    "location": "Bangalore",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Updated 2026-10-26",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, causal inference, deep learning, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://job-boards.greenhouse.io/inmobi/jobs/8156285",
+    "source": "InMobi Careers (Greenhouse)",
+    "why_fits": "Core Data Science / Applied Science role at InMobi. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "4-7 yrs",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J518",
+    "company": "Wayve",
+    "title": "Data Scientist, Data Quality & Provenance",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/wayve/4cf45aa3-fccf-4d28-aaaa-0fb0732b8de1",
+    "source": "Wayve AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at Wayve. Research, evaluations, and empirical modeling.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J519",
+    "company": "Wayve",
+    "title": "Senior Data Scientist ",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/wayve/6265ef50-5dc3-45c3-bf23-30f20a009969",
+    "source": "Wayve AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at Wayve. Research, evaluations, and empirical modeling.",
+    "isNew": true,
+    "expYears": "3+ yrs",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J520",
+    "company": "Wayve",
+    "title": "Senior Data Scientist  ",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-05",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/wayve/ee56ff16-017e-4728-b047-460d012347c1",
+    "source": "Wayve AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at Wayve. Research, evaluations, and empirical modeling.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J521",
+    "company": "Wayve",
+    "title": "Research Scientist, Robot Foundation Models",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/wayve/4c7cbff2-db7a-4127-9eee-7dae0627afea",
+    "source": "Wayve AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at Wayve. Research, evaluations, and empirical modeling.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J522",
+    "company": "Wayve",
+    "title": "Data Scientist, Robotaxi Performance & Capability",
+    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
+    "country": "UK",
+    "posted": "Posted 2026-10-26",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Relocation supported where applicable",
+    "link": "https://jobs.ashbyhq.com/wayve/6fd80c71-b139-41b9-8ecd-1c5d939fdc6e",
+    "source": "Wayve AI Careers (Ashby)",
+    "why_fits": "Frontier applied science position at Wayve. Research, evaluations, and empirical modeling.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J523",
+    "company": "Spotify",
+    "title": "Data Scientist  - Business Analytics",
+    "location": "London",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 2026-10-22",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Predictive modeling, experimentation, causal inference, Python, SQL, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://jobs.lever.co/spotify/b4f6cd01-1d5d-41a9-b287-6d10416da03c",
+    "source": "Spotify Careers (Lever)",
+    "why_fits": "Core Data Science / Applied Science role at Spotify. Focuses on algorithmic modeling and decision science.",
+    "isNew": true,
+    "expYears": "5+ yrs",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J524",
+    "company": "Spotify",
+    "title": "Data Scientist, Company Planning & Execution",
+    "location": "London",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 2026-08-19",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Predictive modeling, experimentation, causal inference, Python, SQL, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://jobs.lever.co/spotify/8a9cc53c-48c0-4d43-8287-d81ab09e74fa",
+    "source": "Spotify Careers (Lever)",
+    "why_fits": "Core Data Science / Applied Science role at Spotify. Focuses on algorithmic modeling and decision science.",
+    "isNew": true,
+    "expYears": "5+ yrs",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J525",
+    "company": "Spotify",
+    "title": "Research Scientist - Generative Audio",
+    "location": "London",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 2026-07-10",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Predictive modeling, experimentation, causal inference, Python, SQL, PyTorch",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://jobs.lever.co/spotify/819f584f-84a5-485d-8082-3412545f6c8a",
+    "source": "Spotify Careers (Lever)",
+    "why_fits": "Core Data Science / Applied Science role at Spotify. Focuses on algorithmic modeling and decision science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J526",
+    "company": "Target",
+    "title": "Lead Operations Research Scientist",
+    "location": "Bangalore,India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted Posted 30+ Days Ago",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, deep learning, PyTorch, SQL, production ML",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/job/BangaloreIndia/Lead-Operations-Research-Scientist_R0000445474",
+    "source": "Target Careers (Workday)",
+    "why_fits": "Core Data Science / Applied Science role at Target. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "apply_direct",
+      "contacts": [],
+      "updated_at": "2026-10-30T21:53+05:30"
+    }
+  },
+  {
+    "id": "J527",
+    "company": "Target",
+    "title": "Sr Operations Research Scientist",
+    "location": "Tower 02, Manyata Embassy Business Park, Racenahali & Nagawara Villages. Outer Ring Rd, Bangalore 540065",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted Posted 30+ Days Ago",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, deep learning, PyTorch, SQL, production ML",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/job/Tower-02-Manyata-Embassy-Business-Park-Racenahali--Nagawara-Villages-Outer-Ring-Rd-Bangalore-540065/Sr-Operations-Research-Scientist_R0000452402",
+    "source": "Target Careers (Workday)",
+    "why_fits": "Core Data Science / Applied Science role at Target. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "apply_direct",
+      "contacts": [],
+      "updated_at": "2026-10-30T21:53+05:30"
+    }
+  },
+  {
+    "id": "J528",
+    "company": "ServiceNow",
+    "title": "Senior Research Scientist, Agent Evaluation",
+    "location": "Hyderabad, IN",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 2026-09-29",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://jobs.smartrecruiters.com/ServiceNow/744000152324819",
+    "source": "ServiceNow Careers (SmartRecruiters)",
+    "why_fits": "Core Data Science / Applied Science role at ServiceNow.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J529",
+    "company": "Swiggy",
+    "title": "Data Scientist II",
+    "location": "Bengaluru, IN",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2026-10-27",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://jobs.smartrecruiters.com/Swiggy/6000000001526179",
+    "source": "Swiggy Careers (SmartRecruiters)",
+    "why_fits": "Core Data Science / Applied Science role at Swiggy.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
