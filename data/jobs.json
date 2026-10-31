@@ -6882,5 +6882,55 @@
       "contacts": [],
       "updated_at": null
     }
+  },
+  {
+    "id": "J572",
+    "company": "American Express",
+    "title": "Analyst-Data Science",
+    "location": "Gurugram, Haryana, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/analyst-data-science-at-american-express-4484817494",
+    "source": "American Express Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at American Express. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
+  },
+  {
+    "id": "J573",
+    "company": "SAP",
+    "title": "Data Science Expert- Finance &amp; Spend, Data Labs",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 51 minutes ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-science-expert-finance-spend-data-labs-at-sap-4458632704",
+    "source": "SAP Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at SAP. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
   }
 ]
