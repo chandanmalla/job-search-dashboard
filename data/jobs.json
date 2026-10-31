@@ -6832,5 +6832,30 @@
       "contacts": [],
       "updated_at": null
     }
+  },
+  {
+    "id": "J565",
+    "company": "Walmart Global Tech India",
+    "title": "(IND) SENIOR, DATA SCIENTIST",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 36 minutes ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/ind-senior-data-scientist-at-walmart-global-tech-india-4475815347",
+    "source": "Walmart Global Tech India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Walmart Global Tech India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
   }
 ]
