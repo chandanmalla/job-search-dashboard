@@ -6932,5 +6932,30 @@
       "contacts": [],
       "updated_at": null
     }
+  },
+  {
+    "id": "J579",
+    "company": "Expedia Group",
+    "title": "Data Scientist III, Hotels.com Analytics",
+    "location": "UK - London",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted Posted Today",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, deep learning, PyTorch, SQL, production ML",
+    "visa": "Plausible / Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://expedia.wd108.myworkdayjobs.com/en-US/search/job/UK---London/Data-Scientist-III--Hotelscom-Analytics_R-109777-1",
+    "source": "Expedia Group Careers (Workday)",
+    "why_fits": "Core Data Science / Applied Science role at Expedia Group. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    }
   }
 ]
