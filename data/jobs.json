@@ -3291,9 +3291,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4019,9 +4019,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4042,32 +4042,6 @@
     "link": "https://in.linkedin.com/jobs/view/senior-applied-scientist-at-metantz-4481696833",
     "source": "MetAntz Careers (LinkedIn Verified)",
     "why_fits": "Core Data Science / Applied Science role at MetAntz. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J334",
-    "company": "NetAmbit",
-    "title": "Senior Data Scientist",
-    "location": "Noida, Uttar Pradesh, India",
-    "city": "Delhi NCR",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-10-26)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-netambit-4482920806",
-    "source": "NetAmbit Careers (LinkedIn Verified)",
-    "why_fits": "Core Data Science / Applied Science role at NetAmbit. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
@@ -4332,9 +4306,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4365,32 +4339,6 @@
     "tier": "other"
   },
   {
-    "id": "J345",
-    "company": "Indium",
-    "title": "Senior Data Scientist",
-    "location": "Hyderabad, Telangana, India",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-indium-4483298426",
-    "source": "Indium Careers (LinkedIn Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Indium. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
     "id": "J346",
     "company": "Quantium",
     "title": "Data Scientist (Senior)",
@@ -4410,9 +4358,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "top"
   },
@@ -4462,9 +4410,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4488,9 +4436,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4540,9 +4488,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4566,9 +4514,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -4592,9 +4540,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -5763,32 +5711,6 @@
     "tier": "other"
   },
   {
-    "id": "J393",
-    "company": "Relevance Lab",
-    "title": "Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 8 hours ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-relevance-lab-4483839658",
-    "source": "Relevance Lab Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Relevance Lab. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
     "id": "J394",
     "company": "Sahaj Software",
     "title": "Data Scientist",
@@ -5886,9 +5808,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -5912,9 +5834,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6269,9 +6191,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -6295,35 +6217,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J417",
-    "company": "Data Unveil",
-    "title": "Data Scientist",
-    "location": "Hyderabad, Telangana, India",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-data-unveil-4481851527",
-    "source": "Data Unveil Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Data Unveil. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6347,9 +6243,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -6373,9 +6269,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -6425,9 +6321,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -6529,9 +6425,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6607,9 +6503,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6659,61 +6555,35 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J434",
-    "company": "Qloron Pvt Ltd",
-    "title": "Data Scientist",
-    "location": "Mumbai Metropolitan Region",
-    "city": "Mumbai",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-qloron-pvt-ltd-4483285397",
-    "source": "Qloron Pvt Ltd Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Qloron Pvt Ltd. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J435",
-    "company": "Kritter Software Technology",
-    "title": "Senior Geospatial Data Scientist",
+    "id": "J436",
+    "company": "Vontier",
+    "title": "Sr. Analyst - Data Science &amp; Mining",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
+    "posted": "Posted 1 hour ago (2026-10-28)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-geospatial-data-scientist-at-kritter-software-technology-4483615416",
-    "source": "Kritter Software Technology Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Kritter Software Technology. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/sr-analyst-data-science-mining-at-vontier-4476363969",
+    "source": "Vontier Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Vontier. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6815,9 +6685,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6945,9 +6815,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7193,9 +7063,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "top"
   },
@@ -7351,9 +7221,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7377,9 +7247,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7455,9 +7325,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7481,9 +7351,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7559,9 +7429,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7585,9 +7455,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7611,9 +7481,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7853,9 +7723,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -7879,9 +7749,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -8009,9 +7879,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -8061,9 +7931,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8113,9 +7983,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:07+05:30"
     },
     "tier": "other"
   },
@@ -8285,9 +8155,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8389,9 +8259,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8557,32 +8427,6 @@
     "tier": "other"
   },
   {
-    "id": "J503",
-    "company": "Ganit Inc.",
-    "title": "Data Scientist",
-    "location": "Mumbai, Maharashtra, India",
-    "city": "Mumbai",
-    "country": "India",
-    "posted": "Posted 32 minutes ago (2026-10-30)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-ganit-inc-4485316108",
-    "source": "Ganit Inc. Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Ganit Inc.. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
     "id": "J504",
     "company": "Anko GCC",
     "title": "Senior Data Scientist",
@@ -8602,9 +8446,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8785,9 +8629,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -8811,9 +8655,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8863,9 +8707,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -8889,9 +8733,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -9710,9 +9554,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -9736,35 +9580,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J554",
-    "company": "Capco",
-    "title": "Senior Data Scientist - Financial Services",
-    "location": "Greater London, England, United Kingdom",
-    "city": "London",
-    "country": "UK",
-    "posted": "Posted 56 minutes ago (2026-10-30)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "Plausible / UK or AU Skilled Worker sponsor",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Not stated",
-    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-financial-services-at-capco-4455291003",
-    "source": "Capco Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Capco. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -9840,9 +9658,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -9944,9 +9762,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "top"
   },
@@ -9970,9 +9788,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -9996,9 +9814,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -10048,9 +9866,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -10074,9 +9892,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -10256,9 +10074,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:07+05:30"
     },
     "tier": "other"
   },
@@ -10284,7 +10102,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -10334,9 +10152,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -10386,9 +10204,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -10438,9 +10256,9 @@
     "isNew": true,
     "expYears": "3+ yrs",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -10516,9 +10334,9 @@
     "isNew": true,
     "expYears": "5+ yrs",
     "referral": {
-      "status": "needed",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -10542,35 +10360,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J588",
-    "company": "Conqueri Technologies",
-    "title": "Lead Data Scientist",
-    "location": "Hyderabad(Nanakramguda), India",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 2026-10-30",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://www.naukri.com/job-listings-lead-data-scientist-conqueri-technologies-hyderabad-3-to-8-years-301026028475",
-    "source": "Conqueri Technologies via JobSpy (Naukri)",
-    "why_fits": "Data Science / Applied Science role at Conqueri Technologies (found via Naukri).",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T18:45+05:30"
     },
     "tier": "other"
   },
@@ -10752,7 +10544,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -10778,7 +10570,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -10856,7 +10648,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -10880,35 +10672,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "needed",
       "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J601",
-    "company": "Trinity Life Sciences",
-    "title": "Data Scientist, Machine Learning",
-    "location": "Bangalore Urban, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 2 hours ago (2026-11-01)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-machine-learning-at-trinity-life-sciences-4469208780",
-    "source": "Trinity Life Sciences Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Trinity Life Sciences. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -10934,7 +10700,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -11010,9 +10776,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T19:07+05:30"
     },
     "tier": "other"
   },
@@ -11038,7 +10804,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T19:40+05:30"
     },
     "tier": "other"
   },
@@ -11065,6 +10831,188 @@
       "status": "needed",
       "contacts": [],
       "updated_at": "2026-11-01T18:20+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J608",
+    "company": "Definitive Healthcare",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-definitive-healthcare-4448409451",
+    "source": "Definitive Healthcare Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Definitive Healthcare. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J609",
+    "company": "SAP",
+    "title": "Data Science Chief Expert - Finance",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 20 hours ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-science-chief-expert-finance-at-sap-4458380211",
+    "source": "SAP Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at SAP. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J610",
+    "company": "Oritain",
+    "title": "Statistical Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 54 minutes ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/statistical-data-scientist-at-oritain-4475029278",
+    "source": "Oritain Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Oritain. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J611",
+    "company": "IBM",
+    "title": "Data Scientist (AI) | National Security - eSC/eDV Required",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/data-scientist-ai-national-security-esc-edv-required-at-ibm-4483465987",
+    "source": "IBM Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at IBM. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J612",
+    "company": "GlobalLogic",
+    "title": "Data Scientist IRC307997",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/data-scientist-irc307997-at-globallogic-4484854773",
+    "source": "GlobalLogic Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at GlobalLogic. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J613",
+    "company": "Quantium",
+    "title": "Data Scientist - Product Analytics",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 1 day ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/data-scientist-product-analytics-at-quantium-4469113466",
+    "source": "Quantium Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Quantium. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J614",
+    "company": "VodafoneZiggo",
+    "title": "AGM - Data Scientist",
+    "location": "MH, India",
+    "city": "MH, India",
+    "country": "India",
+    "posted": "Posted 2026-11-01",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://careers.vodafoneidea.com/job/Pune-AGM-Data-Scientist-Maha/1452940633/",
+    "source": "VodafoneZiggo via JobSpy (Indeed)",
+    "why_fits": "Data Science / Applied Science role at VodafoneZiggo (found via Indeed).",
+    "isNew": true,
+    "expYears": "7+ yrs",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-01T20:05+05:30"
     },
     "tier": "other"
   }

@@ -135,10 +135,25 @@ _LOC_HUBS = ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon",
 # Relocation hubs: only accepted for RELOC sources (companies that relocate hires from India)
 _RELOC_HUBS = ["bangkok", "thailand", "dubai", "united arab emirates", "uae"]  # Chandan: only Thailand/UAE beyond India/UK/AU
 RELOC_ON = [False]
+
+# Chandan 2026-11-01: no Pune / Chennai / West Bengal / Tamil Nadu jobs. Multi-location listings that also
+# name an allowed city (e.g. Bengaluru) are kept.
+_BLOCKED_LOC_RE = re.compile(r"pune|pimpri|chinchwad|hinjewadi|chennai|madras|west bengal|kolkata|calcutta|howrah|durgapur|siliguri|"
+    r"tamil ?nadu|\btn\b|coimbatore|madurai|tiruchirappalli|trichy|hosur|sriperumbudur|kanchipuram|vellore|salem|tirupur|erode", re.I)
+_GENERIC_LOC_RE = re.compile(r"\b(india|in|maharashtra|area|division|city|metropolitan|metro|greater|region|district|remote|hybrid|on-?site)\b", re.I)
+def loc_blocked(loc):
+    ll = (loc or "").lower()
+    if not _BLOCKED_LOC_RE.search(ll):
+        return False
+    rest = _GENERIC_LOC_RE.sub(" ", _BLOCKED_LOC_RE.sub(" ", ll))
+    return re.sub(r"[^a-z]", "", rest) == ""
+
 def loc_ok(ll: str) -> bool:
     """India / UK / Australia hubs, or a plain (non-US/EU-restricted) Remote.
     For relocation sources, also Bangkok/Singapore/KL/Jakarta/Amsterdam/Berlin/Dublin/Tokyo/Dubai."""
     ll = (ll or "").lower()
+    if loc_blocked(ll):
+        return False
     if "singapore" in ll or re.search(r"\bsg\b", ll):  # Chandan: no Singapore jobs from any source
         return False
     if RELOC_ON[0] and (any(h in ll for h in _RELOC_HUBS) or re.search(r"\b(th|ae)\b", ll)):
@@ -751,6 +766,9 @@ def run_crawler(force_mode=None, dry_run=False):
             continue
         if JF.company_excluded(job.get("company", "")):
             continue
+        if not JF.company_product(job.get("company", "")):
+            JF.log_unknown_company(job.get("company", ""), job.get("job_title", ""), job.get("location", ""))
+            continue  # product-based companies only (Chandan 2026-11-01)
         if "singapore" in job.get("location", "").lower() or re.search(r"\bsg\b", job.get("location", "").lower()):
             continue  # no Singapore jobs from any source
         _tl, _cl = job.get("job_title", "").lower(), job.get("company", "").lower()

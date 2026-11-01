@@ -96,6 +96,14 @@ def main():
             "--jobs", str(found_json)
         ])
 
+    # 3b. New jobs land in tracked_jobs.json in step 3, so flag best matches for referral again and merge
+    run_step("3b. Auto-flag New Best-match Jobs for Referral", [
+        str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\auto_referral_needed.py"
+    ])
+    run_step("3c. Merging Referral Updates (auto-flagged)", [
+        str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\merge_referral_updates.py"
+    ])
+
     # 4. Rebuild web dashboard (pre-seeds applied state into index.html)
     run_step("4. Rebuilding Web Dashboard (index.html + data/jobs.json)", [
         str(PY_EXE), str(PROJECT_DIR / "build_site.py")
