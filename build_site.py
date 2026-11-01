@@ -102,7 +102,10 @@ def build_dashboard():
         if j.get("dashboard_visible") is False and (j.get("hide_reason") or "").startswith(("location outside", "company not in top-tier list")) and (j.get("status") or "").lower() != "skipped":
             j["dashboard_visible"], j["hide_reason"] = JF.visibility(j)  # re-check location-hidden jobs (Thailand/UAE added), in-memory only
         if not j.get("dashboard_visible", True) and (j.get("status") or "").lower() != "applied":
-            continue
+            # Other companies section: hidden only because the company is not top-tier, passes every other filter
+            if not ((j.get("hide_reason") or "").startswith("company not in top-tier list") and (j.get("status") or "").lower() != "skipped"
+                    and JF.visibility(j, require_top=False)[0]):
+                continue
 
         loc = j.get("location", "")
         country = "India" if any(w in loc.lower() for w in ["india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "mumbai", "chennai", "pune"]) \
@@ -153,7 +156,8 @@ def build_dashboard():
             "why_fits": j.get("why_fits", ""),
             "isNew": True,
             "expYears": j.get("exp_years", "not stated"),
-            "referral": j.get("referral") or JF.default_referral()
+            "referral": j.get("referral") or JF.default_referral(),
+            "tier": JF.tier(j)
         })
 
     # Save to data/jobs.json
@@ -625,8 +629,16 @@ def build_dashboard():
     </section>
 
     <section class="table-card">
+      <div id="otherBanner" style="padding:10px 14px;margin-bottom:10px;border-radius:8px;background:#fef3c7;color:#92400e;font-weight:600;cursor:pointer;" onclick="document.getElementById('selTier').value=(state.tier==='other'?'top':'other');document.getElementById('selTier').dispatchEvent(new Event('change'));">
+        Other companies section: <span id="otherCount">0</span> unapplied role(s) at companies outside the top-tier list (click to switch section)
+      </div>
       <div class="filter-bar">
         <input type="search" id="searchQ" class="search-input" placeholder="🔍 Search company, role title, skills, ID…">
+        <select id="selTier" class="status-select" title="Top-tier companies vs other companies matching your titles, locations and 3-7 yrs">
+          <option value="top" selected>Section: Top-tier companies</option>
+          <option value="other">Section: Other companies</option>
+          <option value="all">Section: All companies</option>
+        </select>
         <select id="selStatus" class="status-select">
           <option value="all">All Roles</option>
           <option value="unapplied" selected>Unapplied (Active)</option>
@@ -704,6 +716,7 @@ def build_dashboard():
     let state = {{
       search: '',
       status: 'unapplied',
+      tier: 'top',
       country: '',
       city: '',
       company: '',
@@ -713,18 +726,19 @@ def build_dashboard():
       sortAsc: true
     }};
 
+    const TOP_JOBS = JOBS.filter(j => (j.tier || 'top') === 'top');
     function updateStats() {{
-      document.getElementById('kpiTotal').textContent = JOBS.length;
+      document.getElementById('kpiTotal').textContent = TOP_JOBS.length;
       document.getElementById('kpiApplied').textContent = appliedJobs.size;
-      document.getElementById('kpiIndia').textContent = JOBS.filter(j => j.country === 'India').length;
-      document.getElementById('kpiUK').textContent = JOBS.filter(j => j.country === 'UK').length;
-      document.getElementById('kpiAU').textContent = JOBS.filter(j => j.country === 'Australia').length;
-      document.getElementById('kpiTH').textContent = JOBS.filter(j => j.country === 'Thailand').length;
-      document.getElementById('kpiAE').textContent = JOBS.filter(j => j.country === 'UAE').length;
-      document.getElementById('kpiBacklog').textContent = JOBS.filter(j => !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
-      document.getElementById('kpiReferred').textContent = JOBS.filter(j => refStatus(j) === 'referred').length;
-      document.getElementById('kpiDirect').textContent = JOBS.filter(j => ['apply_direct','no_response'].includes(refStatus(j)) && !appliedJobs.has(j.id)).length;
-      document.getElementById('kpiCompanies').textContent = new Set(JOBS.map(j => j.company)).size;
+      document.getElementById('kpiIndia').textContent = TOP_JOBS.filter(j => j.country === 'India').length;
+      document.getElementById('kpiUK').textContent = TOP_JOBS.filter(j => j.country === 'UK').length;
+      document.getElementById('kpiAU').textContent = TOP_JOBS.filter(j => j.country === 'Australia').length;
+      document.getElementById('kpiTH').textContent = TOP_JOBS.filter(j => j.country === 'Thailand').length;
+      document.getElementById('kpiAE').textContent = TOP_JOBS.filter(j => j.country === 'UAE').length;
+      document.getElementById('kpiBacklog').textContent = TOP_JOBS.filter(j => !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
+      document.getElementById('kpiReferred').textContent = TOP_JOBS.filter(j => refStatus(j) === 'referred').length;
+      document.getElementById('kpiDirect').textContent = TOP_JOBS.filter(j => ['apply_direct','no_response'].includes(refStatus(j)) && !appliedJobs.has(j.id)).length;
+      document.getElementById('kpiCompanies').textContent = new Set(TOP_JOBS.map(j => j.company)).size;
     }}
 
     updateStats();
@@ -754,6 +768,7 @@ def build_dashboard():
         const q = state.search.toLowerCase();
         const matchesQ = !q || (j.company + ' ' + j.title + ' ' + j.location + ' ' + j.tech + ' ' + j.id).toLowerCase().includes(q);
         const matchesCountry = !state.country || j.country === state.country;
+        if (state.tier !== 'all' && (j.tier || 'top') !== state.tier) return false;
         const matchesCity = !state.city || j.city === state.city;
         const matchesCompany = !state.company || j.company === state.company;
         const matchesVisa = !state.visa || j.visaCat === state.visa;
@@ -956,6 +971,8 @@ ${{savedName}}
       renderTable();
     }});
     document.getElementById('selReferral').addEventListener('change', e => {{ refFilter = e.target.value; renderTable(); }});
+    document.getElementById('selTier').addEventListener('change', e => {{ state.tier = e.target.value; renderTable(); }});
+    document.getElementById('otherCount').textContent = JOBS.filter(j => j.tier === 'other' && !appliedJobs.has(j.id) && !skippedJobs.has(j.id)).length;
     document.getElementById('selStatus').addEventListener('change', e => {{
       state.status = e.target.value;
       renderTable();

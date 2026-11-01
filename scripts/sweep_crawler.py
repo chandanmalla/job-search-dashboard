@@ -91,14 +91,14 @@ def is_target_science_role(title: str) -> bool:
     """Strict include/exclude for core Data Science / Applied Science roles (~5 yrs)."""
     tl = title.lower()
     EXCL = [r"\bintern", r"\bgraduate", r"\bjunior", r"\bentry", r"\bassociate", r"\bvice president", r"\bvp\b",
-            r"\bdirector", r"\bmanager", r"\bhead\b", r"\bprincipal", r"\bstaff\b", r"\bsoftware", r"\bswe\b",
+            r"\bdirector", r"\bmanager", r"\bhead\b", r"\bprincipal", r"\bsoftware", r"\bswe\b",
             r"engineer", r"\bdeveloper", r"devops", r"mlops", r"\bplatform", r"infrastructure", r"architect",
             r"full[- ]?stack", r"front[- ]?end", r"back[- ]?end", r"data engineer", r"\bfellow", r"\bphd\b"]
     if any(re.search(p, tl) for p in EXCL):
         return False
     return any(w in tl for w in [
         "data scientist", "applied scientist", "research scientist",
-        "decision scientist", "machine learning scientist", "ml scientist", "data science"
+        "decision scientist", "machine learning scientist", "ml scientist", "data science", "lead scientist"
     ])
 
 # Per-source crawl stats (printed + saved each run so silent failures are visible)
@@ -393,6 +393,121 @@ def fetch_linkedin_guest(query: str, location: str, target_locs, f_tpr: str = "r
     return jobs
 
 
+def fetch_workable_board(slug: str, company_name: str, target_locs):
+    """Workable public widget API (404 = slug gone)."""
+    jobs = []
+    try:
+        req = urllib.request.Request(f"https://apply.workable.com/api/v1/widget/accounts/{slug}", headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode())
+        for j in data.get("jobs", []):
+            title = j.get("title", "")
+            locs = j.get("locations") or [{"city": j.get("city"), "country": j.get("country")}]
+            loc = "; ".join(", ".join(x for x in [l.get("city"), l.get("country")] if x) for l in locs)
+            if j.get("telecommuting"):
+                loc = (loc + " (Remote)").strip()
+            if is_target_science_role(title) and loc_ok(loc.lower()):
+                jobs.append({
+                    "company": company_name, "job_title": title, "location": loc,
+                    "date_posted": f"Posted {j.get('published_on')}" if j.get("published_on") else "Recently posted",
+                    "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                    "technical_fit": "Statistical modeling, experimentation, ML, Python, SQL",
+                    "visa_sponsorship": "Plausible / standard corporate sponsorship",
+                    "relocation": "Not stated", "link": j.get("url") or j.get("shortlink"),
+                    "source": f"{company_name} Careers (Workable)",
+                    "why_fits": f"Core Data Science / Applied Science role at {company_name}.", "stretch": False})
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
+    return jobs
+
+# JobSpy (github.com/speedyapply/JobSpy): Indeed / Glassdoor / Naukri, last 48h, allowed countries only.
+JOBSPY_BOOL = '"data scientist" OR "applied scientist" OR "lead scientist"'
+JOBSPY_PLAN = [  # (site, country_indeed, location, search terms)
+    ("indeed", "india", "India", [JOBSPY_BOOL]),
+    ("naukri", "india", "India", ["data scientist", "applied scientist", "lead scientist"]),
+    ("glassdoor", "india", "Bengaluru", ["data scientist", "applied scientist"]),
+    ("indeed", "uk", "London", [JOBSPY_BOOL]),
+    ("indeed", "uk", "United Kingdom", [JOBSPY_BOOL]),
+    ("glassdoor", "uk", "London", ["data scientist", "applied scientist"]),
+    ("indeed", "australia", "Sydney", [JOBSPY_BOOL]),
+    ("indeed", "australia", "Melbourne", [JOBSPY_BOOL]),
+    ("glassdoor", "australia", "Sydney", ["data scientist"]),
+    ("indeed", "thailand", "Bangkok", [JOBSPY_BOOL]),
+    ("indeed", "united arab emirates", "Dubai", [JOBSPY_BOOL]),
+]
+JOBSPY_BUDGET_S = 420
+
+def fetch_jobspy(site, country, location, term, target_locs):
+    jobs = []
+    try:
+        import logging
+        from jobspy import scrape_jobs
+        logging.getLogger("JobSpy").setLevel(logging.CRITICAL)
+        for n in ("jobspy", "jobspy.indeed", "jobspy.naukri", "jobspy.glassdoor"):
+            logging.getLogger(n).setLevel(logging.CRITICAL)
+        df = scrape_jobs(site_name=[site], search_term=term, location=location, country_indeed=country,
+                         results_wanted=60, hours_old=48, description_format="markdown", verbose=0)
+        clean = lambda v: "" if v is None or (isinstance(v, float) and v != v) else str(v).strip()
+        for r in df.to_dict("records"):
+            title, comp, loc = clean(r.get("title")), clean(r.get("company")), clean(r.get("location"))
+            if country == "united arab emirates" and not any(w in loc.lower() for w in ["uae", "emirates", "dubai", "abu dhabi"]):
+                loc = (loc + ", UAE").strip(", ")
+            if country == "thailand" and not any(w in loc.lower() for w in ["thailand", "bangkok"]):
+                loc = (loc + ", Thailand").strip(", ")
+            if not title or not comp or not is_target_science_role(title) or not loc_ok(loc.lower()):
+                continue
+            dp = clean(r.get("date_posted"))
+            jobs.append({
+                "company": comp, "job_title": title, "location": loc,
+                "date_posted": f"Posted {dp[:10]}" if dp else "Recently posted",
+                "experience_fit": "Strong fit (Data Science / Applied Science ~5 yrs)",
+                "technical_fit": "Statistical modeling, experimentation, ML, Python, SQL",
+                "visa_sponsorship": "N/A (India role)" if country == "india" else "Plausible but unverified",
+                "relocation": "Not stated",
+                "link": clean(r.get("job_url_direct")) or clean(r.get("job_url")),
+                "source": f"{comp} via JobSpy ({site.title()})",
+                "_desc": clean(r.get("description")),
+                "why_fits": f"Data Science / Applied Science role at {comp} (found via {site.title()}).", "stretch": False})
+    except Exception as e:
+        LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
+    return jobs
+
+FEED_HEALTH_PATH = ROOT_DIR / "job-tracker" / "feed_health.json"
+FEED_HEALTH_LOG = ROOT_DIR / "job-tracker" / "feed_health.log"
+
+def feed_health_report():
+    """Track consecutive failures per source; print persistent/404 feeds; weekly summary to feed_health.log."""
+    try:
+        h = json.loads(FEED_HEALTH_PATH.read_text(encoding="utf-8")) if FEED_HEALTH_PATH.exists() else {}
+        srcs = h.setdefault("sources", {})
+        now = datetime.now().strftime("%Y-%m-%d %H:%M")
+        for st in STATS:
+            k = f"{st['type']}|{st['source']}"
+            e = srcs.setdefault(k, {"fails": 0, "last_ok": None, "last_err": ""})
+            if st["error"]:
+                e["fails"] += 1; e["last_err"] = st["error"]; e["last_err_at"] = now
+            else:
+                e["fails"] = 0; e["last_ok"] = now
+        bad = sorted((k, v) for k, v in srcs.items() if v["fails"] >= 3 or ("404" in v.get("last_err", "") and v["fails"] > 0))
+        if bad:
+            print(f"[feed-health] {len(bad)} feed(s) failing persistently (>=3 runs in a row) or returning 404:", flush=True)
+            for k, v in bad:
+                print(f"  [feed-health] {k}: {v['fails']} consecutive fail(s), last ok {v['last_ok']}, last error {v['last_err'][:90]}", flush=True)
+        else:
+            print("[feed-health] no persistently failing feeds.", flush=True)
+        last_week = h.get("last_weekly")
+        if not last_week or (datetime.now() - datetime.strptime(last_week, "%Y-%m-%d %H:%M")).days >= 7:
+            with open(FEED_HEALTH_LOG, "a", encoding="utf-8") as f:
+                f.write(f"\n=== Weekly feed health {now} IST: {len(bad)} problem feed(s) ===\n")
+                for k, v in bad:
+                    f.write(f"{k}: {v['fails']} fails, last ok {v['last_ok']}, err {v['last_err']}\n")
+            h["last_weekly"] = now
+            print(f"[feed-health] weekly note appended to {FEED_HEALTH_LOG.name}", flush=True)
+        FEED_HEALTH_PATH.write_text(json.dumps(h, indent=1), encoding="utf-8")
+    except Exception as e:
+        print(f"[feed-health] skipped: {e}", flush=True)
+
+
 def run_crawler(force_mode=None, dry_run=False):
     state = load_state()
     db = load_db()
@@ -587,6 +702,40 @@ def run_crawler(force_mode=None, dry_run=False):
         STATS[-1]["kept"] = len(res)
         discovered.extend(res)
 
+    # -------------------------------------------------------------------------
+    # COVERAGE SOURCES (every run, added 2026-11-01): direct ATS gap feeds, Workable,
+    # LinkedIn city searches, and JobSpy (Indeed/Glassdoor/Naukri). Never crash the crawl.
+    # -------------------------------------------------------------------------
+    print("[sweep_crawler] Coverage sources: direct ATS gap feeds, Workable, LinkedIn cities, JobSpy...", flush=True)
+    try:
+        for slug, name in [("monzo", "Monzo"), ("deliveroo", "Deliveroo")]:
+            if current_mode != "new_companies":
+                discovered.extend(tracked("greenhouse", name, fetch_greenhouse_board, slug, name, target_locs))
+        if current_mode != "new_companies":
+            discovered.extend(tracked("lever", "CRED", fetch_lever_board, "cred", "CRED", target_locs))
+        discovered.extend(reloc_tracked("greenhouse", "Careem", fetch_greenhouse_board, "careem", "Careem", target_locs))
+        discovered.extend(tracked("ashby", "Multiverse", fetch_ashby_board, "multiverse", "Multiverse", target_locs))
+        discovered.extend(reloc_tracked("smartrecruiters", "Talabat", fetch_smartrecruiters_board, "Talabat", "Talabat", target_locs))
+        for slug, name in [("huggingface", "Hugging Face"), ("relay-technologies", "Relay Technologies"), ("cleo", "Cleo"),
+                           ("tide", "Tide"), ("zopa", "Zopa"), ("clearscore", "ClearScore"), ("marshmallow", "Marshmallow"),
+                           ("tabby", "Tabby"), ("tamara", "Tamara"), ("kitopi", "Kitopi"), ("propertyfinder", "Property Finder"),
+                           ("dubizzle", "Dubizzle"), ("noon", "Noon"), ("g42", "G42"), ("kbtg", "KBTG")]:
+            discovered.extend(reloc_tracked("workable", name, fetch_workable_board, slug, name, target_locs))
+        LI_Q = '"data scientist" OR "applied scientist" OR "lead scientist"'
+        for loc in ["London, England, United Kingdom", "Sydney, New South Wales, Australia", "Melbourne, Victoria, Australia",
+                    "Bangkok, Thailand", "Dubai, United Arab Emirates"]:
+            discovered.extend(reloc_tracked("search48h", f"DS/Applied/Lead Scientist @ {loc.split(',')[0]}", fetch_linkedin_guest, LI_Q, loc, target_locs))
+        import time as _t
+        t0 = _t.time()
+        for site, country, loc, terms in JOBSPY_PLAN:
+            for term in terms:
+                if _t.time() - t0 > JOBSPY_BUDGET_S:
+                    STATS.append({"type": "jobspy", "source": f"{site} {loc} '{term[:20]}'", "kept": 0, "error": "skipped: per-run time budget reached"})
+                    continue
+                discovered.extend(reloc_tracked("jobspy", f"{site} {loc} '{term[:20]}'", fetch_jobspy, site, country, loc, term, target_locs))
+    except Exception as e:
+        print(f"[sweep_crawler] coverage block error (continuing): {type(e).__name__}: {e}", flush=True)
+
     # Deduplicate against DB and within batch
     to_add = []
     batch_seen_keys = set()
@@ -604,6 +753,14 @@ def run_crawler(force_mode=None, dry_run=False):
             continue
         if "singapore" in job.get("location", "").lower() or re.search(r"\bsg\b", job.get("location", "").lower()):
             continue  # no Singapore jobs from any source
+        _tl, _cl = job.get("job_title", "").lower(), job.get("company", "").lower()
+        if re.search(r"trainer|tutor|faculty|teacher|mentor|instructor|\bpartner\b|consultant|\banalyst\b|walk-?in|hiring for|freelance|contract", _tl):
+            continue  # not a DS/Applied Science IC role
+        if re.search(r"confidential|academy|institute|training|\badci\b|techies|leading r&d|\bllc\b|fdm group|4d global|edtech|placement|careers? solutions|hr solutions", _cl):
+            continue  # anonymous, training, staffing or Amazon-subsidiary (ADCI) employers
+        _ll = job.get("location", "").lower()
+        if re.search(r"\bgrab\b", job.get("company", "").lower()) and not any(h in _ll for h in ["bangkok", "thailand", "india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai", "mumbai", "pune"]):
+            continue  # Grab: Bangkok and India only
         lo, hi = JF.parse_exp_years(job.pop("_desc", ""))
         if not JF.exp_ok(lo, hi):
             print(f"  - exp filter drop [{job['company']}] {job['job_title']} ({JF.exp_label(lo, hi)})", flush=True)
@@ -629,7 +786,7 @@ def run_crawler(force_mode=None, dry_run=False):
         to_add.append(job)
 
     print(f"[sweep_crawler] Discovered {len(discovered)} total postings -> {len(to_add)} fresh, verified un-tracked roles.", flush=True)
-    for j in to_add[:10]:
+    for j in to_add[:40]:
         print(f"  + [{j['company']}] {j['job_title']} ({j['location']})", flush=True)
 
     print("[sweep_crawler] Per-source results (kept = role+location matches before DB dedupe):", flush=True)
@@ -637,6 +794,9 @@ def run_crawler(force_mode=None, dry_run=False):
         print(f"  {st['type']:<15} {st['source'][:45]:<45} kept={st['kept']:<3} {('ERROR ' + st['error']) if st['error'] else 'ok'}", flush=True)
     errs = [st for st in STATS if st["error"]]
     print(f"[sweep_crawler] Sources: {len(STATS)} | errors: {len(errs)}", flush=True)
+    n_top = sum(1 for j in to_add if JF.company_top(j.get("company", "")))
+    print(f"[sweep_crawler] New roles by section: top-tier={n_top} other-companies={len(to_add) - n_top}", flush=True)
+    feed_health_report()
     with open(ROOT_DIR / "job-tracker" / "crawl_stats_latest.json", "w", encoding="utf-8") as f:
         json.dump({"mode": current_mode, "time": datetime.now().strftime("%Y-%m-%d %H:%M IST"), "sources": STATS}, f, indent=2)
     if dry_run:
