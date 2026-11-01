@@ -652,7 +652,7 @@ def build_dashboard():
         <select id="selCompany"><option value="">All Companies</option></select>
         <select id="selVisa"><option value="">All Sponsorship</option></select>
         <select id="selExp"><option value="">All Experience Fit</option></select>
-        <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
+        <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Needed / Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
         <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Sync Mark Applied / Skip / Mark Referred straight to the dashboard via GitHub">Connect GitHub</button>
@@ -700,8 +700,8 @@ def build_dashboard():
 
     // Referral status: DB value, overridden by manual "Mark Referred" saved in localStorage
     let referredLocal = new Set(JSON.parse(localStorage.getItem('referred_jobs') || '[]'));
-    const REF_COLORS = {{none:'#64748b', requested:'#0284c7', reminded:'#7c3aed', referred:'#16a34a', no_response:'#d97706', apply_direct:'#dc2626'}};
-    const REF_LABELS = {{none:'No referral', requested:'Referral requested', reminded:'Reminded', referred:'Referred', no_response:'No response', apply_direct:'Apply direct'}};
+    const REF_COLORS = {{none:'#64748b', needed:'#0d9488', requested:'#0284c7', reminded:'#7c3aed', referred:'#16a34a', no_response:'#d97706', apply_direct:'#dc2626'}};
+    const REF_LABELS = {{none:'No referral', needed:'Referral needed', requested:'Referral requested', reminded:'Reminded', referred:'Referred', no_response:'No response', apply_direct:'Apply direct'}};
     function refStatus(j) {{ return referredLocal.has(j.id) ? 'referred' : ((j.referral && j.referral.status) || 'none'); }}
     function refBadge(j) {{
       const s = refStatus(j); const n = (j.referral && j.referral.contacts || []).length;
@@ -789,7 +789,7 @@ def build_dashboard():
         }}
 
         const rs = refStatus(j);
-        const matchesRef = !refFilter || (refFilter === 'pending' ? (rs === 'requested' || rs === 'reminded') : refFilter === 'apply_direct' ? (rs === 'apply_direct' || rs === 'no_response') : rs === refFilter);
+        const matchesRef = !refFilter || (refFilter === 'pending' ? (rs === 'needed' || rs === 'requested' || rs === 'reminded') : refFilter === 'apply_direct' ? (rs === 'apply_direct' || rs === 'no_response') : rs === refFilter);
         if (!matchesRef) return false;
         return matchesQ && matchesCountry && matchesCity && matchesCompany && matchesVisa && matchesExp && matchesStatus;
       }});

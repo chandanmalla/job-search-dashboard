@@ -78,6 +78,11 @@ def main():
         str(PY_EXE), str(SCRIPTS_DIR / "sweep_crawler.py")
     ])
 
+    # 2a. Auto-add new best-matching jobs to referral list (referral_updates.json, status needed)
+    run_step("2a. Auto-flag Best-match Jobs for Referral", [
+        str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\auto_referral_needed.py"
+    ])
+
     # 2b. Merge applied/skipped/referral updates (website, Telegram, outreach) into tracked_jobs.json
     run_step("2b. Merging Referral Updates", [
         str(PY_EXE), r"C:\Users\chand\Downloads\Job Search\job-tracker\merge_referral_updates.py"
