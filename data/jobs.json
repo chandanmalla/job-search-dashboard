@@ -97,7 +97,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "requested",
+      "status": "referred",
       "contacts": [
         {
           "name": "Sudarshan Kothari",
@@ -164,7 +164,7 @@
           "notes": "connection request pending (sent 2026-10-30, no note)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T16:20+05:30"
     },
     "tier": "top"
   },
@@ -5198,11 +5198,11 @@
           "name": "Manan Mehta",
           "profile_url": "https://www.linkedin.com/in/mananm2/",
           "first_message_at": "2026-10-30T22:00:00+05:30",
-          "reminder_at": null,
+          "reminder_at": "2026-11-01T11:10+05:30",
           "reminders_sent": 0,
           "replied": false,
           "messages_sent": 1,
-          "notes": "1st-degree; first message + CV sent"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder."
         },
         {
           "name": "Flynn Heiss",
@@ -5275,7 +5275,7 @@
           "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
         }
       ],
-      "updated_at": "2026-10-30T22:55:00+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -5349,10 +5349,11 @@
           "name": "Oskar Nordin-Ryan",
           "profile_url": "https://www.linkedin.com/in/oskarnordinryan/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:12+05:30"
         },
         {
           "name": "Klaudia D.",
@@ -5382,7 +5383,7 @@
           "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
         }
       ],
-      "updated_at": "2026-10-30T22:55:00+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -6202,10 +6203,11 @@
           "name": "Ganesh Patil",
           "profile_url": "https://www.linkedin.com/in/pganesh2020/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:14+05:30"
         },
         {
           "name": "Ayush Kumar",
@@ -6217,7 +6219,7 @@
           "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -7135,13 +7137,13 @@
           "name": "Aashi Gupta",
           "profile_url": "https://www.linkedin.com/in/aashi-gupta-871392202/",
           "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
+          "first_message_at": "2026-10-31T10:20+05:30",
+          "replied": true,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+          "notes": "Replied 2026-11-01 11:18 AM: 'I will check in the referring portal on Monday.' No reminder sent. Logged by Job Referral Reminder."
         }
       ],
-      "updated_at": "2026-10-30T22:55:00+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -7232,10 +7234,11 @@
           "name": "Mayank Verma",
           "profile_url": "https://www.linkedin.com/in/mayank-verma06/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:15+05:30"
         },
         {
           "name": "Daksh Thukral",
@@ -7246,7 +7249,7 @@
           "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -7634,7 +7637,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "requested",
+      "status": "referred",
       "contacts": [
         {
           "name": "Manimoy Biswas",
@@ -7642,7 +7645,9 @@
           "messages_sent": 0,
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
+          "notes": "connection request sent 2026-10-30 ~22:30 IST, pending",
+          "first_message_at": "2026-10-31T10:20+05:30",
+          "reminder_at": "2026-11-01T11:11+05:30"
         },
         {
           "name": "Sayantani Sarkar",
@@ -7694,7 +7699,7 @@
           "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T16:20+05:30"
     },
     "tier": "top"
   },
@@ -8191,7 +8196,8 @@
           "replied": false,
           "reminders_sent": 0,
           "cv_attached": true,
-          "notes": "1st-degree connection; FIRST referral message with CV sent"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:15+05:30"
         },
         {
           "name": "Vasanth Murukuri",
@@ -8203,7 +8209,8 @@
           "replied": false,
           "reminders_sent": 0,
           "cv_attached": true,
-          "notes": "1st-degree connection; FIRST referral message with CV sent"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:16+05:30"
         },
         {
           "name": "Chetan Sobti",
@@ -8215,7 +8222,8 @@
           "replied": false,
           "reminders_sent": 0,
           "cv_attached": true,
-          "notes": "1st-degree connection; FIRST referral message with CV sent"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:12+05:30"
         },
         {
           "name": "Raman Goyal",
@@ -8253,7 +8261,7 @@
           "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -8913,19 +8921,21 @@
           "name": "Jayanta Pal",
           "profile_url": "https://www.linkedin.com/in/jayanta-pal-1090915/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:13+05:30"
         },
         {
           "name": "Maxim Sviridenko",
           "profile_url": "https://www.linkedin.com/in/maxim-sviridenko-44822991/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:16+05:30"
         },
         {
           "name": "Raja Subramaniam",
@@ -8962,7 +8972,7 @@
           "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -9203,7 +9213,9 @@
           "messages_sent": 0,
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "first_message_at": "2026-10-31T10:20+05:30",
+          "reminder_at": "2026-11-01T11:11+05:30"
         },
         {
           "name": "Daniel Mackie",
@@ -9247,7 +9259,7 @@
           "first_message_at": "2026-11-01T10:05:59+05:30"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -9381,10 +9393,11 @@
           "name": "Nikhil Reddy Pottanigari",
           "profile_url": "https://www.linkedin.com/in/pottanigari-nikhil-reddy/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-10-31T10:20+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Reminder 1 sent via LinkedIn (11 AM run, 2026-11-01). Logged by Job Referral Reminder.",
+          "reminder_at": "2026-11-01T11:14+05:30"
         },
         {
           "name": "Oleksiy Ostapenko",
@@ -9404,7 +9417,7 @@
           "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-11-01T10:20:25+05:30"
+      "updated_at": "2026-11-01T11:16+05:30"
     },
     "tier": "top"
   },
@@ -10812,6 +10825,240 @@
     "link": "https://uk.linkedin.com/jobs/view/lead-data-scientist-at-raylo-4467549350",
     "source": "Raylo Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Raylo. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J599",
+    "company": "DP World",
+    "title": "Machine Learning Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 22 minutes ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/machine-learning-scientist-at-dp-world-4383739897",
+    "source": "DP World Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at DP World. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J600",
+    "company": "Nextpower",
+    "title": "Data Scientist",
+    "location": "Hyderabad, Telangana, India",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-nextpower-4458385434",
+    "source": "Nextpower Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Nextpower. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J601",
+    "company": "Trinity Life Sciences",
+    "title": "Data Scientist, Machine Learning",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-machine-learning-at-trinity-life-sciences-4469208780",
+    "source": "Trinity Life Sciences Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Trinity Life Sciences. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J602",
+    "company": "DP World",
+    "title": "Group Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 35 minutes ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/group-data-scientist-at-dp-world-4405239833",
+    "source": "DP World Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at DP World. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J603",
+    "company": "Zillow",
+    "title": "Applied Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-at-zillow-4450278506",
+    "source": "Zillow Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Zillow. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "apply_direct",
+      "contacts": [],
+      "updated_at": "2026-11-01T18:08+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J604",
+    "company": "Qualcomm",
+    "title": "Lead Data Scientist – Finance &amp; Accounting Automation",
+    "location": "Greater Hyderabad Area",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 47 minutes ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-%E2%80%93-finance-accounting-automation-at-qualcomm-4443875386",
+    "source": "Qualcomm Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Qualcomm. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J605",
+    "company": "Globant",
+    "title": "Data Scientist (GenAI)",
+    "location": "Telangana, India",
+    "city": "Telangana, India",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-genai-at-globant-4407391588",
+    "source": "Globant Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Globant. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J606",
+    "company": "Faculty",
+    "title": "Senior Data Scientist (Safety)",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-safety-at-faculty-4457234665",
+    "source": "Faculty Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Faculty. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "none",
+      "contacts": [],
+      "updated_at": null
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J607",
+    "company": "IBM",
+    "title": "Data Scientist - Artificial Intelligence | UK Public Sector",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 day ago (2026-10-30)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/data-scientist-artificial-intelligence-uk-public-sector-at-ibm-4466274566",
+    "source": "IBM Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at IBM. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
