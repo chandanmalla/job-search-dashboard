@@ -5336,60 +5336,6 @@
     "tier": "top"
   },
   {
-    "id": "J382",
-    "company": "Harvey AI",
-    "title": "Data Scientist, Product",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-06-18",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/harvey/1321b20d-d6f8-4bdb-b2de-ec33c0948b53",
-    "source": "Harvey AI AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Harvey AI. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [
-        {
-          "name": "Andre Nguyen",
-          "profile_url": "https://www.linkedin.com/in/andrevnguyen/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
-        },
-        {
-          "name": "Chengyu Chen",
-          "profile_url": "https://www.linkedin.com/in/chengyu-chen-a7b89b134/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
-        },
-        {
-          "name": "Ethan Liang",
-          "profile_url": "https://www.linkedin.com/in/ethan-liang-301401248/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
-        }
-      ],
-      "updated_at": null
-    },
-    "tier": "top"
-  },
-  {
     "id": "J383",
     "company": "Sarvam AI",
     "title": "Data Scientist - Evaluations, Chanakya",
@@ -5704,9 +5650,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   },
@@ -5785,32 +5731,6 @@
       "status": "none",
       "contacts": [],
       "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J397",
-    "company": "Kotak Mahindra Bank",
-    "title": "Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-kotak-mahindra-bank-4484059065",
-    "source": "Kotak Mahindra Bank Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Kotak Mahindra Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6046,60 +5966,6 @@
     "tier": "top"
   },
   {
-    "id": "J409",
-    "company": "Notion",
-    "title": "Data Scientist, Growth",
-    "location": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "city": "Global / Frontier AI Lab Hubs (US/UK/Remote)",
-    "country": "UK",
-    "posted": "Posted 2026-08-25",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Applied research, foundation model evaluation, empirical analysis, PyTorch",
-    "visa": "Plausible / standard corporate sponsorship",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Relocation supported where applicable",
-    "link": "https://jobs.ashbyhq.com/notion/9fc52821-c394-4a80-85ba-5f1d7c36fb2b",
-    "source": "Notion AI Careers (Ashby)",
-    "why_fits": "Frontier applied science position at Notion. Research, evaluations, and empirical modeling.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [
-        {
-          "name": "Jessica Zhang",
-          "profile_url": "https://www.linkedin.com/in/jessica-zhang-1000286/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
-        },
-        {
-          "name": "Poonam Sahoo",
-          "profile_url": "https://www.linkedin.com/in/poonam-sahoo/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
-        },
-        {
-          "name": "Winston Gao",
-          "profile_url": "https://www.linkedin.com/in/winstonygao/",
-          "messages_sent": 0,
-          "first_message_at": null,
-          "replied": false,
-          "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending; employer uncertain, headline Ex-Twitch, Notion"
-        }
-      ],
-      "updated_at": null
-    },
-    "tier": "top"
-  },
-  {
     "id": "J412",
     "company": "PhonePe",
     "title": "Data Scientist (3 to 5 Years)",
@@ -6165,9 +6031,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   },
@@ -6194,32 +6060,6 @@
       "status": "skipped",
       "contacts": [],
       "updated_at": "2026-11-01T18:45+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J416",
-    "company": "Franklin Templeton",
-    "title": "Data Scientist / LLM",
-    "location": "Greater Hyderabad Area",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 21 hours ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-llm-at-franklin-templeton-4484094399",
-    "source": "Franklin Templeton Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Franklin Templeton. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -6406,32 +6246,6 @@
     "tier": "top"
   },
   {
-    "id": "J428",
-    "company": "Barclays",
-    "title": "AI/ML Data Scientist",
-    "location": "Gurugram, Haryana, India",
-    "city": "Delhi NCR",
-    "country": "India",
-    "posted": "Posted 9 hours ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/ai-ml-data-scientist-at-barclays-4481826105",
-    "source": "Barclays Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Barclays. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J429",
     "company": "UPS",
     "title": "Data Scientist",
@@ -6510,58 +6324,6 @@
     "tier": "other"
   },
   {
-    "id": "J432",
-    "company": "Tag-N-Trac",
-    "title": "Data Scientist",
-    "location": "Hyderabad, Telangana, India",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-tag-n-trac-4483274968",
-    "source": "Tag-N-Trac Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Tag-N-Trac. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J433",
-    "company": "Agam Capital India",
-    "title": "Data Scientist",
-    "location": "Mumbai, Maharashtra, India",
-    "city": "Mumbai",
-    "country": "India",
-    "posted": "Posted 10 hours ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-agam-capital-india-4483835414",
-    "source": "Agam Capital India Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Agam Capital India. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J436",
     "company": "Vontier",
     "title": "Sr. Analyst - Data Science &amp; Mining",
@@ -6584,58 +6346,6 @@
       "status": "needed",
       "contacts": [],
       "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J437",
-    "company": "questW",
-    "title": "Data Scientist",
-    "location": "Halol, Gujarat, India",
-    "city": "Halol, Gujarat, India",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-questw-4484029099",
-    "source": "questW Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at questW. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J439",
-    "company": "IBM",
-    "title": "Data Scientist-Artificial Intelligence",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 3 hours ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-artificial-intelligence-at-ibm-4482298651",
-    "source": "IBM Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at IBM. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
     },
     "tier": "other"
   },
@@ -6792,32 +6502,6 @@
       "status": "none",
       "contacts": [],
       "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J446",
-    "company": "Linde",
-    "title": "Data Scientist - AI Hub",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 minute ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-ai-hub-at-linde-4467751452",
-    "source": "Linde Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Linde. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
     },
     "tier": "other"
   },
@@ -7228,32 +6912,6 @@
     "tier": "other"
   },
   {
-    "id": "J458",
-    "company": "Linde@India",
-    "title": "Data Scientist - AI Hub",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 9 hours ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-ai-hub-at-linde%40india-4465572397",
-    "source": "Linde@India Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Linde@India. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J459",
     "company": "o9 Solutions, Inc.",
     "title": "Senior Data Scientist",
@@ -7306,58 +6964,6 @@
     "tier": "other"
   },
   {
-    "id": "J462",
-    "company": "General Mills",
-    "title": "D&amp;T Data Scientist I",
-    "location": "Mumbai Metropolitan Region",
-    "city": "Mumbai",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-28)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/d-t-data-scientist-i-at-general-mills-4456879763",
-    "source": "General Mills Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at General Mills. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J463",
-    "company": "IDFC FIRST Bank",
-    "title": "Data Scientist - AI Labs",
-    "location": "Mumbai, Maharashtra, India",
-    "city": "Mumbai",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-10-27)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-ai-labs-at-idfc-first-bank-4474956544",
-    "source": "IDFC FIRST Bank Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at IDFC FIRST Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J465",
     "company": "General Mills",
     "title": "Data Scientist II",
@@ -7374,32 +6980,6 @@
     "link": "https://in.linkedin.com/jobs/view/data-scientist-ii-at-general-mills-4466836627",
     "source": "General Mills Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at General Mills. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J468",
-    "company": "IMI",
-    "title": "Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 2 hours ago (2026-10-29)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-imi-4468243106",
-    "source": "IMI Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at IMI. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
@@ -8399,32 +7979,6 @@
       "updated_at": "2026-10-30T23:05:00+05:30"
     },
     "tier": "top"
-  },
-  {
-    "id": "J502",
-    "company": "EloElo",
-    "title": "Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-10-30)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-eloelo-4484816771",
-    "source": "EloElo Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at EloElo. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
-    },
-    "tier": "other"
   },
   {
     "id": "J504",
@@ -10419,32 +9973,6 @@
     "tier": "top"
   },
   {
-    "id": "J591",
-    "company": "Verisk",
-    "title": "Data Scientist",
-    "location": "London, ENG, UK",
-    "city": "London",
-    "country": "UK",
-    "posted": "Posted 2026-10-31",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
-    "visa": "Plausible but unverified",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Not stated",
-    "link": "https://fa-ewmy-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/requisitions/preview/5093",
-    "source": "Verisk via JobSpy (Indeed)",
-    "why_fits": "Data Science / Applied Science role at Verisk (found via Indeed).",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J592",
     "company": "HAWK",
     "title": "Data Scientist",
@@ -10464,9 +9992,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   },
@@ -10523,32 +10051,6 @@
     "tier": "other"
   },
   {
-    "id": "J595",
-    "company": "Lloyds Banking Group",
-    "title": "Data Scientist - Security Data & AI Lab",
-    "location": "Leeds, ENG, UK",
-    "city": "Leeds, ENG, UK",
-    "country": "UK",
-    "posted": "Posted 2026-10-30",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
-    "visa": "Employer-sponsored work visa typical (check posting)",
-    "visaCat": "Unknown",
-    "reloc": "Relocation-friendly employer (not stated in posting)",
-    "link": "https://lbg.wd3.myworkdayjobs.com/en-US/LBG_Careers/job/Leeds-Wellington-Place/Data-Scientist---Security-Data---AI-Lab_165363-1",
-    "source": "Lloyds Banking Group via JobSpy (Indeed)",
-    "why_fits": "Data Science / Applied Science role at Lloyds Banking Group (found via Indeed).",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:40+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J596",
     "company": "GE Aerospace",
     "title": "Senior Data Scientist",
@@ -10594,9 +10096,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": null
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   },
@@ -10641,58 +10143,6 @@
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
     "link": "https://in.linkedin.com/jobs/view/machine-learning-scientist-at-dp-world-4383739897",
-    "source": "DP World Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at DP World. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:40+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J600",
-    "company": "Nextpower",
-    "title": "Data Scientist",
-    "location": "Hyderabad, Telangana, India",
-    "city": "Hyderabad",
-    "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-01)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-at-nextpower-4458385434",
-    "source": "Nextpower Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Nextpower. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T19:42+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J602",
-    "company": "DP World",
-    "title": "Group Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 35 minutes ago (2026-11-01)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/group-data-scientist-at-dp-world-4405239833",
     "source": "DP World Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at DP World. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
@@ -10828,9 +10278,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "needed",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": "2026-11-01T18:20+05:30"
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   },
@@ -10887,32 +10337,6 @@
     "tier": "top"
   },
   {
-    "id": "J610",
-    "company": "Oritain",
-    "title": "Statistical Data Scientist",
-    "location": "London, England, United Kingdom",
-    "city": "London",
-    "country": "UK",
-    "posted": "Posted 54 minutes ago (2026-11-01)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "Plausible / UK or AU Skilled Worker sponsor",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Not stated",
-    "link": "https://uk.linkedin.com/jobs/view/statistical-data-scientist-at-oritain-4475029278",
-    "source": "Oritain Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Oritain. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T20:05+05:30"
-    },
-    "tier": "other"
-  },
-  {
     "id": "J611",
     "company": "IBM",
     "title": "Data Scientist (AI) | National Security - eSC/eDV Required",
@@ -10932,87 +10356,9 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "needed",
+      "status": "skipped",
       "contacts": [],
-      "updated_at": "2026-11-01T20:05+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J612",
-    "company": "GlobalLogic",
-    "title": "Data Scientist IRC307997",
-    "location": "London, England, United Kingdom",
-    "city": "London",
-    "country": "UK",
-    "posted": "Posted 1 day ago (2026-10-30)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "Plausible / UK or AU Skilled Worker sponsor",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Not stated",
-    "link": "https://uk.linkedin.com/jobs/view/data-scientist-irc307997-at-globallogic-4484854773",
-    "source": "GlobalLogic Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at GlobalLogic. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T20:05+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J613",
-    "company": "Quantium",
-    "title": "Data Scientist - Product Analytics",
-    "location": "Sydney, New South Wales, Australia",
-    "city": "Sydney",
-    "country": "Australia",
-    "posted": "Posted 1 day ago (2026-10-31)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "Plausible / UK or AU Skilled Worker sponsor",
-    "visaCat": "Plausible but unverified",
-    "reloc": "Not stated",
-    "link": "https://au.linkedin.com/jobs/view/data-scientist-product-analytics-at-quantium-4469113466",
-    "source": "Quantium Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Quantium. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T20:05+05:30"
-    },
-    "tier": "top"
-  },
-  {
-    "id": "J614",
-    "company": "VodafoneZiggo",
-    "title": "AGM - Data Scientist",
-    "location": "MH, India",
-    "city": "MH, India",
-    "country": "India",
-    "posted": "Posted 2026-11-01",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://careers.vodafoneidea.com/job/Pune-AGM-Data-Scientist-Maha/1452940633/",
-    "source": "VodafoneZiggo via JobSpy (Indeed)",
-    "why_fits": "Data Science / Applied Science role at VodafoneZiggo (found via Indeed).",
-    "isNew": true,
-    "expYears": "7+ yrs",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-01T20:05+05:30"
+      "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
   }
