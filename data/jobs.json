@@ -10361,5 +10361,83 @@
       "updated_at": "2026-11-01T20:12+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J615",
+    "company": "NielsenIQ",
+    "title": "Lead Data Scientist",
+    "location": "Vadodara, Gujarat, India",
+    "city": "Vadodara, Gujarat, India",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-nielseniq-4392156578",
+    "source": "NielsenIQ Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at NielsenIQ. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T00:04+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J616",
+    "company": "NielsenIQ",
+    "title": "Senior Data Scientist",
+    "location": "Mumbai Metropolitan Region",
+    "city": "Mumbai",
+    "country": "India",
+    "posted": "Posted 52 minutes ago (2026-11-01)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-nielseniq-4424506561",
+    "source": "NielsenIQ Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at NielsenIQ. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T00:04+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J617",
+    "company": "Microsoft",
+    "title": "Applied Scientist II",
+    "location": "Hyderabad, Telangana, India",
+    "city": "Hyderabad",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-10-31)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-ii-at-microsoft-4475567867",
+    "source": "Microsoft Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Microsoft. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T00:04+05:30"
+    },
+    "tier": "top"
   }
 ]
