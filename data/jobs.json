@@ -147,10 +147,10 @@
         {
           "name": "Tanmay Bhatnagar",
           "profile_url": "https://www.linkedin.com/in/tanmay-bhatnagar/",
-          "first_message_at": null,
+          "first_message_at": "2026-11-01T10:15:35+05:30",
           "reminder_at": null,
           "replied": false,
-          "notes": "connection request pending (sent 2026-10-30, no note)"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         },
         {
           "name": "Aravinda R. Mandli",
@@ -161,7 +161,7 @@
           "notes": "connection request pending (sent 2026-10-30, no note)"
         }
       ],
-      "updated_at": "2026-10-30T20:45+05:30"
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -3059,9 +3059,18 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Srihith Prudhivi",
+          "profile_url": "https://www.linkedin.com/in/srihith-prudhivi-652248210/",
+          "first_message_at": "2026-11-01T10:04:15+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
+        }
+      ],
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -3734,7 +3743,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Nicholas O.",
@@ -3753,9 +3762,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "John McGuinness",
+          "profile_url": "https://www.linkedin.com/in/john-mcguinness-recruitment/",
+          "first_message_at": "2026-11-01T10:04:40+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -3978,7 +3995,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Anna Matlin",
@@ -4024,9 +4041,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Vivek Uday",
+          "profile_url": "https://www.linkedin.com/in/vivekuday/",
+          "first_message_at": "2026-11-01T10:17:51+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5229,7 +5254,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Ganesh Patil",
@@ -5244,13 +5269,13 @@
           "name": "Ayush Kumar",
           "profile_url": "https://www.linkedin.com/in/ayush-kumar-61758a65/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-11-01T10:09:43+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5373,7 +5398,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Rajat Patel",
@@ -5388,10 +5413,10 @@
           "name": "Hardik Meisheri",
           "profile_url": "https://www.linkedin.com/in/hardikmeisheri/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-11-01T10:19:32+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         },
         {
           "name": "Yugant Chandrakar",
@@ -5406,10 +5431,10 @@
           "name": "Pankaj Kumar Sharma",
           "profile_url": "https://www.linkedin.com/in/pankajkusharma/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-11-01T10:12:57+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         },
         {
           "name": "Rahul Ragesh",
@@ -5421,7 +5446,7 @@
           "notes": "connection request sent 2026-10-30, pending"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5444,9 +5469,18 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Rohit Singh",
+          "profile_url": "https://www.linkedin.com/in/rhtsingh/",
+          "first_message_at": "2026-11-01T10:07:00+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
+        }
+      ],
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5556,7 +5590,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Felipe de Souza",
@@ -5575,9 +5609,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Daksh Thukral",
+          "profile_url": "https://www.linkedin.com/in/daksh-thukral-051a94152/",
+          "first_message_at": "2026-11-01T10:05:25+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5657,7 +5699,8 @@
           "messages_sent": 0,
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)",
+          "first_message_at": "2026-11-01T10:13:49+05:30"
         },
         {
           "name": "Hari Shanker Gupta",
@@ -5684,7 +5727,7 @@
           "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
         }
       ],
-      "updated_at": "2026-10-30T22:40:00+05:30"
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -5840,10 +5883,10 @@
           "name": "Abhishek Mamidi",
           "profile_url": "https://www.linkedin.com/in/abhishekmamidi/",
           "messages_sent": 0,
-          "first_message_at": null,
+          "first_message_at": "2026-11-01T10:20:25+05:30",
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:45 IST, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         },
         {
           "name": "Akash Sheoran",
@@ -5916,9 +5959,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Sourav Kumar",
+          "profile_url": "https://www.linkedin.com/in/sourav-kumar-28029168/",
+          "first_message_at": "2026-11-01T10:08:19+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": "2026-10-30T23:05:00+05:30"
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -6100,7 +6151,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Biwei Jiang",
@@ -6119,9 +6170,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Pavan Malagimani",
+          "profile_url": "https://www.linkedin.com/in/pavan-malagimani/",
+          "first_message_at": "2026-11-01T10:14:42+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -6144,7 +6203,7 @@
     "isNew": true,
     "expYears": "4-7 yrs",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Jayanta Pal",
@@ -6181,9 +6240,25 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Naquib Alam",
+          "profile_url": "https://www.linkedin.com/in/naquib-alam/",
+          "first_message_at": "2026-11-01T10:11:13+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
+        },
+        {
+          "name": "Soumalya Seal",
+          "profile_url": "https://www.linkedin.com/in/soumalya-seal/",
+          "first_message_at": "2026-11-01T10:18:41+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -6458,10 +6533,11 @@
           "messages_sent": 0,
           "replied": false,
           "reminders_sent": 0,
-          "notes": "connection request sent 2026-10-30 ~22:30 IST, pending"
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)",
+          "first_message_at": "2026-11-01T10:05:59+05:30"
         }
       ],
-      "updated_at": "2026-10-30T22:40:00+05:30"
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -6584,7 +6660,7 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
+      "status": "requested",
       "contacts": [
         {
           "name": "Nikhil Reddy Pottanigari",
@@ -6603,9 +6679,17 @@
           "replied": false,
           "reminders_sent": 0,
           "notes": "connection request sent 2026-10-30, pending"
+        },
+        {
+          "name": "Sai Vikas",
+          "profile_url": "https://www.linkedin.com/in/saivikasnsv/",
+          "first_message_at": "2026-11-01T10:12:05+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
         }
       ],
-      "updated_at": null
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
@@ -6678,9 +6762,18 @@
     "isNew": true,
     "expYears": "not stated",
     "referral": {
-      "status": "none",
-      "contacts": [],
-      "updated_at": null
+      "status": "requested",
+      "contacts": [
+        {
+          "name": "Himanshu Sharma",
+          "profile_url": "https://www.linkedin.com/in/himanshu-sharma-050a4b29/",
+          "first_message_at": "2026-11-01T10:07:29+05:30",
+          "reminder_at": null,
+          "replied": false,
+          "notes": "Referral request + CV sent via LinkedIn (Job Referral First, 2026-11-01 AM run)"
+        }
+      ],
+      "updated_at": "2026-11-01T10:20:25+05:30"
     }
   },
   {
