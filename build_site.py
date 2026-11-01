@@ -104,7 +104,9 @@ def build_dashboard():
         if not j.get("dashboard_visible", True) and (j.get("status") or "").lower() != "applied":
             # Other companies section: hidden only because the company is not top-tier, passes every other filter
             if not ((j.get("hide_reason") or "").startswith("company not in top-tier list") and (j.get("status") or "").lower() != "skipped"
-                    and JF.visibility(j, require_top=False)[0]):
+                    and JF.visibility(j, require_top=False)[0]
+                    and not re.search(r"trainer|tutor|faculty|teacher|mentor|instructor|\bpartner\b|consultant|\banalyst\b|walk-?in|hiring for|freelance|contract", title.lower())
+                    and not re.search(r"confidential|academy|institute|training|\badci\b|techies|leading r&d|\bllc\b|fdm group|4d global|edtech|placement|careers? solutions|hr solutions|l&t technology|ltts", company.lower())):
                 continue
 
         loc = j.get("location", "")
