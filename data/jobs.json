@@ -10517,5 +10517,83 @@
       "updated_at": "2026-11-02T12:08+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J621",
+    "company": "Innova Solutions",
+    "title": "Senior DATA Scientist- Remote",
+    "location": "India",
+    "city": "India",
+    "country": "India",
+    "posted": "Posted 2026-11-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://www.naukri.com/job-listings-senior-data-scientist-remote-innova-solutions-bengaluru-7-to-12-years-021126009629",
+    "source": "Innova Solutions via JobSpy (Naukri)",
+    "why_fits": "Data Science / Applied Science role at Innova Solutions (found via Naukri).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T14:06+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J622",
+    "company": "Visionyle Solutions",
+    "title": "Data Science - Gurobi",
+    "location": "Hyderabad, Chennai, Bengaluru, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2026-11-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://www.naukri.com/job-listings-data-science-gurobi-visionyle-solutions-hyderabad-chennai-bengaluru-2-to-7-years-021126008414",
+    "source": "Visionyle Solutions via JobSpy (Naukri)",
+    "why_fits": "Data Science / Applied Science role at Visionyle Solutions (found via Naukri).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T14:06+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J623",
+    "company": "Paramount Hr",
+    "title": "Senior Data Scientist",
+    "location": "Mumbai, India",
+    "city": "Mumbai",
+    "country": "India",
+    "posted": "Posted 2026-11-02",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://www.naukri.com/job-listings-senior-data-scientist-paramount-hr-mumbai-5-to-8-years-021126906559",
+    "source": "Paramount Hr via JobSpy (Naukri)",
+    "why_fits": "Data Science / Applied Science role at Paramount Hr (found via Naukri).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T14:06+05:30"
+    },
+    "tier": "other"
   }
 ]
