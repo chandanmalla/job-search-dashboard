@@ -10933,5 +10933,83 @@
       "updated_at": "2026-11-02T22:09+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J637",
+    "company": "Zillow",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-zillow-4432112037",
+    "source": "Zillow Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Zillow. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "apply_direct",
+      "contacts": [],
+      "updated_at": "2026-11-03T00:05+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J638",
+    "company": "Oliver Bernard",
+    "title": "Senior Data Scientist - London, Hybrid - up to £75k base",
+    "location": "London Area, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 hour ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-london-hybrid-up-to-%C2%A375k-base-at-oliver-bernard-4484377364",
+    "source": "Oliver Bernard Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Oliver Bernard. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-03T00:05+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J639",
+    "company": "Oliver Bernard",
+    "title": "Senior Data Scientist - London, Hybrid - Agentic AI &amp; Research",
+    "location": "London Area, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 hour ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-london-hybrid-agentic-ai-research-at-oliver-bernard-4484370767",
+    "source": "Oliver Bernard Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Oliver Bernard. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-03T00:05+05:30"
+    },
+    "tier": "other"
   }
 ]
