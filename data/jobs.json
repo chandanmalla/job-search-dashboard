@@ -10439,5 +10439,83 @@
       "updated_at": "2026-11-02T00:04+05:30"
     },
     "tier": "top"
+  },
+  {
+    "id": "J618",
+    "company": "Bright Money",
+    "title": "Data Scientist - III",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 minute ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/data-scientist-iii-at-bright-money-4486131283",
+    "source": "Bright Money Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Bright Money. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T12:08+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J619",
+    "company": "Definitive Healthcare",
+    "title": "Senior Data Scientist-Data Science-AA&amp;I",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 27 minutes ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-data-science-aa-i-at-definitive-healthcare-4484326036",
+    "source": "Definitive Healthcare Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Definitive Healthcare. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T12:08+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J620",
+    "company": "VEE Work",
+    "title": "Assistant Research Scientist",
+    "location": "Dubai, United Arab Emirates",
+    "city": "Dubai, United Arab Emirates",
+    "country": "UAE",
+    "posted": "Posted 17 minutes ago (2026-11-02)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Employer-sponsored work visa typical (check posting)",
+    "visaCat": "Unknown",
+    "reloc": "Relocation-friendly employer (not stated in posting)",
+    "link": "https://ae.linkedin.com/jobs/view/assistant-research-scientist-at-vee-work-4483995032",
+    "source": "VEE Work Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at VEE Work. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-02T12:08+05:30"
+    },
+    "tier": "other"
   }
 ]
