@@ -8,6 +8,7 @@ APPLIED_FILES = (
     "applied_updates.json",
     "skipped_updates.json",
     "referral_updates.json",
+    "direct_apply_companies.json",
 )
 CRAWL_FILES = APPLIED_FILES + (
     "cron_state.json",

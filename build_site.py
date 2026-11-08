@@ -58,8 +58,7 @@ PHRASE_EXCLUSIONS_LOWER = {
     'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
     'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
     'tata consultancy', 'vgreen', 'wipro', 'cognizant', 'ltimindtree',
-    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'ernst & young', 'ernst and young',
-    'kpmg', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
     'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
     'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
     'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
@@ -68,9 +67,12 @@ PHRASE_EXCLUSIONS_LOWER = {
     'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
 }
 
-SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
+SHORT_EXCLUSIONS = {'tcs', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
 
 def is_top_product_company(company: str) -> bool:
+    import job_filters as _jf
+    if _jf.is_big4(company):
+        return True
     cl = company.lower().strip()
     if not cl:
         return False

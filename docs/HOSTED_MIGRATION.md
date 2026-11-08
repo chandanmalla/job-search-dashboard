@@ -19,18 +19,22 @@ Those names are gitignored. The publisher refuses to commit them. A future hoste
 
 `data/applied_inbox.json` may contain only `job_id`, `action`, and `ts`. The GitHub-login issue is public. Its body is reduced to those job ids. Do not type notes into it.
 
-## Private canonical store (decision, not created)
+## Private canonical store
 
-Use a **private repository in the same GitHub account**. That is not a new account and not a paid plan. GitHub Free includes private repositories. This branch does not create it.
+Creation of `chandanmalla/job-search-state` was attempted and refused. The agent is signed in as the Cursor GitHub App installation (`ghs_` token), not as chandanmalla. GraphQL `createRepository` returned `Resource not accessible by integration`. `GET /user` returned 403 with the same message. The token cannot create or see that repository. No personal access token was created, and the public repository checkout credential was not reused.
 
-Suggested name: `job-search-state`. Put the JSON state there, not the public dashboard repo.
+What has to create it: a session authenticated as chandanmalla with permission to create private repositories. A classic personal access token needs the `repo` scope. A fine-grained token or GitHub App needs account permission to create repositories. The Cursor installation on `job-search-dashboard` does not have that.
 
-Provisioning, when you choose it:
+After that empty private repository exists, seed it from the secret-free bundle (no `config.json`, `.env`, or token files) with one normal commit. Do not force-push. Then create a second fine-grained token used only by Actions:
 
-1. Create the private repository. Do not make it public.
-2. Create a fine-grained personal access token whose repository access is **only** that private repository, with Contents read and write. Do not grant it access to `job-search-dashboard`.
-3. In the public repository, set secret `STATE_REPO_TOKEN` to that token and variable `STATE_REPO` to `OWNER/job-search-state`.
-4. Leave `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` unset.
+- Resource owner: chandanmalla
+- Repository access: only `job-search-state`
+- Permissions: Contents Read and write
+- No access to `job-search-dashboard`, and no account or secret permissions
+
+Store it as the masked Actions secret `STATE_REPO_TOKEN` on the public repository. Set variable `STATE_REPO` to `chandanmalla/job-search-state`. Read is what the checkout needs. Write is what a later cutover needs to commit updated tracker JSON back to the private repository. The public workflow must not print file contents; `scripts/state_store.py` prints only `private_state=absent|ready|clone_failed` and does not put the token in the clone URL.
+
+Leave `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` unset. The PC task stays the writer.
 
 The workflow checks the private repository out into `state/private/`, which is gitignored. Until the secret exists, checkout does nothing and a publish attempt stops for missing files. No purchase is required. Running the workflows in the public repository keeps standard runner minutes free; the tradeoff is that logs are public, so the scripts print counts only.
 
@@ -67,15 +71,17 @@ The archive hash matches `33261389bfc0b6849c091d76637f3052ba113a637220fa4c5570c1
 
 The attached `generate_report.py` matches the copy inside the archive. The repository copy has the same ingest functions. It adds portable paths, `--no-telegram`, and redacted Telegram errors. Do not replace it with the PC copy.
 
-`company_excluded()` still returns true for Deloitte even though `company_product()` does not. That is the shipped filter module, unchanged. Say if Big 4 visibility should follow `company_product()` instead.
+Deloitte, EY, KPMG, and PwC now pass `is_big4`, `company_excluded` (not excluded), `company_non_product` (not a service firm), `company_product`, and `company_top`, including names such as Deloitte Consulting. McKinsey, Bain, and other staffing or IT-services firms stay excluded. The PC copy of the filter file was not edited.
+
+`direct_apply_companies.json` matches `a38043dfde8ab8fbb4e6f609473dfb97a9dc60e5607dd679a0e76a2e637332d3`, 236 bytes, 15 string entries. It is in the local private bundle only. Merge sets referral status `apply_direct` for a visible, unapplied job at one of those companies when the current status is `none`. Applied jobs, hidden jobs, and any other referral status stay as they are. A second run does not rewrite the file. The list itself is not modified.
 
 ## Remaining blockers
 
-- The private repository and `STATE_REPO_TOKEN` do not exist yet. That is intentional.
-- `direct_apply_companies.json` was not in the bundle. Existing `apply_direct` rows stay as they are. New direct-apply flags will not be added until that file is in the private store.
-- `product_companies_allow.json` was not in the bundle. The referral script no longer needs it for the current rule.
-- `tg_offset.json` was not in the bundle. The offset is inside the private tracked file. Do not enable Telegram sync.
-- Hosted variables stay unset. The PC task stays the writer. Do not stop it for this branch.
+- `chandanmalla/job-search-state` does not exist. This agent's token cannot create it. See the permission requirements above. No state was pushed.
+- `STATE_REPO_TOKEN` is not set. Do not invent one here. Add it through the masked Actions secret UI after the private repository exists.
+- `product_companies_allow.json` was not in the bundle. The referral script does not require it.
+- Telegram stays off. `tg_offset.json` is not required for this preparation.
+- Hosted variables stay unset. The public pull request stays unmerged. The PC task stays the writer.
 
 ## Later cutover
 

@@ -88,13 +88,23 @@ def exp_ok(lo, hi):
 EXCLUDE_COMPANY = ['accenture', 'antal', 'datatech', 'delta technology', 'epam', 'fractal', 'grid dynamics', 'harnham',
     'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman', 'omegahires', 'opus recruitment', 'procdna',
     'recrew', 'sim digital', 'srijan', 'tata consultancy', 'vgreen', 'wipro', 'cognizant', 'ltimindtree', 'tech mahindra',
-    'capgemini', 'genpact', 'mu sigma', 'deloitte', 'ernst & young', 'ernst and young', 'kpmg', 'mckinsey', 'bain & company',
+    'capgemini', 'genpact', 'mu sigma', 'mckinsey', 'bain & company',
     'michael page', 'robert half', 'adecco', 'randstad', 'hays', 'amazon', 'twitch', 'audible', 'zoox', 'whole foods', 'imdb',
-    'zappos', 'annapurna labs', 'pricewaterhouse', 'boston consulting', 'live connections', 'sourcebae', 'ett careermove',
+    'zappos', 'annapurna labs', 'boston consulting', 'live connections', 'sourcebae', 'ett careermove',
     'rekruton', 'sourcingxpress', 'tibil', 'celebal', 'hcltech', 'birlasoft', 'sigmoid', 'latentview', 'incedo', 'valtech',
     'koantek', 'consulting', 'staffing', 'recruitment', 'consultancy', 'it services', 'global solution centre']
-EXCLUDE_SHORT = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf', 'ets', 'sei', 'bain', 'aws', 'ltts', 'lti',
+EXCLUDE_SHORT = {'tcs', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf', 'ets', 'sei', 'bain', 'aws', 'ltts', 'lti',
     'mphasis', 'ltm', 'exl'}
+
+# Deloitte, EY, KPMG, and PwC are allowed. Checked before generic exclusion
+# substrings such as "consulting", so "Deloitte Consulting" is not dropped.
+_BIG4_RE = re.compile(
+    r"(?<![a-z0-9])(?:deloitte|ernst(?:\s+&\s+|\s+and\s+)young|\bey\b|\be\s*&\s*y\b|kpmg|pwc|pricewaterhouse(?:coopers)?)(?![a-z0-9])",
+    re.I,
+)
+
+def is_big4(company) -> bool:
+    return bool(_BIG4_RE.search(_norm(company)))
 
 TOP_COMPANIES = ['openai', 'anthropic', 'google', 'deepmind', 'microsoft', 'meta', 'apple', 'netflix', 'uber', 'snowflake',
     'atlassian', 'flipkart', 'goldman sachs', 'tower research', 'cohere', 'perplexity', 'elevenlabs', 'runway', 'harvey',
@@ -124,6 +134,8 @@ def company_excluded(company):
     cl = _norm(company)
     if not cl:
         return True
+    if is_big4(cl):
+        return False
     if any(ex in cl for ex in EXCLUDE_COMPANY):
         return True
     words = set(re.findall(r"\b[a-z0-9]+\b", cl))
@@ -133,6 +145,8 @@ def company_excluded(company):
 
 def company_top(company):
     cl = _norm(company)
+    if is_big4(cl):
+        return True
     return any(re.search(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", cl) for t in TOP_COMPANIES)
 
 # ---- Service-company gate (Chandan 2026-11-01 rev e: exclude ONLY service-based firms; unknown = product; Big 4 kept) ----
@@ -165,6 +179,8 @@ def _load_allow():
 PRODUCT_ALLOW = _load_allow()
 
 def company_non_product(company):
+    if is_big4(company):
+        return False
     return bool(NON_PRODUCT_RE.search(_norm(company)))
 
 def company_product(company):
