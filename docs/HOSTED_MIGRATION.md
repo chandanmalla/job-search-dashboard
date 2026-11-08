@@ -19,28 +19,15 @@ Those names are gitignored. The publisher refuses to commit them. A future hoste
 
 `data/applied_inbox.json` may contain only `job_id`, `action`, and `ts`. The GitHub-login issue is public. Its body is reduced to those job ids. Do not type notes into it.
 
-## Private canonical store
+## Public state repository
 
-Creation of `chandanmalla/job-search-state` was attempted and refused. The agent is signed in as the Cursor GitHub App installation (`ghs_` token), not as chandanmalla. GraphQL `createRepository` returned `Resource not accessible by integration`. `GET /user` returned 403 with the same message. The token cannot create or see that repository. No personal access token was created, and the public repository checkout credential was not reused.
+`chandanmalla/job-search-state` is public by the owner's decision. It is not a place for referral contacts. It stores sanitized listings, job ids, and statuses only. `scripts/sanitize_state.py` builds that snapshot from an allowlist. Contact names, profile URLs, notes, emails, phones, and credentials stay on the PC.
 
-What has to create it: a session authenticated as chandanmalla with permission to create private repositories. A classic personal access token needs the `repo` scope. A fine-grained token or GitHub App needs account permission to create repositories. The Cursor installation on `job-search-dashboard` does not have that.
+Do not replace the PC `tracked_jobs.json` with the public file. `overlay_private()` copies status and listing fields from the public snapshot and puts the local contact list back. An empty public contact list does not delete local contacts. The full archive on the PC is unchanged until a later cutover.
 
-After that empty private repository exists, seed it from the secret-free bundle (no `config.json`, `.env`, or token files) with one normal commit. Do not force-push. Then create a second fine-grained token used only by Actions:
+Hosted crawl and applied sync can run on the sanitized file: dedupe uses company, title, link, and id; marks are job ids; referral state is the status enum. Outreach history is not required for those two jobs. No separate private repository is required for crawl and applied sync. It remains required only if those workflows must edit the contact history, which they do not.
 
-- Resource owner: chandanmalla
-- Repository access: only `job-search-state`
-- Permissions: Contents Read and write
-- No access to `job-search-dashboard`, and no account or secret permissions
-
-Store it as the masked Actions secret `STATE_REPO_TOKEN` on the public repository. Set variable `STATE_REPO` to `chandanmalla/job-search-state`. Read is what the checkout needs. Write is what a later cutover needs to commit updated tracker JSON back to the private repository. The public workflow must not print file contents; `scripts/state_store.py` prints only `private_state=absent|ready|clone_failed` and does not put the token in the clone URL.
-
-Leave `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` unset. The PC task stays the writer.
-
-The workflow checks the private repository out into `state/private/`, which is gitignored. Until the secret exists, checkout does nothing and a publish attempt stops for missing files. No purchase is required. Running the workflows in the public repository keeps standard runner minutes free; the tradeoff is that logs are public, so the scripts print counts only.
-
-A stronger later option, still without a new account, is to run the merge inside the private repository so the logs are private, and push only the clamped site files to the public repository. That uses the private repository's included Actions minutes. It is not set up here.
-
-Do not use an orphan branch, a public gist, or this public repository for the canonical JSON.
+Leave `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` unset. The PC task stays the writer. A token is not required to read the public state repository. Do not point the hosted workflows at it until a cutover is reviewed.
 
 ## Schedule
 
@@ -77,20 +64,17 @@ Deloitte, EY, KPMG, and PwC now pass `is_big4`, `company_excluded` (not excluded
 
 ## Remaining blockers
 
-- `chandanmalla/job-search-state` does not exist. This agent's token cannot create it. See the permission requirements above. No state was pushed.
-- `STATE_REPO_TOKEN` is not set. Do not invent one here. Add it through the masked Actions secret UI after the private repository exists.
+- Telegram stays off. `tg_offset.json` is not required.
+- Hosted variables stay unset. The dashboard pull request stays unmerged. The PC task stays the writer.
 - `product_companies_allow.json` was not in the bundle. The referral script does not require it.
-- Telegram stays off. `tg_offset.json` is not required for this preparation.
-- Hosted variables stay unset. The public pull request stays unmerged. The PC task stays the writer.
 
 ## Later cutover
 
-Only after you decide the private store is in place and you want the PC to stop being the writer:
+Only when you want the PC to stop being the writer:
 
-1. Put the JSON files in the private repository. Do not commit them here.
-2. Set `STATE_REPO` and `STATE_REPO_TOKEN`.
-3. Run the empty-confirm dispatch and read the counts. It must not publish while the variables are unset.
-4. Stop the PC scheduled task, then set `HOSTED_APPLIED_SYNC=true`.
-5. Enable crawl only after one confirmed manual run, using the even-IST cron above. Leave Telegram and outreach off.
+1. Point the hosted job at the sanitized public state. Do not copy that file over the PC tracker.
+2. Run the empty-confirm dispatch and read the counts. It must not publish while the variables are unset.
+3. Stop the PC scheduled task, then set `HOSTED_APPLIED_SYNC=true`.
+4. Enable crawl only after one confirmed manual run, using the even-IST cron above. Leave Telegram and outreach off.
 
-Rollback: unset the three `HOSTED_*` variables, turn the PC task back on, and redeploy the previous public commit of `index.html`. The private JSON is untouched by a failed public publish.
+Rollback: unset the three `HOSTED_*` variables and turn the PC task back on. The local contact history is still the full file on the PC.

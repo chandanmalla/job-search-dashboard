@@ -337,6 +337,93 @@ class DirectApplyTests(unittest.TestCase):
             shutil.rmtree(work, ignore_errors=True)
 
 
+class SanitizeTests(unittest.TestCase):
+    def test_allowlist_drops_contacts_and_overlay_restores_them(self):
+        import sanitize_state
+        local = {
+            "all_jobs": [{
+                "job_id": "J1",
+                "company": "Example",
+                "job_title": "Senior Data Scientist",
+                "location": "Bengaluru, India",
+                "link": "https://example.com/jobs/1",
+                "status": "Applied",
+                "referral": {
+                    "status": "referred",
+                    "updated_at": "2026-11-01T00:00+05:30",
+                    "notes": "synthetic note",
+                    "contacts": [{
+                        "name": "Pat Example",
+                        "profile_url": "https://www.linkedin.com/in/pat-example",
+                        "notes": "call tomorrow",
+                        "phone": "+91 90000 00000",
+                    }],
+                },
+                "private_blob": "should drop",
+            }],
+            "applied": ["J1"],
+            "skipped": [],
+            "seen_keys": ["example|senior data scientist"],
+            "next_id": 2,
+        }
+        public = sanitize_state.sanitize_tracked(local)
+        blob = json.dumps(public)
+        self.assertNotIn("Pat Example", blob)
+        self.assertNotIn("linkedin.com/in", blob)
+        self.assertNotIn("synthetic note", blob)
+        self.assertNotIn("90000", blob)
+        self.assertNotIn("private_blob", blob)
+        self.assertEqual(public["all_jobs"][0]["job_id"], "J1")
+        self.assertEqual(public["all_jobs"][0]["company"], "Example")
+        self.assertEqual(public["all_jobs"][0]["link"], "https://example.com/jobs/1")
+        self.assertEqual(public["all_jobs"][0]["referral"]["status"], "referred")
+        self.assertEqual(public["all_jobs"][0]["referral"]["contacts"], [])
+        self.assertEqual(public["applied"], ["J1"])
+        restored = sanitize_state.overlay_private(local, public)
+        self.assertEqual(restored["all_jobs"][0]["referral"]["contacts"][0]["name"], "Pat Example")
+        self.assertEqual(restored["all_jobs"][0]["referral"]["status"], "referred")
+        public["all_jobs"][0]["referral"]["status"] = "needed"
+        restored = sanitize_state.overlay_private(local, public)
+        self.assertEqual(restored["all_jobs"][0]["referral"]["status"], "needed")
+        self.assertEqual(restored["all_jobs"][0]["referral"]["contacts"][0]["profile_url"], "https://www.linkedin.com/in/pat-example")
+
+    def test_real_export_statuses_match_and_audit_is_clean(self):
+        import sanitize_state
+        if not (PRIVATE / "tracked_jobs.json").is_file():
+            self.skipTest("private bundle is not on this machine")
+        dest = Path(tempfile.mkdtemp(prefix="jt-sanitized-", dir="/tmp"))
+        try:
+            before = (PRIVATE / "tracked_jobs.json").read_bytes()
+            summary = sanitize_state.export_sanitized(PRIVATE, dest)
+            self.assertEqual((PRIVATE / "tracked_jobs.json").read_bytes(), before)
+            self.assertEqual(summary["audit"], {
+                "linkedin_profiles": 0, "emails": 0, "phones": 0, "tokens": 0,
+                "nonempty_contacts": 0, "forbidden_keys": 0,
+            })
+            src = json.loads(before.decode("utf-8"))
+            dst = json.loads((dest / "tracked_jobs.json").read_text(encoding="utf-8"))
+            self.assertEqual(
+                [job.get("job_id") for job in src["all_jobs"]],
+                [job.get("job_id") for job in dst["all_jobs"]],
+            )
+            self.assertEqual(src.get("applied"), dst.get("applied"))
+            self.assertEqual(src.get("skipped"), dst.get("skipped"))
+            src_status = [((job.get("referral") or {}).get("status") or "none") for job in src["all_jobs"]]
+            dst_status = [((job.get("referral") or {}).get("status") or "none") for job in dst["all_jobs"]]
+            self.assertEqual(src_status, dst_status)
+            again = Path(tempfile.mkdtemp(prefix="jt-sanitized2-", dir="/tmp"))
+            sanitize_state.export_sanitized(PRIVATE, again)
+            for name in ("tracked_jobs.json", "applied_updates.json", "skipped_updates.json", "referral_updates.json"):
+                self.assertEqual((dest / name).read_bytes(), (again / name).read_bytes())
+            overlay = sanitize_state.overlay_private(src, dst)
+            self.assertEqual(
+                [(job.get("job_id"), (job.get("referral") or {}).get("contacts")) for job in src["all_jobs"]],
+                [(job.get("job_id"), (job.get("referral") or {}).get("contacts")) for job in overlay["all_jobs"]],
+            )
+        finally:
+            shutil.rmtree(dest, ignore_errors=True)
+
+
 class MarkPrivacyTests(unittest.TestCase):
     def test_public_issue_body_has_no_note(self):
         import marks
