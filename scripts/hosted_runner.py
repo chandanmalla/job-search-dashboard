@@ -21,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from backup_state import backup_state
 from paths import REPO_ROOT, SCRIPTS_DIR, job_tracker_dir, python_exe
 from preflight import preflight_report
-from publish_guard import restore_if_unsafe
+from publish_guard import clamp_html, clamp_jobs_json, restore_if_unsafe
 from redact import redact
 
 PUBLISH_PATHS = [
@@ -29,7 +29,6 @@ PUBLISH_PATHS = [
     "data/jobs.json",
     "index.html",
     "state/health.json",
-    "state/job-tracker",
 ]
 
 
@@ -72,6 +71,17 @@ def _skipped_side_effects(mode: str, *, notifications: bool, telegram_sync: bool
     return steps
 
 
+def _public_detail(text: str) -> str:
+    kept = []
+    for line in redact(text).splitlines():
+        lowered = line.lower()
+        if any(word in lowered for word in ("linkedin", "http://", "https://", "@", "phone", "note")):
+            kept.append("[line omitted]")
+            continue
+        kept.append(line[:180])
+    return "\n".join(kept[-20:])
+
+
 def _run_py(script: Path, args, env):
     result = subprocess.run(
         [python_exe(), str(script), *args],
@@ -80,8 +90,8 @@ def _run_py(script: Path, args, env):
         capture_output=True,
         text=True,
     )
-    detail = redact(((result.stdout or "") + "\n" + (result.stderr or "")).strip())
-    return result.returncode, detail[-2000:]
+    detail = _public_detail(((result.stdout or "") + "\n" + (result.stderr or "")).strip())
+    return result.returncode, detail
 
 
 def _child_env():
@@ -106,6 +116,8 @@ def _guarded_build(env, *, allow_needed: bool, allow_new_jobs: bool, referred_id
         if jobs.exists() or old_jobs:
             jobs.write_text(old_jobs, encoding="utf-8")
         return False, f"build_site exit {code}: {detail}"
+    jobs.write_text(clamp_jobs_json(jobs.read_text(encoding="utf-8")), encoding="utf-8")
+    index.write_text(clamp_html(index.read_text(encoding="utf-8")), encoding="utf-8")
     errors = restore_if_unsafe(
         index, jobs, old_html, old_jobs,
         allow_needed=allow_needed, allow_new_jobs=allow_new_jobs, referred_ids=referred_ids,
@@ -179,15 +191,15 @@ def execute(mode: str, *, notifications: bool = False, telegram_sync: bool = Fal
 
     if mode == "applied-sync":
         ok = step_script("process_inbox", SCRIPTS_DIR / "process_inbox.py", [])
-        ok = ok and step_script("merge_referral_updates", jt / "merge_referral_updates.py", [])
+        ok = ok and step_script("merge_referral_updates", SCRIPTS_DIR / "merge_referral_updates.py", [])
         if ok:
             built, detail = _guarded_build(env, allow_needed=False, allow_new_jobs=False)
             report["steps"].append({"name": "build_site", "status": "ok" if built else "failed", "detail": detail})
             ok = built
     elif mode == "crawl":
         ok = step_script("sweep_crawler", SCRIPTS_DIR / "sweep_crawler.py", [])
-        ok = ok and step_script("auto_referral_needed", jt / "auto_referral_needed.py", [])
-        ok = ok and step_script("merge_referral_updates", jt / "merge_referral_updates.py", [])
+        ok = ok and step_script("auto_referral_needed", SCRIPTS_DIR / "auto_referral_needed.py", [])
+        ok = ok and step_script("merge_referral_updates", SCRIPTS_DIR / "merge_referral_updates.py", [])
         if telegram_sync:
             ok = ok and step_script("telegram_sync", SCRIPTS_DIR / "sync_applied_from_telegram.py", [])
         found = jt / "found_jobs_latest.json"
@@ -203,8 +215,8 @@ def execute(mode: str, *, notifications: bool = False, telegram_sync: bool = Fal
                 "detail": "found_jobs_latest.json was not written",
             })
             ok = False
-        ok = ok and step_script("auto_referral_needed_after", jt / "auto_referral_needed.py", [])
-        ok = ok and step_script("merge_referral_updates_after", jt / "merge_referral_updates.py", [])
+        ok = ok and step_script("auto_referral_needed_after", SCRIPTS_DIR / "auto_referral_needed.py", [])
+        ok = ok and step_script("merge_referral_updates_after", SCRIPTS_DIR / "merge_referral_updates.py", [])
         if outreach:
             ok = ok and step_script("outreach", jt / "outreach_queue.py", [])
         if ok:

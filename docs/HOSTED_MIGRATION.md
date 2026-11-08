@@ -1,145 +1,90 @@
 # Hosted migration
 
-The live dashboard stays at `https://chandanmalla.github.io/job-search-dashboard/`. This branch prepares a GitHub Actions pipeline that can record website marks, crawl, rebuild `index.html`, and publish Pages without the Windows PC named Nitya. It does not turn that pipeline on.
+The dashboard stays at `https://chandanmalla.github.io/job-search-dashboard/`. This branch prepares GitHub Actions so a later cutover can run without the Windows PC. It does not merge, deploy, enable a schedule, crawl, or send messages. The PC pipeline remains the only production writer.
 
-Nothing here merges to `main`, deploys, enables a schedule, buys a service, sends Telegram, runs outreach, or deletes canonical data.
+## Public / private boundary
 
-## What already happened on 8 Nov 2026
+This repository is public. GitHub Actions logs for a public repository are public too.
 
-Commit `115f06a` (`115f06acb8234508690b29d600ccdf79163457b6`) is the sweep that cleared the pending inbox. The parent of that commit held 49 `applied` inbox rows: 20 timestamped `2026-11-05` and 29 timestamped `2026-11-08`. After the commit:
+Already public, and left as they are in this branch: `index.html`, `data/jobs.json`, and `data/applied_inbox.json`. The dashboard already shows some referral details. This branch does not rewrite those files to add or remove them.
 
-| | Before `c0f6220` | After `115f06a` |
-| --- | --- | --- |
-| Embedded `DB_APPLIED` | 433 | 482 |
-| Applied ids that are also rows in `data/jobs.json` (the on-screen Applied count) | 334 | 383 |
-| `DB_SKIPPED` | 73 | 73 |
-| Inbox | 49 marks | `[]` |
-
-The 49 new embedded ids are exactly those inbox ids. No skipped id was removed. The same commit also added 13 job rows (`J646`–`J658`). Referral counts on the dashboard data went from 73 `needed` / 11 `apply_direct` to 85 `needed` / 12 `apply_direct` because of those new rows, not because an existing row changed status. That crawl, referral flagging, and the Telegram digest were side effects of running the whole PC orchestrator for a status sync. Hosted applied-sync does not call the crawler, `auto_referral_needed.py`, Telegram, or `outreach_queue.py`.
-
-`HEAD` is still 482 applied and 73 skipped. `data/applied_inbox.json` on `main` still has the later marks `J646` and `J649`. This branch does not process them.
-
-## Why GitHub Actions is enough
-
-The work is a batch: read a JSON inbox, update JSON state, rebuild two static files, push, and let the existing Pages workflow serve them. A VM, worker, or database would add an account and a second writer. Actions already has a short-lived `GITHUB_TOKEN` and can deploy Pages.
-
-| | GitHub Actions on this public repo | Private repo or a small VM |
-| --- | --- | --- |
-| Runner cost | $0 for standard GitHub-hosted runners. Do not select a larger runner; those are billed even on public repos. | Linux 2-core is $0.006/minute after the plan's included compute (GitHub Free documents about $12/month, and the pricing page still lists 2,000 minutes). Twelve 15-minute crawls a day is about 5,400 minutes/month. |
-| Pages | Free. Published site cap 1 GB. Soft bandwidth cap 100 GB/month. Deploy timeout 10 minutes. The custom workflow is not under the 10 Jekyll builds/hour soft limit. | Private Pages is not on every free plan. |
-| Always-on bot | Not required for marks or crawl. A 24/7 Telegram listener is a separate process and stays off. | A VM would be the thing that has to stay up. |
-| Schedule accuracy | GitHub cron is best-effort and can start late. Every two hours is within what it is for. | A VM cron is sharper and is another writer to disable. |
-
-Checked against GitHub's Actions billing and Pages limits docs while preparing this branch. Re-check those pages before enabling anything if billing copy has moved.
-
-The repo is public. `state/job-tracker/` will be public git data once the bundle is committed. The Pages artifact is only `index.html`, `data/jobs.json`, and `data/applied_inbox.json`, so the canonical file is not copied onto the website. `data/jobs.json` already publishes referral notes. Read `tracked_jobs.json` for contact details before its first commit and remove anything that is not already on the dashboard.
-
-## Two pipelines
-
-`scripts/hosted_runner.py --mode applied-sync`
-
-1. Snapshot canonical JSON under `state/job-tracker/backups/` (five stamps kept; git history is the real backup).
-2. `process_inbox.py` appends marks into `*_updates.json` and removes only the fingerprints it accepted. A retry does not duplicate ids. Unrecognized inbox entries stay. A JSON parse error leaves the inbox as it was.
-3. `merge_referral_updates.py` from the bundle.
-4. `build_site.py`, then the publish guard. Applied and skipped ids must be a superset of the previous dashboard. Existing referral statuses `apply_direct`, `referred`, `requested`, and `skipped` cannot change. Applied-sync also refuses new or deleted job rows.
-5. One commit of an explicit path list, then Pages. A failed step commits nothing. Push rejection checks out `origin/main` and replays the idempotent steps, up to three times.
-
-The command list is `process_inbox.py`, `merge_referral_updates.py`, `build_site.py`. Passing notification flags to applied-sync is a failure, not a send.
-
-`scripts/hosted_runner.py --mode crawl`
-
-Runs the sweep, then `auto_referral_needed.py`, merge, optional report ingest, referral flag, merge, and build. `generate_report.py` is called with `--no-telegram` unless `--notifications` is passed. Outreach runs only with `--outreach`. The crawl workflows do not pass those flags. New best-fit rows may move from referral `none` to `needed`. They may not move to `requested`. `apply_direct` stays `apply_direct`.
-
-Crawl HTTP GETs retry 429, 502, and 503 at most four times. Each wait is capped at 20 seconds. Tests stub the socket; they do not scrape.
-
-`scripts/cron_runner.py` remains the PC orchestrator. It still syncs Telegram, crawls, flags referrals, sends the digest, and refreshes outreach, using `JT_DIR` / the historical Windows path. It no longer prints success when a step failed, no longer runs `git add .`, and no longer rebases with `-X ours` (that could drop inbox marks). Disable that scheduled task before the hosted variables are set. Do not also restore its two-hour routine at 9 Nov 00:00 IST.
-
-## Marks without a long-lived browser token
-
-A static Pages site cannot mint a short-lived GitHub token by itself. A backend that exchanged OAuth codes would be a new service. Two authenticated writes are supported, and neither is a public anonymous write:
-
-1. **GitHub login (preferred).** "Sync with GitHub login" opens a prefilled issue. The workflow `.github/workflows/mark-via-issue.yml` accepts it only from `MARK_AUTHORS` (default `chandanmalla`), rejects token-shaped text without storing it, and appends to the inbox only when the repository variable `HOSTED_MARK_ISSUES` is `true`. Until then the open issue is the record.
-2. **Optional fine-grained PAT.** "Connect GitHub" still stores a token in `localStorage` only. Use one repo, Contents read/write, and a short expiry. It is not committed. Prefer the issue path and remove the token from the browser when you can.
-
-Processing and publishing use the per-job `GITHUB_TOKEN`. That token's pushes do not start another workflow run, so the same job deploys Pages.
-
-## Canonical bundle to copy
-
-Put these files in `state/job-tracker/`. Do not send `config.json`, `.env`, browser tokens, `python-embed/`, `git-portable/`, logs, or Excel reports.
-
-Required before applied-sync can publish:
+Not public, and not in this branch:
 
 - `tracked_jobs.json`
-- `job_filters.py`
-- `merge_referral_updates.py`
-- `applied_updates.json`
-- `skipped_updates.json`
-- `referral_updates.json`
+- `applied_updates.json`, `skipped_updates.json`, `referral_updates.json`
+- backups of those files
+- `direct_apply_companies.json`, `tg_offset.json`, `auto_referral_state.json`
 
-Also required before crawl can publish:
+Those names are gitignored. The publisher refuses to commit them. A future hosted build copies listing fields and referral **status** into the public site and stores an empty contact list. Names, notes, profile URLs, and phone numbers stay in the private store.
 
-- `auto_referral_needed.py`
-- `cron_state.json`
+`data/applied_inbox.json` may contain only `job_id`, `action`, and `ts`. The GitHub-login issue is public. Its body is reduced to those job ids. Do not type notes into it.
 
-Copy any local module that those three Python files import. Preflight parses them and names a missing local import; it does not execute them. Known pip packages (`openpyxl`, `xlsxwriter`, `python-jobspy`) are not local files. `python-jobspy` is not installed by the workflow. Add it only when you intentionally enable crawl.
+## Private canonical store (decision, not created)
 
-Diff `job-tracker/generate_report.py` against `scripts/generate_report.py`. The repo copy is the one the hosted crawl runs, and it now has `--no-telegram` plus portable paths. If the PC copy has newer filter or ingest behavior, bring that behavior across without dropping `--no-telegram`.
+Use a **private repository in the same GitHub account**. That is not a new account and not a paid plan. GitHub Free includes private repositories. This branch does not create it.
 
-Not required for the default migration:
+Suggested name: `job-search-state`. Put the JSON state there, not the public dashboard repo.
 
-- `tg_offset.json`, and only if Telegram command sync is later enabled. Missing offset refuses to start at 0, because that would replay old commands and send acknowledgements.
-- `outreach_queue.py`, only if outreach is later enabled.
-- `feed_health.json`, optional continuity for the crawl health log.
-- User profile. The dashboard already has its display name and email. `DASHBOARD_USER_NAME`, `DASHBOARD_USER_EMAIL`, and `DASHBOARD_USER_PHONE` override them without a config file.
+Provisioning, when you choose it:
 
-Filter rules stay in the copied `job_filters.py`. This branch does not re-code experience, title, or company policy. The sweep file still contains the location and Grab checks that were already in the repo (India except Pune, Chennai, West Bengal, Kolkata, and Tamil Nadu; UK; Australia; Thailand; Dubai/UAE; no Singapore; Grab only Bangkok and India).
+1. Create the private repository. Do not make it public.
+2. Create a fine-grained personal access token whose repository access is **only** that private repository, with Contents read and write. Do not grant it access to `job-search-dashboard`.
+3. In the public repository, set secret `STATE_REPO_TOKEN` to that token and variable `STATE_REPO` to `OWNER/job-search-state`.
+4. Leave `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` unset.
 
-## Secrets and variables
+The workflow checks the private repository out into `state/private/`, which is gitignored. Until the secret exists, checkout does nothing and a publish attempt stops for missing files. No purchase is required. Running the workflows in the public repository keeps standard runner minutes free; the tradeoff is that logs are public, so the scripts print counts only.
 
-Create no secrets for the default cutover.
+A stronger later option, still without a new account, is to run the merge inside the private repository so the logs are private, and push only the clamped site files to the public repository. That uses the private repository's included Actions minutes. It is not set up here.
 
-| Name | Kind | Default | Effect |
-| --- | --- | --- | --- |
-| `HOSTED_APPLIED_SYNC` | repository variable | unset | `true` lets inbox pushes and a confirmed dispatch merge and publish. |
-| `HOSTED_CRAWL` | repository variable | unset | `true` plus dispatch confirm `pc-cron-stopped` runs a crawl. There is no schedule in the workflow. |
-| `HOSTED_MARK_ISSUES` | repository variable | unset | `true` lets an allow-listed issue append to the inbox. |
-| `MARK_AUTHORS` | repository variable | `chandanmalla` | Comma-separated GitHub logins. |
-| `TELEGRAM_BOT_TOKEN` | secret | absent | Used only by an explicit notification or Telegram-sync run. |
-| `TELEGRAM_CHAT_IDS` | secret | absent | Comma-separated chat ids. Same gate. |
+Do not use an orphan branch, a public gist, or this public repository for the canonical JSON.
 
-`workflow_dispatch` without the confirm string, or without the matching variable, is preflight only. Preflight exits non-zero when the bundle is missing and does not edit the dashboard. That red run means "not ready", not "the site was changed".
+## Schedule
 
-## Safe activation
+The local routine is every two hours on **even IST hours** (00:00, 02:00, …, 22:00). IST is UTC+5:30, so a cron minute of 30 lands on minute 00 six hours later and keeps even/odd parity.
 
-The PC task has been daily at 08:00 IST through 8 Nov. Do not start a two-hour PC routine at 9 Nov 00:00 IST and also enable Actions. One writer.
+| UTC | IST |
+| --- | --- |
+| 18:30 | 00:00 |
+| 20:30 | 02:00 |
+| 22:30 | 04:00 |
+| 00:30 | 06:00 |
+| 02:30 | 08:00 |
+| 04:30 | 10:00 |
+| 06:30 | 12:00 |
+| 08:30 | 14:00 |
+| 10:30 | 16:00 |
+| 12:30 | 18:00 |
+| 14:30 | 20:00 |
+| 16:30 | 22:00 |
 
-1. Copy the bundle onto this branch and push. Run the unit tests. Run **Applied sync** and **Crawl** via workflow dispatch with an empty confirm box. Both should report the file list and must not change `main` if the variables are unset.
-2. On the PC, disable the scheduled task that runs `cron_runner.py`. Confirm it is not going to fire at 08:00 IST or at midnight.
-3. Set `HOSTED_APPLIED_SYNC` to `true`.
-4. Run **Applied sync** once with confirm `pc-cron-stopped`. Check `state/health.json` is `"ok": true`, the skipped ids are still 73 or a superset, and no Telegram message arrived.
-5. Set `HOSTED_MARK_ISSUES` to `true` if you want the login button to write. Leave the browser token unused.
-6. Crawl stays manual. After one confirmed crawl looks right, the schedule to add to `.github/workflows/crawl.yml` is:
+The expression is `30 0,2,4,6,8,10,12,14,16,18,20,22 * * *`. Odd UTC hours would be odd IST hours (01:00, 03:00, …) and are not this routine. The expression is commented in `.github/workflows/crawl.yml`. It is not enabled. A schedule event would still publish only if `HOSTED_CRAWL=true`, which is unset.
 
-```yaml
-on:
-  schedule:
-    - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
-  workflow_dispatch:
-```
+## What was checked on the private bundle
 
-That is 00:00 IST and every two hours after (18:30 UTC is 00:00 IST). The run script already treats a `schedule` event as a crawl only when `HOSTED_CRAWL` is `true`; unset, the run stays a preflight. Turn the variable on only when the PC task is off. Do not combine that change with Telegram.
+The archive hash matches `33261389bfc0b6849c091d76637f3052ba113a637220fa4c5570c1bab2d3c5ab`. It was extracted outside the git work tree. The code modules import. Filter checks for senior titles, plain Data Scientist titles, the 3–7 year window, Singapore, Pune, multi-city Bengaluru/Pune, Infosys, and an unknown company match the module that was copied into `scripts/job_filters.py`.
 
-Health JSON records skipped Telegram, outreach, and, for applied-sync, skipped crawl. A failed merge or a guard failure restores the previous `index.html` and `data/jobs.json` in the worktree and does not push.
+`merge_referral_updates.py` in this repo reads `JT_DIR` and does not rewrite `tracked_jobs.json` when the replay leaves the canonical JSON unchanged. On the private copy, one run and a second run both reported `rewritten=0`, and the file bytes were unchanged. Applied and skipped membership and private referral fields stayed in that file. `auto_referral_needed.py --dry-run` reported `flagged=0` because the watermark is already at the newest id, and it did not modify the referral log.
 
-## Rollback
+The attached `generate_report.py` matches the copy inside the archive. The repository copy has the same ingest functions. It adds portable paths, `--no-telegram`, and redacted Telegram errors. Do not replace it with the PC copy.
 
-1. Delete or set `HOSTED_APPLIED_SYNC`, `HOSTED_CRAWL`, and `HOSTED_MARK_ISSUES` to anything other than `true`.
-2. Re-enable the PC task if that machine should be the writer again. `cron_runner.py` still understands the Windows paths.
-3. `git revert` the bad publish, or restore `state/job-tracker/*.json` from `state/job-tracker/backups/<stamp>/` or from the previous commit. Push. Pages serves that commit's `index.html`.
-4. Inbox rows are in git history. A publish that fails never clears them on `main`.
+`company_excluded()` still returns true for Deloitte even though `company_product()` does not. That is the shipped filter module, unchanged. Say if Big 4 visibility should follow `company_product()` instead.
 
-## Tests
+## Remaining blockers
 
-`python3 -m unittest discover -s tests -v`
+- The private repository and `STATE_REPO_TOKEN` do not exist yet. That is intentional.
+- `direct_apply_companies.json` was not in the bundle. Existing `apply_direct` rows stay as they are. New direct-apply flags will not be added until that file is in the private store.
+- `product_companies_allow.json` was not in the bundle. The referral script no longer needs it for the current rule.
+- `tg_offset.json` was not in the bundle. The offset is inside the private tracked file. Do not enable Telegram sync.
+- Hosted variables stay unset. The PC task stays the writer. Do not stop it for this branch.
 
-Covers the 49-mark commit (including 334 and 383 visible applied, 433 and 482 embedded, 73 skips), duplicate retry, concurrent inbox writers, referral and skip files left untouched, publish-guard rollback, bounded HTTP backoff, crawl refusal before any HTTP call when `job_filters.py` is absent, secret-path refusal, and a local git push retry. No test scrapes a career site.
+## Later cutover
+
+Only after you decide the private store is in place and you want the PC to stop being the writer:
+
+1. Put the JSON files in the private repository. Do not commit them here.
+2. Set `STATE_REPO` and `STATE_REPO_TOKEN`.
+3. Run the empty-confirm dispatch and read the counts. It must not publish while the variables are unset.
+4. Stop the PC scheduled task, then set `HOSTED_APPLIED_SYNC=true`.
+5. Enable crawl only after one confirmed manual run, using the even-IST cron above. Leave Telegram and outreach off.
+
+Rollback: unset the three `HOSTED_*` variables, turn the PC task back on, and redeploy the previous public commit of `index.html`. The private JSON is untouched by a failed public publish.

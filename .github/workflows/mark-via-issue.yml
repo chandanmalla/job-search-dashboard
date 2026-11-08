@@ -37,10 +37,20 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           HOSTED_MARK_ISSUES: ${{ vars.HOSTED_MARK_ISSUES }}
-          JT_DIR: ${{ github.workspace }}/state/job-tracker
+          JT_DIR: ${{ github.workspace }}/state/private
           INBOX_PATH: ${{ github.workspace }}/data/applied_inbox.json
           MARK_RESULT: ${{ github.workspace }}/mark_result.json
+          SAFE_ISSUE_BODY: ${{ github.workspace }}/safe_issue_body.txt
         run: python3 scripts/marks.py accept-issue --git-push
+      - name: Keep only job ids on the public issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          if [ -f safe_issue_body.txt ]; then
+            gh issue edit "$ISSUE" --body-file safe_issue_body.txt
+          fi
       - name: Read result
         id: result
         run: |
@@ -65,7 +75,7 @@ jobs:
           if [ "$STATUS" = "rejected" ]; then
             gh issue close "$ISSUE" --comment "Rejected. Dashboard marks are accepted only from an allow-listed GitHub account, and token-like text is never stored."
           elif [ "$STATUS" = "disabled" ]; then
-            gh issue comment "$ISSUE" --body "Parsed marks were not written. After the PC scheduler is stopped, set the repository variable HOSTED_MARK_ISSUES to true and reopen this issue. Parsed: ${IDS}"
+            gh issue comment "$ISSUE" --body "Marks were not written. The PC pipeline is still the writer. This public issue now contains only job ids: ${IDS}"
           elif [ "$STATUS" = "ok" ]; then
             gh issue close "$ISSUE" --comment "Appended to data/applied_inbox.json: ${IDS}"
           elif [ "$STATUS" = "empty" ]; then

@@ -17,7 +17,14 @@ FORBIDDEN_NAMES = {
     "credentials.json",
     "id_rsa",
     "id_ed25519",
+    "tracked_jobs.json",
+    "applied_updates.json",
+    "skipped_updates.json",
+    "referral_updates.json",
+    "direct_apply_companies.json",
+    "tg_offset.json",
 }
+PRIVATE_PREFIXES = ("state/private/", "state/job-tracker/")
 
 
 class PublishRefused(RuntimeError):
@@ -63,8 +70,11 @@ class GitPublisher:
 
     def _reject_name(self, path: Path):
         name = path.name.lower()
+        posix = path.as_posix()
+        if name != "readme.md" and any(posix == prefix.rstrip("/") or posix.startswith(prefix) for prefix in PRIVATE_PREFIXES):
+            raise PublishRefused(f"refusing to commit private state path {posix}")
         if name in FORBIDDEN_NAMES or name.endswith(".pem") or name.endswith(".env") or "token" in name:
-            raise PublishRefused(f"refusing to commit {path.as_posix()}")
+            raise PublishRefused(f"refusing to commit {posix}")
 
     def reset_to_origin(self):
         if not self.allow_reset:

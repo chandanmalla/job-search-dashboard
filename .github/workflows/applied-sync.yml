@@ -38,10 +38,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Private state checkout
+        env:
+          STATE_REPO: ${{ vars.STATE_REPO }}
+          STATE_REPO_TOKEN: ${{ secrets.STATE_REPO_TOKEN }}
+        run: python3 scripts/state_store.py prepare
       - name: Applied sync or preflight
         id: run
         env:
-          JT_DIR: ${{ github.workspace }}/state/job-tracker
+          JT_DIR: ${{ github.workspace }}/state/private
         run: |
           set -euo pipefail
           publish=false

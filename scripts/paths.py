@@ -1,8 +1,8 @@
 """Portable locations for the dashboard repo and the canonical job-tracker state.
 
-JT_DIR selects the canonical directory. The default is state/job-tracker inside
-this repo when it already holds tracked_jobs.json, otherwise the historical
-Windows path if that directory exists. Nothing here reads secrets.
+JT_DIR selects the canonical directory. Prefer a private checkout
+(state/private) or the historical Windows path. Do not commit that directory.
+Nothing here reads secrets.
 """
 import os
 import sys

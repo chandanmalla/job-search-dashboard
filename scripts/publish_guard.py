@@ -31,6 +31,46 @@ def _status(job) -> str:
     return status or "none"
 
 
+def public_referral(referral) -> dict:
+    """Status only. Contact names, notes, profile URLs, and phone fields stay private."""
+    referral = referral if isinstance(referral, dict) else {}
+    return {
+        "status": referral.get("status") or "none",
+        "contacts": [],
+        "updated_at": referral.get("updated_at"),
+    }
+
+
+def clamp_jobs(jobs: list) -> list:
+    clamped = []
+    for job in jobs:
+        item = dict(job)
+        item["referral"] = public_referral(item.get("referral"))
+        clamped.append(item)
+    return clamped
+
+
+def clamp_jobs_json(text: str) -> str:
+    data = json.loads(text or "[]")
+    if isinstance(data, dict):
+        rows = data.get("all_jobs") or data.get("jobs") or []
+        data = rows
+    return json.dumps(clamp_jobs(data), ensure_ascii=False, indent=2) + "\n"
+
+
+def clamp_html(html: str) -> str:
+    match = re.search(
+        r'(<script id="jobs-data" type="application/json">)(\[.*?\])(</script>)',
+        html,
+        re.S,
+    )
+    if not match:
+        return html
+    raw = match.group(2).replace("<\\/", "</")
+    clamped = json.dumps(clamp_jobs(json.loads(raw)), ensure_ascii=False).replace("</", "<\\/")
+    return html[: match.start(2)] + clamped + html[match.end(2) :]
+
+
 def history_errors(old_html, new_html, old_jobs_text, new_jobs_text, *,
                    allow_needed=False, allow_new_jobs=False, referred_ids=()):
     """Return human-readable violations. Empty means the publish may proceed.

@@ -5,14 +5,11 @@ from pathlib import Path
 
 APPLIED_FILES = (
     "tracked_jobs.json",
-    "job_filters.py",
-    "merge_referral_updates.py",
     "applied_updates.json",
     "skipped_updates.json",
     "referral_updates.json",
 )
 CRAWL_FILES = APPLIED_FILES + (
-    "auto_referral_needed.py",
     "cron_state.json",
 )
 TELEGRAM_FILES = ("tg_offset.json",)

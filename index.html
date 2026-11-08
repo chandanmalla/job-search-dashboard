@@ -1026,7 +1026,7 @@ ${savedName}
       const body = '<!-- dashboard-mark -->\n' + lines.join('\n') + '\n';
       const url = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('Dashboard marks') + '&body=' + encodeURIComponent(body);
       window.open(url, '_blank', 'noopener,noreferrer');
-      ghToast('Submit the GitHub issue while logged in as the repo owner. No token is stored. Marks stay on this device.', true);
+      ghToast('This opens a public issue with job ids only. Do not type names, notes, or links. No token is stored.', true);
     };
     var loginBtn = document.getElementById('btnGithubLogin');
     if (loginBtn) loginBtn.addEventListener('click', window.ghLoginSync);

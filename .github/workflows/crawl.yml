@@ -1,12 +1,13 @@
 name: Crawl
 
-# Manual only. The 2-hourly schedule is documented in docs/HOSTED_MIGRATION.md
-# and is not enabled. Telegram, Telegram sync, and outreach are not invoked.
+# Manual only. Telegram, Telegram sync, and outreach are not invoked.
+# The PC pipeline remains the production writer. This schedule is not enabled.
 #
-# When the PC scheduler is off, add:
+# Even IST hours only. IST = UTC+5:30, so minute 30 lands six hours later and
+# keeps parity: 18:30 UTC = 00:00 IST, 00:30 UTC = 06:00 IST. Odd UTC hours
+# would be odd IST hours and are not the routine.
 #   schedule:
 #     - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
-# 18:30 UTC is 00:00 IST. A schedule run publishes only when HOSTED_CRAWL=true.
 on:
   workflow_dispatch:
     inputs:
@@ -38,10 +39,15 @@ jobs:
           python-version: "3.12"
       - name: Report dependencies
         run: python3 -m pip install --disable-pip-version-check openpyxl xlsxwriter
+      - name: Private state checkout
+        env:
+          STATE_REPO: ${{ vars.STATE_REPO }}
+          STATE_REPO_TOKEN: ${{ secrets.STATE_REPO_TOKEN }}
+        run: python3 scripts/state_store.py prepare
       - name: Crawl or preflight
         id: gate
         env:
-          JT_DIR: ${{ github.workspace }}/state/job-tracker
+          JT_DIR: ${{ github.workspace }}/state/private
         run: |
           set -euo pipefail
           event="${{ github.event_name }}"

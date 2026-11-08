@@ -77,8 +77,8 @@ def main():
     run_step("0b. Processing Website Marks Inbox", [py, str(SCRIPTS_DIR / "process_inbox.py")])
     run_step("1. Syncing Applied Jobs from Telegram", [py, str(SCRIPTS_DIR / "sync_applied_from_telegram.py")])
     run_step("2. Running Alternating Sweep Crawler (Top Product Companies)", [py, str(SCRIPTS_DIR / "sweep_crawler.py")])
-    run_step("2a. Auto-flag Best-match Jobs for Referral", [py, str(jt / "auto_referral_needed.py")])
-    run_step("2b. Merging Referral Updates", [py, str(jt / "merge_referral_updates.py")])
+    run_step("2a. Auto-flag Best-match Jobs for Referral", [py, str(SCRIPTS_DIR / "auto_referral_needed.py")])
+    run_step("2b. Merging Referral Updates", [py, str(SCRIPTS_DIR / "merge_referral_updates.py")])
 
     found_json = jt / "found_jobs_latest.json"
     if found_json.exists():
@@ -89,14 +89,13 @@ def main():
     else:
         log("[cron] SKIPPED 3. Updating Tracked Database: found_jobs_latest.json missing")
 
-    run_step("3b. Auto-flag New Best-match Jobs for Referral", [py, str(jt / "auto_referral_needed.py")])
-    run_step("3c. Merging Referral Updates (auto-flagged)", [py, str(jt / "merge_referral_updates.py")])
+    run_step("3b. Auto-flag New Best-match Jobs for Referral", [py, str(SCRIPTS_DIR / "auto_referral_needed.py")])
+    run_step("3c. Merging Referral Updates (auto-flagged)", [py, str(SCRIPTS_DIR / "merge_referral_updates.py")])
     run_step("4. Rebuilding Web Dashboard (index.html + data/jobs.json)", [py, str(PROJECT_DIR / "build_site.py")])
     run_step("4b. Refreshing Outreach Queue", [py, str(jt / "outreach_queue.py")])
 
     publish_paths = [
         "data/applied_inbox.json", "data/jobs.json", "index.html",
-        "state/health.json", "state/job-tracker",
     ]
     existing = [path for path in publish_paths if Path(path).exists()]
     run_step("5. Git Add", [git, "add", "--", *existing])

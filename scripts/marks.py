@@ -91,26 +91,56 @@ def append_marks(marks, *, ts: str) -> int:
         return added
 
 
+def safe_issue_body(marks=(), cleared=False) -> str:
+    """Public issue text. Job ids only. Notes and contacts are not kept."""
+    if cleared:
+        return (
+            "<!-- dashboard-mark -->\n\n"
+            "This public issue was cleared. Token-like text and notes are not stored.\n"
+        )
+    lines = ["<!-- dashboard-mark -->"]
+    lines.extend(f"{mark['action']} {mark['job_id']}" for mark in marks)
+    lines.append("")
+    lines.append("Only job ids are kept on this public issue. Do not add names, notes, or profile links.")
+    return "\n".join(lines) + "\n"
+
+
 def handle_issue(*, actor: str, authors: str | None, title: str, body: str, enabled: bool, ts: str) -> dict:
     blob = f"{title}\n{body}"
     if MARKER not in blob and not (title or "").startswith("Dashboard marks"):
-        return {"status": "ignored", "ids": [], "detail": "not a dashboard mark"}
+        return {"status": "ignored", "ids": [], "detail": "not a dashboard mark", "safe_body": ""}
     try:
-        marks = parse_mark_text(blob)
+        parsed = parse_mark_text(blob)
     except ValueError:
-        return {"status": "rejected", "ids": [], "detail": "token-like content refused"}
+        return {
+            "status": "rejected",
+            "ids": [],
+            "detail": "token-like content refused",
+            "safe_body": safe_issue_body(cleared=True),
+        }
     if not author_allowed(actor, authors):
-        return {"status": "rejected", "ids": [m["job_id"] for m in marks], "detail": "author not allow-listed"}
-    if not marks:
-        return {"status": "empty", "ids": [], "detail": "no marks parsed"}
+        return {
+            "status": "rejected",
+            "ids": [mark["job_id"] for mark in parsed],
+            "detail": "author not allow-listed",
+            "safe_body": safe_issue_body(parsed),
+        }
+    if not parsed:
+        return {"status": "empty", "ids": [], "detail": "no marks parsed", "safe_body": safe_issue_body()}
     if not enabled:
         return {
             "status": "disabled",
-            "ids": [f"{m['action']} {m['job_id']}" for m in marks],
-            "detail": "HOSTED_MARK_ISSUES is not true; issue left as the record",
+            "ids": [f"{mark['action']} {mark['job_id']}" for mark in parsed],
+            "detail": "HOSTED_MARK_ISSUES is not true; public issue is reduced to job ids",
+            "safe_body": safe_issue_body(parsed),
         }
-    append_marks(marks, ts=ts)
-    return {"status": "ok", "ids": [f"{m['action']} {m['job_id']}" for m in marks], "detail": "appended"}
+    append_marks(parsed, ts=ts)
+    return {
+        "status": "ok",
+        "ids": [f"{mark['action']} {mark['job_id']}" for mark in parsed],
+        "detail": "appended",
+        "safe_body": safe_issue_body(parsed),
+    }
 
 
 def main(argv=None):
@@ -148,6 +178,9 @@ def main(argv=None):
         pushed = published["ok"] and published["pushed"]
         if not published["ok"]:
             result["status"] = "push_failed"
+    safe_body = result.get("safe_body") or ""
+    if safe_body:
+        Path(os.environ.get("SAFE_ISSUE_BODY", "safe_issue_body.txt")).write_text(safe_body, encoding="utf-8")
     out = {
         "status": result["status"],
         "ids": result["ids"],

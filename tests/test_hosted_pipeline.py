@@ -173,7 +173,8 @@ class PipelineBoundaries(EnvCase):
         report = hosted_runner.execute("applied-sync")
         self.assertFalse(report["ok"])
         self.assertIn("tracked_jobs.json", report["missing_files"])
-        self.assertIn("job_filters.py", report["missing_files"])
+        self.assertIn("referral_updates.json", report["missing_files"])
+        self.assertNotIn("job_filters.py", report["missing_files"])
         self.assertTrue(any(step["name"] == "sweep_crawler" and step["status"] == "skipped" for step in report["steps"]))
         self.assertTrue(any(step["name"] == "telegram" and step["status"] == "skipped" for step in report["steps"]))
         self.assertEqual(len(json.loads(self.inbox.read_text(encoding="utf-8"))), 2)
@@ -288,7 +289,7 @@ class HttpAndSecrets(unittest.TestCase):
         self.assertNotIn("ghp_abcdefghijklmnopqrstuvwxyz123456", text)
         self.assertIn("<redacted>", text)
 
-    def test_crawl_refuses_before_http_when_filters_missing(self):
+    def test_loading_filters_does_not_open_the_network(self):
         calls = []
         original = urllib.request.urlopen
         urllib.request.urlopen = lambda *args, **kwargs: calls.append(args)
@@ -296,9 +297,8 @@ class HttpAndSecrets(unittest.TestCase):
         temporary = tempfile.mkdtemp(prefix="nofilt-")
         os.environ["JT_DIR"] = temporary
         try:
-            with self.assertRaises(RuntimeError) as caught:
-                sweep_crawler.run_crawler(dry_run=True)
-            self.assertIn("job_filters", str(caught.exception))
+            sweep_crawler._bind_paths()
+            self.assertIsNotNone(sweep_crawler.JF)
             self.assertEqual(calls, [])
         finally:
             urllib.request.urlopen = original
