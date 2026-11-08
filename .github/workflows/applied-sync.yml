@@ -1,0 +1,81 @@
+name: Applied sync
+
+# Prompt website-mark processing. No crawl, Telegram, or outreach.
+# Push runs only after the repository variable HOSTED_APPLIED_SYNC is true.
+# workflow_dispatch with an empty confirm value is a read-only preflight.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type pc-cron-stopped to publish. Leave empty for preflight only."
+        required: false
+        default: ""
+  push:
+    branches: [ "main" ]
+    paths:
+      - "data/applied_inbox.json"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.event_name == 'workflow_dispatch' || vars.HOSTED_APPLIED_SYNC == 'true'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Applied sync or preflight
+        id: run
+        env:
+          JT_DIR: ${{ github.workspace }}/state/job-tracker
+        run: |
+          set -euo pipefail
+          publish=false
+          if [ "${{ github.event_name }}" = "push" ] && [ "${{ vars.HOSTED_APPLIED_SYNC }}" = "true" ]; then
+            publish=true
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.confirm }}" = "pc-cron-stopped" ] && [ "${{ vars.HOSTED_APPLIED_SYNC }}" = "true" ]; then
+            publish=true
+          fi
+          if [ "$publish" = "true" ]; then
+            python3 scripts/hosted_runner.py --mode applied-sync --publish --git-push
+          else
+            python3 scripts/hosted_runner.py --mode preflight
+          fi
+      - name: Assemble site
+        if: success()
+        run: |
+          if [ ! -f state/health.json ]; then
+            echo "No publish this run."
+            exit 0
+          fi
+          rm -rf _site
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/jobs.json _site/data/jobs.json
+          cp data/applied_inbox.json _site/data/applied_inbox.json
+          echo "assembled=true" >> "$GITHUB_OUTPUT"
+        id: site
+      - name: Upload artifact
+        if: steps.site.outputs.assembled == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        if: steps.site.outputs.assembled == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

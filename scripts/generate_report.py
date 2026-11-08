@@ -62,11 +62,29 @@ from openpyxl.chart import BarChart, Reference  # noqa: E402
 # Config
 # ---------------------------------------------------------------------------
 
-CONFIG_PATH = SCRIPT_DIR / "config.json"
-
 def load_config():
-    with open(CONFIG_PATH, encoding="utf-8") as f:
-        return json.load(f)
+    """Load optional config.json. Secrets may also come from the environment and are not printed."""
+    sys.path.insert(0, str(SCRIPT_DIR))
+    from paths import job_tracker_dir
+    cfg = {}
+    for candidate in (job_tracker_dir() / "config.json", SCRIPT_DIR / "config.json"):
+        if candidate.exists():
+            with open(candidate, encoding="utf-8") as f:
+                cfg = json.load(f)
+            break
+    jt = job_tracker_dir()
+    cfg.setdefault("tracked_jobs_db", str(jt / "tracked_jobs.json"))
+    cfg.setdefault("output_dir", str(jt / "reports"))
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chats = os.environ.get("TELEGRAM_CHAT_IDS")
+    if token or chats:
+        telegram = dict(cfg.get("telegram") or {})
+        if token:
+            telegram["bot_token"] = token
+        if chats:
+            telegram["chat_ids"] = [part.strip() for part in chats.split(",") if part.strip()]
+        cfg["telegram"] = telegram
+    return cfg
 
 # ---------------------------------------------------------------------------
 # Tracked Jobs DB (de-duplication)
@@ -142,9 +160,15 @@ def is_pure_science_role(title: str) -> bool:
     return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
 
 
-import sys as _sys
-_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
-import job_filters as JF
+JF = None
+
+
+def _load_jf():
+    sys.path.insert(0, str(SCRIPT_DIR))
+    from paths import ensure_import_path
+    ensure_import_path()
+    import job_filters as module
+    return module
 
 
 def find_new_jobs(found: list, db: dict) -> list:
@@ -561,14 +585,20 @@ new Chart(document.getElementById('companyChart'), {{
 # ---------------------------------------------------------------------------
 
 def _tg_post(token: str, payload: dict):
-    url  = f"https://api.telegram.org/bot{token}/sendMessage"
+    from http_retry import urlopen_retry
+    from redact import redact
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = urllib.parse.urlencode(payload).encode()
-    try:
+
+    def opener():
         req = urllib.request.Request(url, data=data, method="POST")
         with urllib.request.urlopen(req, timeout=15) as resp:
             return json.loads(resp.read().decode())
-    except Exception as e:
-        print(f"[telegram] Failed: {e}", flush=True)
+
+    try:
+        return urlopen_retry(opener, max_retries=3, cap=20)
+    except Exception as exc:
+        print(f"[telegram] Failed: {redact(exc)}", flush=True)
         return {"ok": False}
 
 
@@ -663,11 +693,14 @@ def send_telegram(token: str, chat_targets, new_jobs: list, excel_path: str, htm
 # ---------------------------------------------------------------------------
 
 def main():
+    global JF
     parser = argparse.ArgumentParser(description="Job Search Report Generator")
     parser.add_argument("--jobs", required=True, help="Path to found_jobs.json produced by the agent")
+    parser.add_argument("--no-telegram", action="store_true", help="Ingest jobs without sending Telegram")
     args = parser.parse_args()
 
     cfg = load_config()
+    JF = _load_jf()
     output_dir = Path(cfg["output_dir"])
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -680,11 +713,14 @@ def main():
     chat_targets = cfg.get("telegram", {}).get("chat_ids") or cfg.get("telegram", {}).get("chat_id")
 
     if not new_jobs:
-        print("[main] No new jobs found. Sending Telegram notification.", flush=True)
         run_ts = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z")
+        if args.no_telegram:
+            print("[main] No new jobs found. Telegram disabled.", flush=True)
+            return 0
+        print("[main] No new jobs found. Sending Telegram notification.", flush=True)
         send_telegram(cfg["telegram"]["bot_token"], chat_targets,
                       [], "", "", run_ts)
-        return
+        return 0
 
     # Assign stable job IDs before saving
     for j in new_jobs:
@@ -717,11 +753,15 @@ def main():
         except Exception:
             pass
 
-    send_telegram(cfg["telegram"]["bot_token"], chat_targets,
-                  new_jobs, excel_path, html_path, run_ts)
+    if args.no_telegram:
+        print("[main] Telegram disabled (--no-telegram).", flush=True)
+    else:
+        send_telegram(cfg["telegram"]["bot_token"], chat_targets,
+                      new_jobs, excel_path, html_path, run_ts)
 
     print(f"[main] Done. {len(new_jobs)} new jobs. Reports at {output_dir}", flush=True)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main() or 0)

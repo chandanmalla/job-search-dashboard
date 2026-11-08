@@ -1,0 +1,92 @@
+name: Mark via GitHub login
+
+# Owner-authenticated inbox append. Writes only when HOSTED_MARK_ISSUES=true.
+# Does not crawl, merge, notify, or outreach. Wrong authors and token-like
+# text are rejected and nothing is written.
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  mark:
+    if: contains(github.event.issue.body, 'dashboard-mark') || startsWith(github.event.issue.title, 'Dashboard marks')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Accept allow-listed marks
+        id: accept
+        env:
+          MARK_ACTOR: ${{ github.actor }}
+          MARK_AUTHORS: ${{ vars.MARK_AUTHORS }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          HOSTED_MARK_ISSUES: ${{ vars.HOSTED_MARK_ISSUES }}
+          JT_DIR: ${{ github.workspace }}/state/job-tracker
+          INBOX_PATH: ${{ github.workspace }}/data/applied_inbox.json
+          MARK_RESULT: ${{ github.workspace }}/mark_result.json
+        run: python3 scripts/marks.py accept-issue --git-push
+      - name: Read result
+        id: result
+        run: |
+          python3 - << 'PY'
+          import json, os
+          data = json.load(open("mark_result.json"))
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"status={data['status']}\n")
+              fh.write(f"pushed={'true' if data.get('pushed') else 'false'}\n")
+              fh.write("ids<<EOF\n")
+              fh.write("\n".join(data.get("ids") or []))
+              fh.write("\nEOF\n")
+          PY
+      - name: Reply
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+          STATUS="${{ steps.result.outputs.status }}"
+          IDS="${{ steps.result.outputs.ids }}"
+          if [ "$STATUS" = "rejected" ]; then
+            gh issue close "$ISSUE" --comment "Rejected. Dashboard marks are accepted only from an allow-listed GitHub account, and token-like text is never stored."
+          elif [ "$STATUS" = "disabled" ]; then
+            gh issue comment "$ISSUE" --body "Parsed marks were not written. After the PC scheduler is stopped, set the repository variable HOSTED_MARK_ISSUES to true and reopen this issue. Parsed: ${IDS}"
+          elif [ "$STATUS" = "ok" ]; then
+            gh issue close "$ISSUE" --comment "Appended to data/applied_inbox.json: ${IDS}"
+          elif [ "$STATUS" = "empty" ]; then
+            gh issue close "$ISSUE" --comment "No applied, skipped, or referred job ids were found."
+          fi
+      - name: Assemble site
+        id: site
+        if: steps.result.outputs.pushed == 'true'
+        run: |
+          rm -rf _site
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/jobs.json _site/data/jobs.json
+          cp data/applied_inbox.json _site/data/applied_inbox.json
+          echo "assembled=true" >> "$GITHUB_OUTPUT"
+      - name: Upload artifact
+        if: steps.site.outputs.assembled == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        if: steps.site.outputs.assembled == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

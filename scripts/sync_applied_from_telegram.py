@@ -13,17 +13,38 @@ Supports single or multiple IDs in one command:
 """
 
 import json
+import os
 import urllib.request
 import urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from paths import job_tracker_dir
+
 SCRIPT_DIR = Path(__file__).parent.parent
-CONFIG_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\config.json")
 
 def load_config():
-    with open(CONFIG_PATH, encoding="utf-8") as f:
-        return json.load(f)
+    path = job_tracker_dir() / "config.json"
+    cfg = {}
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            cfg = json.load(f)
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chats = os.environ.get("TELEGRAM_CHAT_IDS")
+    if token or chats:
+        telegram = dict(cfg.get("telegram") or {})
+        if token:
+            telegram["bot_token"] = token
+        if chats:
+            telegram["chat_ids"] = [part.strip() for part in chats.split(",") if part.strip()]
+        cfg["telegram"] = telegram
+    if "telegram" not in cfg or "tracked_jobs_db" not in cfg:
+        cfg.setdefault("tracked_jobs_db", str(job_tracker_dir() / "tracked_jobs.json"))
+    if "telegram" not in cfg:
+        raise RuntimeError("Telegram sync needs TELEGRAM_BOT_TOKEN or config.json. Nothing was sent.")
+    return cfg
 
 def load_db(path):
     p = Path(path)
@@ -50,24 +71,27 @@ def tg_send(token, chat_id, text):
         with urllib.request.urlopen(req, timeout=15) as resp:
             return json.loads(resp.read().decode())
     except Exception as e:
-        print(f"[sync_tg] send error: {e}")
+        from redact import redact
+        print(f"[sync_tg] send error: {redact(e)}")
         return {"ok": False}
 
-import sys as _sys
-_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
-import job_filters as JF
-_sys.path.insert(0, str(Path(__file__).parent))
 import updates_lib as U
-OFFSET_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\tg_offset.json")
+
+def offset_path():
+    return job_tracker_dir() / "tg_offset.json"
 
 def load_offset(db):
-    try:
-        return int(json.loads(OFFSET_PATH.read_text(encoding='utf-8')).get('last_tg_offset', 0))
-    except Exception:
-        return int(db.get('last_tg_offset', 0) or 0)
+    path = offset_path()
+    if path.exists():
+        return int(json.loads(path.read_text(encoding="utf-8")).get("last_tg_offset", 0))
+    if db.get("last_tg_offset"):
+        return int(db["last_tg_offset"])
+    if os.environ.get("ALLOW_TELEGRAM_OFFSET_ZERO") == "1":
+        return 0
+    raise RuntimeError("tg_offset.json is missing. Refusing to replay Telegram history from offset 0.")
 
 def save_offset(off):
-    OFFSET_PATH.write_text(json.dumps({'last_tg_offset': off}), encoding='utf-8')
+    offset_path().write_text(json.dumps({"last_tg_offset": off}), encoding="utf-8")
 
 def sync_from_telegram():
     cfg = load_config()

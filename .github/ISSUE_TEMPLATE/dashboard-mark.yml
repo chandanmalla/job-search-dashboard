@@ -1,0 +1,19 @@
+name: Dashboard mark
+description: Record applied, skipped, or referred marks with your GitHub login. Do not paste tokens.
+title: "Dashboard marks"
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One mark per line: `applied J123`, `skipped J123`, or `referred J123`.
+        The line `dashboard-mark` must stay. Do not paste a personal access token.
+  - type: textarea
+    id: marks
+    attributes:
+      label: Marks
+      description: "Example: applied J123"
+      value: |
+        <!-- dashboard-mark -->
+    validations:
+      required: true

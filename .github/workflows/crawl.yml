@@ -1,0 +1,84 @@
+name: Crawl
+
+# Manual only. The 2-hourly schedule is documented in docs/HOSTED_MIGRATION.md
+# and is not enabled. Telegram, Telegram sync, and outreach are not invoked.
+#
+# When the PC scheduler is off, add:
+#   schedule:
+#     - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
+# 18:30 UTC is 00:00 IST. A schedule run publishes only when HOSTED_CRAWL=true.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type pc-cron-stopped to publish a crawl. Leave empty for preflight only."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  crawl:
+    # Separate from the Pages lock so a long crawl does not queue applied-sync.
+    concurrency:
+      group: hosted-crawl
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    outputs:
+      pushed: ${{ steps.gate.outputs.pushed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Report dependencies
+        run: python3 -m pip install --disable-pip-version-check openpyxl xlsxwriter
+      - name: Crawl or preflight
+        id: gate
+        env:
+          JT_DIR: ${{ github.workspace }}/state/job-tracker
+        run: |
+          set -euo pipefail
+          event="${{ github.event_name }}"
+          var="${{ vars.HOSTED_CRAWL }}"
+          if [ "$event" = "schedule" ] && [ "$var" = "true" ]; then
+            python3 scripts/hosted_runner.py --mode crawl --publish --git-push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          elif [ "$event" = "workflow_dispatch" ] && [ "${{ inputs.confirm }}" = "pc-cron-stopped" ] && [ "$var" = "true" ]; then
+            python3 scripts/hosted_runner.py --mode crawl --publish --git-push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            python3 scripts/hosted_runner.py --mode preflight
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+  deploy:
+    needs: crawl
+    if: needs.crawl.outputs.pushed == 'true'
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Assemble site
+        run: |
+          rm -rf _site
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/jobs.json _site/data/jobs.json
+          cp data/applied_inbox.json _site/data/applied_inbox.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

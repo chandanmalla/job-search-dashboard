@@ -22,10 +22,39 @@ import re
 from pathlib import Path
 from datetime import datetime, timezone
 
-ROOT_DIR = Path(r"C:\Users\chand\Downloads\Job Search")
-TRACKED_PATH = ROOT_DIR / "job-tracker" / "tracked_jobs.json"
-FOUND_PATH = ROOT_DIR / "job-tracker" / "found_jobs_latest.json"
-STATE_PATH = ROOT_DIR / "job-tracker" / "cron_state.json"
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+JF = None
+TRACKED_PATH = None
+FOUND_PATH = None
+STATE_PATH = None
+FEED_HEALTH_PATH = None
+FEED_HEALTH_LOG = None
+_JT = None
+
+
+def _bind_paths():
+    """Resolve portable paths and import job_filters. Does not open network connections."""
+    global JF, TRACKED_PATH, FOUND_PATH, STATE_PATH, FEED_HEALTH_PATH, FEED_HEALTH_LOG, _JT
+    from paths import ensure_import_path, job_tracker_dir
+    _JT = job_tracker_dir()
+    TRACKED_PATH = _JT / "tracked_jobs.json"
+    FOUND_PATH = _JT / "found_jobs_latest.json"
+    STATE_PATH = _JT / "cron_state.json"
+    FEED_HEALTH_PATH = _JT / "feed_health.json"
+    FEED_HEALTH_LOG = _JT / "feed_health.log"
+    ensure_import_path()
+    try:
+        import job_filters as _jf
+    except ImportError as exc:
+        raise RuntimeError(
+            "Refusing to crawl: job_filters.py is not importable from JT_DIR "
+            f"({_JT}). Copy the secret-free job-tracker bundle before crawling. "
+            f"Import error: {exc.__class__.__name__}: {exc}"
+        ) from exc
+    JF = _jf
+    return _JT
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -33,11 +62,9 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9"
 }
 
-import sys as _sys
-_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
-import job_filters as JF
-
 def load_state():
+    if STATE_PATH is None:
+        _bind_paths()
     if STATE_PATH.exists():
         try:
             with open(STATE_PATH, encoding="utf-8") as f:
@@ -47,10 +74,14 @@ def load_state():
     return {"last_mode": "new_companies", "run_count": 0}
 
 def save_state(state):
+    if STATE_PATH is None:
+        _bind_paths()
     with open(STATE_PATH, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2)
 
 def load_db():
+    if TRACKED_PATH is None:
+        _bind_paths()
     if TRACKED_PATH.exists():
         with open(TRACKED_PATH, encoding="utf-8") as f:
             return json.load(f)
@@ -487,11 +518,10 @@ def fetch_jobspy(site, country, location, term, target_locs):
         LAST_ERR.append(f"{type(e).__name__}: {str(e)[:100]}")
     return jobs
 
-FEED_HEALTH_PATH = ROOT_DIR / "job-tracker" / "feed_health.json"
-FEED_HEALTH_LOG = ROOT_DIR / "job-tracker" / "feed_health.log"
-
 def feed_health_report():
     """Track consecutive failures per source; print persistent/404 feeds; weekly summary to feed_health.log."""
+    if FEED_HEALTH_PATH is None:
+        _bind_paths()
     try:
         h = json.loads(FEED_HEALTH_PATH.read_text(encoding="utf-8")) if FEED_HEALTH_PATH.exists() else {}
         srcs = h.setdefault("sources", {})
@@ -524,6 +554,16 @@ def feed_health_report():
 
 
 def run_crawler(force_mode=None, dry_run=False):
+    _bind_paths()
+    from http_retry import install_backoff
+    orig_urlopen = install_backoff()
+    try:
+        return _run_crawler_impl(force_mode, dry_run)
+    finally:
+        urllib.request.urlopen = orig_urlopen
+
+
+def _run_crawler_impl(force_mode=None, dry_run=False):
     state = load_state()
     db = load_db()
 
@@ -815,7 +855,7 @@ def run_crawler(force_mode=None, dry_run=False):
     n_top = sum(1 for j in to_add if JF.company_top(j.get("company", "")))
     print(f"[sweep_crawler] New roles by section: top-tier={n_top} other-companies={len(to_add) - n_top}", flush=True)
     feed_health_report()
-    with open(ROOT_DIR / "job-tracker" / "crawl_stats_latest.json", "w", encoding="utf-8") as f:
+    with open(_JT / "crawl_stats_latest.json", "w", encoding="utf-8") as f:
         json.dump({"mode": current_mode, "time": datetime.now().strftime("%Y-%m-%d %H:%M IST"), "sources": STATS}, f, indent=2)
     if dry_run:
         print("[sweep_crawler] DRY RUN: not writing found_jobs_latest.json / state.", flush=True)

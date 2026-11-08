@@ -1,9 +1,22 @@
-# Credentials and local state
+# Credentials and local state. Never commit these.
 config.json
+.env
+.env.*
+*.pem
+*.token
+secrets.json
+credentials.json
+mark_result.json
 *.pyc
 __pycache__/
 .DS_Store
 *.log
+*.tmp
+
+# runtime lock and generated reports
+state/job-tracker/.write.lock
+state/job-tracker/logs/
+state/job-tracker/reports/
 
 # local backups
 *.bak-*

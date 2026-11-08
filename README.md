@@ -22,6 +22,10 @@ job-search-dashboard/
 └── README.md
 ```
 
+## Hosted pipeline
+
+Crawl, website-mark sync, and Pages publish can run in GitHub Actions so the Windows PC is not required. Schedules, Telegram, and outreach stay off until the cutover in [docs/HOSTED_MIGRATION.md](docs/HOSTED_MIGRATION.md). The canonical job-tracker files are not in this repo yet; do not replace them with samples.
+
 ## 🌐 Deploy to GitHub Pages
 
 1. Create a new repository on [GitHub](https://github.com/new).
