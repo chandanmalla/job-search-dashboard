@@ -11765,5 +11765,57 @@
       "updated_at": "2026-11-09T14:03+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J669",
+    "company": "Oritain",
+    "title": "Lead Statistical Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 29 minutes ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/lead-statistical-data-scientist-at-oritain-4488844171",
+    "source": "Oritain Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Oritain. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T16:03+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J670",
+    "company": "trg.",
+    "title": "Senior Data Scientist",
+    "location": "London Area, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 19 minutes ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-at-trg-4487142627",
+    "source": "trg. Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at trg.. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T16:03+05:30"
+    },
+    "tier": "other"
   }
 ]
