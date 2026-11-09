@@ -11739,5 +11739,31 @@
       "updated_at": "2026-11-09T10:12+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J668",
+    "company": "Doceree",
+    "title": "Senior Data Science",
+    "location": "Noida, Uttar Pradesh, India",
+    "city": "Delhi NCR",
+    "country": "India",
+    "posted": "Posted 3 hours ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-science-at-doceree-4487663961",
+    "source": "Doceree Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Doceree. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T14:03+05:30"
+    },
+    "tier": "other"
   }
 ]
