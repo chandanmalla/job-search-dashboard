@@ -11661,5 +11661,57 @@
       "updated_at": "2026-11-09T02:11+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J665",
+    "company": "HelloFresh",
+    "title": "Senior Data Scientist",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Updated 2026-11-08",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, causal inference, deep learning, PyTorch, SQL",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://careers.hellofresh.com/global/en/job/8280296?gh_jid=8280296",
+    "source": "HelloFresh Careers (Greenhouse)",
+    "why_fits": "Core Data Science / Applied Science role at HelloFresh. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T06:10+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J666",
+    "company": "Axle Energy",
+    "title": "Data Science",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 hour ago (2026-11-08)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/data-science-at-axle-energy-4488814298",
+    "source": "Axle Energy Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Axle Energy. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T06:10+05:30"
+    },
+    "tier": "other"
   }
 ]
