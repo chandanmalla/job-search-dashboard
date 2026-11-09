@@ -11713,5 +11713,31 @@
       "updated_at": "2026-11-09T06:10+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J667",
+    "company": "Shift",
+    "title": "Senior Data Scientist",
+    "location": "North Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 10 minutes ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/senior-data-scientist-at-shift-4488823361",
+    "source": "Shift Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Shift. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T10:12+05:30"
+    },
+    "tier": "other"
   }
 ]
