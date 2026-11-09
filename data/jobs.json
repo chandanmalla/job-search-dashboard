@@ -12155,5 +12155,31 @@
       "updated_at": "2026-11-09T22:12+05:30"
     },
     "tier": "top"
+  },
+  {
+    "id": "J684",
+    "company": "Morson Edge (Technology)",
+    "title": "Senior Data Scientist",
+    "location": "London Area, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 3 hours ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-at-morson-edge-technology-4482046601",
+    "source": "Morson Edge (Technology) Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Morson Edge (Technology). Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T02:11+05:30"
+    },
+    "tier": "other"
   }
 ]
