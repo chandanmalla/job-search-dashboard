@@ -11921,5 +11921,83 @@
       "updated_at": "2026-11-09T18:03+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J675",
+    "company": "Zorba AI",
+    "title": "Senior Data Scientist – Client Analytics_5-9yrs",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-%E2%80%93-client-analytics-5-9yrs-at-zorba-ai-4487922242",
+    "source": "Zorba AI Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Zorba AI. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T20:07+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J676",
+    "company": "Obsero",
+    "title": "Lead Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 52 minutes ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/lead-data-scientist-at-obsero-4488858930",
+    "source": "Obsero Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Obsero. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T20:07+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J677",
+    "company": "Aditya Birla Group",
+    "title": "GDNA - Senior Data Scientist",
+    "location": "KA, India",
+    "city": "KA, India",
+    "country": "India",
+    "posted": "Posted 2026-11-09",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://careers.adityabirla.com/job-search/job-details/ABG110875",
+    "source": "Aditya Birla Group via JobSpy (Indeed)",
+    "why_fits": "Data Science / Applied Science role at Aditya Birla Group (found via Indeed).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-09T20:07+05:30"
+    },
+    "tier": "other"
   }
 ]
