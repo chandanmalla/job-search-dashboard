@@ -12181,5 +12181,83 @@
       "updated_at": "2026-11-10T02:11+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J685",
+    "company": "Xcede",
+    "title": "Lead Data Scientist",
+    "location": "London Area, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 1 hour ago (2026-11-09)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/lead-data-scientist-at-xcede-4487965066",
+    "source": "Xcede Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Xcede. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T04:07+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J686",
+    "company": "Optum",
+    "title": "Senior Data Scientist",
+    "location": "TS, India",
+    "city": "TS, India",
+    "country": "India",
+    "posted": "Posted 2026-11-09",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://uhg.taleo.net/careersection/10780/jobdetail.ftl?job=2392529&lang=en",
+    "source": "Optum via JobSpy (Indeed)",
+    "why_fits": "Data Science / Applied Science role at Optum (found via Indeed).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T04:07+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J687",
+    "company": "Relay Technologies",
+    "title": "Applied Scientist, Ranking & Recommendations",
+    "location": "London, ENG, UK",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 2026-11-09",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "Plausible but unverified",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://jobs.ashbyhq.com/relay/060c8c1b-26f6-4064-af8a-4dd3914d4151?utm_source=JqM2gYXNLP",
+    "source": "Relay Technologies via JobSpy (Indeed)",
+    "why_fits": "Data Science / Applied Science role at Relay Technologies (found via Indeed).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T04:07+05:30"
+    },
+    "tier": "top"
   }
 ]
