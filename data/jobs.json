@@ -12597,5 +12597,57 @@
       "updated_at": "2026-11-10T16:13+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J701",
+    "company": "Commonwealth Bank",
+    "title": "Senior Data Scientist - People Intelligence, Agentic AI (Human Resources)",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 2 minutes ago (2026-11-10)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/senior-data-scientist-people-intelligence-agentic-ai-human-resources-at-commonwealth-bank-4489471290",
+    "source": "Commonwealth Bank Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Commonwealth Bank. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T18:11+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J702",
+    "company": "Muthoot FinCorp (MFL)",
+    "title": "Data Science Lead",
+    "location": "Chennai(Anna Salai), India",
+    "city": "Chennai",
+    "country": "India",
+    "posted": "Posted 2026-11-10",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://www.naukri.com/job-listings-data-science-lead-muthoot-fincorp-mfl-chennai-10-to-18-years-101126011478",
+    "source": "Muthoot FinCorp (MFL) via JobSpy (Naukri)",
+    "why_fits": "Data Science / Applied Science role at Muthoot FinCorp (MFL) (found via Naukri).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T18:11+05:30"
+    },
+    "tier": "other"
   }
 ]
