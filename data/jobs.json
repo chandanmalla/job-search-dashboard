@@ -12363,5 +12363,57 @@
       "updated_at": "2026-11-10T12:07+05:30"
     },
     "tier": "top"
+  },
+  {
+    "id": "J692",
+    "company": "Zorba AI",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-10)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-zorba-ai-4489424593",
+    "source": "Zorba AI Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Zorba AI. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T14:11+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J693",
+    "company": "DeepMind",
+    "title": "Research Scientist, Frontier AI Forecasting and Strategic Foresight, DeepMind Institute",
+    "location": "London, England, UK",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 2026-11-10",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, ML, Python, SQL",
+    "visa": "Plausible but unverified",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://www.glassdoor.co.uk/job-listing/j?jl=1010321911178",
+    "source": "DeepMind via JobSpy (Glassdoor)",
+    "why_fits": "Data Science / Applied Science role at DeepMind (found via Glassdoor).",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-10T14:11+05:30"
+    },
+    "tier": "top"
   }
 ]
