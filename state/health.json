@@ -1,40 +1,25 @@
 {
-  "mode": "applied-sync",
+  "mode": "crawl",
   "ok": true,
-  "started_at": "2026-11-11T15:31:09Z",
-  "finished_at": "2026-11-11T15:31:09Z",
+  "started_at": "2026-11-11T22:54:24Z",
+  "finished_at": "2026-11-11T22:55:23Z",
   "missing_files": [],
   "unresolved_imports": [],
   "steps": [
     {
-      "name": "sweep_crawler",
+      "name": "telegram_sync",
       "status": "skipped",
-      "detail": "applied-sync does not crawl"
-    },
-    {
-      "name": "auto_referral_needed",
-      "status": "skipped",
-      "detail": "applied-sync does not flag referrals"
-    },
-    {
-      "name": "generate_report",
-      "status": "skipped",
-      "detail": "applied-sync does not ingest crawl results"
+      "detail": "telegram sync off"
     },
     {
       "name": "telegram",
       "status": "skipped",
-      "detail": "applied-sync does not send Telegram"
-    },
-    {
-      "name": "telegram_sync",
-      "status": "skipped",
-      "detail": "applied-sync does not read Telegram"
+      "detail": "notifications off"
     },
     {
       "name": "outreach",
       "status": "skipped",
-      "detail": "applied-sync does not refresh outreach"
+      "detail": "outreach off"
     },
     {
       "name": "backup",
@@ -42,14 +27,34 @@
       "detail": "snapshotted 5 files"
     },
     {
-      "name": "process_inbox",
+      "name": "sweep_crawler",
       "status": "ok",
-      "detail": "[inbox] No website marks pending."
+      "detail": "  jobspy          [reloc] indeed India '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'data scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'applied scientist'      kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'lead scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'data scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'applied scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed London '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed United Kingdom '\"data scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'applied scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Sydney '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Melbourne '\"data scientist\" OR kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Sydney 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Bangkok '\"data scientist\" OR ' kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Dubai '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n[sweep_crawler] Sources: 120 | errors: 15\n[sweep_crawler] New roles by section: top-tier=2 other-companies=2\n[feed-health] no persistently failing feeds.\n[line omitted]\n[sweep_crawler] Saved 4 roles to found_jobs_latest.json. Next mode will be: 'new_companies'."
+    },
+    {
+      "name": "auto_referral_needed",
+      "status": "ok",
+      "detail": "[auto_ref] flagged=0"
     },
     {
       "name": "merge_referral_updates",
       "status": "ok",
       "detail": "[merge] 258 referral + 172 applied records, rewritten=0 (applied_touches=0, skipped_touches=22, unknown_job_id_count=0)"
+    },
+    {
+      "name": "generate_report",
+      "status": "ok",
+      "detail": "[excel] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_report_20261111_2255.xlsx\n[html] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_dashboard_20261111_2255.html\n[main] Telegram disabled (--no-telegram).\n[main] Done. 1 new jobs. Reports at /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports"
+    },
+    {
+      "name": "auto_referral_needed_after",
+      "status": "ok",
+      "detail": "[auto_ref] flagged=1"
+    },
+    {
+      "name": "merge_referral_updates_after",
+      "status": "ok",
+      "detail": "[merge] 259 referral + 172 applied records, rewritten=1 (applied_touches=0, skipped_touches=22, unknown_job_id_count=0)"
     },
     {
       "name": "build_site",
