@@ -231,12 +231,130 @@ def location_ok(loc):
         return rest == ""
     return False
 
+def _sponsor_allowlist():
+    import json as _json
+    from pathlib import Path as _Path
+    path = _Path(__file__).resolve().parent.parent / "data" / "sponsor_company_allowlist.json"
+    try:
+        data = _json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, _json.JSONDecodeError):
+        return []
+    names = []
+    for row in data.get("companies") or []:
+        if isinstance(row, str):
+            names.append(_norm(row))
+            continue
+        if not isinstance(row, dict):
+            continue
+        if row.get("name"):
+            names.append(_norm(row["name"]))
+        for alias in row.get("aliases") or []:
+            if alias:
+                names.append(_norm(alias))
+    return [name for name in names if name]
+
+_SPONSOR_ALLOWLIST = None
+
+def company_on_sponsor_allowlist(company) -> bool:
+    """True when the company is on the outside-India top-product sponsor list."""
+    global _SPONSOR_ALLOWLIST
+    if _SPONSOR_ALLOWLIST is None:
+        _SPONSOR_ALLOWLIST = _sponsor_allowlist()
+    cl = _norm(company)
+    if not cl:
+        return False
+    for name in _SPONSOR_ALLOWLIST:
+        if re.search(r"(?<![a-z0-9])" + re.escape(name) + r"(?![a-z0-9])", cl):
+            return True
+    return False
+
+_INDIA_LOC = (
+    "india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram",
+    "noida", "mumbai", "pune", "chennai", "kolkata", "calcutta", "ahmedabad", "jaipur",
+)
+_OUTSIDE_INDIA_LOC = (
+    "london", "england", "united kingdom", "great britain", "cambridge", "sydney",
+    "melbourne", "australia", "bangkok", "thailand", "dubai", "abu dhabi",
+    "united arab emirates", "uae",
+)
+_NO_SPONSOR_RE = re.compile(
+    r"no visa sponsorship|visa sponsorship(?: is| is)? not|sponsorship(?: is)? not (?:available|offered|provided)|"
+    r"(?:do not|don't|does not|cannot|can't|will not|unable to) (?:offer )?sponsor|"
+    r"not able to (?:offer )?sponsor|sponsorship will not|no sponsorship|"
+    r"must (?:already )?have the right to work|right to work in the (?:uk|united kingdom)",
+    re.I,
+)
+_YES_SPONSOR_RE = re.compile(
+    r"visa sponsorship|sponsorship available|sponsorship provided|we sponsor|"
+    r"sponsor(?:s|ing)? (?:a |the |your )?visas?|will sponsor|can sponsor|"
+    r"relocation (?:support|package|assistance|provided|offered)|"
+    r"visa support|skilled worker sponsor|tier 2 sponsor",
+    re.I,
+)
+
+def is_india_location(loc) -> bool:
+    ll = _norm(loc)
+    return any(hub in ll for hub in _INDIA_LOC)
+
+def is_outside_india_target(loc) -> bool:
+    """UK, Australia, Thailand, or UAE, and not also an India location."""
+    if is_india_location(loc):
+        return False
+    ll = _norm(loc)
+    if any(hub in ll for hub in _OUTSIDE_INDIA_LOC):
+        return True
+    return bool(re.search(r"\b(uk|gb|nsw|vic|ae|th)\b", ll))
+
+def posting_text(job) -> str:
+    parts = []
+    for key in ("job_title", "title", "_desc", "description", "content"):
+        value = job.get(key) if isinstance(job, dict) else None
+        if value:
+            parts.append(str(value))
+    return " ".join(parts)
+
+def posting_denies_sponsorship(text) -> bool:
+    return bool(_NO_SPONSOR_RE.search(text or ""))
+
+def posting_offers_sponsorship(text) -> bool:
+    if posting_denies_sponsorship(text):
+        return False
+    return bool(_YES_SPONSOR_RE.search(text or ""))
+
+def non_india_keep(company, text) -> bool:
+    """Outside India: allowlist, or sponsorship/relocation text without an explicit refusal."""
+    if company_on_sponsor_allowlist(company):
+        return True
+    if posting_denies_sponsorship(text):
+        return False
+    return posting_offers_sponsorship(text)
+
+def hide_open_non_india(job, applied_ids=(), skipped_ids=()) -> bool:
+    """Drop an open non-India job that is not allowlisted and does not state sponsorship.
+
+    Applied jobs, skipped jobs, and referral statuses other than none/needed stay.
+    India jobs are never hidden by this rule. Does not write the tracker.
+    """
+    job_id = job.get("job_id") or job.get("id")
+    if job_id in set(applied_ids) or job_id in set(skipped_ids):
+        return False
+    status = (job.get("status") or "").lower()
+    if status in ("applied", "skipped"):
+        return False
+    referral = ((job.get("referral") or {}).get("status") or "none").lower()
+    if referral not in ("none", "needed", ""):
+        return False
+    if not is_outside_india_target(job.get("location")):
+        return False
+    return not non_india_keep(job.get("company"), posting_text(job))
+
 def visibility(job, require_top=True):
     """Return (visible, reason). require_top=False is used for the Other companies section."""
     if (job.get("status") or "").lower() == "applied":
         return True, ""
-    if (job.get("referral") or {}).get("status", "none") not in ("none", None):
-        return True, ""  # active referral pipeline stays visible
+    referral = ((job.get("referral") or {}).get("status") or "none")
+    if str(referral).lower() not in ("none", "needed", ""):
+        return True, ""  # requested, referred, apply_direct stay visible
     if company_excluded(job.get("company")):
         return False, "company excluded (consultancy/staffing/IT services/Amazon)"
     if require_top and not company_top(job.get("company")):
@@ -248,6 +366,8 @@ def visibility(job, require_top=True):
         return False, r
     if not location_ok(job.get("location")):
         return False, "location outside India/UK/Australia/Thailand/UAE"
+    if hide_open_non_india(job):
+        return False, "outside India without sponsorship or top-product allowlist"
     lo, hi = job.get("_exp_min"), job.get("_exp_max")
     if not exp_ok(lo, hi):
         return False, f"experience requirement {exp_label(lo, hi)} outside 3-7 yrs"

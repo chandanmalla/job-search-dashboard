@@ -122,6 +122,8 @@ def build_dashboard():
         title = j.get("job_title", "")
         # Strictly require Top Product Companies and Data Science / Applied Science
         JF.ensure_fields(j)  # adds exp_years / referral / dashboard_visible if missing (in-memory only)
+        if JF.hide_open_non_india(j, applied_ids=db_applied, skipped_ids=db_skipped):
+            continue  # open non-India role without sponsorship or an allowlisted company; in-memory only
         if j.get("dashboard_visible") is False and (j.get("hide_reason") or "").startswith(("location outside", "company not in top-tier list")) and (j.get("status") or "").lower() != "skipped":
             j["dashboard_visible"], j["hide_reason"] = JF.visibility(j)  # re-check location-hidden jobs (Thailand/UAE added), in-memory only
         if not j.get("dashboard_visible", True) and (j.get("status") or "").lower() != "applied":

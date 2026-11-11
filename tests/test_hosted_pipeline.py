@@ -181,9 +181,12 @@ class PipelineBoundaries(EnvCase):
         self.assertFalse((self.jt / "applied_updates.json").exists())
 
     def test_preflight_does_not_write_health(self):
+        health = ROOT / "state" / "health.json"
+        before = health.read_bytes() if health.exists() else None
         report = hosted_runner.execute("preflight")
         self.assertFalse(report["ok"])
-        self.assertFalse((ROOT / "state" / "health.json").exists())
+        after = health.read_bytes() if health.exists() else None
+        self.assertEqual(before, after)
 
     def test_backup_keeps_five(self):
         updates_lib.atomic_write_json(self.jt / "tracked_jobs.json", {"all_jobs": []})
