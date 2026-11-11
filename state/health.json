@@ -1,0 +1,60 @@
+{
+  "mode": "applied-sync",
+  "ok": true,
+  "started_at": "2026-11-11T15:31:09Z",
+  "finished_at": "2026-11-11T15:31:09Z",
+  "missing_files": [],
+  "unresolved_imports": [],
+  "steps": [
+    {
+      "name": "sweep_crawler",
+      "status": "skipped",
+      "detail": "applied-sync does not crawl"
+    },
+    {
+      "name": "auto_referral_needed",
+      "status": "skipped",
+      "detail": "applied-sync does not flag referrals"
+    },
+    {
+      "name": "generate_report",
+      "status": "skipped",
+      "detail": "applied-sync does not ingest crawl results"
+    },
+    {
+      "name": "telegram",
+      "status": "skipped",
+      "detail": "applied-sync does not send Telegram"
+    },
+    {
+      "name": "telegram_sync",
+      "status": "skipped",
+      "detail": "applied-sync does not read Telegram"
+    },
+    {
+      "name": "outreach",
+      "status": "skipped",
+      "detail": "applied-sync does not refresh outreach"
+    },
+    {
+      "name": "backup",
+      "status": "ok",
+      "detail": "snapshotted 5 files"
+    },
+    {
+      "name": "process_inbox",
+      "status": "ok",
+      "detail": "[inbox] No website marks pending."
+    },
+    {
+      "name": "merge_referral_updates",
+      "status": "ok",
+      "detail": "[merge] 258 referral + 172 applied records, rewritten=0 (applied_touches=0, skipped_touches=22, unknown_job_id_count=0)"
+    },
+    {
+      "name": "build_site",
+      "status": "ok",
+      "detail": "dashboard rebuilt"
+    }
+  ]
+}
