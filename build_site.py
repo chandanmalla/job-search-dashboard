@@ -11,29 +11,43 @@ Run with:
 """
 
 import json
+import os
 import re
+import sys
 from pathlib import Path
 from datetime import datetime, timezone
 
 PROJECT_DIR = Path(__file__).parent
 DATA_DIR    = PROJECT_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
+sys.path.insert(0, str(PROJECT_DIR / "scripts"))
+from paths import ensure_import_path, job_tracker_dir
 
-TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\tracked_jobs.json")
-if not TRACKED_PATH.exists():
-    TRACKED_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\found_jobs_latest.json")
-
-CONFIG_PATH = Path(r"C:\Users\chand\Downloads\Job Search\job-tracker\config.json")
+def _tracked_path():
+    jt = job_tracker_dir()
+    primary = jt / "tracked_jobs.json"
+    if primary.exists():
+        return primary
+    alt = jt / "found_jobs_latest.json"
+    return alt if alt.exists() else primary
 
 def load_user_profile():
-    if CONFIG_PATH.exists():
-        with open(CONFIG_PATH, encoding="utf-8") as f:
+    profile = {}
+    cfg_path = job_tracker_dir() / "config.json"
+    if cfg_path.exists():
+        with open(cfg_path, encoding="utf-8") as f:
             cfg = json.load(f)
-            return cfg.get("user_profile", {})
-    return {}
+            profile = dict(cfg.get("user_profile") or {})
+    if os.environ.get("DASHBOARD_USER_NAME"):
+        profile["name"] = os.environ["DASHBOARD_USER_NAME"]
+    if os.environ.get("DASHBOARD_USER_EMAIL"):
+        profile["email"] = os.environ["DASHBOARD_USER_EMAIL"]
+    if os.environ.get("DASHBOARD_USER_PHONE"):
+        profile["phone"] = os.environ["DASHBOARD_USER_PHONE"]
+    return profile
 
 def load_jobs_data():
-    with open(TRACKED_PATH, encoding="utf-8") as f:
+    with open(_tracked_path(), encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, dict):
         return data.get("all_jobs", []), data.get("applied", []), data.get("skipped", [])
@@ -44,8 +58,7 @@ PHRASE_EXCLUSIONS_LOWER = {
     'harnham', 'inoptra', 'infosys', 'mathco', 'mycareernet', 'nps prism', 'oliver wyman',
     'omegahires', 'opus recruitment', 'procdna', 'recrew', 'sim digital', 'srijan',
     'tata consultancy', 'vgreen', 'wipro', 'cognizant', 'ltimindtree',
-    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'deloitte', 'ernst & young', 'ernst and young',
-    'kpmg', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
+    'tech mahindra', 'capgemini', 'genpact', 'mu sigma', 'mckinsey', 'bain & company', 'michael page', 'robert half', 'adecco', 'randstad', 'hays',
     'caterpillar', 'ecolab', 'mccormick', 'syngenta', 'trane technologies', 'ingersoll rand',
     'johnson & johnson', 'johnson &amp; johnson', 'kroll', 'consilio', 'dmi finance',
     'funding societies', 'amplify health', 'xcaliber', 'thales', 'signify', 'sei', 'prolific',
@@ -54,9 +67,12 @@ PHRASE_EXCLUSIONS_LOWER = {
     'quantum', 'blend', 'enigma', 'epsilon', 'gartner', 'consulting', 'staffing', 'recruitment'
 }
 
-SHORT_EXCLUSIONS = {'ey', 'tcs', 'pwc', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
+SHORT_EXCLUSIONS = {'tcs', 'hcl', 'ust', 'bcg', 'bd', 'lmg', 'mvf'}
 
 def is_top_product_company(company: str) -> bool:
+    import job_filters as _jf
+    if _jf.is_big4(company):
+        return True
     cl = company.lower().strip()
     if not cl:
         return False
@@ -75,16 +91,23 @@ def is_pure_science_role(title: str) -> bool:
         return False
     return any(w in tl for w in ["data scientist", "applied scientist", "research scientist", "decision scientist", "machine learning scientist", "ml scientist", "data science"])
 
-import sys as _sys
-_sys.path.insert(0, r"C:\Users\chand\Downloads\Job Search\job-tracker")
-import job_filters as JF
-
 def build_dashboard():
+    strict = os.environ.get("HOSTED_STRICT_BUILD") == "1"
+    ensure_import_path()
     try:
         import merge_referral_updates as _MRU
         _MRU.main()
     except Exception as _e:
         print(f"[build_site] referral merge skipped: {_e}")
+        if strict:
+            raise
+    try:
+        import job_filters as JF
+    except ImportError as exc:
+        raise RuntimeError(
+            "Refusing to build the dashboard: job_filters.py is not in JT_DIR. "
+            "The published site was left unchanged."
+        ) from exc
 
     raw_jobs, db_applied, db_skipped = load_jobs_data()
     uprofile = load_user_profile()
@@ -655,7 +678,8 @@ def build_dashboard():
         <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Needed / Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
-        <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Sync Mark Applied / Skip / Mark Referred straight to the dashboard via GitHub">Connect GitHub</button>
+        <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Optional: fine-grained token stored only in this browser. Prefer Sync with GitHub login.">Connect GitHub</button>
+        <button class="btn-action" id="btnGithubLogin" style="color:#fff;font-weight:600;background:#1e40af;" title="Queue marks as a GitHub issue using your GitHub login. No token is stored. Only an allow-listed account can write.">Sync with GitHub login</button>
         <button class="btn-action" id="btnEditContact" title="Update your name, phone number, and email for referral messages">⚙️ My Contact Info</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
@@ -1132,7 +1156,7 @@ ${{savedName}}
     window.ghPush = function(id, action) {{
       ghQueue.push({{ job_id: id, action: action, ts: new Date().toISOString() }});
       ghSavePending();
-      if (!ghToken()) {{ ghToast('Saved on this device only. Click "Connect GitHub" to sync marks to the dashboard.', false); return; }}
+      if (!ghToken()) {{ ghToast('Saved on this device. Use "Sync with GitHub login" (no token stored) or Connect GitHub.', false); return; }}
       ghFlush();
     }};
     async function ghFlush() {{
@@ -1154,7 +1178,7 @@ ${{savedName}}
           const p = await fetch(GH_API, {{ method: 'PUT', headers: h, body: JSON.stringify(body) }});
           if (p.status === 200 || p.status === 201) {{
             ghQueue = ghQueue.slice(batch.length); ghSavePending();
-            ghToast('Synced to GitHub: ' + batch.map(b => b.job_id).join(', ') + ' (dashboard updates in ~1-2 min)', true);
+            ghToast('Saved to the GitHub inbox: ' + batch.map(b => b.job_id).join(', ') + '. The dashboard merges them when sync runs.', true);
             ghBusy = false; if (ghQueue.length) ghFlush(); return;
           }}
           if (p.status === 409 || p.status === 422) {{ await new Promise(r => setTimeout(r, 400 * attempt)); continue; }}
@@ -1179,7 +1203,7 @@ ${{savedName}}
         if (confirm('GitHub is connected. Disconnect and remove the token from this browser?')) {{ localStorage.removeItem('gh_token'); ghRenderStatus(); ghToast('GitHub token removed from this browser.', true); }}
         return;
       }}
-      const t = prompt('Paste a fine-grained GitHub token with access only to ' + GH_REPO + ' (Contents: Read and write). It is stored only in this browser.');
+      const t = prompt('Optional. Paste a fine-grained GitHub token for ' + GH_REPO + ' only (Contents: Read and write, short expiry). It stays in this browser. Prefer "Sync with GitHub login", which stores no token.');
       if (!t || !t.trim()) return;
       localStorage.setItem('gh_token', t.trim()); ghRenderStatus();
       fetch('https://api.github.com/repos/' + GH_REPO, {{ headers: {{ 'Authorization': 'Bearer ' + t.trim(), 'Accept': 'application/vnd.github+json' }} }})
@@ -1187,6 +1211,16 @@ ${{savedName}}
         .catch(() => ghToast('Could not reach GitHub to check the token.', false));
     }});
     ghRenderStatus();
+    window.ghLoginSync = function() {{
+      const lines = ghQueue.map(function(e) {{ return e.action + ' ' + e.job_id; }});
+      if (!lines.length) {{ ghToast('No pending marks on this device.', false); return; }}
+      const body = '<!-- dashboard-mark -->\\n' + lines.join('\\n') + '\\n';
+      const url = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('Dashboard marks') + '&body=' + encodeURIComponent(body);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      ghToast('This opens a public issue with job ids only. Do not type names, notes, or links. No token is stored.', true);
+    }};
+    var loginBtn = document.getElementById('btnGithubLogin');
+    if (loginBtn) loginBtn.addEventListener('click', window.ghLoginSync);
     // Apply marks already in the inbox (not yet merged by the crawl) so every device sees them
     fetch('data/applied_inbox.json?t=' + Date.now(), {{ cache: 'no-store' }}).then(r => r.ok ? r.json() : []).then(list => {{
       const all = (list || []).concat(ghQueue);

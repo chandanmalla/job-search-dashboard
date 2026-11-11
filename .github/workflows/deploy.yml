@@ -10,8 +10,9 @@ permissions:
   pages: write
   id-token: write
 
+# Serializes with the hosted publish jobs. A newer main tip skips a stale upload.
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -23,12 +24,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Skip when main has moved on
+        id: tip
+        run: |
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo "A newer commit is on main; skipping this deploy."
+            echo "current=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Assemble site
+        if: steps.tip.outputs.current == 'true'
+        run: |
+          rm -rf _site
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/jobs.json _site/data/jobs.json
+          cp data/applied_inbox.json _site/data/applied_inbox.json
       - name: Upload artifact
+        if: steps.tip.outputs.current == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: _site
       - name: Deploy to GitHub Pages
+        if: steps.tip.outputs.current == 'true'
         id: deployment
         uses: actions/deploy-pages@v4

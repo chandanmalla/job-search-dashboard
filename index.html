@@ -483,7 +483,8 @@
         <select id="selReferral"><option value="">Referral: All</option><option value="referred">Referred</option><option value="pending">Needed / Requested / Reminded</option><option value="apply_direct">Apply direct</option><option value="none">None</option></select>
         <button class="btn-action" id="btnCopyApplied" title="Copy comma-separated list of your applied Job IDs">📋 Copy IDs</button>
         <button class="btn-action" id="btnSyncTelegram" style="background:#0284c7;color:#fff;border-color:#0284c7;font-weight:600;" title="Open Telegram with pre-filled /applied command for all your marked jobs">📲 Sync to Telegram</button>
-        <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Sync Mark Applied / Skip / Mark Referred straight to the dashboard via GitHub">Connect GitHub</button>
+        <button class="btn-action" id="btnGithub" style="color:#fff;font-weight:600;" title="Optional: fine-grained token stored only in this browser. Prefer Sync with GitHub login.">Connect GitHub</button>
+        <button class="btn-action" id="btnGithubLogin" style="color:#fff;font-weight:600;background:#1e40af;" title="Queue marks as a GitHub issue using your GitHub login. No token is stored. Only an allow-listed account can write.">Sync with GitHub login</button>
         <button class="btn-action" id="btnEditContact" title="Update your name, phone number, and email for referral messages">⚙️ My Contact Info</button>
         <button class="btn-action" id="btnReset">Reset</button>
         <span class="counter-tag" id="rowCounter">0 roles</span>
@@ -964,7 +965,7 @@ ${savedName}
     window.ghPush = function(id, action) {
       ghQueue.push({ job_id: id, action: action, ts: new Date().toISOString() });
       ghSavePending();
-      if (!ghToken()) { ghToast('Saved on this device only. Click "Connect GitHub" to sync marks to the dashboard.', false); return; }
+      if (!ghToken()) { ghToast('Saved on this device. Use "Sync with GitHub login" (no token stored) or Connect GitHub.', false); return; }
       ghFlush();
     };
     async function ghFlush() {
@@ -986,7 +987,7 @@ ${savedName}
           const p = await fetch(GH_API, { method: 'PUT', headers: h, body: JSON.stringify(body) });
           if (p.status === 200 || p.status === 201) {
             ghQueue = ghQueue.slice(batch.length); ghSavePending();
-            ghToast('Synced to GitHub: ' + batch.map(b => b.job_id).join(', ') + ' (dashboard updates in ~1-2 min)', true);
+            ghToast('Saved to the GitHub inbox: ' + batch.map(b => b.job_id).join(', ') + '. The dashboard merges them when sync runs.', true);
             ghBusy = false; if (ghQueue.length) ghFlush(); return;
           }
           if (p.status === 409 || p.status === 422) { await new Promise(r => setTimeout(r, 400 * attempt)); continue; }
@@ -1011,7 +1012,7 @@ ${savedName}
         if (confirm('GitHub is connected. Disconnect and remove the token from this browser?')) { localStorage.removeItem('gh_token'); ghRenderStatus(); ghToast('GitHub token removed from this browser.', true); }
         return;
       }
-      const t = prompt('Paste a fine-grained GitHub token with access only to ' + GH_REPO + ' (Contents: Read and write). It is stored only in this browser.');
+      const t = prompt('Optional. Paste a fine-grained GitHub token for ' + GH_REPO + ' only (Contents: Read and write, short expiry). It stays in this browser. Prefer "Sync with GitHub login", which stores no token.');
       if (!t || !t.trim()) return;
       localStorage.setItem('gh_token', t.trim()); ghRenderStatus();
       fetch('https://api.github.com/repos/' + GH_REPO, { headers: { 'Authorization': 'Bearer ' + t.trim(), 'Accept': 'application/vnd.github+json' } })
@@ -1019,6 +1020,16 @@ ${savedName}
         .catch(() => ghToast('Could not reach GitHub to check the token.', false));
     });
     ghRenderStatus();
+    window.ghLoginSync = function() {
+      const lines = ghQueue.map(function(e) { return e.action + ' ' + e.job_id; });
+      if (!lines.length) { ghToast('No pending marks on this device.', false); return; }
+      const body = '<!-- dashboard-mark -->\n' + lines.join('\n') + '\n';
+      const url = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('Dashboard marks') + '&body=' + encodeURIComponent(body);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      ghToast('This opens a public issue with job ids only. Do not type names, notes, or links. No token is stored.', true);
+    };
+    var loginBtn = document.getElementById('btnGithubLogin');
+    if (loginBtn) loginBtn.addEventListener('click', window.ghLoginSync);
     // Apply marks already in the inbox (not yet merged by the crawl) so every device sees them
     fetch('data/applied_inbox.json?t=' + Date.now(), { cache: 'no-store' }).then(r => r.ok ? r.json() : []).then(list => {
       const all = (list || []).concat(ghQueue);
