@@ -186,6 +186,8 @@ def find_new_jobs(found: list, db: dict) -> list:
             continue
         if JF.company_excluded(j.get("company", "")):
             continue
+        if JF.hide_open_non_india(j):
+            continue
         if not JF.exp_ok(j.get("_exp_min"), j.get("_exp_max")):
             continue
         j.setdefault("exp_years", JF.exp_label(j.get("_exp_min"), j.get("_exp_max")))

@@ -31,7 +31,7 @@ def _logical(path: Path) -> str:
 
 
 class ScheduleTests(unittest.TestCase):
-    def test_even_ist_hours_and_disabled_workflow(self):
+    def test_even_ist_hours_and_gated_schedule(self):
         hours = schedule.ist_hours()
         self.assertEqual(sorted(hour for hour, minute in hours), [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22])
         self.assertTrue(all(minute == 0 for _hour, minute in hours))
@@ -42,8 +42,12 @@ class ScheduleTests(unittest.TestCase):
         self.assertTrue(all(hour % 2 == 1 for hour, _minute in odd))
         workflow = (ROOT / ".github/workflows/crawl.yml").read_text(encoding="utf-8")
         active = "\n".join(line for line in workflow.splitlines() if not line.lstrip().startswith("#"))
-        self.assertNotIn("schedule:", active)
-        self.assertIn(schedule.EVEN_IST_CRON, workflow)
+        self.assertIn("schedule:", active)
+        self.assertIn(schedule.EVEN_IST_CRON, active)
+        self.assertIn("vars.HOSTED_CRAWL", active)
+        self.assertIn('[ "$event" = "schedule" ] && [ "$var" = "true" ]', active)
+        self.assertIn("hosted_runner.py --mode crawl --publish", active)
+        self.assertIn("hosted_runner.py --mode preflight", active)
 
 
 class PublishBoundaryTests(unittest.TestCase):

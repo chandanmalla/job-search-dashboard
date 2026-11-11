@@ -821,6 +821,8 @@ def _run_crawler_impl(force_mode=None, dry_run=False):
         _ll = job.get("location", "").lower()
         if re.search(r"\bgrab\b", job.get("company", "").lower()) and not any(h in _ll for h in ["bangkok", "thailand", "india", "bangalore", "bengaluru", "hyderabad", "delhi", "gurgaon", "gurugram", "noida", "chennai", "mumbai", "pune"]):
             continue  # Grab: Bangkok and India only
+        if JF.hide_open_non_india(job):
+            continue  # outside India: sponsorship text or top-product allowlist only
         lo, hi = JF.parse_exp_years(job.pop("_desc", ""))
         if not JF.exp_ok(lo, hi):
             print(f"  - exp filter drop [{job['company']}] {job['job_title']} ({JF.exp_label(lo, hi)})", flush=True)
