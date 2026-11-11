@@ -1,7 +1,7 @@
 name: Crawl
 
-# Manual only. Telegram, Telegram sync, and outreach are not invoked.
-# The PC pipeline remains the production writer. This schedule is not enabled.
+# Hosted production writer (PC crawl stopped 2026-11-11). Scheduled runs crawl only when vars.HOSTED_CRAWL is true.
+# Telegram, Telegram sync, and outreach are not invoked.
 #
 # Even IST hours only. IST = UTC+5:30, so minute 30 lands six hours later and
 # keeps parity: 18:30 UTC = 00:00 IST, 00:30 UTC = 06:00 IST. Odd UTC hours
@@ -9,6 +9,8 @@ name: Crawl
 #   schedule:
 #     - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
 on:
+  schedule:
+    - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
   workflow_dispatch:
     inputs:
       confirm:
