@@ -1,8 +1,8 @@
 {
   "mode": "crawl",
   "ok": true,
-  "started_at": "2026-11-12T16:58:14Z",
-  "finished_at": "2026-11-12T16:59:24Z",
+  "started_at": "2026-11-12T23:46:06Z",
+  "finished_at": "2026-11-12T23:47:01Z",
   "missing_files": [],
   "unresolved_imports": [],
   "steps": [
@@ -29,7 +29,7 @@
     {
       "name": "sweep_crawler",
       "status": "ok",
-      "detail": "  jobspy          [reloc] indeed India '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'data scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'applied scientist'      kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'lead scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'data scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'applied scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed London '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed United Kingdom '\"data scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'applied scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Sydney '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Melbourne '\"data scientist\" OR kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Sydney 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Bangkok '\"data scientist\" OR ' kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Dubai '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n[sweep_crawler] Sources: 120 | errors: 15\n[sweep_crawler] New roles by section: top-tier=3 other-companies=3\n[feed-health] no persistently failing feeds.\n[line omitted]\n[sweep_crawler] Saved 6 roles to found_jobs_latest.json. Next mode will be: 'new_companies'."
+      "detail": "  jobspy          [reloc] indeed India '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'data scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'applied scientist'      kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] naukri India 'lead scientist'         kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'data scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Bengaluru 'applied scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed London '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed United Kingdom '\"data scientis kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor London 'applied scientist'  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Sydney '\"data scientist\" OR '  kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Melbourne '\"data scientist\" OR kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] glassdoor Sydney 'data scientist'     kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Bangkok '\"data scientist\" OR ' kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n  jobspy          [reloc] indeed Dubai '\"data scientist\" OR '   kept=0   ERROR ModuleNotFoundError: No module named 'jobspy'\n[sweep_crawler] Sources: 120 | errors: 15\n[sweep_crawler] New roles by section: top-tier=3 other-companies=4\n[feed-health] no persistently failing feeds.\n[line omitted]\n[sweep_crawler] Saved 7 roles to found_jobs_latest.json. Next mode will be: 'new_companies'."
     },
     {
       "name": "auto_referral_needed",
@@ -44,17 +44,17 @@
     {
       "name": "generate_report",
       "status": "ok",
-      "detail": "[excel] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_report_20261112_1659.xlsx\n[html] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_dashboard_20261112_1659.html\n[main] Telegram disabled (--no-telegram).\n[main] Done. 3 new jobs. Reports at /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports"
+      "detail": "[excel] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_report_20261112_2347.xlsx\n[html] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_dashboard_20261112_2347.html\n[main] Telegram disabled (--no-telegram).\n[main] Done. 4 new jobs. Reports at /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports"
     },
     {
       "name": "auto_referral_needed_after",
       "status": "ok",
-      "detail": "[auto_ref] flagged=3"
+      "detail": "[auto_ref] flagged=4"
     },
     {
       "name": "merge_referral_updates_after",
       "status": "ok",
-      "detail": "[merge] 261 referral + 172 applied records, rewritten=1 (applied_touches=0, skipped_touches=22, unknown_job_id_count=0)"
+      "detail": "[merge] 262 referral + 172 applied records, rewritten=1 (applied_touches=0, skipped_touches=22, unknown_job_id_count=0)"
     },
     {
       "name": "build_site",

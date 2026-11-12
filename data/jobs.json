@@ -11311,12 +11311,38 @@
   },
   {
     "id": "J720",
-    "company": "HuntingCube",
+    "company": "ITC Infotech",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
     "posted": "Posted 4 hours ago (2026-11-12)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-itc-infotech-4489501077",
+    "source": "ITC Infotech Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at ITC Infotech. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-13T05:17+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J721",
+    "company": "HuntingCube",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 11 hours ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,12 +11357,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-12T22:29+05:30"
+      "updated_at": "2026-11-13T05:17+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J721",
+    "id": "J722",
     "company": "Angel One",
     "title": "Data Scientist 3",
     "location": "Bangalore Urban, Karnataka, India",
@@ -11357,18 +11383,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-12T22:29+05:30"
+      "updated_at": "2026-11-13T05:17+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J722",
+    "id": "J723",
     "company": "Accedepro Private Limited",
     "title": "Senior Data Scientist – AI/ML Technical Lead | Bangalore (Hybrid) - 3 Days Office | 7-10 Y | Quick Joiners Only |",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-12)",
+    "posted": "Posted 8 hours ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,7 +11409,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-12T22:29+05:30"
+      "updated_at": "2026-11-13T05:17+05:30"
     },
     "tier": "other"
   }
