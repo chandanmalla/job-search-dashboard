@@ -11311,12 +11311,38 @@
   },
   {
     "id": "J720",
+    "company": "Blue Yonder",
+    "title": "Sr Data Scientist II - Machine Learning,Deep Learning,Python,,Pytorch",
+    "location": "Bengaluru East, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 4 hours ago (2026-11-13)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-ii-machine-learning-deep-learning-python-pytorch-at-blue-yonder-4489565566",
+    "source": "Blue Yonder Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Blue Yonder. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-13T22:10+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J721",
     "company": "ITC Infotech",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 11 hours ago (2026-11-12)",
+    "posted": "Posted 21 hours ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,18 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T12:32+05:30"
+      "updated_at": "2026-11-13T22:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J721",
+    "id": "J722",
     "company": "HuntingCube",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 18 hours ago (2026-11-12)",
+    "posted": "Posted 1 day ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,34 +11383,60 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T12:32+05:30"
+      "updated_at": "2026-11-13T22:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J722",
-    "company": "Angel One",
-    "title": "Data Scientist 3",
-    "location": "Bangalore Urban, Karnataka, India",
+    "id": "J723",
+    "company": "HSBC",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-11)",
+    "posted": "Posted 3 hours ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-3-at-angel-one-4488224302",
-    "source": "Angel One Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Angel One. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-hsbc-4490721266",
+    "source": "HSBC Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at HSBC. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T12:32+05:30"
+      "updated_at": "2026-11-13T22:10+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J724",
+    "company": "LINE MAN Wongnai",
+    "title": "Senior/Lead Data Scientist (Applied AI Research)",
+    "location": "Bangkok, Bangkok City, Thailand",
+    "city": "Bangkok, Bangkok City, Thailand",
+    "country": "Thailand",
+    "posted": "Posted 1 hour ago (2026-11-13)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Employer-sponsored work visa typical (check posting)",
+    "visaCat": "Unknown",
+    "reloc": "Relocation-friendly employer (not stated in posting)",
+    "link": "https://th.linkedin.com/jobs/view/senior-lead-data-scientist-applied-ai-research-at-line-man-wongnai-4472523016",
+    "source": "LINE MAN Wongnai Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at LINE MAN Wongnai. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-13T22:10+05:30"
+    },
+    "tier": "top"
   }
 ]
