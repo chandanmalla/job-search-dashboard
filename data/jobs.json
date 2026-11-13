@@ -11316,7 +11316,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-12)",
+    "posted": "Posted 11 hours ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T05:17+05:30"
+      "updated_at": "2026-11-13T12:32+05:30"
     },
     "tier": "other"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 11 hours ago (2026-11-12)",
+    "posted": "Posted 18 hours ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T05:17+05:30"
+      "updated_at": "2026-11-13T12:32+05:30"
     },
     "tier": "other"
   },
@@ -11383,33 +11383,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T05:17+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J723",
-    "company": "Accedepro Private Limited",
-    "title": "Senior Data Scientist – AI/ML Technical Lead | Bangalore (Hybrid) - 3 Days Office | 7-10 Y | Quick Joiners Only |",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 8 hours ago (2026-11-12)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-%E2%80%93-ai-ml-technical-lead-bangalore-hybrid-3-days-office-7-10-y-quick-joiners-only-at-accedepro-private-limited-4488536221",
-    "source": "Accedepro Private Limited Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Accedepro Private Limited. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-13T05:17+05:30"
+      "updated_at": "2026-11-13T12:32+05:30"
     },
     "tier": "other"
   }
