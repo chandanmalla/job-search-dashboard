@@ -11311,12 +11311,38 @@
   },
   {
     "id": "J720",
+    "company": "Deliveroo",
+    "title": "Senior Data Scientist - Experimentation",
+    "location": "London, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Updated 2026-11-13",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, causal inference, deep learning, PyTorch, SQL",
+    "visa": "Plausible / standard corporate sponsorship",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://job-boards.greenhouse.io/deliveroo/jobs/8220065",
+    "source": "Deliveroo Careers (Greenhouse)",
+    "why_fits": "Core Data Science / Applied Science role at Deliveroo. Strong match for statistical modeling and ML science.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-14T05:16+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J721",
     "company": "Blue Yonder",
     "title": "Sr Data Scientist II - Machine Learning,Deep Learning,Python,,Pytorch",
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-13)",
+    "posted": "Posted 11 hours ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,18 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T22:10+05:30"
+      "updated_at": "2026-11-14T05:16+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J721",
+    "id": "J722",
     "company": "ITC Infotech",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 21 hours ago (2026-11-12)",
+    "posted": "Posted 1 day ago (2026-11-12)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,12 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T22:10+05:30"
+      "updated_at": "2026-11-14T05:16+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J722",
+    "id": "J723",
     "company": "HuntingCube",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11383,18 +11409,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T22:10+05:30"
+      "updated_at": "2026-11-14T05:16+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J723",
+    "id": "J724",
     "company": "HSBC",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 3 hours ago (2026-11-13)",
+    "posted": "Posted 10 hours ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,18 +11435,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T22:10+05:30"
+      "updated_at": "2026-11-14T05:16+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J724",
+    "id": "J725",
+    "company": "Lemnisk",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 11 hours ago (2026-11-13)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-lemnisk-4489572392",
+    "source": "Lemnisk Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Lemnisk. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-14T05:16+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J726",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
     "city": "Bangkok, Bangkok City, Thailand",
     "country": "Thailand",
-    "posted": "Posted 1 hour ago (2026-11-13)",
+    "posted": "Posted 9 hours ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,7 +11487,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-13T22:10+05:30"
+      "updated_at": "2026-11-14T05:16+05:30"
     },
     "tier": "top"
   }
