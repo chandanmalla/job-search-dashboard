@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "top"
   },
@@ -11357,44 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J722",
-    "company": "ITC Infotech",
-    "title": "Senior Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-12)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-itc-infotech-4489501077",
-    "source": "ITC Infotech Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at ITC Infotech. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J723",
     "company": "Crescent Techservices",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-14)",
+    "posted": "Posted 7 hours ago (2026-11-14)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,12 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J724",
+    "id": "J723",
     "company": "HSBC",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11435,12 +11409,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J725",
+    "id": "J724",
     "company": "Lemnisk",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11461,12 +11435,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J726",
+    "id": "J725",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
@@ -11487,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T20:46+05:30"
+      "updated_at": "2026-11-15T02:23+05:30"
     },
     "tier": "top"
   }
