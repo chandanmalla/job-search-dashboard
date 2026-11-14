@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "top"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 18 hours ago (2026-11-13)",
+    "posted": "Posted 1 day ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "other"
   },
@@ -11383,33 +11383,33 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J723",
-    "company": "HuntingCube",
+    "company": "Crescent Techservices",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-12)",
+    "posted": "Posted 1 hour ago (2026-11-14)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-huntingcube-4490340205",
-    "source": "HuntingCube Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at HuntingCube. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-crescent-techservices-4489341579",
+    "source": "Crescent Techservices Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Crescent Techservices. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "other"
   },
@@ -11420,7 +11420,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 17 hours ago (2026-11-13)",
+    "posted": "Posted 1 day ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,7 +11435,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "other"
   },
@@ -11446,7 +11446,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 18 hours ago (2026-11-13)",
+    "posted": "Posted 1 day ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "other"
   },
@@ -11472,7 +11472,7 @@
     "location": "Bangkok, Bangkok City, Thailand",
     "city": "Bangkok, Bangkok City, Thailand",
     "country": "Thailand",
-    "posted": "Posted 16 hours ago (2026-11-13)",
+    "posted": "Posted 1 day ago (2026-11-13)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,7 +11487,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-14T12:21+05:30"
+      "updated_at": "2026-11-14T20:46+05:30"
     },
     "tier": "top"
   }
