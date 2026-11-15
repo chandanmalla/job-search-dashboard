@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T22:51+05:30"
+      "updated_at": "2026-11-16T04:33+05:30"
     },
     "tier": "top"
   },
@@ -11357,38 +11357,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T22:51+05:30"
+      "updated_at": "2026-11-16T04:33+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J722",
-    "company": "GE Vernova",
-    "title": "Research Scientist - Machine Learning",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-13)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/research-scientist-machine-learning-at-ge-vernova-4489595961",
-    "source": "GE Vernova Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at GE Vernova. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-15T22:51+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J723",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
@@ -11409,12 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T22:51+05:30"
+      "updated_at": "2026-11-16T04:33+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J724",
+    "id": "J723",
     "company": "Wise",
     "title": "Lead Data Scientist - Agentic AI / AML",
     "location": "London Area, United Kingdom",
@@ -11435,7 +11409,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T22:51+05:30"
+      "updated_at": "2026-11-16T04:33+05:30"
     },
     "tier": "top"
   }
