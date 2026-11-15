@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "top"
   },
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "other"
   },
@@ -11368,7 +11368,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 12 hours ago (2026-11-14)",
+    "posted": "Posted 19 hours ago (2026-11-14)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,7 +11383,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "other"
   },
@@ -11409,7 +11409,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "other"
   },
@@ -11435,7 +11435,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "other"
   },
@@ -11461,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-15T07:32+05:30"
+      "updated_at": "2026-11-15T15:14+05:30"
     },
     "tier": "top"
   }
