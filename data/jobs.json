@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "top"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 6 hours ago (2026-11-16)",
+    "posted": "Posted 14 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "other"
   },
@@ -11368,7 +11368,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 10 hours ago (2026-11-16)",
+    "posted": "Posted 18 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,44 +11383,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J723",
-    "company": "Tesco Bengaluru",
-    "title": "Senior Decision Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 6 hours ago (2026-11-16)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-decision-scientist-at-tesco-bengaluru-4489745805",
-    "source": "Tesco Bengaluru Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Tesco Bengaluru. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J724",
     "company": "Halliburton",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 29 minutes ago (2026-11-16)",
+    "posted": "Posted 8 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,18 +11409,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J725",
+    "id": "J724",
     "company": "Archer",
     "title": "Data Science Practitioner (Large Language Models, 8-12 yrs)",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 12 hours ago (2026-11-16)",
+    "posted": "Posted 20 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,7 +11435,33 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J725",
+    "company": "Tesco Bengaluru",
+    "title": "Senior Decision Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 14 hours ago (2026-11-16)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-decision-scientist-at-tesco-bengaluru-4489745805",
+    "source": "Tesco Bengaluru Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Tesco Bengaluru. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "other"
   },
@@ -11472,7 +11472,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 6 hours ago (2026-11-16)",
+    "posted": "Posted 14 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,7 +11487,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "other"
   },
@@ -11513,7 +11513,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T00:16+05:30"
+      "updated_at": "2026-11-17T08:33+05:30"
     },
     "tier": "top"
   }
