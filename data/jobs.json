@@ -11331,44 +11331,70 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "top"
   },
   {
     "id": "J721",
-    "company": "Tesco Business Solutions",
-    "title": "Senior Decision Scientist",
-    "location": "Bengaluru, Karnataka, India",
+    "company": "UKG",
+    "title": "Sr Data Scientist",
+    "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 14 hours ago (2026-11-16)",
+    "posted": "Posted 8 hours ago (2026-11-17)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-decision-scientist-at-tesco-business-solutions-4489743938",
-    "source": "Tesco Business Solutions Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Tesco Business Solutions. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-ukg-4490197012",
+    "source": "UKG Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at UKG. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J722",
+    "company": "Quantiphi",
+    "title": "Research Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-11-17)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/research-scientist-at-quantiphi-4491150189",
+    "source": "Quantiphi Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Quantiphi. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-17T19:14+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J723",
     "company": "Dyson",
     "title": "Lead Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 18 hours ago (2026-11-16)",
+    "posted": "Posted 1 day ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,18 +11409,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J723",
+    "id": "J724",
     "company": "Halliburton",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 8 hours ago (2026-11-16)",
+    "posted": "Posted 19 hours ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,59 +11435,33 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J724",
-    "company": "Archer",
-    "title": "Data Science Practitioner (Large Language Models, 8-12 yrs)",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 20 hours ago (2026-11-16)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-science-practitioner-large-language-models-8-12-yrs-at-archer-4490273408",
-    "source": "Archer Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Archer. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J725",
-    "company": "Tesco Bengaluru",
-    "title": "Senior Decision Scientist",
+    "company": "Zorba AI",
+    "title": "Data Science – AI (DS AI)",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 14 hours ago (2026-11-16)",
+    "posted": "Posted 2 hours ago (2026-11-17)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-decision-scientist-at-tesco-bengaluru-4489745805",
-    "source": "Tesco Bengaluru Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Tesco Bengaluru. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/data-science-%E2%80%93-ai-ds-ai-at-zorba-ai-4491151478",
+    "source": "Zorba AI Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Zorba AI. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "other"
   },
@@ -11472,7 +11472,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 14 hours ago (2026-11-16)",
+    "posted": "Posted 1 day ago (2026-11-16)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,12 +11487,64 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J727",
+    "company": "Chubb",
+    "title": "Lead Data Scientist (GLM)",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 13 hours ago (2026-11-17)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-glm-at-chubb-4491562149",
+    "source": "Chubb Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Chubb. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-17T19:14+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J728",
+    "company": "CoffeeBeans",
+    "title": "Senior Data Scientist",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 3 hours ago (2026-11-17)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-coffeebeans-4491142384",
+    "source": "CoffeeBeans Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at CoffeeBeans. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-17T19:14+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J729",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
@@ -11513,7 +11565,33 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-17T08:33+05:30"
+      "updated_at": "2026-11-17T19:14+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J730",
+    "company": "Google",
+    "title": "Research Scientist, Generative Media and Multimodal LLM",
+    "location": "Sydney, New South Wales, Australia",
+    "city": "Sydney",
+    "country": "Australia",
+    "posted": "Posted 1 hour ago (2026-11-17)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://au.linkedin.com/jobs/view/research-scientist-generative-media-and-multimodal-llm-at-google-4483610571",
+    "source": "Google Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Google. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-17T19:14+05:30"
     },
     "tier": "top"
   }
