@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 10 hours ago (2026-11-18)",
+    "posted": "Posted 18 hours ago (2026-11-18)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   },
@@ -11383,38 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J723",
-    "company": "Halliburton",
-    "title": "Senior Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-16)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-halliburton-4490918444",
-    "source": "Halliburton Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Halliburton. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J724",
     "company": "Quantiphi",
     "title": "Research Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11435,18 +11409,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J725",
+    "id": "J724",
     "company": "Target in India",
     "title": "Sr Data Scientist- MarTech",
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 13 hours ago (2026-11-18)",
+    "posted": "Posted 20 hours ago (2026-11-18)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,18 +11435,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J726",
+    "id": "J725",
     "company": "Bandhan Technologies",
     "title": "Senior Data Scientist | 5-9 Yrs |  Hybrid | Bangalore | Immediate",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 16 hours ago (2026-11-18)",
+    "posted": "Posted 23 hours ago (2026-11-18)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,12 +11461,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J727",
+    "id": "J726",
     "company": "Zorba AI",
     "title": "Data Science – AI (DS AI)",
     "location": "Bengaluru, Karnataka, India",
@@ -11513,18 +11487,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J728",
+    "id": "J727",
     "company": "Target in India",
     "title": "Sr Data Scientist-Pricing &amp; Clearance",
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 13 hours ago (2026-11-18)",
+    "posted": "Posted 20 hours ago (2026-11-18)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11539,12 +11513,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J729",
+    "id": "J728",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
@@ -11565,12 +11539,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J730",
+    "id": "J729",
     "company": "Google",
     "title": "Research Scientist, Generative Media and Multimodal LLM",
     "location": "Sydney, New South Wales, Australia",
@@ -11591,7 +11565,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-18T22:57+05:30"
+      "updated_at": "2026-11-19T06:10+05:30"
     },
     "tier": "top"
   }
