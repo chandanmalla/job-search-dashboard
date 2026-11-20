@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "top"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 13 hours ago (2026-11-19)",
+    "posted": "Posted 20 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
@@ -11368,7 +11368,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-19)",
+    "posted": "Posted 11 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,7 +11383,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
@@ -11394,7 +11394,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 11 hours ago (2026-11-19)",
+    "posted": "Posted 17 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,7 +11409,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
@@ -11435,7 +11435,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "top"
   },
@@ -11446,7 +11446,7 @@
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 10 hours ago (2026-11-19)",
+    "posted": "Posted 17 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "top"
   },
@@ -11472,7 +11472,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 10 hours ago (2026-11-19)",
+    "posted": "Posted 16 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,44 +11487,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J727",
-    "company": "Chubb",
-    "title": "Senior Data Scientist I",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 20 hours ago (2026-11-19)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-i-at-chubb-4492485787",
-    "source": "Chubb Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Chubb. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J728",
     "company": "Deltek",
     "title": "Sr Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-19)",
+    "posted": "Posted 11 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11539,44 +11513,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J729",
-    "company": "Bandhan Technologies",
-    "title": "Senior Data Scientist | 5-9 Yrs |  Hybrid | Bangalore | Immediate",
+    "id": "J728",
+    "company": "Ralph Lauren",
+    "title": "Sr. Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-18)",
+    "posted": "Posted 22 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-5-9-yrs-hybrid-bangalore-immediate-at-bandhan-technologies-4491468164",
-    "source": "Bandhan Technologies Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Bandhan Technologies. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-ralph-lauren-4491358882",
+    "source": "Ralph Lauren Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Ralph Lauren. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J730",
+    "id": "J729",
     "company": "Citi",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 15 hours ago (2026-11-19)",
+    "posted": "Posted 22 hours ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11591,12 +11565,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J731",
+    "id": "J730",
     "company": "Target in India",
     "title": "Lead Operations Research Scientist",
     "location": "Bengaluru East, Karnataka, India",
@@ -11617,38 +11591,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J732",
-    "company": "Ralph Lauren",
-    "title": "Sr. Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 15 hours ago (2026-11-19)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-ralph-lauren-4491358882",
-    "source": "Ralph Lauren Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Ralph Lauren. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J733",
+    "id": "J731",
     "company": "LINE MAN Wongnai",
     "title": "Senior/Lead Data Scientist (Applied AI Research)",
     "location": "Bangkok, Bangkok City, Thailand",
@@ -11669,7 +11617,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T02:24+05:30"
+      "updated_at": "2026-11-20T09:10+05:30"
     },
     "tier": "top"
   }
