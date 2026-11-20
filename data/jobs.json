@@ -11331,44 +11331,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J721",
-    "company": "Walmart Global Tech India",
-    "title": "Senior, Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-18)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-walmart-global-tech-india-4491325408",
-    "source": "Walmart Global Tech India Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Walmart Global Tech India. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
-    },
-    "tier": "top"
-  },
-  {
-    "id": "J722",
     "company": "Moody's Corporation",
     "title": "Sr Data Scientist- Digital Assets/ Blockchain",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 7 hours ago (2026-11-20)",
+    "posted": "Posted 16 hours ago (2026-11-20)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,18 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J723",
+    "id": "J722",
     "company": "Akamai Technologies",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 21 hours ago (2026-11-19)",
+    "posted": "Posted 1 day ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,12 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J724",
+    "id": "J723",
     "company": "lululemon",
     "title": "Senior AI/ML Applied Scientist [T500-30877]",
     "location": "Bengaluru, Karnataka, India",
@@ -11435,25 +11409,25 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J725",
+    "id": "J724",
     "company": "Target in India",
-    "title": "Sr Data Scientist-Pricing &amp; Clearance",
+    "title": "Sr Data Scientist- MarTech",
     "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-19)",
+    "posted": "Posted 5 hours ago (2026-11-20)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-pricing-clearance-at-target-in-india-4491478678",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-martech-at-target-in-india-4491481535",
     "source": "Target in India Careers (Verified)",
     "why_fits": "Core Data Science / Applied Science role at Target in India. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
@@ -11461,44 +11435,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J726",
-    "company": "Nielsen",
-    "title": "Senior Data Scientist I",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-19)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-i-at-nielsen-4491389928",
-    "source": "Nielsen Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Nielsen. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J727",
+    "id": "J725",
     "company": "Deltek",
     "title": "Sr Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 21 hours ago (2026-11-19)",
+    "posted": "Posted 1 day ago (2026-11-19)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11513,7 +11461,59 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J726",
+    "company": "Credit Saison India",
+    "title": "Lead Data Scientist",
+    "location": "Greater Bengaluru Area",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 3 hours ago (2026-11-20)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-credit-saison-india-4491940995",
+    "source": "Credit Saison India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Credit Saison India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-21T03:26+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J727",
+    "company": "Citi",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-11-19)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-citi-4492127535",
+    "source": "Citi Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Citi. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
@@ -11539,15 +11539,15 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J729",
-    "company": "Citi",
-    "title": "Senior Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
+    "company": "Target in India",
+    "title": "Sr Data Scientist-Pricing &amp; Clearance",
+    "location": "Bengaluru East, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
     "posted": "Posted 1 day ago (2026-11-19)",
@@ -11557,41 +11557,15 @@
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-citi-4492127535",
-    "source": "Citi Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Citi. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-pricing-clearance-at-target-in-india-4491478678",
+    "source": "Target in India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Target in India. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J730",
-    "company": "LINE MAN Wongnai",
-    "title": "Senior/Lead Data Scientist (Applied AI Research)",
-    "location": "Bangkok, Bangkok City, Thailand",
-    "city": "Bangkok, Bangkok City, Thailand",
-    "country": "Thailand",
-    "posted": "Posted 6 days ago (2026-11-13)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "Employer-sponsored work visa typical (check posting)",
-    "visaCat": "Unknown",
-    "reloc": "Relocation-friendly employer (not stated in posting)",
-    "link": "https://th.linkedin.com/jobs/view/senior-lead-data-scientist-applied-ai-research-at-line-man-wongnai-4472523016",
-    "source": "LINE MAN Wongnai Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at LINE MAN Wongnai. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-20T18:56+05:30"
+      "updated_at": "2026-11-21T03:26+05:30"
     },
     "tier": "top"
   }
