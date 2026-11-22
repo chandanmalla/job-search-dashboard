@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-22T23:28+05:30"
+      "updated_at": "2026-11-23T05:14+05:30"
     },
     "tier": "top"
   },
@@ -11342,7 +11342,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 19 hours ago (2026-11-21)",
+    "posted": "Posted 1 day ago (2026-11-21)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,33 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-22T23:28+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J722",
-    "company": "Credit Saison India",
-    "title": "Lead Data Scientist",
-    "location": "Greater Bengaluru Area",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-20)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-at-credit-saison-india-4491940995",
-    "source": "Credit Saison India Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Credit Saison India. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-22T23:28+05:30"
+      "updated_at": "2026-11-23T05:14+05:30"
     },
     "tier": "other"
   }
