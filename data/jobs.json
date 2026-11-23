@@ -11311,12 +11311,64 @@
   },
   {
     "id": "J720",
+    "company": "Definitive Healthcare",
+    "title": "Senior Data Scientist -AA &amp; I",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 7 hours ago (2026-11-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-aa-i-at-definitive-healthcare-4484326036",
+    "source": "Definitive Healthcare Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Definitive Healthcare. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-24T01:57+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J721",
+    "company": "Expedia Group",
+    "title": "Senior Applied Scientist (Machine Learning)",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-applied-scientist-machine-learning-at-expedia-group-4494029894",
+    "source": "Expedia Group Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Expedia Group. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-24T01:57+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J722",
     "company": "Archer",
     "title": "Data Science Practitioner (Machine Learning, 8-12 yrs)",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-23)",
+    "posted": "Posted 13 hours ago (2026-11-23)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,18 +11383,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-23T13:29+05:30"
+      "updated_at": "2026-11-24T01:57+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J721",
+    "id": "J723",
+    "company": "Target in India",
+    "title": "Lead Operations Research Scientist",
+    "location": "Bengaluru East, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 10 hours ago (2026-11-23)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/lead-operations-research-scientist-at-target-in-india-4491474865",
+    "source": "Target in India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Target in India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-24T01:57+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J724",
     "company": "Wayfair",
     "title": "Machine Learning Scientist III",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-23)",
+    "posted": "Posted 14 hours ago (2026-11-23)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,12 +11435,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-23T13:29+05:30"
+      "updated_at": "2026-11-24T01:57+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J722",
+    "id": "J725",
     "company": "Deltek",
     "title": "Sr Data Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11383,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-23T13:29+05:30"
+      "updated_at": "2026-11-24T01:57+05:30"
     },
     "tier": "other"
   }
