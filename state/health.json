@@ -1,8 +1,8 @@
 {
   "mode": "crawl",
   "ok": true,
-  "started_at": "2026-11-24T18:04:55Z",
-  "finished_at": "2026-11-24T18:06:03Z",
+  "started_at": "2026-11-25T02:41:40Z",
+  "finished_at": "2026-11-25T02:43:48Z",
   "missing_files": [],
   "unresolved_imports": [],
   "steps": [
@@ -44,7 +44,7 @@
     {
       "name": "generate_report",
       "status": "ok",
-      "detail": "[excel] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_report_20261124_1806.xlsx\n[html] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_dashboard_20261124_1806.html\n[main] Telegram disabled (--no-telegram).\n[main] Done. 6 new jobs. Reports at /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports"
+      "detail": "[excel] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_report_20261125_0243.xlsx\n[html] Saved: /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports/job_dashboard_20261125_0243.html\n[main] Telegram disabled (--no-telegram).\n[main] Done. 6 new jobs. Reports at /home/runner/work/job-search-dashboard/job-search-dashboard/state/private/reports"
     },
     {
       "name": "auto_referral_needed_after",
