@@ -11316,7 +11316,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 12 hours ago (2026-11-25)",
+    "posted": "Posted 23 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   },
@@ -11342,7 +11342,7 @@
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 11 hours ago (2026-11-25)",
+    "posted": "Posted 22 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,7 +11357,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   },
@@ -11368,7 +11368,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 14 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11383,18 +11383,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J723",
+    "company": "Molecular Connections",
+    "title": "Senior Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 6 hours ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-molecular-connections-4494986570",
+    "source": "Molecular Connections Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Molecular Connections. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-26T16:47+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J724",
     "company": "HiringEye",
     "title": "Applied Scientist",
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 16 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,18 +11435,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J724",
+    "id": "J725",
+    "company": "Peak XV Partners",
+    "title": "Applied Scientist – Seed / Series A Portfolio",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 4 hours ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-%E2%80%93-seed-series-a-portfolio-at-peak-xv-partners-4494991669",
+    "source": "Peak XV Partners Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Peak XV Partners. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-26T16:47+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J726",
     "company": "Deltek",
     "title": "Sr Data Scientist",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 20 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,18 +11487,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J725",
+    "id": "J727",
     "company": "SAP",
     "title": "Senior Data and Applied Scientist",
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 hour ago (2026-11-25)",
+    "posted": "Posted 12 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,44 +11513,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J726",
-    "company": "Akaike Technologies",
-    "title": "Senior Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-24)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-akaike-technologies-4493996419",
-    "source": "Akaike Technologies Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Akaike Technologies. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J727",
+    "id": "J728",
     "company": "JPMorganChase",
     "title": "Data Scientist Lead - Agentic Solutions",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 14 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11513,18 +11539,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J728",
+    "id": "J729",
     "company": "TecQubes Technologies",
     "title": "Lead Data Scientist – Research &amp; Rapid Prototyping",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 7 hours ago (2026-11-25)",
+    "posted": "Posted 18 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11539,7 +11565,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T06:06+05:30"
+      "updated_at": "2026-11-26T16:47+05:30"
     },
     "tier": "other"
   }
