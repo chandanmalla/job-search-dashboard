@@ -11316,7 +11316,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 3 hours ago (2026-11-25)",
+    "posted": "Posted 12 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
     },
     "tier": "other"
   },
@@ -11342,7 +11342,7 @@
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 2 hours ago (2026-11-25)",
+    "posted": "Posted 11 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,44 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J722",
-    "company": "Expedia Group",
-    "title": "Senior Applied Scientist (Machine Learning)",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-23)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-applied-scientist-machine-learning-at-expedia-group-4494029894",
-    "source": "Expedia Group Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Expedia Group. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
-    },
-    "tier": "top"
-  },
-  {
-    "id": "J723",
     "company": "Lam Research",
     "title": "Data Scientist 4",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 5 hours ago (2026-11-25)",
+    "posted": "Posted 14 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11409,12 +11383,90 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J723",
+    "company": "HiringEye",
+    "title": "Applied Scientist",
+    "location": "Greater Bengaluru Area",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 16 hours ago (2026-11-25)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-at-hiringeye-4494791421",
+    "source": "HiringEye Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at HiringEye. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-26T06:06+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J724",
+    "company": "Deltek",
+    "title": "Sr Data Scientist",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 20 hours ago (2026-11-25)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-deltek-4492445977",
+    "source": "Deltek Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Deltek. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-26T06:06+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J725",
+    "company": "SAP",
+    "title": "Senior Data and Applied Scientist",
+    "location": "Greater Bengaluru Area",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 hour ago (2026-11-25)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-and-applied-scientist-at-sap-4493470304",
+    "source": "SAP Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at SAP. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-26T06:06+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J726",
     "company": "Akaike Technologies",
     "title": "Senior Data Scientist",
     "location": "Bengaluru, Karnataka, India",
@@ -11435,59 +11487,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J725",
-    "company": "HiringEye",
-    "title": "Applied Scientist",
-    "location": "Greater Bengaluru Area",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 7 hours ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/applied-scientist-at-hiringeye-4494791421",
-    "source": "HiringEye Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at HiringEye. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J726",
-    "company": "Deltek",
-    "title": "Sr Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 10 hours ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-deltek-4492445977",
-    "source": "Deltek Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Deltek. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
     },
     "tier": "other"
   },
@@ -11498,7 +11498,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-25)",
+    "posted": "Posted 14 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11513,34 +11513,34 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
     },
     "tier": "top"
   },
   {
     "id": "J728",
-    "company": "Target in India",
-    "title": "Lead Operations Research Scientist",
-    "location": "Bengaluru East, Karnataka, India",
+    "company": "TecQubes Technologies",
+    "title": "Lead Data Scientist – Research &amp; Rapid Prototyping",
+    "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-24)",
+    "posted": "Posted 7 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/lead-operations-research-scientist-at-target-in-india-4491474865",
-    "source": "Target in India Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Target in India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/lead-data-scientist-%E2%80%93-research-rapid-prototyping-at-tecqubes-technologies-4494935356",
+    "source": "TecQubes Technologies Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at TecQubes Technologies. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-25T20:17+05:30"
+      "updated_at": "2026-11-26T06:06+05:30"
     },
-    "tier": "top"
+    "tier": "other"
   }
 ]
