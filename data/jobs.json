@@ -11316,7 +11316,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 23 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11331,18 +11331,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J721",
+    "company": "Walmart Global Tech India",
+    "title": "SENIOR, DATA SCIENTIST",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 3 hours ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-walmart-global-tech-india-4493843460",
+    "source": "Walmart Global Tech India Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Walmart Global Tech India. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T03:19+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J722",
     "company": "Automation Anywhere",
     "title": "Senior Data Scientist",
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 22 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,64 +11383,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J722",
-    "company": "Lam Research",
-    "title": "Data Scientist 4",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-4-at-lam-research-4478408168",
-    "source": "Lam Research Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Lam Research. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J723",
-    "company": "Molecular Connections",
-    "title": "Senior Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 6 hours ago (2026-11-26)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-molecular-connections-4494986570",
-    "source": "Molecular Connections Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Molecular Connections. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J724",
     "company": "HiringEye",
     "title": "Applied Scientist",
     "location": "Greater Bengaluru Area",
@@ -11435,9 +11409,35 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
+  },
+  {
+    "id": "J724",
+    "company": "EY",
+    "title": "TTT - Data Scientist - Tax Senior",
+    "location": "Bengaluru, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 2 hours ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/ttt-data-scientist-tax-senior-at-ey-4484692535",
+    "source": "EY Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at EY. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T03:19+05:30"
+    },
+    "tier": "top"
   },
   {
     "id": "J725",
@@ -11446,7 +11446,7 @@
     "location": "Bangalore Urban, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 4 hours ago (2026-11-26)",
+    "posted": "Posted 15 hours ago (2026-11-26)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
   },
@@ -11487,18 +11487,44 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
   },
   {
     "id": "J727",
+    "company": "Celonis",
+    "title": "Senior Data Scientist_IC3",
+    "location": "Greater Bengaluru Area",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 9 hours ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-ic3-at-celonis-4493816589",
+    "source": "Celonis Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Celonis. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T03:19+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J728",
     "company": "SAP",
     "title": "Senior Data and Applied Scientist",
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 12 hours ago (2026-11-25)",
+    "posted": "Posted 22 hours ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11513,12 +11539,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J728",
+    "id": "J729",
     "company": "JPMorganChase",
     "title": "Data Scientist Lead - Agentic Solutions",
     "location": "Bengaluru, Karnataka, India",
@@ -11539,18 +11565,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J729",
+    "id": "J730",
     "company": "TecQubes Technologies",
     "title": "Lead Data Scientist – Research &amp; Rapid Prototyping",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 18 hours ago (2026-11-25)",
+    "posted": "Posted 1 day ago (2026-11-25)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11565,7 +11591,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-26T16:47+05:30"
+      "updated_at": "2026-11-27T03:19+05:30"
     },
     "tier": "other"
   }
