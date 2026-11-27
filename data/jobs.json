@@ -11311,38 +11311,12 @@
   },
   {
     "id": "J720",
-    "company": "GE Vernova",
-    "title": "Sr Data Scientist",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/sr-data-scientist-at-ge-vernova-4494900740",
-    "source": "GE Vernova Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at GE Vernova. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J721",
     "company": "Walmart Global Tech India",
     "title": "SENIOR, DATA SCIENTIST",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 9 hours ago (2026-11-26)",
+    "posted": "Posted 19 hours ago (2026-11-26)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11357,70 +11331,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
+      "updated_at": "2026-11-27T19:39+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J722",
-    "company": "Automation Anywhere",
-    "title": "Senior Data Scientist",
-    "location": "Greater Bengaluru Area",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-at-automation-anywhere-4487240893",
-    "source": "Automation Anywhere Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Automation Anywhere. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J723",
-    "company": "HiringEye",
-    "title": "Applied Scientist",
-    "location": "Greater Bengaluru Area",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/applied-scientist-at-hiringeye-4494791421",
-    "source": "HiringEye Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at HiringEye. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J724",
+    "id": "J721",
     "company": "EY",
     "title": "TTT - Data Scientist - Tax Senior",
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 9 hours ago (2026-11-26)",
+    "posted": "Posted 19 hours ago (2026-11-26)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,44 +11357,18 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
+      "updated_at": "2026-11-27T19:39+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J725",
-    "company": "Peak XV Partners",
-    "title": "Applied Scientist – Seed / Series A Portfolio",
-    "location": "Bangalore Urban, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 21 hours ago (2026-11-26)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/applied-scientist-%E2%80%93-seed-series-a-portfolio-at-peak-xv-partners-4494991669",
-    "source": "Peak XV Partners Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Peak XV Partners. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J726",
+    "id": "J722",
     "company": "Celonis",
     "title": "Senior Data Scientist_IC3",
     "location": "Greater Bengaluru Area",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 16 hours ago (2026-11-26)",
+    "posted": "Posted 1 day ago (2026-11-26)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,12 +11383,38 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
+      "updated_at": "2026-11-27T19:39+05:30"
     },
     "tier": "other"
   },
   {
-    "id": "J727",
+    "id": "J723",
+    "company": "Peak XV Partners",
+    "title": "Applied Scientist – Seed / Series A Portfolio",
+    "location": "Bangalore Urban, Karnataka, India",
+    "city": "Bangalore",
+    "country": "India",
+    "posted": "Posted 1 day ago (2026-11-26)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "N/A (India role)",
+    "visaCat": "N/A (India role)",
+    "reloc": "Not stated",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-%E2%80%93-seed-series-a-portfolio-at-peak-xv-partners-4494991669",
+    "source": "Peak XV Partners Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Peak XV Partners. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T19:39+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J724",
     "company": "SAP",
     "title": "Senior Data and Applied Scientist",
     "location": "Greater Bengaluru Area",
@@ -11513,64 +11435,12 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
+      "updated_at": "2026-11-27T19:39+05:30"
     },
     "tier": "top"
   },
   {
-    "id": "J728",
-    "company": "Lam Research",
-    "title": "Data Scientist 4",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-4-at-lam-research-4478408168",
-    "source": "Lam Research Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Lam Research. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "other"
-  },
-  {
-    "id": "J729",
-    "company": "JPMorganChase",
-    "title": "Data Scientist Lead - Agentic Solutions",
-    "location": "Bengaluru, Karnataka, India",
-    "city": "Bangalore",
-    "country": "India",
-    "posted": "Posted 1 day ago (2026-11-25)",
-    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
-    "expCat": "Strong",
-    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
-    "visa": "N/A (India role)",
-    "visaCat": "N/A (India role)",
-    "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/data-scientist-lead-agentic-solutions-at-jpmorganchase-4468800980",
-    "source": "JPMorganChase Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at JPMorganChase. Focused on statistical modeling, causal inference, and ML algorithms.",
-    "isNew": true,
-    "expYears": "not stated",
-    "referral": {
-      "status": "needed",
-      "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
-    },
-    "tier": "top"
-  },
-  {
-    "id": "J730",
+    "id": "J725",
     "company": "TecQubes Technologies",
     "title": "Lead Data Scientist – Research &amp; Rapid Prototyping",
     "location": "Bengaluru, Karnataka, India",
@@ -11591,7 +11461,59 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-27T09:55+05:30"
+      "updated_at": "2026-11-27T19:39+05:30"
+    },
+    "tier": "other"
+  },
+  {
+    "id": "J726",
+    "company": "Ocado Group",
+    "title": "Senior Data Scientist",
+    "location": "London, England, United Kingdom",
+    "city": "London",
+    "country": "UK",
+    "posted": "Posted 4 hours ago (2026-11-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Plausible / UK or AU Skilled Worker sponsor",
+    "visaCat": "Plausible but unverified",
+    "reloc": "Not stated",
+    "link": "https://uk.linkedin.com/jobs/view/senior-data-scientist-at-ocado-group-4488021183",
+    "source": "Ocado Group Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Ocado Group. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T19:39+05:30"
+    },
+    "tier": "top"
+  },
+  {
+    "id": "J727",
+    "company": "talabat",
+    "title": "Sr. Data Scientist (AI &amp; ML)",
+    "location": "Dubai, Dubai, United Arab Emirates",
+    "city": "Dubai, Dubai, United Arab Emirates",
+    "country": "UAE",
+    "posted": "Posted 31 minutes ago (2026-11-27)",
+    "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
+    "expCat": "Strong",
+    "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
+    "visa": "Employer-sponsored work visa typical (check posting)",
+    "visaCat": "Unknown",
+    "reloc": "Relocation-friendly employer (not stated in posting)",
+    "link": "https://ae.linkedin.com/jobs/view/sr-data-scientist-ai-ml-at-talabat-4452362869",
+    "source": "talabat Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at talabat. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "isNew": true,
+    "expYears": "not stated",
+    "referral": {
+      "status": "needed",
+      "contacts": [],
+      "updated_at": "2026-11-27T19:39+05:30"
     },
     "tier": "other"
   }
