@@ -11331,7 +11331,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "top"
   },
@@ -11357,33 +11357,33 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "top"
   },
   {
     "id": "J722",
-    "company": "Celonis",
-    "title": "Senior Data Scientist_IC3",
-    "location": "Greater Bengaluru Area",
+    "company": "Dar",
+    "title": "Applied Scientist (Spatial Intelligence)",
+    "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 1 day ago (2026-11-26)",
+    "posted": "Posted 1 day ago (2026-11-27)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
     "visa": "N/A (India role)",
     "visaCat": "N/A (India role)",
     "reloc": "Not stated",
-    "link": "https://in.linkedin.com/jobs/view/senior-data-scientist-ic3-at-celonis-4493816589",
-    "source": "Celonis Careers (Verified)",
-    "why_fits": "Core Data Science / Applied Science role at Celonis. Focused on statistical modeling, causal inference, and ML algorithms.",
+    "link": "https://in.linkedin.com/jobs/view/applied-scientist-spatial-intelligence-at-dar-4495590748",
+    "source": "Dar Careers (Verified)",
+    "why_fits": "Core Data Science / Applied Science role at Dar. Focused on statistical modeling, causal inference, and ML algorithms.",
     "isNew": true,
     "expYears": "not stated",
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "other"
   },
@@ -11409,7 +11409,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "top"
   },
@@ -11420,7 +11420,7 @@
     "location": "Bengaluru, Karnataka, India",
     "city": "Bangalore",
     "country": "India",
-    "posted": "Posted 16 hours ago (2026-11-27)",
+    "posted": "Posted 1 day ago (2026-11-27)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11435,7 +11435,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "other"
   },
@@ -11446,7 +11446,7 @@
     "location": "London, England, United Kingdom",
     "city": "London",
     "country": "UK",
-    "posted": "Posted 22 hours ago (2026-11-27)",
+    "posted": "Posted 1 day ago (2026-11-27)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11461,7 +11461,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "top"
   },
@@ -11472,7 +11472,7 @@
     "location": "Dubai, Dubai, United Arab Emirates",
     "city": "Dubai, Dubai, United Arab Emirates",
     "country": "UAE",
-    "posted": "Posted 18 hours ago (2026-11-27)",
+    "posted": "Posted 1 day ago (2026-11-27)",
     "exp": "Strong fit (Data Science / Applied Science ~5 yrs)",
     "expCat": "Strong",
     "tech": "Statistical modeling, experimentation, predictive analytics, PyTorch, SQL",
@@ -11487,7 +11487,7 @@
     "referral": {
       "status": "needed",
       "contacts": [],
-      "updated_at": "2026-11-28T13:47+05:30"
+      "updated_at": "2026-11-28T22:36+05:30"
     },
     "tier": "other"
   }
